@@ -1,0 +1,34 @@
+PODS:
+  - CardParts (2.3.1):
+    - RxCocoa (~> 4.0)
+    - RxDataSources (~> 3.0)
+    - RxSwift (~> 4.0)
+    - TTTAttributedLabel
+  - Differentiator (3.0.2)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - TTTAttributedLabel (2.0.0)
+
+DEPENDENCIES:
+  - CardParts (from `../`)
+
+EXTERNAL SOURCES:
+  CardParts:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CardParts: 9502b4db093ba06fadebd3581d7bd8b615606e57
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+
+PODFILE CHECKSUM: 0c96981591fc09b349115043e7573b77edf7a3f0
+
+COCOAPODS: 1.4.0
