@@ -1,0 +1,148 @@
+//
+//  CardCell.swift
+//  CardParts2
+//
+//  Created by Kier, Tom on 1/17/17.
+//  Copyright © 2017 Kier, Tom. All rights reserved.
+//
+
+import UIKit
+
+open class CardCell : UICollectionViewCell {
+    
+    var cardContentView : UIView
+    var cardContentConstraints = [NSLayoutConstraint]()
+    var topBottomMarginConstraints = [NSLayoutConstraint]()
+    
+    private var currentSize = CGSize.zero
+    private var gradientLayer = CAGradientLayer()
+
+    override init(frame: CGRect) {
+        
+        cardContentView = UIView()
+        cardContentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        super.init(frame: frame)
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.backgroundColor = UIColor.white
+        contentView.layer.borderColor = UIColor.Gray7.cgColor
+        contentView.layer.borderWidth = 0.5
+        if CardParts.theme.cardShadow {
+            contentView.layer.shadowColor = UIColor.Gray7.cgColor
+            contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
+            contentView.layer.shadowRadius = 1.0
+            contentView.layer.shadowOpacity = 0.9
+        }
+        
+        contentView.addSubview(cardContentView)
+        contentView.backgroundColor = UIColor.white
+        
+        contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[cardContentView]|",
+                                                                  options: [],
+                                                                  metrics: nil,
+                                                                  views: ["cardContentView" : cardContentView]))
+        
+        let metrics = ["topInset": CardParts.theme.cardCellMargins.top, "bottomInset": CardParts.theme.cardCellMargins.bottom]
+        topBottomMarginConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-topInset-[cardContentView]-bottomInset-|",
+                                                                    options: [],
+                                                                    metrics: metrics,
+                                                                    views: ["cardContentView" : cardContentView])
+        contentView.addConstraints(topBottomMarginConstraints)
+        contentView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override open var bounds: CGRect {
+        didSet {
+            contentView.frame = bounds
+            gradientLayer.frame = self.bounds
+        }
+    }
+    
+    var gradientColors: [UIColor] = [] {
+        didSet {
+            gradientLayer.colors = gradientColors.map({ (color) -> CGColor in
+                return color.cgColor
+            })
+            contentView.layer.borderColor = UIColor.clear.cgColor
+            contentView.layer.borderWidth = 0.0
+        }
+    }
+    
+    override open func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        
+        let desiredHeight: CGFloat = contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        
+        if currentSize.height != desiredHeight || currentSize != layoutAttributes.size {
+            let attr = super.preferredLayoutAttributesFitting(layoutAttributes)
+            attr.frame.size.height = desiredHeight
+            currentSize = attr.frame.size
+            return attr
+        }
+        return layoutAttributes
+    }
+    
+    func requiresNoTopBottomMargins(_ noTopBottomMargins: Bool) {
+        
+        contentView.removeConstraints(topBottomMarginConstraints)
+        
+        if noTopBottomMargins {
+            topBottomMarginConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[cardContentView]|",
+                                                                        options: [],
+                                                                        metrics: nil,
+                                                                        views: ["cardContentView" : cardContentView])
+        } else {
+            topBottomMarginConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-9-[cardContentView]-12-|",
+                                                                        options: [],
+                                                                        metrics: nil,
+                                                                        views: ["cardContentView" : cardContentView])
+        }
+        
+        contentView.addConstraints(topBottomMarginConstraints)
+        setNeedsLayout()
+    }
+    
+    func requiresTransparentCard(transparentCard: Bool) {
+        if transparentCard {
+            contentView.backgroundColor = UIColor.clear
+            contentView.layer.borderColor = UIColor.clear.cgColor
+            contentView.layer.borderWidth = 0.0
+            contentView.layer.shadowColor = UIColor.clear.cgColor
+            contentView.layer.shadowOffset = CGSize.zero
+            contentView.layer.shadowRadius = 0.0
+            contentView.layer.shadowOpacity = 0.0
+        } else {
+            contentView.backgroundColor = UIColor.white
+            contentView.layer.borderColor = UIColor.Gray7.cgColor
+            contentView.layer.borderWidth = 0.5
+            if CardParts.theme.cardShadow {
+                contentView.layer.shadowColor = UIColor.Gray7.cgColor
+                contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
+                contentView.layer.shadowRadius = 1.0
+                contentView.layer.shadowOpacity = 0.9
+            }
+        }
+    }
+    
+    func addShadowToCard() {
+        contentView.layer.shadowColor = UIColor.Gray2.cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        contentView.layer.shadowRadius = 5.0
+        contentView.layer.shadowOpacity = 0.9
+    }
+    
+    func setCornerRadius(radius: CGFloat) {
+        contentView.layer.cornerRadius = radius
+        gradientLayer.cornerRadius = radius
+    }
+    
+    override open func updateConstraints() {
+        super.updateConstraints()
+    }
+}
+
