@@ -14,10 +14,10 @@ class ViewController: CardsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        loadCards(cards: [Thing1CardController(), /*TestCardController(),*/ AnotherCardController(), Thing2CardController()])
+        // Comment out one of the loadCard functions to change cards and/or their order
+        
+        // loadCards(cards: [Thing1CardController(), /*TestCardController(),*/ AnotherCardController(), Thing2CardController()])
         loadCards(cards: [TestCardController()])
-
     }
-
 }
 

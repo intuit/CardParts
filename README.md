@@ -60,6 +60,9 @@ CardParts - made with ❤️ by Intuit:
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+In `ViewController.swift` you will be able to change the cards displayed and/or their order by commenting out one of the `loadCards(cards: )` functions.
+If you want to change the content of any of these cards, you can look into each of the `CardPartsViewController` you pass into the function such as: `TestCardController`, `Thing1CardController`, `Thing2CardController`, etc.
+
 # Requirements
 - iOS 10.0+
 - Xcode 9.2+
