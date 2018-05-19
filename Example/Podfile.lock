@@ -17,12 +17,20 @@ PODS:
 DEPENDENCIES:
   - CardParts (from `../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Differentiator
+    - RxCocoa
+    - RxDataSources
+    - RxSwift
+    - TTTAttributedLabel
+
 EXTERNAL SOURCES:
   CardParts:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  CardParts: 9502b4db093ba06fadebd3581d7bd8b615606e57
+  CardParts: 5ae2a4dfe36577056f3800034f6b3c8b5ab6bca2
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
@@ -31,4 +39,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0c96981591fc09b349115043e7573b77edf7a3f0
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.2

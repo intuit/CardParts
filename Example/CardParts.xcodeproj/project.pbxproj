@@ -204,7 +204,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				46B0BA23883E8DB7A3D5D555 /* [CP] Embed Pods Frameworks */,
-				9735388D55812785EF124D9A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,7 +223,6 @@
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
 				7BF156949118847954D0EB24 /* [CP] Embed Pods Frameworks */,
-				696811CB5852DA1AEAF21833 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -363,21 +361,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardParts_Example/Pods-CardParts_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		696811CB5852DA1AEAF21833 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardParts_Tests/Pods-CardParts_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7BF156949118847954D0EB24 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -404,21 +387,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardParts_Tests/Pods-CardParts_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9735388D55812785EF124D9A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardParts_Example/Pods-CardParts_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
