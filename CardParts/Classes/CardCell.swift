@@ -129,11 +129,11 @@ open class CardCell : UICollectionViewCell {
         }
     }
     
-    func addShadowToCard() {
-        contentView.layer.shadowColor = UIColor.Gray2.cgColor
+    func addShadowToCard(shadowRadius: CGFloat = 8.0, shadowOpacity: Float = 0.7, shadowColor: CGColor = UIColor.Gray2.cgColor) {
+        contentView.layer.shadowColor = shadowColor
         contentView.layer.shadowOffset = CGSize(width: 0, height: 5)
-        contentView.layer.shadowRadius = 5.0
-        contentView.layer.shadowOpacity = 0.9
+        contentView.layer.shadowRadius = shadowRadius
+        contentView.layer.shadowOpacity = shadowOpacity
     }
     
     func setCornerRadius(radius: CGFloat) {
