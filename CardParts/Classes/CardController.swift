@@ -62,12 +62,22 @@ public protocol HiddenCardTrait {
 }
 
 public protocol ShadowCardTrait {
-    func shouldAddShadow() -> Bool
+    func shadowColor() -> CGColor
+    func shadowRadius() -> CGFloat
+    func shadowOpacity() -> Float
 }
 
 extension ShadowCardTrait {
-    func shouldAddShadow() -> Bool {
-        return true
+    func shadowColor() -> CGColor {
+        return UIColor.Gray2.cgColor
+    }
+
+    func shadowRadius() -> CGFloat {
+        return 8.0
+    }
+    
+    func shadowOpacity() -> Float {
+        return 0.7
     }
 }
 
