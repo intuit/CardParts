@@ -216,6 +216,58 @@ The HiddenCardTrait trait requires the CardController to implement an isHidden v
 ```
 The framework will then observer the isHidden variable so that whenever its value is changed the card will be hidden or shown based upon the new value. This allows the CardController to control its visibility by simply modifying the value of its isHidden variable.
 
+#### `ShadowCardTrait`
+The ShadowCardTrait protocol requires CardController to implement `shadowColor()`, `shadowRadius()` and `shadowOpacity()` methods.
+```swift
+    func shadowColor() -> CGColor {
+        return UIColor.lightGray.cgColor
+    }
+
+    func shadowRadius() -> CGFloat {
+        return 10.0
+    }
+
+    // The value can be from 0.0 to 1.0.
+    // 0.0 => lighter shadow
+    // 1.0 => darker shadow
+    func shadowOpacity() -> Float {
+        return 1.0
+    }
+```
+
+<p align="center">
+shadowColor: lightGray, shadowRadius: 5.0, shadowOpacity: 0.5 <br/>
+<img src="images/shadow_5.png" width="300" alt="Shadow radius 5.0"/>
+</p>
+
+<p align="center">
+shadowColor: lightGray, shadowRadius: 10.0, shadowOpacity: 0.5 <br/>
+<img src="images/shadow_10.png" width="300" alt="Shadow radius 10.0"/>
+</p>
+
+#### `RoundedCardTrait`
+Use this protocol to define the roundness for the card by implementing the method `cornerRadius()`.
+```swift
+    func cornerRadius() -> CGFloat {
+        return 10.0
+    }
+```
+<p align="center">
+cornerRadius: 10.0 <br/>
+<img src="images/shadow_5.png" width="300" alt="Shadow radius 5.0"/>
+</p>
+
+#### `GradientCardTrait`
+Use this protocol to add a gradient background for the card. The gradients will be added vertically from top to bottom.
+```swift
+    func gradientColors() -> [UIColor] {
+        return [UIColor.lavender, UIColor.aqua]
+    }
+```
+<p align="center">
+<img src="images/gradient.png" width="300" alt="Shadow radius 10.0"/>
+</p>
+
 ## `CardPartsViewController`
 CardPartsViewController implements the CardController protocol and builds its card UI by displaying one or more card part views using an MVVM pattern that includes automatic data binding. Each CardPartsViewController displays a list of CardPartView as its subviews.  Each CardPartView renders as a row in the card. The CardParts framework implements several different types of CardPartView that display basic views, such as title, text, image, button, separator, etc.  All CardPartView implemented by the framework are already styled to correctly match the applied themes UI guidelines.
 
