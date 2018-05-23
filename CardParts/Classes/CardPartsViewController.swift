@@ -156,9 +156,6 @@ extension CardPartsViewController: CardVisibilityDelegate {
     
     // defines the visilbity of a card
     open func cardVisibility(percentVisible: CGFloat) {}
-    
-    // defines didEndDecellerating scroll view method
-    open func scrollViewDidScroll() {}
 }
 
 extension Reactive where Base: CardPartsViewController {
