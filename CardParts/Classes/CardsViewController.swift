@@ -357,5 +357,7 @@ extension CardsViewController {
 // scroll view delegate extension. This allows subclasses of CardsViewController to implement these scroll view delegate methods
 extension CardsViewController {
     
-    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {}
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // test comment
+    }
 }
