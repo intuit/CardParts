@@ -1,16 +1,16 @@
 //
-//  ViewController.swift
-//  CardParts
+//  ThemeViewController.swift
+//  CardParts_Example
 //
-//  Created by tkier on 11/27/2017.
-//  Copyright (c) 2017 tkier. All rights reserved.
+//  Created by Roossin, Chase on 5/23/18.
+//  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import CardParts
 
-class ViewController: CardsViewController {
-
+class ThemeViewController: CardsViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,4 +20,3 @@ class ViewController: CardsViewController {
         loadCards(cards: [TestCardController()])
     }
 }
-
