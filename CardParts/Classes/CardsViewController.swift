@@ -358,6 +358,6 @@ extension CardsViewController {
 extension CardsViewController {
     
     open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        // another tests
+        // another test
     }
 }
