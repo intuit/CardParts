@@ -11,7 +11,7 @@ import CardParts
 import RxSwift
 import RxCocoa
 
-class TestCardController : CardPartsViewController {
+class StateCardController : CardPartsViewController {
 	
 	init() {
 		super.init(nibName: nil, bundle: nil)

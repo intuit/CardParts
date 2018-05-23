@@ -17,6 +17,6 @@ class ThemeViewController: CardsViewController {
         // Comment out one of the loadCard functions to change cards and/or their order
         
         // loadCards(cards: [Thing1CardController(), /*TestCardController(),*/ AnotherCardController(), Thing2CardController()])
-        loadCards(cards: [TestCardController()])
+        loadCards(cards: [ReactiveCardController()])
     }
 }

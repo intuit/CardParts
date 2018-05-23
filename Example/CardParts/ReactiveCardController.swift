@@ -11,7 +11,7 @@ import CardParts
 import RxSwift
 import RxCocoa
 
-class AnotherCardViewModel {
+class ReactiveCardViewModel {
 	
 	var text = Variable("")
 	
@@ -38,11 +38,11 @@ class AnotherCardViewModel {
 
 }
 
-class AnotherCardController : CardPartsViewController {
+class ReactiveCardController : CardPartsViewController {
 	
 	var isHidden = Variable(false)
 	
-	var viewModel = AnotherCardViewModel()
+	var viewModel = ReactiveCardViewModel()
 	
 	var titlePart = CardPartTitleView(type: .titleOnly)
 	var textPart = CardPartTextView(type: .normal)

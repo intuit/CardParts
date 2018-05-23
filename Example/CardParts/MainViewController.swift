@@ -28,6 +28,8 @@ class MainViewController: CardsViewController {
             CardPartPagedViewCardController(), // Pages
             CardPartSliderViewCardController(), // Slider
             CardPartTextFieldCardController(), // TextField
+            ReactiveCardController(), // Demo RxSwift
+            StateCardController() // Demo states
         ]
         
         loadCards(cards: cards)
