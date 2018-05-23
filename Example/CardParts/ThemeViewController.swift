@@ -3,7 +3,7 @@
 //  CardParts_Example
 //
 //  Created by Roossin, Chase on 5/23/18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Copyright © 2018 CocoaPods. All ri ghts reserved.
 //
 
 import UIKit
@@ -15,8 +15,13 @@ class ThemeViewController: CardsViewController {
         super.viewDidLoad()
         
         // Comment out one of the loadCard functions to change cards and/or their order
+        let cards: [CardPartsViewController] = [
+            ThemedCardController(title: "These"),
+            ThemedCardController(title: "Are"),
+            ThemedCardController(title: "Themed"),
+            ThemedCardController(title: "Cards!")
+        ]
         
-        // loadCards(cards: [Thing1CardController(), /*TestCardController(),*/ AnotherCardController(), Thing2CardController()])
-        loadCards(cards: [ReactiveCardController()])
+        loadCards(cards: cards)
     }
 }

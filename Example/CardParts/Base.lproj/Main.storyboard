@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SM8-1j-WOG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SM8-1j-WOG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Theme" id="i9F-X2-mtg"/>
+                    <tabBarItem key="tabBarItem" title="Theme" image="themeIcon" id="i9F-X2-mtg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPe-0z-wha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="CardParts" id="Vyp-Tk-OaV"/>
+                    <tabBarItem key="tabBarItem" title="CardParts" image="cardIcon" id="Vyp-Tk-OaV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qxj-2y-Zce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,7 +55,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="0Y6-JS-rBu" kind="relationship" relationship="viewControllers" id="VGl-vW-CV6"/>
@@ -67,4 +67,8 @@
             <point key="canvasLocation" x="-94" y="-43"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cardIcon" width="25" height="25"/>
+        <image name="themeIcon" width="25" height="25"/>
+    </resources>
 </document>

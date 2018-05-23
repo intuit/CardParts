@@ -23,6 +23,7 @@
 		61D470751FDA709B00F451F0 /* CardPartButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4706E1FDA709B00F451F0 /* CardPartButtonViewTests.swift */; };
 		61D470761FDA709B00F451F0 /* CardPartSpacerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D4706F1FDA709B00F451F0 /* CardPartSpacerViewTests.swift */; };
 		61D470851FDB08EE00F451F0 /* CardPartTitleDescriptionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D470841FDB08EE00F451F0 /* CardPartTitleDescriptionViewTests.swift */; };
+		7021D3D220B5FA8600F9CB80 /* ThemedCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021D3D120B5FA8600F9CB80 /* ThemedCardController.swift */; };
 		7051279B20B5D35900B8E635 /* CardPartBarViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7051279A20B5D35900B8E635 /* CardPartBarViewCardController.swift */; };
 		7051279D20B5D3D900B8E635 /* CardPartPagedViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7051279C20B5D3D900B8E635 /* CardPartPagedViewCardController.swift */; };
 		7051279F20B5E2ED00B8E635 /* CardPartTextFieldCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7051279E20B5E2ED00B8E635 /* CardPartTextFieldCardController.swift */; };
@@ -73,6 +74,7 @@
 		61D4706F1FDA709B00F451F0 /* CardPartSpacerViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPartSpacerViewTests.swift; sourceTree = "<group>"; };
 		61D470841FDB08EE00F451F0 /* CardPartTitleDescriptionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartTitleDescriptionViewTests.swift; sourceTree = "<group>"; };
 		6CB26A08A06535707936D4C9 /* Pods_CardParts_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardParts_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7021D3D120B5FA8600F9CB80 /* ThemedCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedCardController.swift; sourceTree = "<group>"; };
 		7051279A20B5D35900B8E635 /* CardPartBarViewCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartBarViewCardController.swift; sourceTree = "<group>"; };
 		7051279C20B5D3D900B8E635 /* CardPartPagedViewCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartPagedViewCardController.swift; sourceTree = "<group>"; };
 		7051279E20B5E2ED00B8E635 /* CardPartTextFieldCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartTextFieldCardController.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				7051279C20B5D3D900B8E635 /* CardPartPagedViewCardController.swift */,
 				7051279E20B5E2ED00B8E635 /* CardPartTextFieldCardController.swift */,
 				705127A020B5E52600B8E635 /* CardPartSliderViewCardController.swift */,
+				7021D3D120B5FA8600F9CB80 /* ThemedCardController.swift */,
 			);
 			name = "Type of CardParts";
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				7051279B20B5D35900B8E635 /* CardPartBarViewCardController.swift in Sources */,
 				705127A120B5E52600B8E635 /* CardPartSliderViewCardController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				7021D3D220B5FA8600F9CB80 /* ThemedCardController.swift in Sources */,
 				70F595E020B5CDCE00B6E688 /* CardPartCollectionViewCardController.swift in Sources */,
 				70F595D820B5C95700B6E688 /* CardPartSeparatorViewCardController.swift in Sources */,
 				7051279D20B5D3D900B8E635 /* CardPartPagedViewCardController.swift in Sources */,

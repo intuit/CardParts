@@ -19,7 +19,7 @@ class StateCardController : CardPartsViewController {
 	}
 	
 	func startRandomHides() {
-		Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.toggleHidden), userInfo: nil, repeats: true)
+		Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.toggleHidden), userInfo: nil, repeats: true)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -32,7 +32,7 @@ class StateCardController : CardPartsViewController {
         self.state = .empty
 
         let textPart = CardPartTextView(type: .normal)
-		textPart.text = "Some Text"
+		textPart.text = "Watch me change states!"
 		
 		setupCardParts([textPart])
 
