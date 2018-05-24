@@ -3,7 +3,7 @@
 //  Gala
 //
 //  Created by Kier, Tom on 3/8/17.
-//  Copyright © 2017 Mint.com. All rights reserved.
+//  Copyright © 2018 Intuit. All rights reserved.
 //
 
 import UIKit

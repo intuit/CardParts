@@ -3,7 +3,7 @@
 //  CardParts_Example
 //
 //  Created by Roossin, Chase on 5/23/18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Copyright © 2018 Intuit. All rights reserved.
 //
 
 import Foundation
