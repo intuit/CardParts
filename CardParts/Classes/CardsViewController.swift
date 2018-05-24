@@ -370,15 +370,24 @@ extension CardsViewController {
 extension CardsViewController {
     
     // calls visibility delegates as needed with the appropriate frame
-    open func notifyCardsVisibility() {
+    private func notifyCardsVisibility() {
         if CardUtils.isSignificantScroll(lastScrollBounds: lastScrollViewBounds, currentScrollBounds: collectionView.bounds, threshold: 0.0) {
             // for all visible cells go through and calaculate visibility and pass along to CardPartsViewControllers
             collectionView.visibleCells.flatMap { ($0 as? CardCell) }.forEach { (cell) in
                 guard let indexPath = collectionView.indexPath(for: cell) else { return }
                 let cardController = getCardControllerForIndexPath(indexPath: indexPath)
                 
-                if let vc = cardController as? CardPartsViewController {
-                    vc.cardVisibility(percentVisible: CardUtils.cardVisibility(containerFrame: collectionView.bounds, cardFrame: cell.frame))
+                //  make sure we have a card controller
+                guard let cardVC = cardController as? CardPartsViewController else {
+                    return
+                }
+                
+                let percentVisible = CardUtils.cardVisibility(containerFrame: collectionView.bounds, cardFrame: cell.frame)
+                
+                // check to see if the visibility has changed
+                if percentVisible != cardVC.visibility, let vc = cardVC as? CardVisibilityDelegate {
+                    cardVC.visibility = percentVisible
+                    vc.cardVisibility?(percentVisible: percentVisible)
                 }
             }
         }
@@ -387,7 +396,7 @@ extension CardsViewController {
     }
     
     // calls for visibility of card when the scroll view scrolls
-    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         notifyCardsVisibility()
     }
 }

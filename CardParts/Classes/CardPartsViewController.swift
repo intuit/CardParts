@@ -34,6 +34,9 @@ open class CardPartsViewController : UIViewController, CardController {
 	}
 	
 	var marginViews: [UIView: (UIView?, UIView?)] = [:]
+    
+    // percent visibility of a card
+    var visibility: CGFloat = -1.0
 	
 	private var cardParts:[CardState : CardStateData] = [:]
 	
@@ -146,13 +149,6 @@ open class CardPartsViewController : UIViewController, CardController {
             }
         }
     }
-}
-
-// extension for defining the visibility delegate
-extension CardPartsViewController: CardVisibilityDelegate {
-    
-    // defines the visilbity of a card
-    open func cardVisibility(percentVisible: CGFloat) {}
 }
 
 extension Reactive where Base: CardPartsViewController {
