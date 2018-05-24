@@ -758,6 +758,20 @@ public class YourCardPartTheme: CardPartsTheme {
 ```
 And then in your `AppDelegete` call `YourCardPartTheme().apply()` it apply your theme.
 
+## Listeners
+Card Parts also support a listener that allows you to listen to visibility changes in the cards that you have created. In your `CardPartsViewController` you may override the following function to gain insight into the visibility of your card within the `CardsViewController` you have created.
+```swift
+public class YourCardPartsViewController: CardPartsViewController {
+    ...
+
+    // Notifies your card parts view controller of the percentage of the card that is visible.
+    // This function is called every time 'scrollViewDidScroll' is called in your CardsViewController.
+    override func cardVisibility(percentVisible: CGFloat) {
+        // logic you would like to perform when the scroll view has scrolled
+    }
+}
+```
+
 # Apps That Love CardParts
 - [Mint - Personal Finance & Money](https://itunes.apple.com/us/app/mint-personal-finance-money/id300238550?mt=8)
 - [Turbo: Scores-Income & Credit](https://itunes.apple.com/us/app/turbo-scores-income-credit/id1242998361?mt=8)
