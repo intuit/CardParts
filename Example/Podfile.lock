@@ -1,5 +1,5 @@
 PODS:
-  - CardParts (2.3.2):
+  - CardParts (2.3.3):
     - RxCocoa (~> 4.0)
     - RxDataSources (~> 3.0)
     - RxSwift (~> 4.0)
@@ -30,13 +30,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CardParts: e1b3191eae3ea4ce27f4cfc8287415c93fdd272f
+  CardParts: befa6e8247eb2b654f94f67dedc1f77094a0e0bc
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 0c96981591fc09b349115043e7573b77edf7a3f0
+PODFILE CHECKSUM: 74676e2d5bea3356515810e198c6e14ce8817a1e
 
 COCOAPODS: 1.5.2
