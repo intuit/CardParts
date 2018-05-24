@@ -17,7 +17,7 @@ CardParts is an iOS Card UI framework that uses MVVM and automatic data binding 
                        DESC
 
   s.homepage         = 'https://github.com/intuit/CardParts'
-  s.authors           = { "Chase Roossin" => "chase_roossin@intuit.com" }
+  s.authors           = { "Chase Roossin" => "chase_roossin@intuit.com", "Deniz Tumer" => "deniz_tumer@intuit.com", "Bharath Urs" => "bharath_urs@intuit.com" }
   s.source           = { :git => 'https://github.com/intuit/CardParts.git', :tag => s.version.to_s }
   s.license          = { :type => 'Apache 2.0' }
   s.resources = [
@@ -26,7 +26,7 @@ CardParts is an iOS Card UI framework that uses MVVM and automatic data binding 
 
   s.ios.deployment_target = '10.0'
   s.swift_version = '4.0'
-  s.source_files = 'CardParts/Classes/**/*', 'CardParts/Extensions/**/*'
+  s.source_files = 'CardParts/src/**/*'
 
   s.dependency 'RxSwift', '~> 4.0'
   s.dependency 'RxCocoa', '~> 4.0'
