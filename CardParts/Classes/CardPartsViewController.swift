@@ -34,6 +34,9 @@ open class CardPartsViewController : UIViewController, CardController {
 	}
 	
 	var marginViews: [UIView: (UIView?, UIView?)] = [:]
+    
+    // percent visibility of a card
+    var visibility: CGFloat = -1.0
 	
 	private var cardParts:[CardState : CardStateData] = [:]
 	
@@ -41,7 +44,6 @@ open class CardPartsViewController : UIViewController, CardController {
 	
     override open func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
 	public func setupCardParts(_ cardParts:[CardPartView], forState: CardState = .none) {
