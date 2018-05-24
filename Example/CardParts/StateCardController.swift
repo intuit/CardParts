@@ -3,7 +3,7 @@
 //  Gala
 //
 //  Created by Kier, Tom on 3/8/17.
-//  Copyright © 2017 Mint.com. All rights reserved.
+//  Copyright © 2018 Intuit. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import CardParts
 import RxSwift
 import RxCocoa
 
-class TestCardController : CardPartsViewController {
+class StateCardController : CardPartsViewController {
 	
 	init() {
 		super.init(nibName: nil, bundle: nil)
@@ -19,7 +19,7 @@ class TestCardController : CardPartsViewController {
 	}
 	
 	func startRandomHides() {
-		Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.toggleHidden), userInfo: nil, repeats: true)
+		Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.toggleHidden), userInfo: nil, repeats: true)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -32,7 +32,7 @@ class TestCardController : CardPartsViewController {
         self.state = .empty
 
         let textPart = CardPartTextView(type: .normal)
-		textPart.text = "Some Text"
+		textPart.text = "Watch me change states!"
 		
 		setupCardParts([textPart])
 
