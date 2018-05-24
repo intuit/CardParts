@@ -46,6 +46,9 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
     var cardControllers = [CardInfo]()
 	var bag = DisposeBag()
     
+    // previous scrollview bounds
+    var lastScrollViewBounds: CGRect?
+    
     let kCardCellIndentifier = "CardCell"
     public var collectionView : UICollectionView!
     var layout : UICollectionViewFlowLayout!
@@ -79,6 +82,15 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView]))
 
+    }
+    
+    // functionality that happens when the view appears
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // make sure that we set this as the first time we are checking for visibility
+        lastScrollViewBounds = nil
+        notifyCardsVisibility()
     }
 	
     public func invalidateLayout() {
@@ -357,7 +369,25 @@ extension CardsViewController {
 // scroll view delegate extension. This allows subclasses of CardsViewController to implement these scroll view delegate methods
 extension CardsViewController {
     
-    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        // test comment
+    // calls visibility delegates as needed with the appropriate frame
+    open func notifyCardsVisibility() {
+        if CardUtils.isSignificantScroll(lastScrollBounds: lastScrollViewBounds, currentScrollBounds: collectionView.bounds, threshold: 0.0) {
+            // check to see what the
+            collectionView.visibleCells.flatMap { ($0 as? CardCell) }.forEach { (cell) in
+                guard let indexPath = collectionView.indexPath(for: cell) else { return }
+                let cardController = getCardControllerForIndexPath(indexPath: indexPath)
+                
+                if let vc = cardController as? CardPartsViewController {
+                    vc.cardVisibility(percentVisible: CardUtils.cardVisibility(containerFrame: collectionView.bounds, cardFrame: cell.frame))
+                }
+            }
+        }
+        
+        lastScrollViewBounds = collectionView.bounds
+    }
+    
+    // calls for visibility of card when the scroll view scrolls
+    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        notifyCardsVisibility()
     }
 }

@@ -42,6 +42,8 @@ open class CardPartsViewController : UIViewController, CardController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         
+        self.presentingViewController
+        
     }
 
 	public func setupCardParts(_ cardParts:[CardPartView], forState: CardState = .none) {
@@ -147,6 +149,13 @@ open class CardPartsViewController : UIViewController, CardController {
             }
         }
     }
+}
+
+// extension for defining the visibility delegate
+extension CardPartsViewController: CardVisibilityDelegate {
+    
+    // defines the visilbity of a card
+    open func cardVisibility(percentVisible: CGFloat) {}
 }
 
 extension Reactive where Base: CardPartsViewController {
