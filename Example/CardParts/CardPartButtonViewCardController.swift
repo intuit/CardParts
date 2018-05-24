@@ -20,7 +20,18 @@ class CardPartButtonViewCardController: CardPartsViewController {
         cardPartTextView.text = "This is a CardPartButtonView"
         
         cardPartButtonView.setTitle("I'm a button!", for: .normal)
+        cardPartButtonView.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
         setupCardParts([cardPartTextView, cardPartButtonView])
+    }
+    
+    @objc func buttonTapped() {
+        
+        let alertController = UIAlertController(title: "Woohoo!", message: "Isn't that awesome!?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
