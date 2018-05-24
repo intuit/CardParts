@@ -41,9 +41,6 @@ open class CardPartsViewController : UIViewController, CardController {
 	
     override open func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.presentingViewController
-        
     }
 
 	public func setupCardParts(_ cardParts:[CardPartView], forState: CardState = .none) {

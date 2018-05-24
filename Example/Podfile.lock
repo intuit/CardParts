@@ -18,7 +18,7 @@ DEPENDENCIES:
   - CardParts (from `../`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Differentiator
     - RxCocoa
     - RxDataSources
@@ -39,4 +39,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0c96981591fc09b349115043e7573b77edf7a3f0
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.2
