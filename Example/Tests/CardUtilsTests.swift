@@ -166,4 +166,13 @@ extension CardUtilsTests {
         
         XCTAssertTrue(CardUtils.isSignificantScroll(lastScrollBounds: lastScrollBounds, currentScrollBounds: currentScrollBounds, threshold: threshold))
     }
+    
+    // tests nil last scroll bounds
+    func testNilLastScroll() {
+        let lastScrollBounds: CGRect? = nil
+        let currentScrollBounds = CGRect(x: 0, y: -20, width: 375, height: 1800)
+        let threshold: CGFloat = 10.0
+        
+        XCTAssertTrue(CardUtils.isSignificantScroll(lastScrollBounds: lastScrollBounds, currentScrollBounds: currentScrollBounds, threshold: threshold))
+    }
 }
