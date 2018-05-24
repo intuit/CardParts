@@ -89,8 +89,9 @@ class CardUtilsTests: XCTestCase {
     func testIsCardVisibleCutOffBottom1() {
         let containerFrame = CGRect(x: 0, y: 621.5, width: 375, height: 603.1)
         let cardFrame = CGRect(x: 12.0, y: 1060, width: 351.0, height: 300.5)
+        let calc = (containerFrame.origin.y + containerFrame.height - cardFrame.origin.y) / cardFrame.height
         
-        XCTAssertEqual(CardUtils.cardVisibility(containerFrame: containerFrame, cardFrame: cardFrame), 0.547753743760399)
+        XCTAssertEqual(CardUtils.cardVisibility(containerFrame: containerFrame, cardFrame: cardFrame), calc)
     }
     
     // tests if card is not in view below current scroll view bounds
