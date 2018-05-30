@@ -37,7 +37,7 @@ public class CardPartButtonView : UIButton, CardPartView {
 
 extension Reactive where Base: CardPartButtonView {
 
-	public var title: Binder<String>{
+	public var buttonTitle: Binder<String>{
 		return Binder(self.base) { (buttonView, title) -> () in
 			buttonView.setTitle(title, for: .normal)
 		}
