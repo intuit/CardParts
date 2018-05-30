@@ -30,7 +30,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CardParts: befa6e8247eb2b654f94f67dedc1f77094a0e0bc
+  CardParts: f7493a7e3b21c32c317db4ce9552aa5bc742d477
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
@@ -39,4 +39,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 74676e2d5bea3356515810e198c6e14ce8817a1e
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3

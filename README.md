@@ -356,7 +356,7 @@ CardPartButtonView displays a single button.
 
 CardPartButtonView exposes the following reactive properties that can be bound to view model properties:
 ```swift
-var title: String?
+var buttonTitle: String?
 var isSelected: Bool?
 var isHighlighted: Bool?
 var contentHorizontalAlignment: UIControlContentHorizontalAlignment
