@@ -369,6 +369,20 @@ var tintColor: UIColor?
 #### `CardPartTitleView`
 CardPartTitleView displays a view with a title, and an optional options menu. The initializer requires a type parameter which can be set to either titleOnly or titleWithMenu. If the type is set to titleWithMenu the card part will display a menu icon, that when tapped will display a menu containing the options specified in the menuOptions array. The menuOptionObserver property can be set to a block that will be called when the user selects an item from the menu.
 
+As an example for a title with menu buttons:
+```swift
+let titlePart = CardPartTitleView(type: .titleWithMenu)
+titlePart.menuTitle = "Hide this offer"
+titlePart.menuOptions = ["Hide"]
+titlePart.menuOptionObserver  = {[weak self] (title, index) in
+    // Logic to determine which menu option was clicked
+    // and how to respond
+    if index == 0 {
+        self?.hideOfferClicked()
+    }
+}
+```
+
 CardPartButtonView exposes the following reactive properties that can be bound to view model properties:
 ```swift
 var title: String?
@@ -579,7 +593,7 @@ class MyCustomCollectionViewCell: CardPartCollectionViewCardPartsCell {
         mainSV.alignment = .center
         mainSV.spacing = 10
 
-        mainSV.addArrangedSubview(imageCP)
+        mainSV.addArrangedSubview(titleCP)
         mainSV.addArrangedSubview(descriptionCP)
 
         setupCardParts([mainSV])
