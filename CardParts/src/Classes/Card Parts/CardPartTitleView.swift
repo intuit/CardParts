@@ -108,7 +108,7 @@ public class CardPartTitleView : UIView, CardPartView {
 	
 	override public func updateConstraints() {
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label]|", options: [], metrics: nil, views: ["label" : label]))
-		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]", options: [], metrics: nil, views: ["label" : label]))		
+		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]|", options: [], metrics: nil, views: ["label" : label]))		
 		if let button = button {
 			addConstraints([NSLayoutConstraint (item: button,
 			                                    attribute: NSLayoutAttribute.width,
