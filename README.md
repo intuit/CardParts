@@ -56,6 +56,7 @@ CardParts - made with ❤️ by Intuit:
     - [Card States](#card-states)
     - [Data Binding](#data-binding)
     - [Themes](#themes)
+    - [Listeners](#listeners)
 - [Apps That Love CardParts](#apps-that-love-cardparts)
 - [License](#license)
 
