@@ -39,9 +39,9 @@ open class CardPartsViewController : UIViewController, CardController {
     var visibility: CGFloat = -1.0
     
     // MARK: Clickable traits
-    var cardTapGesture: UITapGestureRecognizer?
+    private var cardTapGesture: UITapGestureRecognizer?
     
-    var cardClickedCallback: [CardState: (()->())] = [:] {
+    private var cardClickedCallback: [CardState: (()->())] = [:] {
         
         didSet {
             // We don't have a tap gesture setup, let's add
