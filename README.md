@@ -56,6 +56,7 @@ CardParts - made with ❤️ by Intuit:
     - [Card States](#card-states)
     - [Data Binding](#data-binding)
     - [Themes](#themes)
+    - [Clickable Cards](#clickable-cards)
     - [Listeners](#listeners)
 - [Apps That Love CardParts](#apps-that-love-cardparts)
 - [License](#license)
@@ -772,6 +773,23 @@ public class YourCardPartTheme: CardPartsTheme {
 }
 ```
 And then in your `AppDelegete` call `YourCardPartTheme().apply()` it apply your theme.
+
+## Clickable Cards
+You have the ability to add a tap action for each [state](#card-states) of any given card. If a part of the card is clicked, the given action will be fired:
+```swift
+self.cardTapped(forState: .empty) {
+    print("Card was tapped in .empty state!")
+}
+
+self.cardTapped(forState: .hasData) {
+    print("Card was tapped in .hasData state!")
+}
+
+// The default state for setupCardParts([]) is .none
+self.cardTapped {
+    print("Card was tapped in .none state")
+}
+```
 
 ## Listeners
 Card Parts also support a listener that allows you to listen to visibility changes in the cards that you have created. In your `CardPartsViewController` you may override the following function to gain insight into the visibility of your card within the `CardsViewController` you have created.
