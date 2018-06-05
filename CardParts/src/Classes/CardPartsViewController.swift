@@ -37,10 +37,33 @@ open class CardPartsViewController : UIViewController, CardController {
     
     // percent visibility of a card
     var visibility: CGFloat = -1.0
+    
+    // MARK: Clickable traits
+    private var cardTapGesture: UITapGestureRecognizer?
+    
+    private var cardClickedCallback: [CardState: (()->())] = [:] {
+        
+        didSet {
+            // We don't have a tap gesture setup, let's add
+            guard cardTapGesture == nil else { return }
+            
+            cardTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.cardWasTapped(sender:)))
+            
+            guard let tap = cardTapGesture else { return }
+            
+            self.view.addGestureRecognizer(tap)
+        }
+    }
 	
 	private var cardParts:[CardState : CardStateData] = [:]
 	
 	public let bag = DisposeBag()
+    
+    deinit {
+        
+        // Remove references to callbacks to ensure no mem-leak
+        self.cardClickedCallback = [:]
+    }
 	
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -116,6 +139,10 @@ open class CardPartsViewController : UIViewController, CardController {
 		invalidateLayout()
 	}
     
+    public func cardTapped(forState state: CardState = .none, action: @escaping (()->())) {
+        self.cardClickedCallback[state] = action
+    }
+    
     private func addCardPartsForState(_ state: CardState) {
         if let stateData = cardParts[state] {
             stateData.cardParts.forEach {
@@ -148,6 +175,16 @@ open class CardPartsViewController : UIViewController, CardController {
                 }
             }
         }
+    }
+}
+
+extension CardPartsViewController {
+    
+    @objc private func cardWasTapped(sender: UITapGestureRecognizer? = nil) {
+
+        guard let desiredAction = self.cardClickedCallback[self.state] else { return }
+        
+        desiredAction()
     }
 }
 
