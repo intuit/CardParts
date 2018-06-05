@@ -776,6 +776,7 @@ And then in your `AppDelegete` call `YourCardPartTheme().apply()` it apply your 
 
 ## Clickable Cards
 You have the ability to add a tap action for each [state](#card-states) of any given card. If a part of the card is clicked, the given action will be fired:
+
 ```swift
 self.cardTapped(forState: .empty) {
     print("Card was tapped in .empty state!")
@@ -788,6 +789,13 @@ self.cardTapped(forState: .hasData) {
 // The default state for setupCardParts([]) is .none
 self.cardTapped {
     print("Card was tapped in .none state")
+}
+```
+
+*Note: It is always a good idea to weakify self in a closure:*
+```swift
+{[weak self] in
+
 }
 ```
 
