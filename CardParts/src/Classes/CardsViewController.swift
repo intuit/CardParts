@@ -187,6 +187,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
             
             if let gradientCardTrait = cardController as? GradientCardTrait {
                 cell.gradientColors = gradientCardTrait.gradientColors()
+                cell.gradientAngle = gradientCardTrait.gradientAngle?() ?? 0
             }
             
             cell.cardContentView.subviews.forEach { $0.removeFromSuperview() }
