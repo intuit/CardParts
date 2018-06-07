@@ -81,4 +81,8 @@ extension ThemedCardController: GradientCardTrait {
         
         return [color1, color2]
     }
+    
+    func gradientAngle() -> Float {
+        return 45.0
+    }
 }
