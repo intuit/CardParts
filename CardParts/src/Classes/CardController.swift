@@ -91,7 +91,6 @@ extension RoundedCardTrait {
     }
 }
 
-@objc public protocol GradientCardTrait {
+public protocol GradientCardTrait {
     func gradientColors() -> [UIColor]
-    @objc optional func gradientAngle() -> Float
 }
