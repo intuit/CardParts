@@ -269,7 +269,6 @@ Use this protocol to add a gradient background for the card. The gradients will 
         return [UIColor.lavender, UIColor.aqua]
     }
  
- swift
     func gradientAngle() -> [UIColor] {
         return 45.0
     }
