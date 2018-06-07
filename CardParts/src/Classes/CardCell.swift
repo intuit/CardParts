@@ -74,6 +74,30 @@ open class CardCell : UICollectionViewCell {
         }
     }
     
+    var gradientAngle: Float = 0 {
+        didSet {
+            let alpha: Float = gradientAngle / 360
+            let startPointX = powf(
+                sinf(2 * Float.pi * ((alpha + 0.75) / 2)),
+                2
+            )
+            let startPointY = powf(
+                sinf(2 * Float.pi * ((alpha + 0) / 2)),
+                2
+            )
+            let endPointX = powf(
+                sinf(2 * Float.pi * ((alpha + 0.25) / 2)),
+                2
+            )
+            let endPointY = powf(
+                sinf(2 * Float.pi * ((alpha + 0.5) / 2)),
+                2
+            )
+            gradientLayer.endPoint = CGPoint(x: CGFloat(endPointX),y: CGFloat(endPointY))
+            gradientLayer.startPoint = CGPoint(x: CGFloat(startPointX), y: CGFloat(startPointY))
+        }
+    }
+    
     override open func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         
         let desiredHeight: CGFloat = contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
