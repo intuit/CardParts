@@ -263,16 +263,11 @@ cornerRadius: 10.0 <br/>
 </p>
 
 #### `GradientCardTrait`
-Use this protocol to add a gradient background for the card. The gradients will be added vertically from top to bottom. Optionally you can change the gradient angle
+Use this protocol to add a gradient background for the card. The gradients will be added vertically from top to bottom.
 ```swift
     func gradientColors() -> [UIColor] {
         return [UIColor.lavender, UIColor.aqua]
     }
- 
-    func gradientAngle() -> [UIColor] {
-        return 45.0
-    }
-    
 ```
 <p align="center">
 <img src="images/gradient.png" width="300" alt="Shadow radius 10.0"/>
