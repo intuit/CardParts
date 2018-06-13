@@ -39,7 +39,6 @@ public class CardPartOrientedView: UIView, CardPartView {
         for ndx in 0..<cardParts.count {
             let cardPart = cardParts[ndx]
             cardPart.view.translatesAutoresizingMaskIntoConstraints = false
-            //cardPart.view.setContentHuggingPriority(.defaultLow, for: .vertical)
             cardPart.view.bounds = CGRect.zero
             self.addSubview(cardPart.view)
             
