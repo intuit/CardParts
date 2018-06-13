@@ -819,6 +819,40 @@ public class YourCardPartsViewController: CardPartsViewController {
 }
 ```
 
+## Delegates
+Any view controller which is a subclass of CardPartsViewController supports  gesture delegate for long press on the view. Just need to conform your controller to CardPartsLongPressGestureRecognizerDelegate protocol.
+
+When the view is long pressed `didLongPress(_:)` will be called where you can custom handle the gesture.
+Example: Zoom in and Zoom out on gesture state begin/ended. 
+```swift
+    func didLongPress(_ gesture: UILongPressGestureRecognizer) -> Void
+```
+
+You can set the minimumPressDuration for your press to register as gesture began. The value is in seconds.
+`default is set to 1 second`.
+```swift
+    var minimumPressDuration: CFTimeInterval { get } // In seconds
+```
+
+Example:
+```swift
+extension MYOwnCardPartController: CardPartsLongGestureRecognizerDelegate {
+	func didLongPress(_ gesture: UILongPressGestureRecognizer) {
+		guard let v = gesture.view else { return }
+		
+		switch gesture.state {
+		case .began:
+			// Zoom in
+		case .ended, .cancelled:
+			// Zoom out
+		default: break
+		}
+	}
+	// Gesture starts registering after pressing for more than 0.5 seconds.
+	var minimumPressDuration: CFTimeInterval { return 0.5 }
+}
+```
+
 # Apps That Love CardParts
 - [Mint - Personal Finance & Money](https://itunes.apple.com/us/app/mint-personal-finance-money/id300238550?mt=8)
 - [Turbo: Scores-Income & Credit](https://itunes.apple.com/us/app/turbo-scores-income-credit/id1242998361?mt=8)

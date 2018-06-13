@@ -57,6 +57,10 @@ open class CardCell : UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        gestureRecognizers?.forEach { removeGestureRecognizer($0) }
+    }
+    
     override open var bounds: CGRect {
         didSet {
             contentView.frame = bounds
@@ -163,6 +167,12 @@ open class CardCell : UICollectionViewCell {
     func setCornerRadius(radius: CGFloat) {
         contentView.layer.cornerRadius = radius
         gradientLayer.cornerRadius = radius
+    }
+    
+    func addLongGestureRecognizer(minimumPressDuration: CFTimeInterval, delegate: CardPartsLongPressGestureRecognizerDelegate) {
+        let longGesture = UILongPressGestureRecognizer(target: delegate, action: #selector(CardPartsLongPressGestureRecognizerDelegate.didLongPress(_:)))
+        longGesture.minimumPressDuration = minimumPressDuration
+        self.addGestureRecognizer(longGesture)
     }
     
     override open func updateConstraints() {

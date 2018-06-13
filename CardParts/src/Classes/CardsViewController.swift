@@ -190,6 +190,10 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
                 cell.gradientAngle = gradientCardTrait.gradientAngle?() ?? 0
             }
             
+            if let longGestureDelegate = cardController as? CardPartsLongPressGestureRecognizerDelegate {
+                cell.addLongGestureRecognizer(minimumPressDuration: longGestureDelegate.minimumPressDuration, delegate: longGestureDelegate)
+            }
+            
             cell.cardContentView.subviews.forEach { $0.removeFromSuperview() }
 			viewController.view.removeFromSuperview()
 			
