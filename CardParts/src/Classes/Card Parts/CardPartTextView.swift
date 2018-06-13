@@ -35,6 +35,7 @@ public class CardPartTextView : UIView, CardPartView, TTTAttributedLabelDelegate
 	
 	public var font: UIFont! {
 		didSet {
+			label.font = font
 			updateText()
 		}
 	}
