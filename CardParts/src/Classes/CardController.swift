@@ -95,3 +95,12 @@ extension RoundedCardTrait {
     func gradientColors() -> [UIColor]
     @objc optional func gradientAngle() -> Float
 }
+
+@objc public protocol CardPartsLongPressGestureRecognizerDelegate: class {
+    @objc func didLongPress(_ gesture: UILongPressGestureRecognizer) -> Void
+    var minimumPressDuration: CFTimeInterval { get }
+}
+extension CardPartsLongPressGestureRecognizerDelegate {
+    var minimumPressDuration: CFTimeInterval { return 1.0 }
+}
+
