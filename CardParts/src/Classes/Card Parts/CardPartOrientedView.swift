@@ -35,8 +35,10 @@ public class CardPartOrientedView: UIView, CardPartView {
         spacer.setContentHuggingPriority(.defaultHigh, for: .vertical)
         self.addSubview(spacer)
         
+        var prevCardPart: CardPartView = self
+        
         // go through each card part and link the top margins to the bottom of the previous card part
-        for ndx in 0..<cardParts.count {
+        for (ndx, cardPart) in cardParts.enumerated() {
             let cardPart = cardParts[ndx]
             cardPart.view.translatesAutoresizingMaskIntoConstraints = false
             cardPart.view.bounds = CGRect.zero
@@ -44,8 +46,6 @@ public class CardPartOrientedView: UIView, CardPartView {
             
             // if we're not the first one add constraints from the current card part to the previous one
             if ndx != 0 {
-                let prevCardPart =  cardParts[ndx - 1]
-                
                 let constraints = [
                     NSLayoutConstraint(item: cardPart, attribute: .top, relatedBy: .equal, toItem: prevCardPart, attribute: .bottom, multiplier: 1, constant: cardPart.margins.top)
                 ]
@@ -72,6 +72,8 @@ public class CardPartOrientedView: UIView, CardPartView {
             
             addSpacerConstraints(ndx: ndx, spacer: spacer, cardPart: cardPart)
             self.addConstraints(constraints)
+            
+            prevCardPart = cardPart
         }
         
         setNeedsUpdateConstraints()
