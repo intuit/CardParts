@@ -152,7 +152,7 @@ public class CardPartTextView : UIView, CardPartView, TTTAttributedLabelDelegate
 			
             mutableAttrText.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
 			                              range: NSRange(location: 0, length: mutableAttrText.length))
-
+			label.font = font
 			label.textAlignment = textAlignment
 			label.setText(mutableAttrText)
 			
