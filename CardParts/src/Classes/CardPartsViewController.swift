@@ -92,7 +92,7 @@ open class CardPartsViewController : UIViewController, CardController {
                 view.addSubview(cardPart.view)
             }
 			
-			let metrics = ["leftMargin" : cardPart.margins.left, "rightMargin" : cardPart.margins.left]
+			let metrics = ["leftMargin" : cardPart.margins.left, "rightMargin" : cardPart.margins.right]
             stateData.constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-leftMargin-[cardPartView]-rightMargin-|", options: [], metrics: metrics, views: ["cardPartView" : cardPart.view]))
             if prevCardPart == view {
                 stateData.constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-padding-[cardPartView]", options: [], metrics: ["padding" : padding], views: ["cardPartView" : cardPart.view]))
