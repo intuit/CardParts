@@ -54,6 +54,7 @@ CardParts - made with ❤️ by Intuit:
         - [CardPartSliderView](#cardpartsliderview)
         - [CardPartSpacerView](#cardpartspacerview)
         - [CardPartTextField](#cardparttextfield)
+        - [CardPartCenteredView](#cardpartcenteredview)
     - [Card States](#card-states)
     - [Data Binding](#data-binding)
     - [Themes](#themes)
