@@ -39,7 +39,6 @@ public class CardPartOrientedView: UIView, CardPartView {
         
         // go through each card part and link the top margins to the bottom of the previous card part
         for (ndx, cardPart) in cardParts.enumerated() {
-            let cardPart = cardParts[ndx]
             cardPart.view.translatesAutoresizingMaskIntoConstraints = false
             cardPart.view.bounds = CGRect.zero
             self.addSubview(cardPart.view)
