@@ -717,7 +717,7 @@ let orientedView = CardPartOrientedView(cardParts: [<elements to list vertically
 
 Add the above orientedView to any list of card parts or an existing stack view to orient your elements to the top or bottom of the enclosing view.
 
-### `CardPartCenteredView`
+#### `CardPartCenteredView`
 `CardPartCenteredView` is a CardPart that fits a centered card part proportionally on the phone screen while allowing a left and right side card part to scale appropriately. To create a centered card part please use the following example:
 ```swift
 class TestCardController : CardPartsViewController {
