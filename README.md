@@ -697,7 +697,7 @@ public enum CardPartTextFieldFormat {
 ```
 
 ## Card States
-CardPartsViewController can optionally support the notion of card states, where a card can be in 3 different states: loading, empty, and hasData. For each state you can specify a unique set of card parts to display. Then when the CardPartsViewController state property is changed, the framework will automatically switch the card parts to display the card parts for that state. Typically you would bind the state property to a state property in your view model so that when the view model changes state the card parts are changed. A simple example:
+CardPartsViewController can optionally support the notion of card states. There are 4 default states that a card can be in: none, empty, loading, and hasData. For each state you can specify a unique set of card parts to display. Then when the CardPartsViewController state property is changed, the framework will automatically switch the card parts to display the card parts for that state. Typically you would bind the state property to a state property in your view model so that when the view model changes state the card parts are changed. A simple example:
 
 ```swift
 class TestCardController : CardPartsViewController  {
@@ -719,9 +719,39 @@ class TestCardController : CardPartsViewController  {
 
         viewModel.state.asObservable().bind(to: self.rx.state).disposed(by: bag)
 
-        setupCardParts([titlePart, textPart], forState: .hasData)
-        setupCardParts([titlePart, loadingText], forState: .loading)
-        setupCardParts([titlePart, emptyText], forState: .empty)
+        setupCardParts([titlePart, textPart], forState: CardState.hasData)
+        setupCardParts([titlePart, loadingText], forState: CardState.loading)
+        setupCardParts([titlePart, emptyText], forState: CardState.empty)
+    }
+}
+```
+
+Since states are defined as strings you can easily create your own states and bind whatever elements you need to them! All you need to do is create an extension of the CardState structure and add your state names. Here is an example of how to create your own custom states:
+
+```swift
+extension CardState {
+    static let customState = "customState"
+}
+
+class CustomStateCardController : CardPartsViewController {
+
+    var viewModel = TestViewModel()
+    var titlePart = CardPartTitleView(type: .titleOnly)
+    var textPart = CardPartTextView(type: .normal)
+    var customText = CardPartTextView(type: .normal)
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        viewModel.title.asObservable().bind(to: titlePart.reactive.title).disposed(by: bag)
+        viewModel.text.asObservable().bind(to: textPart.reactive.text).disposed(by: bag)
+
+        customText.text = "Some custom text for this state..."
+
+        viewModel.state.asObservable().bind(to: self.rx.state).disposed(by: bag)
+
+        setupCardParts([titlePart, textPart], forState: CardState.hasData)
+        setupCardParts([titlePart, cusomText], forState: CardState.customState)
     }
 }
 ```
