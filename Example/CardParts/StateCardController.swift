@@ -13,6 +13,8 @@ import RxCocoa
 
 class StateCardController : CardPartsViewController {
 	
+    let customStateKey = "myCustomState"
+    
 	init() {
 		super.init(nibName: nil, bundle: nil)
 		startRandomHides()
@@ -33,20 +35,24 @@ class StateCardController : CardPartsViewController {
 
         let textPart = CardPartTextView(type: .normal)
 		textPart.text = "Watch me change states!"
-		
-		setupCardParts([textPart])
 
-        let spacerPart = CardPartSpacerView(height: 200)
+        let loadingCardPart = CardPartTextView(type: .normal)
+        loadingCardPart.text = "I am a loading state"
+        
+        let customCardPart = CardPartTextView(type: .normal)
+        customCardPart.text = "I am a custom state that you can make!"
         
         setupCardParts([textPart], forState: .empty)
-        setupCardParts([spacerPart], forState: .hasData)
-        
+        setupCardParts([loadingCardPart], forState: .loading)
+        setupCardParts([customCardPart], forState: .custom(customStateKey))
 	}
 	
 	@objc func toggleHidden() {
         if state == .empty {
-            state = .hasData
-        } else {
+            state = .loading
+        } else if state == .loading {
+            state = .custom(customStateKey)
+        } else if state == .custom(customStateKey) {
             state = .empty
         }
 	}
