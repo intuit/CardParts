@@ -4,6 +4,7 @@
 
 <p align="center"> </p>
 
+[![Build Status](https://travis-ci.org/intuit/CardParts.svg?branch=master)](https://travis-ci.org/intuit/CardParts)
 [![Version](https://img.shields.io/cocoapods/v/CardParts.svg?style=flat)](http://cocoapods.org/pods/CardParts)
 [![License](https://img.shields.io/cocoapods/l/CardParts.svg?style=flat)](http://cocoapods.org/pods/CardParts)
 [![Platform](https://img.shields.io/cocoapods/p/CardParts.svg?style=flat)](http://cocoapods.org/pods/CardParts)
