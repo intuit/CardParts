@@ -715,6 +715,30 @@ let orientedView = CardPartOrientedView(cardParts: [<elements to list vertically
 
 Add the above orientedView to any list of card parts or an existing stack view to orient your elements to the top or bottom of the enclosing view.
 
+### `CardPartCenteredView`
+`CardPartCenteredView` is a CardPart that fits a centered card part proportionally on the phone screen while allowing a left and right side card part to scale appropriately. To create a centered card part please use the following example:
+```swift
+class TestCardController : CardPartsViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let rightTextCardPart = CardPartTextView(type: .normal)
+        rightTextCardPart.text = "Right text in a label"
+
+        let centeredSeparator = CardPartVerticalSeparator()
+
+        let leftTextCardPart = CardPartTextView(type: .normal)
+        leftTextCardPart.text = "Left text in a label"
+
+        let centeredCardPart = CardPartCenteredView(leftView: leftTextCardPart, centeredView: centeredSeparator, rightView: rightTextCardPart)
+
+        setupCardParts([centeredCardPart])
+    }
+}
+```
+
+A `CardPartCenteredView` can take in any card part that conforms to `CardPartView` as the left, center, and right components. To see a graphical example of the centered card part please look at the example application packaged with this cocoapod.
+
 ## Card States
 CardPartsViewController can optionally support the notion of card states, where a card can be in 3 different states: loading, empty, and hasData. For each state you can specify a unique set of card parts to display. Then when the CardPartsViewController state property is changed, the framework will automatically switch the card parts to display the card parts for that state. Typically you would bind the state property to a state property in your view model so that when the view model changes state the card parts are changed. A simple example:
 
