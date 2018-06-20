@@ -720,6 +720,14 @@ Add the above orientedView to any list of card parts or an existing stack view t
 CardPartsViewController can optionally support the notion of card states, where a card can be in 3 different states: loading, empty, and hasData. For each state you can specify a unique set of card parts to display. Then when the CardPartsViewController state property is changed, the framework will automatically switch the card parts to display the card parts for that state. Typically you would bind the state property to a state property in your view model so that when the view model changes state the card parts are changed. A simple example:
 
 ```swift
+public enum CardState {
+    case none
+    case loading
+    case empty
+    case hasData
+    case custom(String)
+}
+
 class TestCardController : CardPartsViewController  {
     
     var viewModel = TestViewModel()
@@ -727,23 +735,31 @@ class TestCardController : CardPartsViewController  {
     var textPart = CardPartTextView(type: .normal)
     var loadingText = CardPartTextView(type: .normal)
     var emptyText = CardPartTextView(type: .normal)
+    var customText = CardPartTextView(type: .normal)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.title.asObservable().bind(to: titlePart.reactive.title).disposed(by: bag)
-        viewModel.text.asObservable().bind(to: textPart.reactive.text).disposed(by: bag)
+        viewModel.title.asObservable().bind(to: titlePart.rx.title).disposed(by: bag)
+        viewModel.text.asObservable().bind(to: textPart.rx.text).disposed(by: bag)
 
         loadingText.text = "Loading..."
         emptyText.text = "No data found."
+        customText.text = "I am some custom state"
 
         viewModel.state.asObservable().bind(to: self.rx.state).disposed(by: bag)
 
         setupCardParts([titlePart, textPart], forState: .hasData)
         setupCardParts([titlePart, loadingText], forState: .loading)
         setupCardParts([titlePart, emptyText], forState: .empty)
+        setupCardParts([titlePart, customText], forState: .custom("myCustomState"))
     }
 }
+```
+
+*Note: There is a `custom(String)` state which allows you to use more than our predefined set of states:*
+```swift
+.custom("myCustomState")
 ```
 
 ## Data Binding
