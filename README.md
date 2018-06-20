@@ -696,6 +696,24 @@ public enum CardPartTextFieldFormat {
 }
 ```
 
+#### `CardPartOrientedView`
+`CardPartOrientedView` allows you to create an oriented list view of card part elements. This is similar to the `CardPartStackView` except that this view can orient elements to the top or bottom of the view. This is advantageous when you are using horizontal stack views and need elements to be oriented differently (top arranged or bottom arranged) relative to the other views in the horizontal stack view. To see a good example of this element please take a look at the example application.
+
+The supported orientations are as follows:
+```swift
+public enum Orientation {
+    case top
+    case bottom
+}
+```
+
+To create an oriented view you can use the following code:
+```
+let orientedView = CardPartOrientedView(cardParts: [<elements to list vertically>], orientation: .top)
+```
+
+Add the above orientedView to any list of card parts or an existing stack view to orient your elements to the top or bottom of the enclosing view.
+
 ## Card States
 CardPartsViewController can optionally support the notion of card states, where a card can be in 3 different states: loading, empty, and hasData. For each state you can specify a unique set of card parts to display. Then when the CardPartsViewController state property is changed, the framework will automatically switch the card parts to display the card parts for that state. Typically you would bind the state property to a state property in your view model so that when the view model changes state the card parts are changed. A simple example:
 

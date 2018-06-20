@@ -28,6 +28,7 @@ class MainViewController: CardsViewController {
             CardPartPagedViewCardController(), // Pages
             CardPartSliderViewCardController(), // Slider
             CardPartTextFieldCardController(), // TextField
+            CardPartOrientedViewCardController(), // Oriented card part
             ReactiveCardController(), // Demo RxSwift
             StateCardController() // Demo states
         ]
