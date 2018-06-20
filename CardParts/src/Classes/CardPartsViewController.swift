@@ -10,11 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-public enum CardState {
-	case none
-	case loading
-	case empty
-	case hasData
+public struct CardState {
+    public static let none = "none"
+    public static let loading = "loading"
+    public static let empty = "empty"
+    public static let hasData = "hasData"
 }
 
 class CardStateData {
@@ -27,7 +27,7 @@ open class CardPartsViewController : UIViewController, CardController {
     public var isEditable = false
 	var vertContraints: [NSLayoutConstraint]?
 	
-	public var state: CardState = .none {
+	public var state: String = CardState.none {
 		didSet {
 			updateState(oldState: oldValue, newState: state)
 		}
@@ -41,7 +41,7 @@ open class CardPartsViewController : UIViewController, CardController {
     // MARK: Clickable traits
     private var cardTapGesture: UITapGestureRecognizer?
     
-    private var cardClickedCallback: [CardState: (()->())] = [:] {
+    private var cardClickedCallback: [String: (()->())] = [:] {
         
         didSet {
             // We don't have a tap gesture setup, let's add
@@ -55,7 +55,7 @@ open class CardPartsViewController : UIViewController, CardController {
         }
     }
 	
-	private var cardParts:[CardState : CardStateData] = [:]
+	private var cardParts:[String : CardStateData] = [:]
 	
 	public let bag = DisposeBag()
     
@@ -69,7 +69,7 @@ open class CardPartsViewController : UIViewController, CardController {
         super.viewDidLoad()
     }
 
-	public func setupCardParts(_ cardParts:[CardPartView], forState: CardState = .none) {
+	public func setupCardParts(_ cardParts:[CardPartView], forState: String = CardState.none) {
 		
         let stateData = CardStateData()
         stateData.cardParts = cardParts
@@ -132,18 +132,18 @@ open class CardPartsViewController : UIViewController, CardController {
 		}
 	}
 	
-	private func updateState(oldState: CardState, newState: CardState) {
+	private func updateState(oldState: String, newState: String) {
 		if oldState == newState { return }
         removeCardPartsForState(oldState)
         addCardPartsForState(newState)
 		invalidateLayout()
 	}
     
-    public func cardTapped(forState state: CardState = .none, action: @escaping (()->())) {
+    public func cardTapped(forState state: String = CardState.none, action: @escaping (()->())) {
         self.cardClickedCallback[state] = action
     }
     
-    private func addCardPartsForState(_ state: CardState) {
+    private func addCardPartsForState(_ state: String) {
         if let stateData = cardParts[state] {
             stateData.cardParts.forEach {
                 if let cardViewController = $0.viewController {
@@ -158,7 +158,7 @@ open class CardPartsViewController : UIViewController, CardController {
         }
     }
 
-    private func removeCardPartsForState(_ state: CardState) {
+    private func removeCardPartsForState(_ state: String) {
         if let stateData = cardParts[state] {
             stateData.cardParts.forEach {
                 if let cardViewController = $0.viewController {
@@ -190,7 +190,7 @@ extension CardPartsViewController {
 
 extension Reactive where Base: CardPartsViewController {
 	
-	public var state: Binder<CardState>{
+	public var state: Binder<String>{
 		return Binder(self.base) { (cardPartsViewController, state) -> () in
 			cardPartsViewController.state = state
 		}

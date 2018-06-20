@@ -28,10 +28,10 @@ class CardPartOrientedViewCardController: CardPartsViewController {
         super.viewDidLoad()
         
         // setup oriented elements
-        setupCardParts([getTopOrientedContainer()], forState: .empty)
-        setupCardParts([getBottomOrientedContainer()], forState: .hasData)
+        setupCardParts([getTopOrientedContainer()], forState: CardState.empty)
+        setupCardParts([getBottomOrientedContainer()], forState: CardState.hasData)
         
-        state = .hasData
+        state = CardState.hasData
     }
     
     // get top container with elements
@@ -100,11 +100,11 @@ class CardPartOrientedViewCardController: CardPartsViewController {
     }
     
     @objc func toggleOrientation() {
-        if state == .empty {
-            state = .hasData
+        if state == CardState.empty {
+            state = CardState.hasData
         }
         else {
-            state = .empty
+            state = CardState.empty
         }
     }
 }

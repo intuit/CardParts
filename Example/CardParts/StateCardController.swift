@@ -11,6 +11,10 @@ import CardParts
 import RxSwift
 import RxCocoa
 
+extension CardState {
+    static let customState = "customState"
+}
+
 class StateCardController : CardPartsViewController {
 	
 	init() {
@@ -29,25 +33,32 @@ class StateCardController : CardPartsViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-        self.state = .empty
+        self.state = CardState.empty
 
         let textPart = CardPartTextView(type: .normal)
-		textPart.text = "Watch me change states!"
+		textPart.text = "This is the default empty state!"
 		
 		setupCardParts([textPart])
 
         let spacerPart = CardPartSpacerView(height: 200)
         
-        setupCardParts([textPart], forState: .empty)
-        setupCardParts([spacerPart], forState: .hasData)
+        let customTextPart = CardPartTextView(type: .normal)
+        customTextPart.text = "This is a custom state called 'customState'!"
         
+        setupCardParts([textPart], forState: CardState.empty)
+        setupCardParts([spacerPart], forState: CardState.hasData)
+        setupCardParts([customTextPart], forState: CardState.customState)
 	}
 	
 	@objc func toggleHidden() {
-        if state == .empty {
-            state = .hasData
-        } else {
-            state = .empty
+        if state == CardState.empty {
+            state = CardState.hasData
+        }
+        else if state == CardState.hasData {
+            state = CardState.customState
+        }
+        else {
+            state = CardState.empty
         }
 	}
 }
