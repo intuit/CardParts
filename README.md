@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="images/cardPartsLogo.png" width="300" alt="Mint Logo"/>
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartsLogo.png" width="300" alt="Mint Logo"/>
 </p>
 
 <p align="center"> </p>
@@ -10,12 +10,12 @@
 [![Platform](https://img.shields.io/cocoapods/p/CardParts.svg?style=flat)](http://cocoapods.org/pods/CardParts)
 
 <p align="center">
-    <img src="images/mintCardParts.gif" width="300" alt="CardParts in Mint"/>
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintCardParts.gif" width="300" alt="CardParts in Mint"/>
     &nbsp;
     &nbsp;
     &nbsp;
     &nbsp;
-    <img src="images/turboCardParts.gif" width="300" alt="CardParts in Turbo"/>
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/turboCardParts.gif" width="300" alt="CardParts in Turbo"/>
 </p>
 
 CardParts - made with ❤️ by Intuit:
@@ -117,7 +117,7 @@ $ pod install
 CardParts is the second generation Card UI framework for the iOS Mint application. This version includes many updates to the original card part framework, including improved MVVM, data binding (via [RxSwift](https://github.com/ReactiveX/RxSwift)), use of stack views and self sizing collection views instead sizing cells, 100% swift and much more. The result is a much simpler, easier to use, more powerful, and easier to maintain framework. This framework is currently used by the iOS Mint application and the iOS Turbo application.
 
 <p align="center">
-    <img src="images/cardPartExample.png" alt="CardPart Example in Mint"/>
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartExample.png" alt="CardPart Example in Mint"/>
 </p>
 
 # Quick Start
@@ -245,12 +245,12 @@ The ShadowCardTrait protocol requires CardController to implement `shadowColor()
 
 <p align="center">
 shadowColor: lightGray, shadowRadius: 5.0, shadowOpacity: 0.5 <br/>
-<img src="images/shadow_5.png" width="300" alt="Shadow radius 5.0"/>
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/shadow_5.png" width="300" alt="Shadow radius 5.0"/>
 </p>
 
 <p align="center">
 shadowColor: lightGray, shadowRadius: 10.0, shadowOpacity: 0.5 <br/>
-<img src="images/shadow_10.png" width="300" alt="Shadow radius 10.0"/>
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/shadow_10.png" width="300" alt="Shadow radius 10.0"/>
 </p>
 
 #### `RoundedCardTrait`
@@ -262,7 +262,7 @@ Use this protocol to define the roundness for the card by implementing the metho
 ```
 <p align="center">
 cornerRadius: 10.0 <br/>
-<img src="images/shadow_5.png" width="300" alt="Shadow radius 5.0"/>
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/shadow_5.png" width="300" alt="Shadow radius 5.0"/>
 </p>
 
 #### `GradientCardTrait`
@@ -279,7 +279,7 @@ Use this protocol to add a gradient background for the card. The gradients will 
 
 ```
 <p align="center">
-<img src="images/gradient.png" width="300" alt="Shadow radius 10.0"/>
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/gradient.png" width="300" alt="Shadow radius 10.0"/>
 </p>
 
 ## `CardPartsViewController`
