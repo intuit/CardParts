@@ -321,7 +321,7 @@ extension CardsViewController {
         notificationCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    @objc private func keyboardWillShow(notification: Notification) {
+    @objc open func keyboardWillShow(notification: Notification) {
         guard var keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
               let keyboardCurve = (notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
               let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
@@ -366,7 +366,7 @@ extension CardsViewController {
         
     }
  
-    @objc private func keyboardWillHide(notification: Notification) {
+    @objc open func keyboardWillHide(notification: Notification) {
         guard let keyboardCurve = (notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
               let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
         else { return }
