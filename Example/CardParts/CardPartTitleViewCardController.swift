@@ -13,6 +13,7 @@ class CardPartTitleViewCardController: CardPartsViewController {
     
     let cardPartTitleView = CardPartTitleView(type: .titleOnly)
     let cardPartTitleWithMenu = CardPartTitleView(type: .titleWithMenu)
+    let cardPartTitleWithMenuOption = CardPartTitleView(type: .titleWithMenu)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,10 @@ class CardPartTitleViewCardController: CardPartsViewController {
         cardPartTitleView.title = "I am a standard .titleOnly CardPartTitleView"
         cardPartTitleWithMenu.title = "I am a .titleWithMenu CardPartTitleView"
         
-        setupCardParts([cardPartTitleView, cardPartTitleWithMenu])
+        cardPartTitleWithMenuOption.title = "Another title with menu"
+        cardPartTitleWithMenuOption.menuButtonImageName = "option_icon"
+        
+        setupCardParts([cardPartTitleView, cardPartTitleWithMenu, cardPartTitleWithMenuOption])
     }
 }
 
