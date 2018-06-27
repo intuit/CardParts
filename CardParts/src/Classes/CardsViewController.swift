@@ -281,29 +281,41 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
     open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         UIResponder.first?.resignFirstResponder()
     }
+    
+    public var shouldListenToKeyboardNotifications: Bool = true {
+        didSet {
+            if shouldListenToKeyboardNotifications {
+                listenToKeyboardShowHideNotifications()
+            } else {
+                stopListeningToKeyboardShowHideNotifications()
+            }
+        }
+    }
 }
 
 extension CardsViewController {
     
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        listenToKeyboardShowHideNotifications()
+        if shouldListenToKeyboardNotifications {
+            listenToKeyboardShowHideNotifications()
+        }
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        stopListeningToKeyboardShowHideNotifications()
+        if shouldListenToKeyboardNotifications {
+            stopListeningToKeyboardShowHideNotifications()
+        }
     }
     
-    public func listenToKeyboardShowHideNotifications() {
+    private func listenToKeyboardShowHideNotifications() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         notificationCenter.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    public func stopListeningToKeyboardShowHideNotifications() {
+    private func stopListeningToKeyboardShowHideNotifications() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         notificationCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
