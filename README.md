@@ -670,7 +670,7 @@ slider.rx.value.asObservable().bind(to: sliderViewModel.amount).disposed(by: bag
 ``` 
 
 #### `CardPartSpacerView`
-Allows you to add a space between card parts incase you need a space larger than the default margin.  Initiliaze it with a specific height:
+Allows you to add a space between card parts in case you need a space larger than the default margin.  Initialize it with a specific height:
 ```swift
 CardPartSpacerView(height: 30)
 ```
@@ -809,7 +809,7 @@ Now, whenever the view model's title property value is changed it will automatic
 RxSwift use the concept of "Disposable" and "DisposeBag" to remove bindings. Each call to bind returns a Disposable that can be added to a DisposeBag. CardPartsViewController defines an instance of DisposeBag called "bag" that you can use to automatically remove all your bindings when your CardPartsViewController is deallocated. See the RxSwift documentation for more information on disposables and DisposeBags.
 
 ## Themes
-Out of the box we support 2 themes: Mint and Turbo.  These are the 2 Intuit app's that are currently built ontop of CardParts.  As you can find in the file `CardPartsTheme.swift` we have a protocol called `CardPartsTheme`.  You may create a class that conforms to `CardPartsTheme` and set all properties in order to theme CardParts however you may like. Below is an example of some of the themeable properties:
+Out of the box we support 2 themes: Mint and Turbo.  These are the 2 Intuit app's that are currently built on top of CardParts.  As you can find in the file `CardPartsTheme.swift` we have a protocol called `CardPartsTheme`.  You may create a class that conforms to `CardPartsTheme` and set all properties in order to theme CardParts however you may like. Below is an example of some of the themeable properties:
 ```swift
 // CardPartTextView
 var smallTextFont: UIFont { get set }
