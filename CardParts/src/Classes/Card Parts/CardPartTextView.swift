@@ -9,7 +9,48 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import TTTAttributedLabel
+
+public class CardPartLabel: UILabel {
+    public var textInsets = UIEdgeInsets.zero {
+        didSet { invalidateIntrinsicContentSize() }
+    }
+    
+    override public func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+        let insetRect = UIEdgeInsetsInsetRect(bounds, textInsets)
+        let textRect = super.textRect(forBounds: insetRect, limitedToNumberOfLines: numberOfLines)
+        let invertedInsets = UIEdgeInsets(top: -textInsets.top,
+                                          left: -textInsets.left,
+                                          bottom: -textInsets.bottom,
+                                          right: -textInsets.right)
+        return UIEdgeInsetsInsetRect(textRect, invertedInsets)
+    }
+    
+    override public func drawText(in rect: CGRect) {
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, textInsets))
+    }
+}
+
+public extension CardPartLabel {
+    var leftTextInset: CGFloat {
+        set { textInsets.left = newValue }
+        get { return textInsets.left }
+    }
+    
+    var rightTextInset: CGFloat {
+        set { textInsets.right = newValue }
+        get { return textInsets.right }
+    }
+    
+    var topTextInset: CGFloat {
+        set { textInsets.top = newValue }
+        get { return textInsets.top }
+    }
+    
+    var bottomTextInset: CGFloat {
+        set { textInsets.bottom = newValue }
+        get { return textInsets.bottom }
+    }
+}
 
 public enum CardPartTextType {
 	case small
@@ -19,7 +60,7 @@ public enum CardPartTextType {
 	case detail
 }
 
-public class CardPartTextView : UIView, CardPartView, TTTAttributedLabelDelegate {
+public class CardPartTextView : UIView, CardPartView {
 	
 	public var text: String? {
 		didSet {
@@ -65,12 +106,11 @@ public class CardPartTextView : UIView, CardPartView, TTTAttributedLabelDelegate
 	
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
 	
-	public var label: TTTAttributedLabel
-	
+	public var label: CardPartLabel
 
 	public init(type: CardPartTextType) {
 
-		label = TTTAttributedLabel(frame: CGRect.zero)
+		label = CardPartLabel(frame: .zero)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.numberOfLines = 0
 
@@ -79,10 +119,8 @@ public class CardPartTextView : UIView, CardPartView, TTTAttributedLabelDelegate
 		
         super.init(frame: CGRect.zero)
 
-		label.delegate = self
 		addSubview(label)
 		
-		setupLinkAttributes()
 		setDefaultsForType(type)
 		setNeedsUpdateConstraints()
     }
@@ -96,14 +134,6 @@ public class CardPartTextView : UIView, CardPartView, TTTAttributedLabelDelegate
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]|", options: [], metrics: nil, views: ["label" : label]))
 		
 		super.updateConstraints()
-	}
-	
-	func setupLinkAttributes() {
-		let linkBlueColor = UIColor.turboBlueColor
-		let activeLinkBlueColor = UIColor.turboBlueColor.withAlphaComponent(0.5)
-		
-		label.linkAttributes = [kCTForegroundColorAttributeName as String : linkBlueColor]
-		label.activeLinkAttributes = [kCTForegroundColorAttributeName as String : activeLinkBlueColor]
 	}
 	
 	func setDefaultsForType(_ type: CardPartTextType) {
@@ -140,9 +170,8 @@ public class CardPartTextView : UIView, CardPartView, TTTAttributedLabelDelegate
             mutableAttrText.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
 										  range: NSRange(location: 0, length: mutableAttrText.length))
 
-			label.textAlignment = textAlignment
-			label.setText(mutableAttrText)
-			
+            label.attributedText = mutableAttrText
+            label.textAlignment = textAlignment
 		} else if let labelText = text {
 			let mutableAttrText = NSMutableAttributedString(string: labelText, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: textColor])
 			
@@ -153,16 +182,11 @@ public class CardPartTextView : UIView, CardPartView, TTTAttributedLabelDelegate
             mutableAttrText.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
 			                              range: NSRange(location: 0, length: mutableAttrText.length))
 			label.font = font
-			label.textAlignment = textAlignment
-			label.setText(mutableAttrText)
-			
+			label.attributedText = mutableAttrText
+            label.textAlignment = textAlignment
 		} else {
-			label.setText(nil)
+            label.attributedText = nil
 		}
-	}
-	
-	public func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
 	}
 }
 
