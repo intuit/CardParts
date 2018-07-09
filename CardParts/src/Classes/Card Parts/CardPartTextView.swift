@@ -30,28 +30,6 @@ public class CardPartLabel: UILabel {
     }
 }
 
-public extension CardPartLabel {
-    var leftTextInset: CGFloat {
-        set { textInsets.left = newValue }
-        get { return textInsets.left }
-    }
-    
-    var rightTextInset: CGFloat {
-        set { textInsets.right = newValue }
-        get { return textInsets.right }
-    }
-    
-    var topTextInset: CGFloat {
-        set { textInsets.top = newValue }
-        get { return textInsets.top }
-    }
-    
-    var bottomTextInset: CGFloat {
-        set { textInsets.bottom = newValue }
-        get { return textInsets.bottom }
-    }
-}
-
 public enum CardPartTextType {
 	case small
 	case normal
