@@ -17,6 +17,7 @@ class MainViewController: CardsViewController {
         // Comment out one of the CardPartViewController in the card Array to change cards and/or their order
         let cards: [CardPartsViewController] = [
             CardPartTextViewCardController(), // Text
+            CardPartTitleDescriptionViewCardController(), // Title/Description
             CardPartImageViewCardController(), // Image
             CardPartButtonViewCardController(), // Button
             CardPartTitleViewCardController(), // Titles
