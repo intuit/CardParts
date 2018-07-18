@@ -42,6 +42,7 @@ CardParts - made with ❤️ by Intuit:
         - [CardPartImageView](#cardpartimageview)
         - [CardPartButtonView](#cardpartbuttonview)
         - [CardPartTitleView](#cardparttitleview)
+        - [CardPartTitleDescriptionView](#cardparttitleview)
         - [CardPartSeparatorView](#cardpartseparatorview)
         - [CardPartVerticalSeparatorView](#cardpartverticalseparatorview)
         - [CardPartTableView](#cardparttableview)
@@ -408,6 +409,15 @@ var isHidden: Bool
 var isUserInteractionEnabled: Bool
 var tintColor: UIColor?
 ```
+
+#### `CardPartTitleDescriptionView`
+CardPartTitleDescriptionView allows you to have a left and right title and description label, however, you are able to also choose the alignment of the right title/description labels.  See below:
+```swift
+let rightAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryPosition: .right) // This will be right aligned
+let centerAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryPosition: .center(amount: 0)) // This will be center aligned with an offset of 0.  You may increase that amount param to shift right your desired amount
+```
+See the example app for a working example.
+
 #### `CardPartSeparatorView`
 CardPartSeparatorView displays a separator line.  There are no reactive properties define for CardPartSeparatorView.
 
