@@ -20,7 +20,7 @@ public class CardPartLabel: UILabel {
         didSet { invalidateIntrinsicContentSize() }
     }
     
-    fileprivate var verticalAlignment: CardPartLabelVerticalAlignment = .top
+    fileprivate var verticalAlignment: CardPartLabelVerticalAlignment = .center
     
     override public func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
         var resultRect = super.textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
@@ -37,8 +37,12 @@ public class CardPartLabel: UILabel {
         resultRect.origin.y += textInsets.top - textInsets.bottom
         resultRect.origin.x += textInsets.left - textInsets.right
         
+        resultRect.size.height += textInsets.top
+        resultRect.size.height += textInsets.bottom
+        
         return resultRect
     }
+
     
     override public func drawText(in rect: CGRect) {
         let r = self.textRect(forBounds: rect, limitedToNumberOfLines: numberOfLines)
@@ -87,7 +91,7 @@ public class CardPartTextView : UIView, CardPartView {
 		}
 	}
 	
-    public var verticalAlignment: CardPartLabelVerticalAlignment = .top {
+    public var verticalAlignment: CardPartLabelVerticalAlignment = .center {
         didSet {
             updateText()
         }
