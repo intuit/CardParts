@@ -87,4 +87,9 @@ open class CardPartCollectionViewCardPartsCell : UICollectionViewCell {
 
         }
     }
+    
+    public func setupCardPartsAdhereToMargins(_ cardParts:[CardPartView]) {
+        stackView.distribution = .fill
+        self.setupCardParts(cardParts)
+    }
 }
