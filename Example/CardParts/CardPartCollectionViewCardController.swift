@@ -100,7 +100,7 @@ class CardPartCollectionViewModel {
 class MyCustomCollectionViewCell: CardPartCollectionViewCardPartsCell {
     let bag = DisposeBag()
     
-    let mainSV = CardPartStackView()
+//    let mainSV = CardPartStackView()
     let titleCP = CardPartTextView(type: .title)
     let descriptionCP = CardPartTextView(type: .normal)
     
@@ -108,13 +108,17 @@ class MyCustomCollectionViewCell: CardPartCollectionViewCardPartsCell {
         
         super.init(frame: frame)
         
-        mainSV.axis = .vertical
-        mainSV.spacing = 10
+//        mainSV.axis = .vertical
+//        mainSV.spacing = 10
+//
+//        mainSV.addArrangedSubview(titleCP)
+//        mainSV.addArrangedSubview(descriptionCP)
+//
+//        setupCardParts([mainSV])
         
-        mainSV.addArrangedSubview(titleCP)
-        mainSV.addArrangedSubview(descriptionCP)
-        
-        setupCardParts([mainSV])
+        titleCP.margins = .init(top: 50, left: 20, bottom: 5, right: 30)
+        descriptionCP.margins = .init(top: 15, left: 30, bottom: 0, right: 20)
+        setupCardParts([titleCP, descriptionCP])
     }
     
     required init?(coder aDecoder: NSCoder) {
