@@ -165,33 +165,33 @@ public class CardPartTextView : UIView, CardPartView {
 	
 	func updateText() {
 		
-		if let labelText = attributedText {
-			
-			let mutableAttrText = NSMutableAttributedString(attributedString: labelText)
-			let paragraphStyle = NSMutableParagraphStyle()
-			paragraphStyle.lineSpacing = lineSpacing
-			paragraphStyle.lineHeightMultiple = lineHeightMultiple
-
+        if Thread.current != .main {
+            self.performSelector(onMainThread: #selector(CardPartTextView.updateText), with: nil, waitUntilDone: false)
+            return
+        }
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpacing
+        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+        
+        if let labelText = attributedText {
+            let mutableAttrText = NSMutableAttributedString(attributedString: labelText)
+            
             mutableAttrText.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
-										  range: NSRange(location: 0, length: mutableAttrText.length))
-
+                                          range: NSRange(location: 0, length: mutableAttrText.length))
+            
             label.attributedText = mutableAttrText
-            label.textAlignment = textAlignment
-		} else if let labelText = text {
-			let mutableAttrText = NSMutableAttributedString(string: labelText, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: textColor])
-			
-			let paragraphStyle = NSMutableParagraphStyle()
-			paragraphStyle.lineSpacing = lineSpacing
-			paragraphStyle.lineHeightMultiple = lineHeightMultiple
-			
+        } else if let labelText = text {
+            let mutableAttrText = NSMutableAttributedString(string: labelText, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: textColor])
+            
             mutableAttrText.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
-			                              range: NSRange(location: 0, length: mutableAttrText.length))
-			label.font = font
-			label.attributedText = mutableAttrText
-            label.textAlignment = textAlignment
-		} else {
+                                          range: NSRange(location: 0, length: mutableAttrText.length))
+            label.attributedText = mutableAttrText
+        } else {
             label.attributedText = nil
-		}
+        }
+        label.textAlignment = textAlignment
+        label.verticalAlignment = verticalAlignment
 	}
 }
 
