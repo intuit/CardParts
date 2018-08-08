@@ -10,25 +10,46 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+public enum CardPartLabelVerticalAlignment {
+    case top, center, bottom
+}
+
 public class CardPartLabel: UILabel {
+    
     public var textInsets = UIEdgeInsets.zero {
         didSet { invalidateIntrinsicContentSize() }
     }
     
+    fileprivate var verticalAlignment: CardPartLabelVerticalAlignment = .center
+    
     override public func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
-        let insetRect = UIEdgeInsetsInsetRect(bounds, textInsets)
-        let textRect = super.textRect(forBounds: insetRect, limitedToNumberOfLines: numberOfLines)
-        let invertedInsets = UIEdgeInsets(top: -textInsets.top,
-                                          left: -textInsets.left,
-                                          bottom: -textInsets.bottom,
-                                          right: -textInsets.right)
-        return UIEdgeInsetsInsetRect(textRect, invertedInsets)
+        var resultRect = super.textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
+        
+        switch verticalAlignment {
+        case .top:
+            break
+        case .center:
+            resultRect.origin.y = bounds.origin.y + (bounds.size.height - resultRect.size.height) / 2
+        case .bottom:
+            resultRect.origin.y = bounds.origin.y + (bounds.size.height - resultRect.size.height)
+        }
+        
+        resultRect.origin.y += textInsets.top - textInsets.bottom
+        resultRect.origin.x += textInsets.left - textInsets.right
+        
+        resultRect.size.height += textInsets.top
+        resultRect.size.height += textInsets.bottom
+        
+        return resultRect
     }
+
     
     override public func drawText(in rect: CGRect) {
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, textInsets))
+        let r = self.textRect(forBounds: rect, limitedToNumberOfLines: numberOfLines)
+        super.drawText(in: r)
     }
 }
+
 
 public enum CardPartTextType {
 	case small
@@ -70,7 +91,13 @@ public class CardPartTextView : UIView, CardPartView {
 		}
 	}
 	
-	public var lineSpacing: CGFloat = 1.0 {
+    public var verticalAlignment: CardPartLabelVerticalAlignment = .center {
+        didSet {
+            updateText()
+        }
+    }
+
+    public var lineSpacing: CGFloat = 1.0 {
 		didSet {
 			updateText()
 		}
@@ -138,33 +165,33 @@ public class CardPartTextView : UIView, CardPartView {
 	
 	func updateText() {
 		
-		if let labelText = attributedText {
-			
-			let mutableAttrText = NSMutableAttributedString(attributedString: labelText)
-			let paragraphStyle = NSMutableParagraphStyle()
-			paragraphStyle.lineSpacing = lineSpacing
-			paragraphStyle.lineHeightMultiple = lineHeightMultiple
-
+        if Thread.current != .main {
+            self.performSelector(onMainThread: #selector(CardPartTextView.updateText), with: nil, waitUntilDone: false)
+            return
+        }
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpacing
+        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+        
+        if let labelText = attributedText {
+            let mutableAttrText = NSMutableAttributedString(attributedString: labelText)
+            
             mutableAttrText.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
-										  range: NSRange(location: 0, length: mutableAttrText.length))
-
+                                          range: NSRange(location: 0, length: mutableAttrText.length))
+            
             label.attributedText = mutableAttrText
-            label.textAlignment = textAlignment
-		} else if let labelText = text {
-			let mutableAttrText = NSMutableAttributedString(string: labelText, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: textColor])
-			
-			let paragraphStyle = NSMutableParagraphStyle()
-			paragraphStyle.lineSpacing = lineSpacing
-			paragraphStyle.lineHeightMultiple = lineHeightMultiple
-			
+        } else if let labelText = text {
+            let mutableAttrText = NSMutableAttributedString(string: labelText, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: textColor])
+            
             mutableAttrText.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
-			                              range: NSRange(location: 0, length: mutableAttrText.length))
-			label.font = font
-			label.attributedText = mutableAttrText
-            label.textAlignment = textAlignment
-		} else {
+                                          range: NSRange(location: 0, length: mutableAttrText.length))
+            label.attributedText = mutableAttrText
+        } else {
             label.attributedText = nil
-		}
+        }
+        label.textAlignment = textAlignment
+        label.verticalAlignment = verticalAlignment
 	}
 }
 
@@ -200,7 +227,13 @@ extension Reactive where Base: CardPartTextView {
 		}
 	}
 	
-	public var lineSpacing: Binder<CGFloat>{
+    public var verticalAlignment: Binder<CardPartLabelVerticalAlignment>{
+        return Binder(self.base) { (textView, verticalAlignment) -> () in
+            textView.verticalAlignment = verticalAlignment
+        }
+    }
+
+    public var lineSpacing: Binder<CGFloat>{
 		return Binder(self.base) { (textView, lineSpacing) -> () in
 			textView.lineSpacing = lineSpacing
 		}
