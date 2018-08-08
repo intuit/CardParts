@@ -163,7 +163,7 @@ public class CardPartTextView : UIView, CardPartView {
 		}
 	}
 	
-	func updateText() {
+    @objc func updateText() {
 		
         if Thread.current != .main {
             self.performSelector(onMainThread: #selector(CardPartTextView.updateText), with: nil, waitUntilDone: false)
