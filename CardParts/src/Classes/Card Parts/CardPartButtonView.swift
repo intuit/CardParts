@@ -27,6 +27,7 @@ public class CardPartButtonView : UIButton, CardPartView {
         setTitleColor(CardParts.theme.buttonTitleColor, for: .normal)
 		setTitleColor(CardParts.theme.buttonTitleColor.withAlphaComponent(0.3), for: .highlighted)
 		contentHorizontalAlignment = .left
+		layer.cornerRadius = CardParts.theme.buttonCornerRadius
 	}
     
     required public init?(coder aDecoder: NSCoder) {

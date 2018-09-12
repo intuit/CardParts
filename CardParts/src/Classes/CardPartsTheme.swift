@@ -40,6 +40,7 @@ public protocol CardPartsTheme {
     // CardPartButtonView
     var buttonTitleFont: UIFont { get set }
     var buttonTitleColor: UIColor { get set }
+    var buttonCornerRadius: CGFloat { get set }
 
     // CardPartBarView
     var barBackgroundColor: UIColor { get set }
@@ -104,6 +105,7 @@ public class CardPartsMintTheme: CardPartsTheme {
     // CardPartButtonView
     public var buttonTitleFont: UIFont = UIFont(name: "HelveticaNeue", size: CGFloat(17))!
     public var buttonTitleColor: UIColor = UIColor(red: 69.0/255.0, green: 202.0/255.0, blue: 230.0/255.0, alpha: 1.0)
+    public var buttonCornerRadius: CGFloat = CGFloat(0.0)
     
     // CardPartBarView
     public var barBackgroundColor: UIColor = UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
@@ -166,6 +168,7 @@ public class CardPartsTurboTheme: CardPartsTheme {
     // CardPartButtonView
     public var buttonTitleFont: UIFont = UIFont.turboGenericFont(.large)
     public var buttonTitleColor: UIColor = UIColor.turboBlueColor
+    public var buttonCornerRadius: CGFloat = CGFloat(0.0)
 
     // CardPartBarView
     public var barBackgroundColor: UIColor = UIColor.turboSeperatorGray

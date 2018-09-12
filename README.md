@@ -840,6 +840,7 @@ var titleColor: UIColor { get set }
 // CardPartButtonView
 var buttonTitleFont: UIFont { get set }
 var buttonTitleColor: UIColor { get set }
+var buttonCornerRadius: CGFloat { get set }
 
 ```
 ### Applying a theme
