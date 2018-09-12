@@ -840,7 +840,7 @@ var titleColor: UIColor { get set }
 // CardPartButtonView
 var buttonTitleFont: UIFont { get set }
 var buttonTitleColor: UIColor { get set }
-var tableViewMargins: UIEdgeInsets { get set }
+
 ```
 ### Applying a theme
 Generate a class as follows:

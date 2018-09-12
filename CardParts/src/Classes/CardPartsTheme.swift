@@ -35,11 +35,11 @@ public protocol CardPartsTheme {
     // CardPartTitleView
     var titleFont: UIFont { get set }
     var titleColor: UIColor { get set }
+    var titleViewMargins: UIEdgeInsets { get set }
 
     // CardPartButtonView
     var buttonTitleFont: UIFont { get set }
     var buttonTitleColor: UIColor { get set }
-    var tableViewMargins: UIEdgeInsets { get set }
 
     // CardPartBarView
     var barBackgroundColor: UIColor { get set }
@@ -49,8 +49,8 @@ public protocol CardPartsTheme {
     var roundedCorners: Bool { get set }
     var showTodayLine: Bool { get set }
 
-    // CardPartTableView
-    var titleViewMargins: UIEdgeInsets { get set }
+    // CardPartTableView and CardPartCollectionView
+    var tableViewMargins: UIEdgeInsets { get set }
 
     // CardPartTableViewCell and CardPartTitleDescriptionView
     var leftTitleFont: UIFont { get set }
