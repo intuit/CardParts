@@ -63,6 +63,7 @@ CardParts - made with ❤️ by Intuit:
     - [Clickable Cards](#clickable-cards)
     - [Listeners](#listeners)
 - [Apps That Love CardParts](#apps-that-love-cardparts)
+- [Publications](#publications)
 - [License](#license)
 
 # Example
@@ -929,6 +930,10 @@ extension MYOwnCardPartController: CardPartsLongGestureRecognizerDelegate {
 - [Mint - Personal Finance & Money](https://itunes.apple.com/us/app/mint-personal-finance-money/id300238550?mt=8)
 - [Turbo: Scores-Income & Credit](https://itunes.apple.com/us/app/turbo-scores-income-credit/id1242998361?mt=8)
 - More to come.. hopefully!
+
+# Publications
+[Rebuilding Mint’s UI From the Ground Up Using CardParts (iOS)](https://medium.com/blueprint-by-intuit/rebuilding-mints-ui-from-the-ground-up-using-cardparts-ios-817aac6c863f)
+
 # License
 
 CardParts is available under the Apache 2.0 license. See the LICENSE file for more info.
