@@ -48,11 +48,14 @@ open class CardPartCollectionViewCardPartsCell : UICollectionViewCell {
             }
             
             let metrics = ["leftMargin" : cardPart.margins.left - 28, "rightMargin" : cardPart.margins.right - 28]
-            contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-leftMargin-[cardPartView]-rightMargin-|", options: [], metrics: metrics, views: ["cardPartView" : cardPart.view]))
-            if prevCardPart == contentView {
-                contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-padding-[cardPartView]", options: [], metrics: ["padding" : padding], views: ["cardPartView" : cardPart.view]))
-            } else {
-                contentView.addConstraints([NSLayoutConstraint(item: cardPart.view, attribute: .top, relatedBy: .equal, toItem: prevCardPart, attribute: .bottom, multiplier: 1.0, constant: padding)])
+            if let cardPartView = cardPart.view {
+                contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-leftMargin-[cardPartView]-rightMargin-|", options: [], metrics: metrics, views: ["cardPartView" : cardPartView]))
+                if prevCardPart == contentView {
+                    contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-padding-[cardPartView]", options: [], metrics: ["padding" : padding], views: ["cardPartView" : cardPartView]))
+                }
+                else {
+                    contentView.addConstraints([NSLayoutConstraint(item: cardPartView, attribute: .top, relatedBy: .equal, toItem: prevCardPart, attribute: .bottom, multiplier: 1.0, constant: padding)])
+                }
             }
             
             prevCardPart = cardPart.view

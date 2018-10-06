@@ -20,15 +20,11 @@ public protocol CardPartView {
 extension CardPartView {
     
     public var view: UIView! {
-        get {
-            return self as! UIView
-        }
+        return (self as! UIView)
     }
-
-	public var viewController: UIViewController? {
-		get {
-			return nil
-		}
-	}
+    
+    public var viewController: UIViewController? {
+        return nil
+    }
 }
 
