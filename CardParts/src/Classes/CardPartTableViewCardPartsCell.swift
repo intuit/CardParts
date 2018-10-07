@@ -79,8 +79,9 @@ open class CardPartTableViewCardPartsCell : UITableViewCell {
 			}
 			
 			let metrics = ["leftMargin" : cardPart.margins.left - 28, "rightMargin" : cardPart.margins.right - 28]
-			stackView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-leftMargin-[cardPartView]-rightMargin-|", options: [], metrics: metrics, views: ["cardPartView" : cardPart.view]))
-			
+            if let cardPartView = cardPart.view {
+                stackView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-leftMargin-[cardPartView]-rightMargin-|", options: [], metrics: metrics, views: ["cardPartView" : cardPartView]))
+            }
 			if cardPart.margins.bottom > 0 {
 				let spacer = CardPartSpacerView(height: cardPart.margins.bottom)
 				stackView.addArrangedSubview(spacer)

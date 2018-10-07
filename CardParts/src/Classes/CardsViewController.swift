@@ -390,7 +390,7 @@ extension CardsViewController {
     private func notifyCardsVisibility() {
         if CardUtils.isSignificantScroll(lastScrollBounds: lastScrollViewBounds, currentScrollBounds: collectionView.bounds, threshold: 0.0) {
             // for all visible cells go through and calaculate visibility and pass along to CardPartsViewControllers
-            collectionView.visibleCells.flatMap { ($0 as? CardCell) }.forEach { (cell) in
+            collectionView.visibleCells.compactMap { ($0 as? CardCell) }.forEach { (cell) in
                 guard let indexPath = collectionView.indexPath(for: cell) else { return }
                 let cardController = getCardControllerForIndexPath(indexPath: indexPath)
                 
