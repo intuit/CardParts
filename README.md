@@ -879,15 +879,17 @@ self.cardTapped {
 ```
 
 ## Listeners
-Card Parts also support a listener that allows you to listen to visibility changes in the cards that you have created. In your `CardPartsViewController` you may override the following function to gain insight into the visibility of your card within the `CardsViewController` you have created.
+CardParts also supports a listener that allows you to listen to visibility changes in the cards that you have created. In your `CardPartsViewController` you may implement the `CardVisibilityDelegate` to gain insight into the visibility of your card within the `CardsViewController` you have created. This optional delegate can be implemented as follows:
 ```swift
-public class YourCardPartsViewController: CardPartsViewController {
+public class YourCardPartsViewController: CardPartsViewController, CardVisibilityDelegate {
     ...
 
-    // Notifies your card parts view controller of the percentage of the card that is visible.
-    // This function is called every time 'scrollViewDidScroll' is called in your CardsViewController.
-    override func cardVisibility(percentVisible: CGFloat) {
-        // logic you would like to perform when the scroll view has scrolled
+    /** 
+    Notifies your card parts view controller of the ratio that the card is visible in its container 
+    and the ratio of its container that the card takes up.
+    */
+     func cardVisibility(cardVisibilityRatio: CGFloat, containerCoverageRatio: CGFloat) {
+        // Any logic you would like to perform based on these ratios
     }
 }
 ```
