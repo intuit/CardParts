@@ -162,6 +162,16 @@ class CardUtilsTests: XCTestCase {
         XCTAssertEqual(visibilityRatios.cardVisibilityRatio, 1.0)
         XCTAssertEqual(visibilityRatios.containerCoverageRatio, 0.5)
     }
+    
+    // test card cut off at top and bottom (card too big for container)
+    func testIsCardVisibleTooLarge() {
+        let containerBounds = CGRect(x: 0, y: 0, width: 400, height: 700)
+        let cardFrame = CGRect(x: 0, y: -20, width: 400, height: 1400)
+        let visibilityRatios = CardUtils.calculateVisibilityRatios(containerFrame: containerBounds, cardFrame: cardFrame)
+        
+        XCTAssertEqual(visibilityRatios.cardVisibilityRatio, 0.5)
+        XCTAssertEqual(visibilityRatios.containerCoverageRatio, 1.0)
+    }
 }
 
 // tests for is significant scroll
