@@ -10,11 +10,8 @@
 [![Platform](https://img.shields.io/cocoapods/p/CardParts.svg?style=flat)](http://cocoapods.org/pods/CardParts)
 
 <p align="center">
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintsights.gif" width="300" alt="MintSights by CardParts"/>
     <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintCardParts.gif" width="300" alt="CardParts in Mint"/>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
     <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/turboCardParts.gif" width="300" alt="CardParts in Turbo"/>
 </p>
 
@@ -106,8 +103,7 @@ $ pod install
 
 # Communication and Contribution
 
-- If you **need help**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/cardparts). (Tag 'cardparts')
-- If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/cardparts).
+- If you **need help**, open an issue and tag as `help wanted`.
 - If you **found a bug**, open an issue and tag as `bug`.
 - If you **have a feature request**, open an issue and tag as `feature`.
 - If you **want to contribute**, submit a pull request.
@@ -938,4 +934,4 @@ extension MYOwnCardPartController: CardPartsLongGestureRecognizerDelegate {
 
 # License
 
-CardParts is available under the Apache 2.0 license. See the LICENSE file for more info.
+CardParts is available under the Apache 2.0 license. See the [LICENSE](https://github.com/intuit/CardParts/blob/master/LICENSE) file for more info.
