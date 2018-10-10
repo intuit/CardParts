@@ -26,8 +26,12 @@ class CardUtils {
         let cardFrameBottomY = cardFrame.origin.y + cardFrame.height
         let containerFrameBottomY = containerFrame.origin.y + containerFrame.height
         
+        // if the card is cut off at the top and bottom (card is too big and takes up more than the bounds)
+        if cardFrame.origin.y < containerFrame.origin.y && cardFrameBottomY > containerFrameBottomY {
+            visibleHeight = containerFrame.height  // we set visible height to the height of the container (it'll always be 100% visible)
+        }
         // if the top of the card is cut off by the top of the container
-        if cardFrame.origin.y < containerFrame.origin.y && cardFrameBottomY > containerFrame.origin.y {
+        else if cardFrame.origin.y < containerFrame.origin.y && cardFrameBottomY > containerFrame.origin.y {
             visibleHeight = cardFrame.height - (containerFrame.origin.y - cardFrame.origin.y)
         }
         // if the bottom of the card is cut off by the container
