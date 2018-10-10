@@ -11,10 +11,11 @@
  */
 @objc public protocol CardVisibilityDelegate {
     
-    /*
-     * Notifies a card of its visibility.
-     *
-     * @param percentVisible - percentage of the card that is visible in the list of cards
+    /**
+     Notifies a card of the ratio that the card or screen is visible at any given time.
+     
+     - Parameter cardVisibilityRatio: The ratio that the card is visible in the container
+     - Parameter containerCoverageRatio: The ratio of the screen that is taken up by the card
      */
-    @objc optional func cardVisibility(percentVisible: CGFloat)
+    @objc optional func cardVisibility(cardVisibilityRatio: CGFloat, containerCoverageRatio: CGFloat)
 }

@@ -36,8 +36,9 @@ open class CardPartsViewController : UIViewController, CardController {
 	
 	var marginViews: [UIView: (UIView?, UIView?)] = [:]
     
-    // percent visibility of a card
-    var visibility: CGFloat = -1.0
+    // visibility ratios for the card
+    var cardVisibilityRatio: CGFloat = -1.0
+    var containerCoverageRatio: CGFloat = -1.0
     
     // MARK: Clickable traits
     private var cardTapGesture: UITapGestureRecognizer?

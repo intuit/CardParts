@@ -27,10 +27,10 @@ class CardPartImageViewCardController: CardPartsViewController, CardVisibilityDe
         setupCardParts([cardPartTextView, cardPartTextLogView, cardPartImage])
     }
     
-    // allows us access to see the percent visibility of this card
+    // allows us access to see the ratio of visibility of this card and the container coverage ratio
     // This is only called when the visibility of the card changes
-    func cardVisibility(percentVisible: CGFloat) {
-        print("This image view is \(percentVisible *  100)% visible!")
+    func cardVisibility(cardVisibilityRatio: CGFloat, containerCoverageRatio: CGFloat) {
+        print("This card is \(cardVisibilityRatio *  100)% visible! It takes up \(containerCoverageRatio * 100)% of its container!")
     }
 }
 

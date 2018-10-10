@@ -12,15 +12,16 @@ import Foundation
  */
 class CardUtils {
     
-    /*
-     * Given the card's frame and the frame of the container determine the percentage of the card that is visible in the container's bounds
-     *
-     * @param containerFrame - The frame bounds of the container
-     * @param cardFrame - The frame bounds of the card
-     *
-     * @return The percentage of the card that is visible within the specified container frame
+    /**
+     Given the card's frame and the frame of the container determine the ratio of the card that is visible in the container's bounds and the ratio of the screen that is taken up by the card
+     
+     - Parameter containerFrame: The frame bounds of the container
+     - Parameter cardFrame: The frame bounds of the card
+     
+     - Returns: The ratio of the card that is visible within the specified container frame
+        and the ratio of the screen that is taken up by the card
      */
-    class func cardVisibility(containerFrame: CGRect, cardFrame: CGRect) -> CGFloat {
+    class func calculateVisibilityRatios(containerFrame: CGRect, cardFrame: CGRect) -> (cardVisibilityRatio: CGFloat, containerCoverageRatio: CGFloat) {
         var visibleHeight: CGFloat = 0.0
         let cardFrameBottomY = cardFrame.origin.y + cardFrame.height
         let containerFrameBottomY = containerFrame.origin.y + containerFrame.height
@@ -37,12 +38,12 @@ class CardUtils {
         else if cardFrame.origin.y >= containerFrame.origin.y && cardFrameBottomY <= containerFrameBottomY {
             visibleHeight = cardFrame.height
         }
-            // not in the visible view
+        // not in the visible view
         else {
-            return 0.0
+            return (0.0, 0.0)
         }
         
-        return visibleHeight / cardFrame.height
+        return (visibleHeight / cardFrame.height, visibleHeight / containerFrame.height)
     }
     
     /*
