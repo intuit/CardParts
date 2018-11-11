@@ -73,7 +73,7 @@ public class CardPartBarView: UIView, CardPartView {
     }
     
     override public var intrinsicContentSize: CGSize {
-        return CGSize(width: UIViewNoIntrinsicMetric, height: 18.0)
+        return CGSize(width: UIView.noIntrinsicMetric, height: 18.0)
     }
     
     fileprivate func updateBarLayer() {

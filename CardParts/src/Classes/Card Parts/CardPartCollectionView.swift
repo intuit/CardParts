@@ -42,7 +42,7 @@ public class CardPartCollectionView : UIView, CardPartView, UICollectionViewDele
     }
 
     override public var intrinsicContentSize: CGSize {
-        return CGSize(width: UIViewNoIntrinsicMetric, height: collectionView.frame.height)
+        return CGSize(width: UIView.noIntrinsicMetric, height: collectionView.frame.height)
     }
 
     override public func updateConstraints() {

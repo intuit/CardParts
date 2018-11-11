@@ -72,7 +72,7 @@ public class CardPartTableView : UIView, CardPartView, UITableViewDelegate {
 	}
 	
 	override public var intrinsicContentSize: CGSize {
-		return CGSize(width: UIViewNoIntrinsicMetric, height: tableView.contentSize.height)
+		return CGSize(width: UIView.noIntrinsicMetric, height: tableView.contentSize.height)
 	}
 
 	override public func updateConstraints() {

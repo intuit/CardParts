@@ -30,7 +30,7 @@ extension Reactive where Base: CardPartImageView {
 		}
 	}
 
-	public var contentMode: Binder<UIViewContentMode>{
+	public var contentMode: Binder<UIView.ContentMode>{
 		return Binder(self.base) { (imageView, contentMode) -> () in
 			imageView.contentMode = contentMode
 		}

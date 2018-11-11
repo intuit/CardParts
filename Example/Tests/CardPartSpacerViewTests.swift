@@ -27,7 +27,7 @@ class CardPartSpacerViewTests: XCTestCase {
 	func testIntrinsicContentSize() {
 		
 		let spacerPart = CardPartSpacerView(height: 50.0)
-		XCTAssertEqual(spacerPart.intrinsicContentSize.width, UIViewNoIntrinsicMetric)
+		XCTAssertEqual(spacerPart.intrinsicContentSize.width, UIView.noIntrinsicMetric)
 		XCTAssertEqual(spacerPart.intrinsicContentSize.height, 50.0)
 	}
 	

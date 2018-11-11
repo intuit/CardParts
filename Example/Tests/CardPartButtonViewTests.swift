@@ -29,14 +29,14 @@ class CardPartButtonViewTests: XCTestCase {
 		let bag = DisposeBag()
 		
 		let buttonPart = CardPartButtonView()
-		XCTAssertEqual(buttonPart.contentHorizontalAlignment, UIControlContentHorizontalAlignment.left)
+		XCTAssertEqual(buttonPart.contentHorizontalAlignment, UIControl.ContentHorizontalAlignment.left)
 		
-		let horizAlignProperty = Variable<UIControlContentHorizontalAlignment>(.right)
+		let horizAlignProperty = Variable<UIControl.ContentHorizontalAlignment>(.right)
 		horizAlignProperty.asObservable().bind(to: buttonPart.rx.contentHorizontalAlignment).disposed(by: bag)
-		XCTAssertEqual(buttonPart.contentHorizontalAlignment, UIControlContentHorizontalAlignment.right)
+		XCTAssertEqual(buttonPart.contentHorizontalAlignment, UIControl.ContentHorizontalAlignment.right)
 		
 		horizAlignProperty.value = .center
-		XCTAssertEqual(buttonPart.contentHorizontalAlignment, UIControlContentHorizontalAlignment.center)
+		XCTAssertEqual(buttonPart.contentHorizontalAlignment, UIControl.ContentHorizontalAlignment.center)
 	}
 	
 }
