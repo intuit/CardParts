@@ -30,7 +30,7 @@ public class CardPartSpacerView : UIView, CardPartView {
 	}
 	
 	override public var intrinsicContentSize: CGSize {
-		return CGSize(width: UIViewNoIntrinsicMetric, height: height)
+		return CGSize(width: UIView.noIntrinsicMetric, height: height)
 	}
 	
 }

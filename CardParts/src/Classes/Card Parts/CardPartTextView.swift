@@ -177,14 +177,14 @@ public class CardPartTextView : UIView, CardPartView {
         if let labelText = attributedText {
             let mutableAttrText = NSMutableAttributedString(attributedString: labelText)
             
-            mutableAttrText.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
+            mutableAttrText.addAttributes([NSAttributedString.Key.paragraphStyle: paragraphStyle],
                                           range: NSRange(location: 0, length: mutableAttrText.length))
             
             label.attributedText = mutableAttrText
         } else if let labelText = text {
-            let mutableAttrText = NSMutableAttributedString(string: labelText, attributes: [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: textColor])
+            let mutableAttrText = NSMutableAttributedString(string: labelText, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: textColor])
             
-            mutableAttrText.addAttributes([NSAttributedStringKey.paragraphStyle: paragraphStyle],
+            mutableAttrText.addAttributes([NSAttributedString.Key.paragraphStyle: paragraphStyle],
                                           range: NSRange(location: 0, length: mutableAttrText.length))
             label.attributedText = mutableAttrText
         } else {

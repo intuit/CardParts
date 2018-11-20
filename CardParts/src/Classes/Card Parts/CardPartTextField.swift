@@ -67,7 +67,7 @@ public class CardPartTextField : UITextField, CardPartView {
         
         setFormat(format: format)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textChangeNotifcation(notification:)), name: NSNotification.Name.UITextFieldTextDidChange, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChangeNotifcation(notification:)), name: UITextField.textDidChangeNotification, object: self)
     }
     
     deinit {

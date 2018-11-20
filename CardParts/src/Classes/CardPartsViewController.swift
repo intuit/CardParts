@@ -87,9 +87,9 @@ open class CardPartsViewController : UIViewController, CardController {
             padding += cardPart.margins.top
             
             if let cardViewController = cardPart.viewController {
-                addChildViewController(cardViewController)
+                addChild(cardViewController)
                 view.addSubview(cardPart.view)
-                cardViewController.didMove(toParentViewController: self)
+                cardViewController.didMove(toParent: self)
             } else {
                 view.addSubview(cardPart.view)
             }
@@ -149,9 +149,9 @@ open class CardPartsViewController : UIViewController, CardController {
         if let stateData = cardParts[state] {
             stateData.cardParts.forEach {
                 if let cardViewController = $0.viewController {
-                    addChildViewController(cardViewController)
+                    addChild(cardViewController)
                     view.addSubview($0.view)
-                    cardViewController.didMove(toParentViewController: self)
+                    cardViewController.didMove(toParent: self)
                 } else {
                     view.addSubview($0.view)
                 }
@@ -164,14 +164,14 @@ open class CardPartsViewController : UIViewController, CardController {
         if let stateData = cardParts[state] {
             stateData.cardParts.forEach {
                 if let cardViewController = $0.viewController {
-                    cardViewController.willMove(toParentViewController: nil)
+                    cardViewController.willMove(toParent: nil)
                 }
             }
             view.removeConstraints(stateData.constraints)
             stateData.cardParts.forEach {
                 if let cardViewController = $0.viewController {
                     cardViewController.view.removeFromSuperview()
-                    cardViewController.removeFromParentViewController()
+                    cardViewController.removeFromParent()
                 } else {
                     $0.view.removeFromSuperview()
                 }

@@ -82,7 +82,7 @@ public class CardPartTitleView : UIView, CardPartView {
                 } else {
                     button.setImage(UIImage(named: menuButtonImageName, in: Bundle(for: CardPartTitleView.self), compatibleWith: nil), for: .normal)
                 }
-				button.addTarget(self, action: #selector(menuButtonTapped), for: UIControlEvents.touchUpInside)
+				button.addTarget(self, action: #selector(menuButtonTapped), for: UIControl.Event.touchUpInside)
 				addSubview(button)
 			}
 		} else if type == .titleWithActionableButton {
@@ -94,7 +94,7 @@ public class CardPartTitleView : UIView, CardPartView {
                 } else {
                     button.setImage(UIImage(named: menuButtonImageName, in: Bundle(for: CardPartTitleView.self), compatibleWith: nil), for: .normal)
                 }
-				button.addTarget(self, action: #selector(actionableMenuTapped), for: UIControlEvents.touchUpInside)
+				button.addTarget(self, action: #selector(actionableMenuTapped), for: UIControl.Event.touchUpInside)
 				addSubview(button)
 			}
 		}
@@ -111,10 +111,10 @@ public class CardPartTitleView : UIView, CardPartView {
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]|", options: [], metrics: nil, views: ["label" : label]))		
 		if let button = button {
 			addConstraints([NSLayoutConstraint (item: button,
-			                                    attribute: NSLayoutAttribute.width,
-			                                    relatedBy: NSLayoutRelation.equal,
+			                                    attribute: NSLayoutConstraint.Attribute.width,
+			                                    relatedBy: NSLayoutConstraint.Relation.equal,
 			                                    toItem: nil,
-			                                    attribute: NSLayoutAttribute.notAnAttribute,
+			                                    attribute: NSLayoutConstraint.Attribute.notAnAttribute,
 			                                    multiplier: 1,
 			                                    constant: 40)])
 			addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[button]|", options: [], metrics: nil, views: ["button" : button]))

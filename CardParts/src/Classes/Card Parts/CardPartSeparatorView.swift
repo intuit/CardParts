@@ -26,7 +26,7 @@ public class CardPartSeparatorView : UIView, CardPartView {
 	}
 	
 	override public var intrinsicContentSize: CGSize {
-		return CGSize(width: UIViewNoIntrinsicMetric, height: 0.5)
+		return CGSize(width: UIView.noIntrinsicMetric, height: 0.5)
 	}
 	
 }

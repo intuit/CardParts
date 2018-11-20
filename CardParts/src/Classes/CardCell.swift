@@ -104,7 +104,7 @@ open class CardCell : UICollectionViewCell {
     
     override open func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         
-        let desiredHeight: CGFloat = contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        let desiredHeight: CGFloat = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         
         if currentSize.height != desiredHeight || currentSize != layoutAttributes.size {
             let attr = super.preferredLayoutAttributesFitting(layoutAttributes)
