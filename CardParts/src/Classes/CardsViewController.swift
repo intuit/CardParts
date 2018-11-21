@@ -60,7 +60,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
  
         layout = UICollectionViewFlowLayout()
 		if #available(iOS 10.0, *) {
-			layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+			layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 		} else {
 			layout.estimatedItemSize = CGSize(width: self.view.bounds.size.width, height: 1)
 		}
@@ -199,7 +199,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 			
 			let hasParent = viewController.parent != nil
 			if !hasParent {
-				addChildViewController(viewController)
+				addChild(viewController)
 			}
 			
 			cell.cardContentView.addSubview(viewController.view)
@@ -224,7 +224,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 				cell.contentView.addSubview(editButton)
 			}
 			if !hasParent {
-				viewController.didMove(toParentViewController: self)
+				viewController.didMove(toParent: self)
 			}
 		}
 		cell.cardContentView.layoutIfNeeded()
@@ -311,33 +311,33 @@ extension CardsViewController {
     
     private func listenToKeyboardShowHideNotifications() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func stopListeningToKeyboardShowHideNotifications() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc open func keyboardWillShow(notification: Notification) {
-        guard var keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-              let keyboardCurve = (notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
-              let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+        guard var keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+              let keyboardCurve = (notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
+              let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
               let responder = UIResponder.first as? UIView
         else { return }
         
         keyboardRect = self.view.convert(keyboardRect, from: nil)
         
         let scrollViewKeyboardIntersection = collectionView.frame.intersection(keyboardRect)
-        let newContentInsets = UIEdgeInsetsMake(0, 0, scrollViewKeyboardIntersection.size.height, 0)
+        let newContentInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: scrollViewKeyboardIntersection.size.height, right: 0)
         
         savedContentInset = collectionView.contentInset
         
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(keyboardDuration)
-        if let animationCurve = UIViewAnimationCurve.init(rawValue: keyboardCurve) {
+        if let animationCurve = UIView.AnimationCurve.init(rawValue: keyboardCurve) {
             UIView.setAnimationCurve(animationCurve)
         }
         collectionView.contentInset = newContentInsets
@@ -367,13 +367,13 @@ extension CardsViewController {
     }
  
     @objc open func keyboardWillHide(notification: Notification) {
-        guard let keyboardCurve = (notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
-              let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
+        guard let keyboardCurve = (notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
+              let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
         else { return }
 
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(keyboardDuration)
-        if let animationCurve = UIViewAnimationCurve.init(rawValue: keyboardCurve) {
+        if let animationCurve = UIView.AnimationCurve.init(rawValue: keyboardCurve) {
             UIView.setAnimationCurve(animationCurve)
         }
         collectionView.contentInset = savedContentInset

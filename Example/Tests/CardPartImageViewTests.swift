@@ -44,12 +44,12 @@ class CardPartImageViewTests: XCTestCase {
 		
 		let imagePart = CardPartImageView()
 		
-		let contentModeProperty = Variable<UIViewContentMode>(.scaleToFill)
+		let contentModeProperty = Variable<UIView.ContentMode>(.scaleToFill)
 		contentModeProperty.asObservable().bind(to: imagePart.rx.contentMode).disposed(by: bag)
-		XCTAssertEqual(imagePart.contentMode, UIViewContentMode.scaleToFill)
+		XCTAssertEqual(imagePart.contentMode, UIView.ContentMode.scaleToFill)
 		
 		contentModeProperty.value = .scaleAspectFit
-		XCTAssertEqual(imagePart.contentMode, UIViewContentMode.scaleAspectFit)
+		XCTAssertEqual(imagePart.contentMode, UIView.ContentMode.scaleAspectFit)
 	}
 
 }

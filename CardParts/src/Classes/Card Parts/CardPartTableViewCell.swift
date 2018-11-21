@@ -90,7 +90,7 @@ public class CardPartTableViewCell : UITableViewCell {
 	private var constraintsAdded = false
 
 
-	override public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+	override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 
 		leftTitleLabel = UILabel(frame: CGRect.zero)
 		leftTitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -119,7 +119,7 @@ public class CardPartTableViewCell : UITableViewCell {
 
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
-		separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+		separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
 		
 		
 		for subview in contentView.subviews {
@@ -289,7 +289,7 @@ public class CardPartTableViewCell : UITableViewCell {
 		contentView.addConstraint(constraint)
 		
 		// Right
-		let nsAttributeType: NSLayoutAttribute = shouldCenterRightLabel ? .left : .right
+		let nsAttributeType: NSLayoutConstraint.Attribute = shouldCenterRightLabel ? .left : .right
 		constraint = NSLayoutConstraint(item: rightDescriptionLabel,
 		                                attribute: nsAttributeType,
 		                                relatedBy: .equal,

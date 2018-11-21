@@ -27,7 +27,7 @@ class CardPartSeparatorViewTests: XCTestCase {
     func testIntrinsicContentSize() {
 
         let separatorPart = CardPartSeparatorView()
-		XCTAssertEqual(separatorPart.intrinsicContentSize.width, UIViewNoIntrinsicMetric)
+		XCTAssertEqual(separatorPart.intrinsicContentSize.width, UIView.noIntrinsicMetric)
 		XCTAssertEqual(separatorPart.intrinsicContentSize.height, 0.5)
     }
         
