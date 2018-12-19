@@ -930,8 +930,8 @@ extension MYOwnCardPartController: CardPartsLongGestureRecognizerDelegate {
 - More to come.. hopefully!
 
 # Publications
-[Rebuilding Mint’s UI From the Ground Up Using CardParts (iOS)](https://medium.com/blueprint-by-intuit/rebuilding-mints-ui-from-the-ground-up-using-cardparts-ios-817aac6c863f)
-[Top 10 Swift Open Source of the Month](https://medium.mybridge.co/top-10-swift-open-source-of-the-month-v-may-2018-c581e2accc66)
+- [Rebuilding Mint’s UI From the Ground Up Using CardParts (iOS)](https://medium.com/blueprint-by-intuit/rebuilding-mints-ui-from-the-ground-up-using-cardparts-ios-817aac6c863f)
+- [Top 10 Swift Open Source of the Month](https://medium.mybridge.co/top-10-swift-open-source-of-the-month-v-may-2018-c581e2accc66)
 
 # License
 
