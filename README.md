@@ -220,7 +220,7 @@ The HiddenCardTrait trait requires the CardController to implement an isHidden v
 ```swift
     var isHidden: Variable<Bool> { get }
 ```
-The framework will then observer the isHidden variable so that whenever its value is changed the card will be hidden or shown based upon the new value. This allows the CardController to control its visibility by simply modifying the value of its isHidden variable.
+The framework will then observe the isHidden variable so that whenever its value is changed the card will be hidden or shown based upon the new value. This allows the CardController to control its visibility by simply modifying the value of its isHidden variable.
 
 #### `ShadowCardTrait`
 The ShadowCardTrait protocol requires CardController to implement `shadowColor()`, `shadowRadius()` and `shadowOpacity()` methods.
