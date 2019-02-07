@@ -315,7 +315,7 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = FPR5C96X44;
+						DevelopmentTeam = G4SSPX3CBL;
 						LastSwiftMigration = 1010;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -695,7 +695,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B21177744B384387575CB614 /* Pods-CardParts_Tests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = FPR5C96X44;
+				DEVELOPMENT_TEAM = G4SSPX3CBL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -718,7 +718,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EDB3B26F1BF024EF68A0F8CC /* Pods-CardParts_Tests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = FPR5C96X44;
+				DEVELOPMENT_TEAM = G4SSPX3CBL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -743,7 +743,7 @@
 				607FACEE1AFB9204008FA782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "CardParts_Example" */ = {
 			isa = XCConfigurationList;
@@ -752,7 +752,7 @@
 				607FACF11AFB9204008FA782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "CardParts_Tests" */ = {
 			isa = XCConfigurationList;
@@ -761,7 +761,7 @@
 				607FACF41AFB9204008FA782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
