@@ -3,4 +3,6 @@ xcode_workspace: Example/CardParts.xcworkspace
 xcode_scheme: CardParts-Example
 osx_image: xcode10.1
 podfile: Example/Podfile
+cache: cocoapods
+install: pod repo update
 script: xcodebuild test -workspace Example/CardParts.xcworkspace -scheme CardParts-Example -destination 'platform=iOS Simulator,name=iPhone 8 Plus,OS=11.4'
