@@ -305,12 +305,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = FPR5C96X44;
+						DevelopmentTeam = G4SSPX3CBL;
 						LastSwiftMigration = 1010;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -562,12 +562,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -616,12 +618,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -653,10 +657,10 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74E7263228E17F552E74B6A9 /* Pods-CardParts_Example.debug.xcconfig */;
+			baseConfigurationReference = FB125B7758C7A2765F5C9714 /* Pods-CardParts_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = FPR5C96X44;
+				DEVELOPMENT_TEAM = G4SSPX3CBL;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CardParts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -671,10 +675,10 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23E4F9AF22E8F435663478FF /* Pods-CardParts_Example.release.xcconfig */;
+			baseConfigurationReference = 58D33E4374206E3A72623089 /* Pods-CardParts_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = FPR5C96X44;
+				DEVELOPMENT_TEAM = G4SSPX3CBL;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CardParts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -689,7 +693,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED1756EC4567845504B1B628 /* Pods-CardParts_Tests.debug.xcconfig */;
+			baseConfigurationReference = B21177744B384387575CB614 /* Pods-CardParts_Tests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = FPR5C96X44;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -712,7 +716,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 883D045BE20B46B307870BD6 /* Pods-CardParts_Tests.release.xcconfig */;
+			baseConfigurationReference = EDB3B26F1BF024EF68A0F8CC /* Pods-CardParts_Tests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = FPR5C96X44;
 				FRAMEWORK_SEARCH_PATHS = (
