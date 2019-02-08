@@ -34,7 +34,7 @@ CardParts - made with ❤️ by Intuit:
         - [GradientCardTrait](#gradientcardtrait)
     - [CardPartsViewController](#cardpartsviewcontroller)
     - [CardPartsFullScreenViewController](#cardpartsfullscreenviewcontroller)
-    - [Card Parts](#card-parts)
+    - [CardParts](#card-parts)
         - [CardPartTextView](#cardparttextview)
         - [CardPartImageView](#cardpartimageview)
         - [CardPartButtonView](#cardpartbuttonview)
@@ -196,7 +196,7 @@ protocol CardController : NSObjectProtocol {
 The viewController() method must return the viewController that will be added as a child controller to the card cell. If the CardController is a UIViewController it can simply return self for this method. 
 
 ## Card Traits
-The Card Parts framework defines a set of traits that can be used to modify the appearance and behavior of cards. These traits are implemented as a protocols and protocol extensions. To add a trait to a card simply add the trait protocol to the CardController definition. For example:
+The Card Parts framework defines a set of traits that can be used to modify the appearance and behavior of cards. These traits are implemented as protocols and protocol extensions. To add a trait to a card simply add the trait protocol to the CardController definition. For example:
 ```swift
 class MyCard: UIViewController, CardController, TransparentCardTrait {
     
@@ -204,7 +204,7 @@ class MyCard: UIViewController, CardController, TransparentCardTrait {
 ```
 MyCard will now render itself with a transparent card background and frame. No extra code is needed, just adding the TransparentCardTrait as a protocol is all that is necessary. 
 
-Most traits require no extra code. The default protocol extensions implemented by the framework implement all the code required for the trait to modify the card. A few traits do require implementing an function or property. See the documentation for each trait below for more information.
+Most traits require no extra code. The default protocol extensions implemented by the framework implement all the code required for the trait to modify the card. A few traits do require implementing a function or property. See the documentation for each trait below for more information.
 
 #### `NoTopBottomMarginsCardTrait`
 By default each card has margin at the top and bottom of the card frame. Adding the NoTopBottomMarginsCardTrait trait will remove that margin allowing the card to render to use the entire space inside the card frame.
@@ -220,7 +220,7 @@ The HiddenCardTrait trait requires the CardController to implement an isHidden v
 ```swift
     var isHidden: Variable<Bool> { get }
 ```
-The framework will then observer the isHidden variable so that whenever its value is changed the card will be hidden or shown based upon the new value. This allows the CardController to control its visibility by simply modifying the value of its isHidden variable.
+The framework will then observe the isHidden variable so that whenever its value is changed the card will be hidden or shown based upon the new value. This allows the CardController to control its visibility by simply modifying the value of its isHidden variable.
 
 #### `ShadowCardTrait`
 The ShadowCardTrait protocol requires CardController to implement `shadowColor()`, `shadowRadius()` and `shadowOpacity()` methods.
@@ -327,7 +327,7 @@ class TestCardController: CardPartsFullScreenViewController  {
 }
 ```
 
-## Card Parts
+## CardParts
 The framework includes several predefined card parts that are ready to use.  It is also possible to create custom card parts. The following sections list all the predefined card parts and their reactive properties that can be bound to view models.
 
 #### `CardPartTextView`
