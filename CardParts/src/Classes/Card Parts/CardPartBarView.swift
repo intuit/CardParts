@@ -45,7 +45,10 @@ public class CardPartBarView: UIView, CardPartView {
      */
     public var percent: Double = 0.0 {
         didSet {
-            if percent.isNaN{
+            if percent.isNaN {
+                percent = 0
+            }
+            if percent.isInfinite {
                 percent = 0
             }
             updateBarLayer()
