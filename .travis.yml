@@ -3,5 +3,7 @@ xcode_workspace: Example/CardParts.xcworkspace
 xcode_scheme: CardParts-Example
 osx_image: xcode10.1
 podfile: Example/Podfile
-before_install: pod repo update
-script: xcodebuild test -workspace Example/CardParts.xcworkspace -scheme CardParts-Example
+before_install:
+  - gem install cocoapods
+  - pod install --repo-update
+script: xcodebuild test -workspace Example/CardParts.xcworkspace -scheme CardParts-Example -allowProvisioningUpdates
