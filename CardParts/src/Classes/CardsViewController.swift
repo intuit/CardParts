@@ -211,7 +211,6 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 			cell.cardContentView.addSubview(viewController.view)
 			viewController.view.translatesAutoresizingMaskIntoConstraints = false
 			
-	    setupConstraints(cell, viewController: viewController)
             cardCellWidth.asObservable().bind {  [weak self, weak cell, weak viewController] (value) in
                 if let strongSelf = self , let cell = cell, let viewController = viewController {
                     strongSelf.setupConstraints(cell, viewController: viewController)
