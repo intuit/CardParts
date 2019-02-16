@@ -21,8 +21,8 @@ class CardPartImageViewCardController: CardPartsViewController, CardVisibilityDe
         cardPartTextView.text = "This is a CardPartImageView"
         cardPartTextLogView.text = "PS - Check the Xcode logs while you scroll this card!"
         
+        cardPartImage.contentMode = .scaleAspectFit
         cardPartImage.addConstraint(NSLayoutConstraint(item: cardPartImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 300))
-        cardPartImage.addConstraint(NSLayoutConstraint(item: cardPartImage, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 300))
         
         setupCardParts([cardPartTextView, cardPartTextLogView, cardPartImage])
     }

@@ -44,12 +44,6 @@ open class CardCell : UICollectionViewCell {
                                                                   metrics: nil,
                                                                   views: ["cardContentView" : cardContentView]))
         
-        let metrics = ["topInset": CardParts.theme.cardCellMargins.top, "bottomInset": CardParts.theme.cardCellMargins.bottom]
-        topBottomMarginConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-topInset-[cardContentView]-bottomInset-|",
-                                                                    options: [],
-                                                                    metrics: metrics,
-                                                                    views: ["cardContentView" : cardContentView])
-        contentView.addConstraints(topBottomMarginConstraints)
         contentView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
@@ -105,10 +99,12 @@ open class CardCell : UICollectionViewCell {
     override open func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         
         let desiredHeight: CGFloat = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-        
-        if currentSize.height != desiredHeight || currentSize != layoutAttributes.size {
+        let desiredWidth: CGFloat = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).width
+
+        if currentSize.height != desiredHeight || currentSize.width != desiredWidth || currentSize != layoutAttributes.size {
             let attr = super.preferredLayoutAttributesFitting(layoutAttributes)
             attr.frame.size.height = desiredHeight
+            attr.frame.size.width = desiredWidth
             currentSize = attr.frame.size
             return attr
         }
@@ -125,9 +121,10 @@ open class CardCell : UICollectionViewCell {
                                                                         metrics: nil,
                                                                         views: ["cardContentView" : cardContentView])
         } else {
-            topBottomMarginConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-9-[cardContentView]-12-|",
+            let metrics = ["topInset": CardParts.theme.cardCellMargins.top, "bottomInset": CardParts.theme.cardCellMargins.bottom]
+            topBottomMarginConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-topInset-[cardContentView]-bottomInset-|",
                                                                         options: [],
-                                                                        metrics: nil,
+                                                                        metrics: metrics,
                                                                         views: ["cardContentView" : cardContentView])
         }
         
