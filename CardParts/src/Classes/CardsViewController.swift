@@ -102,8 +102,8 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
     public func invalidateLayout() {
         DispatchQueue.main.async { [weak self] in
 			let context = UICollectionViewFlowLayoutInvalidationContext()
-			context.invalidateFlowLayoutAttributes = true
-            self?.layout.invalidateLayout(with: context)
+			context.invalidateFlowLayoutAttributes = false
+            self?.layout?.invalidateLayout(with: context)
         }
     }
 
@@ -248,6 +248,8 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         
         cell.cardContentView.addConstraints(cell.cardContentConstraints)
         
+        cell.setNeedsUpdateConstraints()
+        cell.layoutIfNeeded()
     }
 
 	open func getCardControllerCount() -> Int {

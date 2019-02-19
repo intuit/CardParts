@@ -29,6 +29,8 @@ public class CardPartOrientedView: UIView, CardPartView {
         
         super.init(frame: CGRect.zero)
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
         // add spacer to subviews
         let spacer = UIView()
         spacer.translatesAutoresizingMaskIntoConstraints = false
