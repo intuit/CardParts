@@ -6,4 +6,4 @@ podfile: Example/Podfile
 before_install:
   - gem install cocoapods
   - pod repo update
-script: xcodebuild test -workspace Example/CardParts.xcworkspace -scheme CardParts-Example
+script: xcodebuild test -workspace Example/CardParts.xcworkspace -scheme CardParts-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
