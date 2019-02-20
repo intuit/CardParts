@@ -37,7 +37,8 @@ struct CardInfo: Equatable {
 }
 
 open class CardsViewController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate {
-    
+	
+    let cardCellWidth = Variable(CGFloat(0))
     let editButtonOffset : CGFloat = 24
     let editButtonHeight : CGFloat = 50
     let editButtonWidth : CGFloat = 50
@@ -81,7 +82,12 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView]))
+	cardCellWidth.value = view.bounds.width - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
+    }
 
+    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        cardCellWidth.value = size.width - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
+        invalidateLayout()
     }
     
     // functionality that happens when the view appears
@@ -97,7 +103,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         DispatchQueue.main.async { [weak self] in
 			let context = UICollectionViewFlowLayoutInvalidationContext()
 			context.invalidateFlowLayoutAttributes = false
-            self?.layout.invalidateLayout(with: context)
+            self?.layout?.invalidateLayout(with: context)
         }
     }
 
@@ -205,14 +211,11 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 			cell.cardContentView.addSubview(viewController.view)
 			viewController.view.translatesAutoresizingMaskIntoConstraints = false
 			
-			cell.cardContentView.removeConstraints(cell.cardContentConstraints)
-			cell.cardContentConstraints.removeAll()
-			
-			let metrics = ["cardContentWidth": view.bounds.size.width - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)]
-            cell.cardContentConstraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat: "H:|[view(cardContentWidth)]|", options: [], metrics: metrics, views: ["view" : viewController.view]))
-			cell.cardContentConstraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: nil, views: ["view" : viewController.view]))
-            			
-			cell.cardContentView.addConstraints(cell.cardContentConstraints)
+            cardCellWidth.asObservable().bind {  [weak self, weak cell, weak viewController] (value) in
+                if let strongSelf = self , let cell = cell, let viewController = viewController {
+                    strongSelf.setupConstraints(cell, viewController: viewController)
+                }
+            }.disposed(by: bag)
 			if getEditModeForIndexPath(indexPath: indexPath) {
 				let editButton = UIButton(frame: CGRect(x: view.bounds.size.width - editButtonOffset - editButtonWidth, y: 0, width: editButtonWidth, height: editButtonHeight))
 				editButton.setImage(UIImage(named: editButtonImage, in: Bundle(for: CardsViewController.self), compatibleWith: nil), for: .normal)
@@ -230,6 +233,23 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 		cell.cardContentView.layoutIfNeeded()
 		cell.cardContentView.updateConstraints()
 		return cell
+    }
+	
+    func setupConstraints(_ cell: CardCell, viewController: UIViewController) {
+        
+        cell.cardContentView.removeConstraints(cell.cardContentConstraints)
+        cell.cardContentConstraints.removeAll()
+        
+        let metrics = ["cardContentWidth": cardCellWidth.value]
+        
+        cell.cardContentConstraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat: "H:|[view(cardContentWidth)]|", options: [], metrics: metrics, views: ["view" : viewController.view]))
+        cell.cardContentConstraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: nil, views: ["view" : viewController.view]))
+        
+        
+        cell.cardContentView.addConstraints(cell.cardContentConstraints)
+        
+        cell.setNeedsUpdateConstraints()
+        cell.layoutIfNeeded()
     }
 
 	open func getCardControllerCount() -> Int {
