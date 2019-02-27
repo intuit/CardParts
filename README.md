@@ -1021,7 +1021,7 @@ You can set the minimumPressDuration for your press to register as gesture began
 Example:
 
 ```swift
-extension MYOwnCardPartController: CardPartsLongGestureRecognizerDelegate {
+extension MYOwnCardPartController: CardPartsLongPressGestureRecognizerDelegate {
 	func didLongPress(_ gesture: UILongPressGestureRecognizer) {
 		guard let v = gesture.view else { return }
 
