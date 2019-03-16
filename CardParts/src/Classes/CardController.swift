@@ -65,6 +65,7 @@ public protocol ShadowCardTrait {
     func shadowColor() -> CGColor
     func shadowRadius() -> CGFloat
     func shadowOpacity() -> Float
+    func shadowOffset() -> CGSize
 }
 
 extension ShadowCardTrait {
@@ -78,6 +79,10 @@ extension ShadowCardTrait {
     
     func shadowOpacity() -> Float {
         return 0.7
+    }
+
+    func shadowOffset() -> CGSize {
+        return CGSize(width: 0, height: 5)
     }
 }
 

@@ -154,9 +154,9 @@ open class CardCell : UICollectionViewCell {
         }
     }
     
-    func addShadowToCard(shadowRadius: CGFloat = 8.0, shadowOpacity: Float = 0.7, shadowColor: CGColor = UIColor.Gray2.cgColor) {
+    func addShadowToCard(shadowRadius: CGFloat = 8.0, shadowOpacity: Float = 0.7, shadowColor: CGColor = UIColor.Gray2.cgColor, shadowOffset: CGSize = CGSize(width: 0, height: 5)) {
         contentView.layer.shadowColor = shadowColor
-        contentView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        contentView.layer.shadowOffset = shadowOffset
         contentView.layer.shadowRadius = shadowRadius
         contentView.layer.shadowOpacity = shadowOpacity
     }

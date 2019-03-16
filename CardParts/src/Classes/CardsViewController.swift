@@ -184,7 +184,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 			cell.requiresTransparentCard(transparentCard: transparentCard)
 			
             if let shadowCardTrait = cardController as? ShadowCardTrait {
-                cell.addShadowToCard(shadowRadius: shadowCardTrait.shadowRadius(), shadowOpacity: shadowCardTrait.shadowOpacity(), shadowColor: shadowCardTrait.shadowColor())
+                cell.addShadowToCard(shadowRadius: shadowCardTrait.shadowRadius(), shadowOpacity: shadowCardTrait.shadowOpacity(), shadowColor: shadowCardTrait.shadowColor(), shadowOffset: shadowCardTrait.shadowOffset())
             }
             
             if let roundedCardTrait = cardController as? RoundedCardTrait {
