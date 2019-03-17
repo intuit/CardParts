@@ -514,7 +514,7 @@ It is also possible to register your own custom cells by calling the register me
 You also have access to two delegate methods being called by the tableView as follows:
 
 ```swift
-@objc public protocol CardPartTableViewDelegte {
+@objc public protocol CardPartTableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
 	@objc optional func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
 }
