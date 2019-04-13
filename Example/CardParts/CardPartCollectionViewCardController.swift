@@ -55,7 +55,7 @@ class CardPartCollectionViewCardController: CardPartsViewController {
         collectionViewCardPart.collectionView.backgroundColor = .clear
         collectionViewCardPart.collectionView.showsHorizontalScrollIndicator = false
 
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionOfCustomStruct>(configureCell: {[weak self] (_, collectionView, indexPath, data) -> UICollectionViewCell in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionOfCustomStruct>(configureCell: { (_, collectionView, indexPath, data) -> UICollectionViewCell in
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCustomCollectionViewCell", for: indexPath) as? MyCustomCollectionViewCell else { return UICollectionViewCell() }
 

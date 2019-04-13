@@ -95,11 +95,11 @@ open class CardPartsViewController : UIViewController, CardController {
             }
 			
 			let metrics = ["leftMargin" : cardPart.margins.left, "rightMargin" : cardPart.margins.right]
-            stateData.constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-leftMargin-[cardPartView]-rightMargin-|", options: [], metrics: metrics, views: ["cardPartView" : cardPart.view]))
+            stateData.constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-leftMargin-[cardPartView]-rightMargin-|", options: [], metrics: metrics, views: ["cardPartView" : cardPart.view!]))
             if prevCardPart == view {
-                stateData.constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-padding-[cardPartView]", options: [], metrics: ["padding" : padding], views: ["cardPartView" : cardPart.view]))
+                stateData.constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-padding-[cardPartView]", options: [], metrics: ["padding" : padding], views: ["cardPartView" : cardPart.view!]))
             } else {
-                stateData.constraints.append(NSLayoutConstraint(item: cardPart.view, attribute: .top, relatedBy: .equal, toItem: prevCardPart, attribute: .bottom, multiplier: 1.0, constant: padding))
+                stateData.constraints.append(NSLayoutConstraint(item: cardPart.view!, attribute: .top, relatedBy: .equal, toItem: prevCardPart, attribute: .bottom, multiplier: 1.0, constant: padding))
             }
 
             prevCardPart = cardPart.view

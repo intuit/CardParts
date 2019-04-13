@@ -21,7 +21,7 @@ extension CardPartView {
     
     public var view: UIView! {
         get {
-            return self as! UIView
+            return self as? UIView
         }
     }
 
