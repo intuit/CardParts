@@ -106,7 +106,7 @@ open class CardPartsViewController : UIViewController, CardController {
             padding = cardPart.margins.bottom
         }
         
-        stateData.constraints.append(NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: prevCardPart, attribute: .bottom, multiplier: 1.0, constant: padding))
+        stateData.constraints.append(NSLayoutConstraint(item: view!, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: prevCardPart, attribute: .bottom, multiplier: 1.0, constant: padding))
         
         if forState == self.state {
             view.addConstraints(stateData.constraints)
