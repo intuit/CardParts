@@ -6,4 +6,4 @@ podfile: Example/Podfile
 before_install:
   - gem install cocoapods
   - pod repo update
-script: xcodebuild test -workspace Example/CardParts.xcworkspace -scheme CardParts-Example -sdk iphonesimulator -destination "platform:iOS Simulator, OS:12.2, name:iPhone Xs Max" ONLY_ACTIVE_ARCH=NO -quiet
+script: xcodebuild test -workspace Example/CardParts.xcworkspace -scheme CardParts-Example -sdk iphonesimulator -destination "platform=iOS Simulator,OS=12.2,name=iPhone Xs Max" ONLY_ACTIVE_ARCH=NO -quiet
