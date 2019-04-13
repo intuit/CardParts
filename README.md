@@ -242,7 +242,7 @@ The framework will then observe the isHidden variable so that whenever its value
 
 #### `ShadowCardTrait`
 
-The ShadowCardTrait protocol requires CardController to implement `shadowColor()`, `shadowRadius()` and `shadowOpacity()` methods.
+The ShadowCardTrait protocol requires CardController to implement `shadowColor()`, `shadowRadius()`,  `shadowOpacity()` and `shadowOffset()  methods.
 
 ```swift
     func shadowColor() -> CGColor {
@@ -259,6 +259,11 @@ The ShadowCardTrait protocol requires CardController to implement `shadowColor()
     func shadowOpacity() -> Float {
         return 1.0
     }
+    
+    func shadowOffset() -> CGSize {
+    	return CGSize(width: 0, height: 5)
+    }
+ 
 ```
 
 <p align="center">
