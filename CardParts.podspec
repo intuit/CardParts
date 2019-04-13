@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CardParts'
-  s.version          = '2.7.5'
+  s.version          = '2.8.0'
   s.platform         = :ios
   s.summary          = 'iOS Card UI framework.'
 
@@ -17,7 +17,7 @@ CardParts is an iOS Card UI framework that uses MVVM and automatic data binding 
                        DESC
 
   s.homepage         = 'https://github.com/intuit/CardParts'
-  s.authors           = { "Chase Roossin" => "chase_roossin@intuit.com",  "Bharath Urs" => "bharath_urs@intuit.com" }
+  s.authors           = { "Chase Roossin" => "chase_roossin@intuit.com",  "Bharath Urs" => "bharath_urs@intuit.com", "Lucien Dupont" => "lucien_dupont@intuit.com" }
   s.source           = { :git => 'https://github.com/intuit/CardParts.git', :tag => s.version.to_s }
   s.license          = { :type => 'Apache 2.0' }
   s.resources = [
@@ -25,12 +25,12 @@ CardParts is an iOS Card UI framework that uses MVVM and automatic data binding 
   ]
 
   s.ios.deployment_target = '10.0'
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
   s.source_files = 'CardParts/src/**/*'
 
-  s.dependency 'RxSwift', '~> 4.4'
-  s.dependency 'RxCocoa', '~> 4.4'
+  s.dependency 'RxSwift', '~> 4.5'
+  s.dependency 'RxCocoa', '~> 4.5'
   s.dependency 'RxDataSources', '~> 3.1'
-  s.dependency 'RxGesture', '~> 2.1'
+  s.dependency 'RxGesture', '~> 2.2'
 
 end

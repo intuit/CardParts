@@ -80,8 +80,8 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 		collectionView.scrollIndicatorInsets = insets
         self.view.addSubview(collectionView)
 
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView]))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
 	cardCellWidth.value = view.bounds.width - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
     }
 
@@ -242,8 +242,8 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         
         let metrics = ["cardContentWidth": cardCellWidth.value]
         
-        cell.cardContentConstraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat: "H:|[view(cardContentWidth)]|", options: [], metrics: metrics, views: ["view" : viewController.view]))
-        cell.cardContentConstraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: nil, views: ["view" : viewController.view]))
+        cell.cardContentConstraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat: "H:|[view(cardContentWidth)]|", options: [], metrics: metrics, views: ["view" : viewController.view!]))
+        cell.cardContentConstraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: nil, views: ["view" : viewController.view!]))
         
         
         cell.cardContentView.addConstraints(cell.cardContentConstraints)
@@ -284,11 +284,11 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 //		let oldCardControllers = cardControllers
 		
 		if isHidden {
-			if let index = cardControllers.index(of: cardInfo) {
+			if let index = cardControllers.firstIndex(of: cardInfo) {
 				cardControllers.remove(at: index)
 			}
 		} else {
-			if cardControllers.index(of: cardInfo) == nil {
+			if cardControllers.firstIndex(of: cardInfo) == nil {
 				cardControllers.append(cardInfo)
 				cardControllers = cardControllers.sorted { $0.position < $1.position }
 			}

@@ -1,9 +1,9 @@
 language: swift
 xcode_workspace: Example/CardParts.xcworkspace
 xcode_scheme: CardParts-Example
-osx_image: xcode10.1
+osx_image: xcode10.2
 podfile: Example/Podfile
 before_install:
   - gem install cocoapods
   - pod repo update
-script: xcodebuild test -workspace Example/CardParts.xcworkspace -scheme CardParts-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO -quiet
+script: xcodebuild test -workspace Example/CardParts.xcworkspace -scheme CardParts-Example -sdk iphonesimulator -destination "platform=iOS Simulator,OS=12.2,name=iPhone Xs Max" ONLY_ACTIVE_ARCH=NO -quiet
