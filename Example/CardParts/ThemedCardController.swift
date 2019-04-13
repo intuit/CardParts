@@ -50,6 +50,10 @@ class ThemedCardController: CardPartsViewController {
 }
 
 extension ThemedCardController: ShadowCardTrait {
+    func shadowOffset() -> CGSize {
+        return CGSize(width: 1.0, height: 1.0)
+    }
+    
     func shadowColor() -> CGColor {
         return UIColor.lightGray.cgColor
     }
