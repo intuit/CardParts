@@ -38,7 +38,7 @@ struct CardInfo: Equatable {
 
 open class CardsViewController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate {
 	
-    let cardCellWidth = Variable(CGFloat(0))
+    let cardCellWidth = BehaviorRelay(value: CGFloat(0))
     let editButtonOffset : CGFloat = 24
     let editButtonHeight : CGFloat = 50
     let editButtonWidth : CGFloat = 50
@@ -82,11 +82,11 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
-	cardCellWidth.value = view.bounds.width - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
+        cardCellWidth.accept(view.bounds.width - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right))
     }
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        cardCellWidth.value = size.width - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
+        cardCellWidth.accept(size.width - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right))
         invalidateLayout()
     }
     

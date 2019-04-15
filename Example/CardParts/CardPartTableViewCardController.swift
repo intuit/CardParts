@@ -37,7 +37,7 @@ class CardPartTableViewCardController: CardPartsViewController {
 
 class CardPartTableViewModel {
 
-    let listData: Variable<[String]> = Variable([])
+    let listData: BehaviorRelay<[String]> = BehaviorRelay(value: [])
     
     init() {
         
@@ -48,6 +48,6 @@ class CardPartTableViewModel {
             tempData.append("This is cell #\(i)")
         }
         
-        listData.value = tempData
+        listData.accept(tempData)
     }
 }

@@ -31,11 +31,11 @@ class CardPartButtonViewTests: XCTestCase {
 		let buttonPart = CardPartButtonView()
 		XCTAssertEqual(buttonPart.contentHorizontalAlignment, UIControl.ContentHorizontalAlignment.left)
 		
-		let horizAlignProperty = Variable<UIControl.ContentHorizontalAlignment>(.right)
+        let horizAlignProperty = BehaviorRelay<UIControl.ContentHorizontalAlignment>(value: .right)
 		horizAlignProperty.asObservable().bind(to: buttonPart.rx.contentHorizontalAlignment).disposed(by: bag)
 		XCTAssertEqual(buttonPart.contentHorizontalAlignment, UIControl.ContentHorizontalAlignment.right)
 		
-		horizAlignProperty.value = .center
+		horizAlignProperty.accept(.center)
 		XCTAssertEqual(buttonPart.contentHorizontalAlignment, UIControl.ContentHorizontalAlignment.center)
 	}
 	

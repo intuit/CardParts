@@ -13,7 +13,7 @@ import RxCocoa
 
 class ReactiveCardViewModel {
 	
-	var text = Variable("")
+    var text = BehaviorRelay(value: "")
 	
 	init() {
 		startRandomText()
@@ -26,11 +26,11 @@ class ReactiveCardViewModel {
 	@objc func randomText() {
 		switch arc4random() % 3 {
 		case 0:
-			text.value = "short text"
+            text.accept("short text")
 		case 1:
-			text.value = "this is some long text that should wrap the line. Do this work?"
+			text.accept("this is some long text that should wrap the line. Do this work?")
 		case 2:
-			text.value = "this is some very very very very very very very very very very very very very very very long text that should wrap the line. Do this work?"
+			text.accept("this is some very very very very very very very very very very very very very very very long text that should wrap the line. Do this work?")
 		default:
 			return
 		}
@@ -40,7 +40,7 @@ class ReactiveCardViewModel {
 
 class ReactiveCardController : CardPartsViewController {
 	
-	var isHidden = Variable(false)
+	var isHidden = BehaviorRelay(value: false)
 	
 	var viewModel = ReactiveCardViewModel()
 	

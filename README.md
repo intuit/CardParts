@@ -155,15 +155,15 @@ class TestCardController: CardPartsViewController  {
 
 class TestViewModel {
 
-    var title = Variable("")
-    var text = Variable("")
+    var title = BehaviorRelay(value: "")
+    var text = BehaviorRelay(value: "")
 
     init() {
 
         // When these values change, the UI in the TestCardController
         // will automatically update
-        title.value = "Hello, world!"
-        text.value = "CardParts is awesome!"
+        title.accept("Hello, world!")
+        text.accept("CardParts is awesome!")
     }
 }
 ```
@@ -235,14 +235,14 @@ If the EditableCardTrait trait is added, the card will be rendered with an edit 
 The HiddenCardTrait trait requires the CardController to implement an isHidden variable:
 
 ```swift
-    var isHidden: Variable<Bool> { get }
+    var isHidden: BehaviorRelay<Bool> { get }
 ```
 
 The framework will then observe the isHidden variable so that whenever its value is changed the card will be hidden or shown based upon the new value. This allows the CardController to control its visibility by simply modifying the value of its isHidden variable.
 
 #### `ShadowCardTrait`
 
-The ShadowCardTrait protocol requires CardController to implement `shadowColor()`, `shadowRadius()`,  `shadowOpacity()` and `shadowOffset()`  methods.
+The ShadowCardTrait protocol requires CardController to implement `shadowColor()`, `shadowRadius()`, `shadowOpacity()` and `shadowOffset()` methods.
 
 ```swift
     func shadowColor() -> CGColor {
@@ -259,11 +259,11 @@ The ShadowCardTrait protocol requires CardController to implement `shadowColor()
     func shadowOpacity() -> Float {
         return 1.0
     }
-    
+
     func shadowOffset() -> CGSize {
     	return CGSize(width: 0, height: 5)
     }
- 
+
 ```
 
 <p align="center">
@@ -336,15 +336,15 @@ class TestCardController: CardPartsViewController  {
 
 class TestViewModel {
 
-    var title = Variable("")
-    var text = Variable("")
+    var title = BehaviorRelay(value: "")
+    var text = BehaviorRelay(value: "")
 
     init() {
 
         // When these values change, the UI in the TestCardController
         // will automatically update
-        title.value = "Hello, world!"
-        text.value = "CardParts is awesome!"
+        title.accept("Hello, world!")
+        text.accept("CardParts is awesome!")
     }
 }
 ```
@@ -663,8 +663,8 @@ viewModel.data.asObservable().bind(to: collectionViewCardPart.collectionView.rx.
 _Note: `viewModel.data` will be a reactive array of `SectionOfCustomStruct`_:
 
 ```swift
-typealias ReactiveSection = Variable<[SectionOfCustomStruct]>
-var data = ReactiveSection([])
+typealias ReactiveSection = BehaviorRelay<[SectionOfCustomStruct]>
+var data = ReactiveSection(value: [])
 ```
 
 #### `CardPartCollectionViewCardPartsCell`
@@ -899,15 +899,15 @@ Data binding is implemented using the RxSwift library (https://github.com/Reacti
 ```swift
 class TestViewModel {
 
-    var title = Variable("Testing")
-    var text = Variable("Card Part Text")
+    var title = BehaviorRelay(value: "Testing")
+    var text = BehaviorRelay(value: "Card Part Text")
 }
 ```
 
 Later when the view model's data has changed it can update its property by setting the value attribute of the property:
 
 ```swift
-title.value = “Hello”
+title.accept(“Hello”)
 ```
 
 The view controller can bind the view model property to a view:

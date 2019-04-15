@@ -51,11 +51,11 @@ class CardPartTextViewTests: XCTestCase {
 		textPart.text = "hello"
 		XCTAssertEqual("hello", textPart.label.text)
 		
-		let textProperty = Variable("testing")
+        let textProperty = BehaviorRelay(value: "testing")
         textProperty.asObservable().bind(to: textPart.rx.text).disposed(by: bag)
 		XCTAssertEqual("testing", textPart.label.text)
 
-		textProperty.value = "newValue"
+		textProperty.accept("newValue")
 		XCTAssertEqual("newValue", textPart.label.text)
     }
 
@@ -73,7 +73,7 @@ class CardPartTextViewTests: XCTestCase {
 		XCTAssertEqual(attrText.attribute(NSAttributedString.Key.foregroundColor, at:0, effectiveRange:nil) as! UIColor,
 					   textPart.label.attributedText?.attribute(NSAttributedString.Key.foregroundColor, at:0, effectiveRange:nil) as! UIColor)
 		
-		let textProperty = Variable(NSAttributedString(string: "testing", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.boldSystemFont(ofSize: 50), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.blue])))
+        let textProperty = BehaviorRelay(value: NSAttributedString(string: "testing", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.boldSystemFont(ofSize: 50), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.blue])))
         textProperty.asObservable().bind(to: textPart.rx.attributedText).disposed(by: bag)
 		XCTAssertEqual(textProperty.value.string, textPart.label.attributedText?.string)
 		XCTAssertEqual(textProperty.value.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as! UIFont,
@@ -81,7 +81,7 @@ class CardPartTextViewTests: XCTestCase {
 		XCTAssertEqual(textProperty.value.attribute(NSAttributedString.Key.foregroundColor, at:0, effectiveRange:nil) as! UIColor,
 					   textPart.label.attributedText?.attribute(NSAttributedString.Key.foregroundColor, at:0, effectiveRange:nil) as! UIColor)
 
-		textProperty.value = NSAttributedString(string: "newValue", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.boldSystemFont(ofSize: 50), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.green]))
+		textProperty.accept(NSAttributedString(string: "newValue", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.boldSystemFont(ofSize: 50), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.green])))
 		XCTAssertEqual(textProperty.value.string, textPart.label.attributedText?.string)
 		XCTAssertEqual(textProperty.value.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as! UIFont,
 					   textPart.label.attributedText?.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as! UIFont)
@@ -99,11 +99,11 @@ class CardPartTextViewTests: XCTestCase {
 		textPart.font =  UIFont.boldSystemFont(ofSize: 20)
 		XCTAssertEqual(textPart.font, textPart.label.attributedText?.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont)
 
-		let fontProperty = Variable(UIFont.boldSystemFont(ofSize: 50))
+        let fontProperty = BehaviorRelay(value: UIFont.boldSystemFont(ofSize: 50))
 		fontProperty.asObservable().bind(to: textPart.rx.font).disposed(by: bag)
 		XCTAssertEqual(fontProperty.value, textPart.label.attributedText?.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont)
 
-		fontProperty.value = UIFont.boldSystemFont(ofSize: 10)
+		fontProperty.accept(UIFont.boldSystemFont(ofSize: 10))
 		XCTAssertEqual(fontProperty.value, textPart.label.attributedText?.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont)
     }
 
@@ -117,11 +117,11 @@ class CardPartTextViewTests: XCTestCase {
 		textPart.textColor =  UIColor.red
 		XCTAssertEqual(textPart.textColor, textPart.label.attributedText?.attribute(NSAttributedString.Key.foregroundColor, at:0, effectiveRange:nil) as? UIColor)
 
-		let colorProperty = Variable(UIColor.green)
+        let colorProperty = BehaviorRelay(value: UIColor.green)
 		colorProperty.asObservable().bind(to: textPart.rx.textColor).disposed(by: bag)
 		XCTAssertEqual(colorProperty.value, textPart.label.attributedText?.attribute(NSAttributedString.Key.foregroundColor, at:0, effectiveRange:nil) as? UIColor)
 
-		colorProperty.value = UIColor.blue
+		colorProperty.accept(UIColor.blue)
 		XCTAssertEqual(colorProperty.value, textPart.label.attributedText?.attribute(NSAttributedString.Key.foregroundColor, at:0, effectiveRange:nil) as? UIColor)
     }
 
@@ -135,11 +135,11 @@ class CardPartTextViewTests: XCTestCase {
 		textPart.textAlignment = .right
 		XCTAssertEqual(textPart.textAlignment, textPart.label.textAlignment)
 
-		let alignProperty = Variable<NSTextAlignment>(.center)
+        let alignProperty = BehaviorRelay<NSTextAlignment>(value: .center)
 		alignProperty.asObservable().bind(to: textPart.rx.textAlignment).disposed(by: bag)
 		XCTAssertEqual(alignProperty.value, textPart.label.textAlignment)
 
-		alignProperty.value = .left
+		alignProperty.accept(.left)
 		XCTAssertEqual(alignProperty.value, textPart.label.textAlignment)
     }
 
@@ -153,11 +153,11 @@ class CardPartTextViewTests: XCTestCase {
 		textPart.lineSpacing = 5.0
 		XCTAssertEqual(textPart.lineSpacing, (textPart.label.attributedText?.attribute(NSAttributedString.Key.paragraphStyle, at:0, effectiveRange:nil) as? NSParagraphStyle)?.lineSpacing)
 
-		let lineSpacingProperty = Variable<CGFloat>(2.5)
+        let lineSpacingProperty = BehaviorRelay<CGFloat>(value: 2.5)
 		lineSpacingProperty.asObservable().bind(to: textPart.rx.lineSpacing).disposed(by: bag)
 		XCTAssertEqual(textPart.lineSpacing, (textPart.label.attributedText?.attribute(NSAttributedString.Key.paragraphStyle, at:0, effectiveRange:nil) as? NSParagraphStyle)?.lineSpacing)
 
-		lineSpacingProperty.value = 1.0
+		lineSpacingProperty.accept(1.0)
 		XCTAssertEqual(textPart.lineSpacing, (textPart.label.attributedText?.attribute(NSAttributedString.Key.paragraphStyle, at:0, effectiveRange:nil) as? NSParagraphStyle)?.lineSpacing)
     }
 
@@ -171,11 +171,11 @@ class CardPartTextViewTests: XCTestCase {
 		textPart.lineHeightMultiple = 5.0
 		XCTAssertEqual(textPart.lineHeightMultiple, (textPart.label.attributedText?.attribute(NSAttributedString.Key.paragraphStyle, at:0, effectiveRange:nil) as? NSParagraphStyle)?.lineHeightMultiple)
 
-		let lineHeightMultipleProperty = Variable<CGFloat>(2.5)
+        let lineHeightMultipleProperty = BehaviorRelay<CGFloat>(value: 2.5)
 		lineHeightMultipleProperty.asObservable().bind(to: textPart.rx.lineHeightMultiple).disposed(by: bag)
 		XCTAssertEqual(textPart.lineHeightMultiple, (textPart.label.attributedText?.attribute(NSAttributedString.Key.paragraphStyle, at:0, effectiveRange:nil) as? NSParagraphStyle)?.lineHeightMultiple)
 
-		lineHeightMultipleProperty.value = 1.0
+		lineHeightMultipleProperty.accept(1.0)
 		XCTAssertEqual(textPart.lineHeightMultiple, (textPart.label.attributedText?.attribute(NSAttributedString.Key.paragraphStyle, at:0, effectiveRange:nil) as? NSParagraphStyle)?.lineHeightMultiple)
     }
 
