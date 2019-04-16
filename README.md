@@ -74,8 +74,9 @@ If you want to change the content of any of these cards, you can look into each 
 # Requirements
 
 - iOS 10.0+
-- Xcode 9.2+
-- Swift 4.0+
+- Xcode 10.2+
+- Swift 5.0+
+- CocoaPods 1.6.1+
 
 # Installation
 
