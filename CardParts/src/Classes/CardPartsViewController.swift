@@ -126,7 +126,7 @@ open class CardPartsViewController : UIViewController, CardController {
 		}
 	}
 	
-	public func invalidateLayout<T>(onChanges variables: [Variable<T>]) {
+	public func invalidateLayout<T>(onChanges variables: [BehaviorRelay<T>]) {
 		for variable in variables {
 			variable.asObservable().subscribe(onNext: { [weak self] _ in
 				self?.invalidateLayout()

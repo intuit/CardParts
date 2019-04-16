@@ -30,11 +30,11 @@ class CardPartImageViewTests: XCTestCase {
 		
 		let imagePart = CardPartImageView()
 		
-		let imageNameProperty = Variable("imageName")
+        let imageNameProperty = BehaviorRelay(value: "imageName")
 		imageNameProperty.asObservable().bind(to: imagePart.rx.imageName).disposed(by: bag)
 		XCTAssertEqual(imagePart.imageName, "imageName")
 		
-		imageNameProperty.value = "new value"
+		imageNameProperty.accept("new value")
 		XCTAssertEqual(imagePart.imageName, "new value")
 	}
 
@@ -44,11 +44,11 @@ class CardPartImageViewTests: XCTestCase {
 		
 		let imagePart = CardPartImageView()
 		
-		let contentModeProperty = Variable<UIView.ContentMode>(.scaleToFill)
+        let contentModeProperty = BehaviorRelay<UIView.ContentMode>(value: .scaleToFill)
 		contentModeProperty.asObservable().bind(to: imagePart.rx.contentMode).disposed(by: bag)
 		XCTAssertEqual(imagePart.contentMode, UIView.ContentMode.scaleToFill)
 		
-		contentModeProperty.value = .scaleAspectFit
+		contentModeProperty.accept(.scaleAspectFit)
 		XCTAssertEqual(imagePart.contentMode, UIView.ContentMode.scaleAspectFit)
 	}
 

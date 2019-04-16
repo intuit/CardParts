@@ -58,7 +58,7 @@ extension EditableCardTrait {
 
 public protocol HiddenCardTrait {
 	
-	var isHidden: Variable<Bool> { get }
+	var isHidden: BehaviorRelay<Bool> { get }
 }
 
 public protocol ShadowCardTrait {

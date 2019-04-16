@@ -79,8 +79,8 @@ class CardPartCollectionViewCardController: CardPartsViewController {
 
 class CardPartCollectionViewModel {
     
-    typealias ReactiveSection = Variable<[SectionOfCustomStruct]>
-    var data = ReactiveSection([])
+    typealias ReactiveSection = BehaviorRelay<[SectionOfCustomStruct]>
+    var data = ReactiveSection(value: [])
     
     let emojis: [String] = ["😎", "🤪", "🤩", "👻", "🤟🏽", "💋", "💃🏽"]
     
@@ -93,7 +93,7 @@ class CardPartCollectionViewModel {
             temp.append(MyStruct(title: "Title #\(i)", description: "\(emojis[Int(arc4random_uniform(UInt32(emojis.count)))])"))
         }
         
-        data.value = [SectionOfCustomStruct(header: "", items: temp)]
+        data.accept([SectionOfCustomStruct(header: "", items: temp)])
     }
 }
 
