@@ -351,7 +351,7 @@ extension CardsViewController {
         keyboardRect = self.view.convert(keyboardRect, from: nil)
         
         let scrollViewKeyboardIntersection = collectionView.frame.intersection(keyboardRect)
-        let newContentInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: scrollViewKeyboardIntersection.size.height, right: 0)
+        let newContentInsets = UIEdgeInsets.init(top: CardParts.theme.cardsViewContentInsetTop, left: 0, bottom: scrollViewKeyboardIntersection.size.height, right: 0)
         
         savedContentInset = collectionView.contentInset
         
