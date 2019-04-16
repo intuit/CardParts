@@ -30,7 +30,7 @@ class ReactiveCardViewModel {
 		case 1:
 			text.accept("this is some long text that should wrap the line. Do this work?")
 		case 2:
-			text.accept("this is some very very very very very very very very very very very very very very very long text that should wrap the line. Do this work?")
+			text.accept("this is some very very very very very very very very very very very very very very very long text that should wrap the line. Does this work?")
 		default:
 			return
 		}
