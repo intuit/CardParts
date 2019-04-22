@@ -478,7 +478,7 @@ As the name describes, it shows a vertical separator view opposed to a horizonta
 
 #### `CardPartStackView`
 
-CardPartSeparatorView displays a UIStackView that can contain other card parts, and even other CardPartStackViews. Using CardPartStackView allows for creating custom layouts of card parts. By nesting CardPartStackViews you can create almost any layout.
+CardPartStackView displays a UIStackView that can contain other card parts, and even other CardPartStackViews. Using CardPartStackView allows for creating custom layouts of card parts. By nesting CardPartStackViews you can create almost any layout.
 
 To add a card part to the stack view call its addArrangedSubview method, specifying the card part's view property as the view to be added to the stack view. For example:
 
