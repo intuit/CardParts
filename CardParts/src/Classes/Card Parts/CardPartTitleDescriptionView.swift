@@ -51,6 +51,12 @@ public class CardPartTitleDescriptionView : UIView, CardPartView {
 			leftDescriptionLabel.attributedText = leftDescriptionAttributedText
 		}
 	}
+    
+    public var leftTitleAttributedText: NSAttributedString? {
+        didSet {
+            leftTitleLabel.attributedText = leftTitleAttributedText
+        }
+    }
 	
 	public var rightTitleText: String? {
 		didSet {
@@ -69,6 +75,12 @@ public class CardPartTitleDescriptionView : UIView, CardPartView {
 			rightDescriptionLabel.attributedText = rightDescriptionAttributedText
 		}
 	}
+    
+    public var rightTitleAttributedText: NSAttributedString? {
+        didSet {
+            rightTitleLabel.attributedText = rightTitleAttributedText
+        }
+    }
 	
 	public var leftTitleFont: UIFont = CardParts.theme.leftTitleFont {
 		didSet {
@@ -389,11 +401,23 @@ extension Reactive where Base: CardPartTitleDescriptionView {
 		}
 	}
     
+    public var leftTitleAttributedText: Binder<NSAttributedString?>{
+        return Binder(self.base) { (titleDescriptionView, leftTitleAttributedText) -> () in
+            titleDescriptionView.leftTitleAttributedText = leftTitleAttributedText
+        }
+    }
+    
 	public var rightDescriptionAttributedText: Binder<NSAttributedString?>{
 		return Binder(self.base) { (titleDescriptionView, rightDescriptionAttributedText) -> () in
 			titleDescriptionView.rightDescriptionAttributedText = rightDescriptionAttributedText
 		}
 	}
+    
+    public var rightTitleAttributedText: Binder<NSAttributedString?>{
+        return Binder(self.base) { (titleDescriptionView, rightTitleAttributedText) -> () in
+            titleDescriptionView.rightTitleAttributedText = rightTitleAttributedText
+        }
+    }
 
 	public var rightTitleText: Binder<String?>{
 		return Binder(self.base) { (titleDescriptionView, rightTitleText) -> () in
