@@ -47,7 +47,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartTableViewCell](#cardparttableviewcell)
     - [CardPartTableViewCardPartsCell](#cardparttableviewcardpartscell)
     - [CardPartCollectionView](#cardpartcollectionview)
-    - [CardPartCollectionViewCardPartsCell](#cardpartcollectionviewcardpartcell)
+    - [CardPartCollectionViewCardPartsCell](#cardpartcollectionviewcardpartscell)
     - [CardPartBarView](#cardpartbarview)
     - [CardPartPagedView](#cardpartpagedview)
     - [CardPartSliderView](#cardpartsliderview)
