@@ -127,6 +127,8 @@ CardParts is the second generation Card UI framework for the iOS Mint applicatio
 See how quickly you can get a card displayed on the screen while adhering to the MVVM design pattern:
 
 ```swift
+import RxCocoa
+
 class MyCardsViewController: CardsViewController {
 
     let cards: [CardController] = [TestCardController()]
@@ -168,6 +170,8 @@ class TestViewModel {
     }
 }
 ```
+
+_Note:_ `RxCocoa` is required for `BehaviorRelay`, thus you must import it wherever you may find yourself using it.
 
 # Architecture
 
