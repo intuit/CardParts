@@ -10,9 +10,9 @@
 [![Platform](https://img.shields.io/cocoapods/p/CardParts.svg?style=flat)](http://cocoapods.org/pods/CardParts)
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintsights.gif" width="300" alt="MintSights by CardParts"/>
-    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintCardParts.gif" width="300" alt="CardParts in Mint"/>
-    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/turboCardParts.gif" width="300" alt="CardParts in Turbo"/>
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintsights.gif" width="290" alt="MintSights by CardParts"/>
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintCardParts.gif" width="290" alt="CardParts in Mint"/>
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/turboCardParts.gif" width="290" alt="CardParts in Turbo"/>
 </p>
 
 CardParts - made with ❤️ by Intuit:
