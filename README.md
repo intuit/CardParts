@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/cocoapods/l/CardParts.svg?style=flat)](http://cocoapods.org/pods/CardParts)
 [![Platform](https://img.shields.io/cocoapods/p/CardParts.svg?style=flat)](http://cocoapods.org/pods/CardParts)
 
-<p align="left">
+<p align="center">
     <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintsights.gif" width="290" alt="MintSights by CardParts"/>
     <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintCardParts.gif" width="290" alt="CardParts in Mint"/>
     <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/turboCardParts.gif" width="290" alt="CardParts in Turbo"/>
