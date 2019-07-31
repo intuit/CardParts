@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0AC06A50F9EFC07A051126DA /* Pods_CardParts_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F639F94EB1911C332F07F7C5 /* Pods_CardParts_Example.framework */; };
 		1964FC2A3640A8318B06FAE2 /* Pods_CardParts_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411FA9F08E0EF1AF5B1D8EA1 /* Pods_CardParts_Tests.framework */; };
+		1BD1074022F22823000163D2 /* CardPartBorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD1073F22F22823000163D2 /* CardPartBorderViewController.swift */; };
 		5570914320D18B07004D8E5A /* CardPartOrientedViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5570914220D18B07004D8E5A /* CardPartOrientedViewCardController.swift */; };
 		55809E2620DABBF3008BE0D2 /* CardPartCenteredViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55809E2520DABBF3008BE0D2 /* CardPartCenteredViewCardController.swift */; };
 		55AB80CF20B61E1700B5994B /* CardUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB80CE20B61E1700B5994B /* CardUtilsTests.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BD1073F22F22823000163D2 /* CardPartBorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartBorderViewController.swift; sourceTree = "<group>"; };
 		2BA2B86E3C2946F91C18390D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2C0391CB2C9A48987E449BE1 /* Pods-CardParts_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardParts_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardParts_Tests/Pods-CardParts_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		30570F5B2E2268AA7B34EEC0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				5570914220D18B07004D8E5A /* CardPartOrientedViewCardController.swift */,
 				55809E2520DABBF3008BE0D2 /* CardPartCenteredViewCardController.swift */,
 				70BB3BF320FF89A500F55D57 /* CardPartTitleDescriptionViewCardController.swift */,
+				1BD1073F22F22823000163D2 /* CardPartBorderViewController.swift */,
 			);
 			name = "Type of CardParts";
 			sourceTree = "<group>";
@@ -366,8 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CardParts_Tests/Pods-CardParts_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CardParts/CardParts.framework",
@@ -378,8 +379,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CardParts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
@@ -398,8 +397,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CardParts_Example/Pods-CardParts_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CardParts/CardParts.framework",
@@ -410,8 +407,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CardParts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
@@ -497,6 +492,7 @@
 				70F595DA20B5C9F200B6E688 /* CardPartStackViewCardController.swift in Sources */,
 				5570914320D18B07004D8E5A /* CardPartOrientedViewCardController.swift in Sources */,
 				55809E2620DABBF3008BE0D2 /* CardPartCenteredViewCardController.swift in Sources */,
+				1BD1074022F22823000163D2 /* CardPartBorderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

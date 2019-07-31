@@ -32,7 +32,8 @@ class MainViewController: CardsViewController {
             CardPartOrientedViewCardController(), // Oriented card part
             CardPartCenteredViewCardController(), // Centered card part
             ReactiveCardController(), // Demo RxSwift
-            StateCardController() // Demo states
+            StateCardController(), // Demo states
+            CardPartBorderViewController() // Border Cards
         ]
         
         loadCards(cards: cards)

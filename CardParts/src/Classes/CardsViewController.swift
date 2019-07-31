@@ -191,6 +191,10 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
                 cell.setCornerRadius(radius: roundedCardTrait.cornerRadius())
             }
             
+            if let borderCardTrait = cardController as? BorderCardTrait {
+                cell.addBorderToCard(borderWidth: borderCardTrait.borderWidth(), borderColor: borderCardTrait.borderColor())
+            }
+            
             if let gradientCardTrait = cardController as? GradientCardTrait {
                 cell.gradientColors = gradientCardTrait.gradientColors()
                 cell.gradientAngle = gradientCardTrait.gradientAngle?() ?? 0

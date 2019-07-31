@@ -166,6 +166,11 @@ open class CardCell : UICollectionViewCell {
         gradientLayer.cornerRadius = radius
     }
     
+    func addBorderToCard(borderWidth: CGFloat = 0.5, borderColor: CGColor = UIColor.Gray7.cgColor) {
+        contentView.layer.borderWidth = borderWidth
+        contentView.layer.borderColor = borderColor
+    }
+    
     func addLongGestureRecognizer(minimumPressDuration: CFTimeInterval, delegate: CardPartsLongPressGestureRecognizerDelegate) {
         let longGesture = UILongPressGestureRecognizer(target: delegate, action: #selector(CardPartsLongPressGestureRecognizerDelegate.didLongPress(_:)))
         longGesture.minimumPressDuration = minimumPressDuration
