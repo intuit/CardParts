@@ -316,6 +316,27 @@ Use this protocol to add a gradient background for the card. The gradients will 
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/gradient.png" width="300" alt="Shadow radius 10.0"/>
 </p>
 
+#### `BorderCardTrait`
+
+Use this protocol to add border color and border width for the card, implement   `borderWidth()`,  and `borderColor()` methods.
+
+```swift
+    func borderWidth() -> CGFloat {
+        return 2.0
+    }
+
+    func borderColor() -> CGColor {
+        return UIColor.darkGray.cgColor
+    }
+
+
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/border.png" width="300" alt="border"/>
+</p>
+
+
 ## `CardPartsViewController`
 
 CardPartsViewController implements the CardController protocol and builds its card UI by displaying one or more card part views using an MVVM pattern that includes automatic data binding. Each CardPartsViewController displays a list of CardPartView as its subviews. Each CardPartView renders as a row in the card. The CardParts framework implements several different types of CardPartView that display basic views, such as title, text, image, button, separator, etc. All CardPartView implemented by the framework are already styled to correctly match the applied themes UI guidelines.
