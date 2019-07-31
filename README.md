@@ -33,6 +33,7 @@ CardParts - made with ❤️ by Intuit:
     - [ShadowCardTrait](#shadowcardtrait)
     - [RoundedCardTrait](#roundedcardtrait)
     - [GradientCardTrait](#gradientcardtrait)
+    - [BorderCardTrait](#bordercardtrait)
   - [CardPartsViewController](#cardpartsviewcontroller)
   - [CardPartsFullScreenViewController](#cardpartsfullscreenviewcontroller)
   - [CardParts](#card-parts)
@@ -318,7 +319,7 @@ Use this protocol to add a gradient background for the card. The gradients will 
 
 #### `BorderCardTrait`
 
-Use this protocol to add border color and border width for the card, implement   `borderWidth()`,  and `borderColor()` methods.
+Use this protocol to add border color and border width for the card, implement `borderWidth()`, and `borderColor()` methods.
 
 ```swift
     func borderWidth() -> CGFloat {
@@ -335,7 +336,6 @@ Use this protocol to add border color and border width for the card, implement  
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/border.png" width="300" alt="border"/>
 </p>
-
 
 ## `CardPartsViewController`
 
