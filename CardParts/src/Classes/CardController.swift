@@ -109,3 +109,19 @@ extension CardPartsLongPressGestureRecognizerDelegate {
     var minimumPressDuration: CFTimeInterval { return 1.0 }
 }
 
+public protocol BorderCardTrait {
+    func borderWidth() -> CGFloat
+    func borderColor() -> CGColor
+}
+
+extension BorderCardTrait {
+    
+    func borderWidth() -> CGFloat {
+        return 0.5
+    }
+    
+    func borderColor() -> CGColor {
+        return UIColor.Gray7.cgColor
+    }
+}
+
