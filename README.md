@@ -42,6 +42,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartButtonView](#cardpartbuttonview)
     - [CardPartTitleView](#cardparttitleview)
     - [CardPartTitleDescriptionView](#cardparttitleview)
+    - [CardPartPillLabel](#cardpartpilllabel)
     - [CardPartSeparatorView](#cardpartseparatorview)
     - [CardPartVerticalSeparatorView](#cardpartverticalseparatorview)
     - [CardPartTableView](#cardparttableview)
@@ -490,6 +491,19 @@ CardPartTitleDescriptionView allows you to have a left and right title and descr
 let rightAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryPosition: .right) // This will be right aligned
 let centerAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryPosition: .center(amount: 0)) // This will be center aligned with an offset of 0.  You may increase that amount param to shift right your desired amount
 ```
+
+#### `CardPartPillLabel`
+
+CardPartPillLabel provides you the rounded corners, text aligned  being at the center along with vertical and horizontal padding capability.
+
+```swift
+var verticalPadding:CGFloat
+var horizontalPadding:CGFloat
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/pillLabels.png" width="300" alt="pillLabel"/>
+</p>
 
 See the example app for a working example.
 
