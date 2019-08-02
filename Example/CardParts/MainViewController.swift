@@ -33,7 +33,8 @@ class MainViewController: CardsViewController {
             CardPartCenteredViewCardController(), // Centered card part
             ReactiveCardController(), // Demo RxSwift
             StateCardController(), // Demo states
-            CardPartBorderViewController() // Border Cards
+            CardPartBorderViewController(), // Border Cards
+            CardPartPillLabelCardController() // Pill label
         ]
         
         loadCards(cards: cards)
