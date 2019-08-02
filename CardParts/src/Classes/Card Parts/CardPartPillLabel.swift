@@ -6,10 +6,19 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 public class CardPartPillLabel: UILabel, CardPartView {
     
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
+    
+    public var labelText: String? {
+        didSet {
+            guard let text = labelText else { return }
+            self.text = text
+        }
+    }
     
     /// provides vertical and horizontal spacing
     public var verticalPadding:CGFloat = 2.0
@@ -43,5 +52,27 @@ public class CardPartPillLabel: UILabel, CardPartView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         setup()
+    }
+}
+
+// MARK: - Reactive binding for label's text , vertical & horizontal padding.
+extension Reactive where Base: CardPartPillLabel {
+    
+    public var labelText: Binder<String?>{
+        return Binder(self.base) { (label, labelText) -> () in
+            label.text = labelText
+        }
+    }
+    
+    public var verticalPadding: Binder<CGFloat> {
+        return Binder(self.base) { (label, verticalPadding) -> () in
+            label.verticalPadding = verticalPadding
+        }
+    }
+    
+    public var horizontalPadding: Binder<CGFloat> {
+        return Binder(self.base) { (label, horizontalPadding) -> () in
+            label.horizontalPadding = horizontalPadding
+        }
     }
 }

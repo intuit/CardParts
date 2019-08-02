@@ -8,6 +8,8 @@
 
 import Foundation
 import CardParts
+import RxSwift
+import RxCocoa
 
 class CardPartPillLabelCardController: CardPartsViewController {
     
@@ -15,6 +17,8 @@ class CardPartPillLabelCardController: CardPartsViewController {
     let label1 = CardPartPillLabel()
     let label2 = CardPartPillLabel()
     let label3 = CardPartPillLabel()
+    
+    var viewModel = ReactiveCardPartPillViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +35,6 @@ class CardPartPillLabelCardController: CardPartsViewController {
         label2.backgroundColor = UIColor.black
         label2.textColor = UIColor.white
         
-        label3.text = "Label3"
         label3.verticalPadding = 10
         label3.horizontalPadding = 10
         label3.backgroundColor = UIColor.black
@@ -46,8 +49,51 @@ class CardPartPillLabelCardController: CardPartsViewController {
         [label1, label2, label3].forEach { label in
             stackView.addArrangedSubview(label)
         }
-
+        
+        viewModel.labelText.asObservable().bind(to: label3.rx.labelText).disposed(by: bag)
+        viewModel.verticalPadding.asObservable().bind(to: label3.rx.verticalPadding).disposed(by: bag)
+        viewModel.horizontalPadding.asObservable().bind(to: label3.rx.horizontalPadding).disposed(by: bag)
+        
         setupCardParts([stackView])
+        
+        invalidateLayout(onChanges: [viewModel.labelText])
+        invalidateLayout(onChanges: [viewModel.verticalPadding, viewModel.horizontalPadding])
+    }
+}
+
+
+class ReactiveCardPartPillViewModel {
+    
+    var labelText = BehaviorRelay(value: "Defaul Label")
+    var verticalPadding = BehaviorRelay(value: CGFloat(1.0))
+    var horizontalPadding = BehaviorRelay(value: CGFloat(1.0))
+    
+    init() {
+        startRandomText()
+    }
+    
+    func startRandomText() {
+        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.randomText), userInfo: nil, repeats: true)
+    }
+    
+    @objc func randomText() {
+        switch arc4random() % 3 {
+        case 0:
+            labelText.accept("Label4")
+            verticalPadding.accept(6.0)
+            horizontalPadding.accept(2.0)
+        case 1:
+            labelText.accept("Label5")
+            verticalPadding.accept(8.0)
+            horizontalPadding.accept(4.0)
+        case 2:
+            labelText.accept("Label6")
+            verticalPadding.accept(14.0)
+            horizontalPadding.accept(6.0)
+            
+        default:
+            return
+        }
     }
     
 }
