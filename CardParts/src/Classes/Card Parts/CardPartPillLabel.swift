@@ -3,7 +3,7 @@
 //  CardParts
 //
 //  Created by Venkatnarayansetty, Badarinath on 8/2/19.
-//
+//  Copyright © 2019 Intuit. All rights reserved.
 
 import UIKit
 import RxSwift
