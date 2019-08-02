@@ -525,6 +525,17 @@ To add a card part to the stack view call its addArrangedSubview method, specify
 horizStackPart.addArrangedSubview(imagePart)
 ```
 
+Also,provides an option to round the corners of the stackview
+
+```swift
+let roundedStackView = CardPartStackView()
+roundedStackView.cornerRadius = 10.0
+roundedStackView.pinBackground(roundedStackView.backgroundView, to: roundedStackView)
+```
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/roundedStackView.png" width="300" alt="roundedStackView"/>
+</p>
+
 There are no reactive properties defined for CardPartStackView. However you can use the default UIStackView properties (distribution, alignment, spacing, and axis) to configure the stack view.
 
 #### `CardPartTableView`

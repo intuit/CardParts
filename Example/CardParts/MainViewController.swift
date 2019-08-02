@@ -3,7 +3,7 @@
 //  CardParts
 //
 //  Created by tkier on 11/27/2017.
-//  Copyright (c) 2017 tkier. All rights reserved.
+//  Copyright © 2017 Intuit. All rights reserved.
 //
 
 import UIKit
@@ -34,7 +34,8 @@ class MainViewController: CardsViewController {
             ReactiveCardController(), // Demo RxSwift
             StateCardController(), // Demo states
             CardPartBorderViewController(), // Border Cards
-            CardPartPillLabelCardController() // Pill label
+            CardPartPillLabelCardController(), // Pill label
+            CardPartRoundedStackViewCardController() //Rounded Stackview
         ]
         
         loadCards(cards: cards)
