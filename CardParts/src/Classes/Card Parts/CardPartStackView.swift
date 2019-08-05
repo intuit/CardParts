@@ -26,11 +26,11 @@ public class CardPartStackView : UIStackView, CardPartView {
         
         stackView.insertSubview(view, at: 0)
         
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: view.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        stackView.layout {
+            $0.leading == view.leadingAnchor
+            $0.trailing == view.trailingAnchor
+            $0.top == view.topAnchor
+            $0.bottom == view.bottomAnchor
+        }
     }
 }
