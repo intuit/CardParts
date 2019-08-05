@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CardParts'
-  s.version          = '2.11.0'
+  s.version          = '2.12.0'
   s.platform         = :ios
   s.summary          = 'iOS Card UI framework.'
 
