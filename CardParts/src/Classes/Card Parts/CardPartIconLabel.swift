@@ -65,7 +65,6 @@ public class CardPartIconLabel: UILabel, CardPartView {
     }
     
     fileprivate func setup() {
-        self.layer.cornerRadius = frame.height / 2
         self.clipsToBounds = true
     }
     

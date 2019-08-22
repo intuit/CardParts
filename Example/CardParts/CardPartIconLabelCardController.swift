@@ -29,6 +29,7 @@ class CardPartIconLabelCardController: CardPartsViewController {
             iconLabel.textColor = UIColor.black
             iconLabel.numberOfLines = 0
             iconLabel.iconPadding = 5
+            iconLabel.layer.cornerRadius = 8.0
             iconLabel.icon = UIImage(named: "cardIcon")
             
             switch index {
