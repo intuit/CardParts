@@ -30,7 +30,12 @@ public class CardPartIconLabel: UILabel, CardPartView {
     public var horizontalPadding:CGFloat = 2.0
     public var padding:CGFloat = 10.0
     
-    fileprivate var iconView: UIImageView?
+    public var iconView: UIImageView? {
+        didSet {
+            guard let image = iconView?.image else { return }
+            self.icon = image
+        }
+    }
     
     /// Horizontal and vertical position
     public typealias Position = (horizontal: CardPartIconLabel.HorizontalPosition, vertical: CardPartIconLabel.VerticalPosition)
@@ -161,6 +166,12 @@ extension Reactive where Base: CardPartIconLabel {
     public var horizontalPadding: Binder<CGFloat> {
         return Binder(self.base) { (label, horizontalPadding) -> () in
             label.horizontalPadding = horizontalPadding
+        }
+    }
+    
+    public var iconView: Binder<UIImageView> {
+        return Binder(self.base) { (imageView, iconView) -> () in
+           imageView.iconView = iconView
         }
     }
 }

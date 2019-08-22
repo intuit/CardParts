@@ -8,8 +8,12 @@
 
 import Foundation
 import CardParts
+import RxSwift
+import RxCocoa
 
 class CardPartIconLabelCardController: CardPartsViewController {
+    
+     var viewModel = ReactiveCardPartIconViewModel()
     
     override func viewDidLoad() {
         
@@ -30,7 +34,7 @@ class CardPartIconLabelCardController: CardPartsViewController {
             iconLabel.numberOfLines = 0
             iconLabel.iconPadding = 5
             iconLabel.layer.cornerRadius = 8.0
-            iconLabel.icon = UIImage(named: "cardIcon")
+            iconLabel.icon = UIImage(named: "themeIcon")
             
             switch index {
             case 0:
@@ -68,8 +72,39 @@ class CardPartIconLabelCardController: CardPartsViewController {
             }
             
             stackView.addArrangedSubview(iconLabel)
+            
+            if index == 1 {
+                viewModel.labelText.asObservable().bind(to: iconLabel.rx.labelText).disposed(by: bag)
+                viewModel.iconView.asObservable().bind(to: iconLabel.rx.iconView).disposed(by: bag)
+                invalidateLayout(onChanges: [viewModel.iconView])
+            }
         }
         
         setupCardParts([stackView])
     }
+}
+
+class ReactiveCardPartIconViewModel {
+    
+    var labelText = BehaviorRelay(value: "Defaul Label")
+    var iconView = BehaviorRelay(value: UIImageView(image: UIImage(named: "")))
+    
+    init() {
+        startTimer()
+    }
+    
+    func startTimer() {
+       iconView.accept( UIImageView(image: UIImage(named: "cardIcon")))
+        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.randomise), userInfo: nil, repeats: true)
+    }
+    
+    @objc func randomise() {
+        switch arc4random() % 1 {
+        case 0:
+            labelText.accept("CardParts is reactive based library")
+        default:
+            return
+        }
+    }
+    
 }
