@@ -35,7 +35,8 @@ class MainViewController: CardsViewController {
             StateCardController(), // Demo states
             CardPartBorderViewController(), // Border Cards
             CardPartPillLabelCardController(), // Pill label
-            CardPartRoundedStackViewCardController() //Rounded Stackview
+            CardPartRoundedStackViewCardController(), //Rounded Stackview
+            CardPartIconLabelCardController() // Icon label
         ]
         
         loadCards(cards: cards)

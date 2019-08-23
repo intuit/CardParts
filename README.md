@@ -43,6 +43,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartTitleView](#cardparttitleview)
     - [CardPartTitleDescriptionView](#cardparttitleview)
     - [CardPartPillLabel](#cardpartpilllabel)
+    - [CardPartIconLabel](#cardparticonlabel)
     - [CardPartSeparatorView](#cardpartseparatorview)
     - [CardPartVerticalSeparatorView](#cardpartverticalseparatorview)
     - [CardPartTableView](#cardparttableview)
@@ -506,6 +507,26 @@ var horizontalPadding:CGFloat
 </p>
 
 See the example app for a working example.
+
+#### `CardPartIconLabel`
+
+CardPartIconLabel provides the capability to add images in eithet directions supporting left , right and center text alignments.
+
+```swift
+    let iconLabel = CardPartIconLabel()
+    iconLabel.verticalPadding = 10
+    iconLabel.horizontalPadding = 10
+    iconLabel.backgroundColor = UIColor.blue
+    iconLabel.font = UIFont.systemFont(ofSize: 12)
+    iconLabel.textColor = UIColor.black
+    iconLabel.numberOfLines = 0
+    iconLabel.iconPadding = 5
+    iconLabel.icon = UIImage(named: "cardIcon")
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartIconLabel.png" width="300" alt="cardPartIconLabel"/>
+</p>
 
 #### `CardPartSeparatorView`
 
