@@ -80,7 +80,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Confetti" image="confetti" id="tu7-T7-pRE"/>
+                    <tabBarItem key="tabBarItem" title="Confetti" image="confetti_not_filled" selectedImage="confetti_filled" id="tu7-T7-pRE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uY2-SE-EGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,7 +89,8 @@
     </scenes>
     <resources>
         <image name="cardIcon" width="25" height="25"/>
-        <image name="confetti" width="15" height="15"/>
+        <image name="confetti_filled" width="32" height="32"/>
+        <image name="confetti_not_filled" width="32" height="32"/>
         <image name="themeIcon" width="25" height="25"/>
     </resources>
 </document>

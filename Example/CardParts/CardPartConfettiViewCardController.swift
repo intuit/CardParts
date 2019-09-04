@@ -11,15 +11,67 @@ import CardParts
 
 
 class CardPartConfettiViewCardController: CardPartsViewController {
+    var images: [UIImage]!
+    var colors: [UIColor]!
     
     override func viewDidLoad() {
         
-        let confettiView = CardPartConfettiView(frame: self.view.bounds)
+        let stackView = CardPartStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8.0
+        stackView.margins = UIEdgeInsets(top: 10, left: 80, bottom: 0, right: 80)
         
-        self.view.heightAnchor.constraint(equalToConstant: 500).isActive = true
+        let mixedConfetti = CardPartButtonView()
+        mixedConfetti.setTitle("Mixed Confetti", for: UIControl.State.normal)
         
-        self.view.addSubview(confettiView)
+        let diamond = CardPartButtonView()
+        diamond.setTitle("Diamond Confetti", for: UIControl.State.normal)
         
-        //setupCardParts([confettiView])
+        stackView.addArrangedSubview(mixedConfetti)
+        stackView.addArrangedSubview(diamond)
+        
+        images = [UIImage(named: "circle"),
+                  UIImage(named: "semiCircle") ,
+                  UIImage(named: "rectangle"),
+                  UIImage(named: "square"),
+                  UIImage(named: "squiggle"),
+                  UIImage(named: "star"),
+                  UIImage(named: "filledCircle")
+            ] as? [UIImage]
+        colors = [ UIColor.flushOrange , UIColor.eggBlue , UIColor.blushPink , UIColor.cerulean , UIColor.limeGreen , UIColor.yellowSea , UIColor.superNova]
+        
+       let _ =  mixedConfetti.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            let confettiView = CardPartConfettiView(frame: CGRect(x: 0, y: 150, width: self.view.bounds.width, height: self.view.bounds.height))
+            confettiView.type  = .mixed
+            confettiView.confettiImages = self.images
+            confettiView.colors = self.colors
+            confettiView.shape = CAEmitterLayerEmitterShape.line
+            confettiView.startConfetti()
+            self.view.addSubview(confettiView)
+        
+           //change to desired number of seconds (in this case 5 seconds)
+            let when = DispatchTime.now() + 10
+            DispatchQueue.main.asyncAfter(deadline: when){
+                confettiView.stopConfetti()
+            }
+        }
+        
+        let _ =  diamond.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            let confettiView = CardPartConfettiView()
+            confettiView.type  = .diamond
+            confettiView.shape = CAEmitterLayerEmitterShape.line
+            confettiView.startConfetti()
+            self.view.addSubview(confettiView)
+            
+            // change to desired number of seconds (in this case 5 seconds)
+            let when = DispatchTime.now() + 10
+            DispatchQueue.main.asyncAfter(deadline: when){
+                confettiView.stopConfetti()
+            }
+        }
+        
+        setupCardParts([stackView])
     }
 }

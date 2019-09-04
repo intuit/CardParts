@@ -9,7 +9,14 @@ import Foundation
 import UIKit
 import QuartzCore
 
+/// Enum which tells which type of confetti partciles to choose.
+///
+/// - diamond: displays diamond shaped particles
+/// - star: displays star shaped particles
+/// - mixed: provides a way to mix and macth multiple images as confetti particles.
+/// - image: provides option of displaying custom image as confetti particles.
 public enum ConfettiType {
+    case confetti
     case diamond
     case star
     case mixed
@@ -19,8 +26,8 @@ public enum ConfettiType {
 public class CardPartConfettiView: UIView, CardPartView {
     
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
-    public var colors:[UIColor] = [ UIColor.crusta , UIColor.goldenTainoi , UIColor.monteCarlo , UIColor.strikemaster ]
-    public var type:ConfettiType = .diamond
+    public var colors:[UIColor] = [ UIColor.red, UIColor.green, UIColor.blue ]
+    public var type:ConfettiType = .star
     public var intensity:Float = 0.5
     public var shape:CAEmitterLayerEmitterShape = .sphere {
         didSet {
@@ -40,6 +47,7 @@ public class CardPartConfettiView: UIView, CardPartView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// constructs and configures emitter shape and add colors to the emitter particles.
     public func startConfetti() {
         emitter.emitterPosition = CGPoint(x: frame.size.width / 2.0, y: 0)
         emitter.emitterShape = shape
@@ -48,14 +56,26 @@ public class CardPartConfettiView: UIView, CardPartView {
         //construct the cells
         var cells = [CAEmitterCell]()
         for (index,color) in colors.enumerated() {
-            cells.append(confettiWithColor(color: color , index: index))
+            let colorConfetti = confetti(with: color, for: index)
+            cells.append(colorConfetti)
         }
         
         emitter.emitterCells = cells
         layer.addSublayer(emitter)
     }
     
-    func confettiWithColor(color: UIColor, index : Int) -> CAEmitterCell {
+    /// stops displaying confetti particles.
+    public func stopConfetti() {
+        emitter.birthRate = 0
+    }
+    
+    /// Provides a single particle with specified color for particular index
+    ///
+    /// - Parameters:
+    ///   - color: color which will be applied to confetti
+    ///   - index: index of the confetti
+    /// - Returns: confetti particle
+    private func confetti(with color: UIColor, for index : Int) -> CAEmitterCell {
         let confetti = CAEmitterCell()
         
         //The number of emitted objects created every second. Animatable.
@@ -65,8 +85,10 @@ public class CardPartConfettiView: UIView, CardPartView {
         confetti.lifetime = 14.0 * intensity
         confetti.lifetimeRange = 0.0
         
+        //set color
         confetti.color = color.cgColor
         
+        //set velocity ranges
         confetti.velocity = CGFloat(350.0 * intensity)
         confetti.velocityRange = CGFloat(80.0 * intensity)
         
@@ -82,24 +104,24 @@ public class CardPartConfettiView: UIView, CardPartView {
         confetti.scaleRange = CGFloat(intensity)
         confetti.scaleSpeed = CGFloat(-0.1 * intensity)
         
-        confetti.contents = imageForType(type: type , index: index)?.cgImage
+        //set images for confetti content.
+        confetti.contents = image(for: type, index: index)?.cgImage
        
         return confetti
     }
     
-    func imageForType(type: ConfettiType, index: Int = 0) -> UIImage? {
+    private func image(for type: ConfettiType, index: Int = 0) -> UIImage? {
         switch type {
         case .diamond:
             return UIImage(named: "diamond", in: Bundle(for: CardPartConfettiView.self), compatibleWith: nil)
         case .star:
-            return UIImage(named: "Star1", in: Bundle(for: CardPartConfettiView.self), compatibleWith: nil)
+            return UIImage(named: "star", in: Bundle(for: CardPartConfettiView.self), compatibleWith: nil)
         case let .image(customImage):
             return customImage
         case .mixed:
-            guard let random = confettiImages.randomElement() else {
-                return UIImage(named: "confetti", in: Bundle(for: CardPartConfettiView.self),compatibleWith: nil)
-            }
-            return random
+            return confettiImages[index]
+        case .confetti:
+             return UIImage(named: "confetti", in: Bundle(for: CardPartConfettiView.self), compatibleWith: nil)
         }
     }
 }

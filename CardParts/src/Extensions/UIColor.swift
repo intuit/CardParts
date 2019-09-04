@@ -43,4 +43,11 @@ extension UIColor {
     static var goldenTainoi : UIColor {get{return UIColor(red: 255/255.0, green: 198/255.0, blue: 91/255.0, alpha: 1.0)}}
     static var monteCarlo : UIColor {get{return UIColor(red: 122/255.0, green: 198/255.0, blue: 163/255.0, alpha: 1.0)}}
     static var strikemaster : UIColor {get{return UIColor(red: 147/255.0, green: 99/255.0, blue: 140/255.0, alpha: 1.0)}}
+    public static var flushOrange : UIColor {get{return UIColor.colorFromHex(0xFF8000)}}
+    public static var eggBlue : UIColor {get{return UIColor.colorFromHex(0x07C4D9)}}
+    public static var blushPink: UIColor {get{return UIColor.colorFromHex(0xFF88EC)}}
+    public static var cerulean: UIColor {get{return UIColor.colorFromHex(0x0097E6)}}
+    public static var limeGreen: UIColor {get{return UIColor.colorFromHex(0x53B700)}}
+    public static var yellowSea: UIColor {get{return UIColor.colorFromHex(0xFFAD00)}}
+    public static var superNova: UIColor {get{return UIColor.colorFromHex(0xFFCA00)}}
 }

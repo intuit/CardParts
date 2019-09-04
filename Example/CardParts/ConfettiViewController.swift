@@ -10,19 +10,13 @@ import Foundation
 import CardParts
 
 class ConfettiViewController: CardsViewController {
-    
-    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
+    
+        let cards:[CardPartsViewController] = [ CardPartConfettiViewCardController() ]
         
-        let confettiView = CardPartConfettiView(frame: self.view.bounds)
-        confettiView.type  = .mixed
-        confettiView.confettiImages = [ UIImage(named: "themeIcon"), UIImage(named: "cardIcon") ] as! [UIImage]
-        confettiView.shape = CAEmitterLayerEmitterShape.line
-        confettiView.startConfetti()
-       
-        
-        self.view.addSubview(confettiView)
+        self.loadCards(cards:cards )
     }
 }
