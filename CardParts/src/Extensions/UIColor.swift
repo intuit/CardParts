@@ -37,4 +37,10 @@ extension UIColor {
         let blue = CGFloat(rgbValue & 0xFF)/256.0
         return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
+    
+    //Confetti Colors
+    static var crusta : UIColor {get{return UIColor(red: 242/255.0, green: 102/255.0, blue: 68/255.0, alpha: 1.0)}}
+    static var goldenTainoi : UIColor {get{return UIColor(red: 255/255.0, green: 198/255.0, blue: 91/255.0, alpha: 1.0)}}
+    static var monteCarlo : UIColor {get{return UIColor(red: 122/255.0, green: 198/255.0, blue: 163/255.0, alpha: 1.0)}}
+    static var strikemaster : UIColor {get{return UIColor(red: 147/255.0, green: 99/255.0, blue: 140/255.0, alpha: 1.0)}}
 }
