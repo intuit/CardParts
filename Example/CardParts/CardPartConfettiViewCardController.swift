@@ -47,13 +47,13 @@ class CardPartConfettiViewCardController: CardPartsViewController {
             confettiView.confettiImages = self.images
             confettiView.colors = self.colors
             confettiView.shape = CAEmitterLayerEmitterShape.line
-            confettiView.startConfetti()
+            confettiView.beginConfetti()
             self.view.addSubview(confettiView)
         
            //change to desired number of seconds (in this case 5 seconds)
             let when = DispatchTime.now() + 10
             DispatchQueue.main.asyncAfter(deadline: when){
-                confettiView.stopConfetti()
+                confettiView.endConfetti()
             }
         }
         
@@ -62,13 +62,13 @@ class CardPartConfettiViewCardController: CardPartsViewController {
             let confettiView = CardPartConfettiView()
             confettiView.type  = .diamond
             confettiView.shape = CAEmitterLayerEmitterShape.line
-            confettiView.startConfetti()
+            confettiView.beginConfetti()
             self.view.addSubview(confettiView)
             
             // change to desired number of seconds (in this case 5 seconds)
             let when = DispatchTime.now() + 10
             DispatchQueue.main.asyncAfter(deadline: when){
-                confettiView.stopConfetti()
+                confettiView.endConfetti()
             }
         }
         

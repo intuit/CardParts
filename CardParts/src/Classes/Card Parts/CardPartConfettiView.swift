@@ -12,6 +12,7 @@ import QuartzCore
 /// Enum which tells which type of confetti partciles to choose.
 ///
 /// - diamond: displays diamond shaped particles
+/// - confetti: displays arc symbol shaped particles
 /// - star: displays star shaped particles
 /// - mixed: provides a way to mix and macth multiple images as confetti particles.
 /// - image: provides option of displaying custom image as confetti particles.
@@ -28,6 +29,7 @@ public class CardPartConfettiView: UIView, CardPartView {
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     public var colors:[UIColor] = [ UIColor.red, UIColor.green, UIColor.blue ]
     public var type:ConfettiType = .star
+    /// default : 0.5 value ranges from 0 - 1(being very slow)
     public var intensity:Float = 0.5
     public var shape:CAEmitterLayerEmitterShape = .sphere {
         didSet {
@@ -48,7 +50,7 @@ public class CardPartConfettiView: UIView, CardPartView {
     }
     
     /// constructs and configures emitter shape and add colors to the emitter particles.
-    public func startConfetti() {
+    public func beginConfetti() {
         emitter.emitterPosition = CGPoint(x: frame.size.width / 2.0, y: 0)
         emitter.emitterShape = shape
         emitter.emitterSize = CGSize(width: frame.size.width, height: 1)
@@ -65,11 +67,16 @@ public class CardPartConfettiView: UIView, CardPartView {
     }
     
     /// stops displaying confetti particles.
-    public func stopConfetti() {
+    public func endConfetti() {
         emitter.birthRate = 0
     }
     
-    /// Provides a single particle with specified color for particular index
+    /// Provides a single particle with
+    ///          1.specified color for particular index
+    ///          2.configurable velocity ranges.
+    ///          3.angle of orientation to emit the partcicles.
+    ///          4.spin ratio & it's range, certain particles needs to rotate
+    ///          5.scale of particles.
     ///
     /// - Parameters:
     ///   - color: color which will be applied to confetti
@@ -110,6 +117,12 @@ public class CardPartConfettiView: UIView, CardPartView {
         return confetti
     }
     
+    /// retuns the image based on the type of confetti
+    ///
+    /// - Parameters:
+    ///   - type: confetti type
+    ///   - index:position for image to return
+    /// - Returns: UImage based on confeeti type and index position
     private func image(for type: ConfettiType, index: Int = 0) -> UIImage? {
         switch type {
         case .diamond:
