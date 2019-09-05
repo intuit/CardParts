@@ -11,8 +11,6 @@ import CardParts
 
 
 class CardPartConfettiViewCardController: CardPartsViewController {
-    var images: [UIImage]!
-    var colors: [UIColor]!
     
     override func viewDidLoad() {
         
@@ -30,7 +28,8 @@ class CardPartConfettiViewCardController: CardPartsViewController {
         stackView.addArrangedSubview(mixedConfetti)
         stackView.addArrangedSubview(diamond)
         
-        images = [UIImage(named: "circle"),
+        let listOfImages = [
+                  UIImage(named: "circle"),
                   UIImage(named: "semiCircle") ,
                   UIImage(named: "rectangle"),
                   UIImage(named: "square"),
@@ -38,19 +37,22 @@ class CardPartConfettiViewCardController: CardPartsViewController {
                   UIImage(named: "star"),
                   UIImage(named: "filledCircle")
             ] as? [UIImage]
-        colors = [ UIColor.flushOrange , UIColor.eggBlue , UIColor.blushPink , UIColor.cerulean , UIColor.limeGreen , UIColor.yellowSea , UIColor.superNova]
+        
+        let colors: [UIColor] = [ UIColor.flushOrange , UIColor.eggBlue , UIColor.blushPink , UIColor.cerulean , UIColor.limeGreen , UIColor.yellowSea , UIColor.superNova]
+        
+        guard let images = listOfImages else { return }
         
        let _ =  mixedConfetti.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             let confettiView = CardPartConfettiView(frame: CGRect(x: 0, y: 150, width: self.view.bounds.width, height: self.view.bounds.height))
             confettiView.type  = .mixed
-            confettiView.confettiImages = self.images
-            confettiView.colors = self.colors
+            confettiView.confettiImages = images
+            confettiView.colors = colors
             confettiView.shape = CAEmitterLayerEmitterShape.line
             confettiView.beginConfetti()
             self.view.addSubview(confettiView)
         
-           //change to desired number of seconds (in this case 5 seconds)
+           //change to desired number of seconds (in this case 10 seconds)
             let when = DispatchTime.now() + 10
             DispatchQueue.main.asyncAfter(deadline: when){
                 confettiView.endConfetti()
@@ -65,7 +67,7 @@ class CardPartConfettiViewCardController: CardPartsViewController {
             confettiView.beginConfetti()
             self.view.addSubview(confettiView)
             
-            // change to desired number of seconds (in this case 5 seconds)
+            // change to desired number of seconds (in this case 10 seconds)
             let when = DispatchTime.now() + 10
             DispatchQueue.main.asyncAfter(deadline: when){
                 confettiView.endConfetti()
