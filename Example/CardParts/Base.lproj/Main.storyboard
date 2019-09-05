@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SM8-1j-WOG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SM8-1j-WOG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -60,15 +60,37 @@
                     <connections>
                         <segue destination="0Y6-JS-rBu" kind="relationship" relationship="viewControllers" id="VGl-vW-CV6"/>
                         <segue destination="4Jb-KI-KFr" kind="relationship" relationship="viewControllers" id="mKf-rh-Aub"/>
+                        <segue destination="Yd8-DL-kXq" kind="relationship" relationship="viewControllers" id="i7H-qK-5eC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vsd-bX-7Zl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-94" y="-43"/>
         </scene>
+        <!--Confetti-->
+        <scene sceneID="8MC-Yl-dUd">
+            <objects>
+                <viewController id="Yd8-DL-kXq" customClass="ConfettiViewController" customModule="CardParts_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rmJ-cF-W3r"/>
+                        <viewControllerLayoutGuide type="bottom" id="fb4-oq-adb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iag-bg-ZlP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Confetti" image="confetti_not_filled" selectedImage="confetti_filled" id="tu7-T7-pRE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uY2-SE-EGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="972"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cardIcon" width="25" height="25"/>
+        <image name="confetti_filled" width="32" height="32"/>
+        <image name="confetti_not_filled" width="32" height="32"/>
         <image name="themeIcon" width="25" height="25"/>
     </resources>
 </document>

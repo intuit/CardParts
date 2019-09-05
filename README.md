@@ -58,6 +58,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartTextField](#cardparttextfield)
     - [CardPartCenteredView](#cardpartcenteredview)
     - [CardPartOrientedView](#cardpartorientedview)
+    - [CardPartConfettiView](#cardpartconfettiview)
   - [Card States](#card-states)
   - [Data Binding](#data-binding)
   - [Themes](#themes)
@@ -915,6 +916,21 @@ class TestCardController : CardPartsViewController {
 ```
 
 A `CardPartCenteredView` can take in any card part that conforms to `CardPartView` as the left, center, and right components. To see a graphical example of the centered card part please look at the example application packaged with this cocoapod.
+
+#### `CardPartConfettiView`
+
+Provides the capability to add confetti with various types ( diamonds, star, mixed )  and colors, along with different level of intensity
+
+```swift
+    let confettiView = CardPartConfettiView()
+    confettiView.type  = .diamond
+    confettiView.shape = CAEmitterLayerEmitterShape.line
+    confettiView.startConfetti()
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/confetti.gif" width="300" alt="Confetti"/>
+</p>
 
 ## Card States
 

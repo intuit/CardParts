@@ -37,4 +37,13 @@ extension UIColor {
         let blue = CGFloat(rgbValue & 0xFF)/256.0
         return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
+    
+    //Confetti Colors
+    public static var flushOrange : UIColor {get{return UIColor.colorFromHex(0xFF8000)}}
+    public static var eggBlue : UIColor {get{return UIColor.colorFromHex(0x07C4D9)}}
+    public static var blushPink: UIColor {get{return UIColor.colorFromHex(0xFF88EC)}}
+    public static var cerulean: UIColor {get{return UIColor.colorFromHex(0x0097E6)}}
+    public static var limeGreen: UIColor {get{return UIColor.colorFromHex(0x53B700)}}
+    public static var yellowSea: UIColor {get{return UIColor.colorFromHex(0xFFAD00)}}
+    public static var superNova: UIColor {get{return UIColor.colorFromHex(0xFFCA00)}}
 }
