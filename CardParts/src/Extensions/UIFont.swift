@@ -13,34 +13,34 @@ enum FontSize: Int {
 extension UIFont {
     
     class func turboGenericFont(_ fontSize: FontSize) -> UIFont {
-        return UIFont(name: ".SFUIDisplay", size: CGFloat(fontSize.rawValue))!
+        return UIFont.systemFont(ofSize: CGFloat(fontSize.rawValue), weight: UIFont.Weight.regular)
     }
     
     class func turboGenericFontBlack(_ fontSize: FontSize) -> UIFont {
-        return UIFont(name: ".SFUIDisplay-Black", size: CGFloat(fontSize.rawValue))!
+        return UIFont.systemFont(ofSize: CGFloat(fontSize.rawValue), weight: UIFont.Weight.black)
     }
 
     class func turboGenericFontBold(_ fontSize: FontSize) -> UIFont {
-        return UIFont(name: ".SFUIDisplay-Bold", size: CGFloat(fontSize.rawValue))!
+        return UIFont.systemFont(ofSize: CGFloat(fontSize.rawValue), weight: UIFont.Weight.bold)
     }
     
     class func turboGenericMediumFont(_ fontSize: FontSize) -> UIFont {
-        return UIFont(name: ".SFUIDisplay-Medium", size: CGFloat(fontSize.rawValue))!
+        return UIFont.systemFont(ofSize: CGFloat(fontSize.rawValue), weight: UIFont.Weight.medium)
     }
     
     class func turboGenericLightFont(_ fontSize: FontSize) -> UIFont {
-        return UIFont(name: ".SFUIDisplay-Light", size: CGFloat(fontSize.rawValue))!
+        return UIFont.systemFont(ofSize: CGFloat(fontSize.rawValue), weight: UIFont.Weight.light)
     }
     
     class func turboGenericFontWithSize(_ size: CGFloat) -> UIFont {
-        return UIFont(name: ".SFUIDisplay", size: size)!
+        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.regular)
     }
     
     class func turboGenericMediumFontWithSize(_ size: CGFloat) -> UIFont {
-        return UIFont(name: ".SFUIDisplay-Medium", size: size)!
+        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
     }
     
     class func turboGenericLightFontWithSize(_ size: CGFloat) -> UIFont {
-        return UIFont(name: ".SFUIDisplay-Light", size: size)!
+        return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
     }
 }
