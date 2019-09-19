@@ -268,26 +268,31 @@ public class CardPartProgressBarView: UIView, CardPartView {
             self.markerView.bottomAnchor.constraint(equalTo: self.colorBarsStackView.topAnchor, constant: -self.markerToColorsBarCushion),
             self.markerView.widthAnchor.constraint(equalTo: self.markerView.heightAnchor, multiplier: 1.0, constant: 0),
             self.markerView.centerXAnchor.constraint(equalTo: colorBarsStackView.leadingAnchor),
-            
+
             self.markerLabel.bottomAnchor.constraint(equalTo: self.markerView.topAnchor, constant: -self.labelToMarkerCushion),
-            
+
             self.colorBarsStackView.bottomAnchor.constraint(equalTo: self.valueBarsStackView.topAnchor),
-            self.colorBarsStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -self.colorsBarOffset),
-            self.colorBarsStackView.trailingAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.trailingAnchor),
-            self.colorBarsStackView.leadingAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.leadingAnchor),
-            self.colorBarsStackView.topAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.topAnchor),
-            self.colorBarsStackView.bottomAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.bottomAnchor),
-            
+            self.colorBarsStackViewContainerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -self.colorsBarOffset),
             self.colorBarsStackViewContainerView.heightAnchor.constraint(equalToConstant: self.progressBarOnlyHeight),
             self.colorBarsStackViewContainerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.colorsBarOffset),
             self.colorBarsStackViewContainerView.bottomAnchor.constraint(equalTo: self.valueBarsStackView.topAnchor, constant: -self.colorsBarToValuesBarCushion),
             
+            self.colorBarsStackView.trailingAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.trailingAnchor),
+            //self.colorBarsStackView.leadingAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.leadingAnchor),
+            self.colorBarsStackView.topAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.topAnchor),
+            self.colorBarsStackView.bottomAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.bottomAnchor),
+
             self.valueBarsStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.valueBarsStackView.heightAnchor.constraint(equalToConstant: self.valuesBarHeight),
             self.valueBarsStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.valueBarsStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
         ])
         
+        let viewContraints = [
+            NSLayoutConstraint(item: colorBarsStackView as Any, attribute: .leading, relatedBy: .equal, toItem: colorBarsStackViewContainerView, attribute: .leading, multiplier: 1, constant: 0)
+        ]
+
+        self.addConstraints(viewContraints)
         super.updateConstraints()
     }
     
@@ -328,8 +333,9 @@ public class CardPartProgressBarView: UIView, CardPartView {
     
     fileprivate func addMarker(marker: UIView?) {
         let color: UIColor = UIColor.black
-        if marker != nil {
-            self.markerView.addSubview(marker!)
+        
+        if let marker = marker {
+            self.markerView.addSubview(marker)
         } else {
             let triangleView = CardPartTriangleView(frame: CGRect(x: 0, y: 0, width: markerHeight, height: markerHeight))
             triangleView.fillColor = color

@@ -46,11 +46,4 @@ extension UIColor {
     public static var limeGreen: UIColor {get{return UIColor.colorFromHex(0x53B700)}}
     public static var yellowSea: UIColor {get{return UIColor.colorFromHex(0xFFAD00)}}
     public static var superNova: UIColor {get{return UIColor.colorFromHex(0xFFCA00)}}
-    
-    //progressBar View band colors
-    public static var sunflowerYellow: UIColor { get { return UIColor.colorFromHex(0xFFDC00)}}
-    public static var kiwiGreen: UIColor { get {  return UIColor.colorFromHex(0xA9E838) }}
-    public static var darkLimeGreen: UIColor { get { return  UIColor.colorFromHex(0x7FD000)}}
-    public static var kermitGreen: UIColor { get { return UIColor.colorFromHex(0x53B700)}}
-    public static var trueGreen: UIColor { get { return UIColor.colorFromHex(0x108000)}}
 }

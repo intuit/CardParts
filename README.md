@@ -935,7 +935,7 @@ Provides the capability to add confetti with various types ( diamonds, star, mix
 
 ### `CardPartProgressBarView`
 
-Provides the capability to configure different colors and custom marker , it's position to indicate the progress based ont he value provided.
+Provides the capability to configure different colors and custom marker , it's position to indicate the progress based on the value provided.
 
 ```swift
     let progressBarView = CardPartProgressBarView(barValues: barValues, barColors: barColors, marker: nil, markerLabelTitle: "", currentValue: Double(720), showShowBarValues: false)
