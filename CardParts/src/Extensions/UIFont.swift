@@ -43,4 +43,6 @@ extension UIFont {
     class func turboGenericLightFontWithSize(_ size: CGFloat) -> UIFont {
         return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
     }
+
+    static var titleTextMedium : UIFont {get{return UIFont.systemFont(ofSize: CGFloat(FontSize.x_Large.rawValue), weight: UIFont.Weight.medium)}}
 }
