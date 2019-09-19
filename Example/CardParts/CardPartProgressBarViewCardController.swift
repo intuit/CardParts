@@ -24,7 +24,7 @@ class CardPartProgressBarViewCardController: CardPartsViewController {
     let barValues: [Double] = [300, 600, 650, 700, 750, 850]
     
     override func viewDidLoad() {
-        let progressBarView = CardPartProgressBarView(barValues: barValues, barColors: barColors, marker: nil, markerLabelTitle: "", currentValue: Double(450), showShowBarValues: false)
+        let progressBarView = CardPartProgressBarView(barValues: barValues, barColors: barColors, marker: nil, markerLabelTitle: "", currentValue: Double(600), showShowBarValues: false)
         progressBarView.barCornerRadius = 4.0
         
         viewModel.currentValue.asObservable().bind(to: progressBarView.rx.currentValue).disposed(by: bag)
