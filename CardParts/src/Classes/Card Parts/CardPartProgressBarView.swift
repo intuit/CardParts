@@ -41,7 +41,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
     fileprivate var currentVal: Double = 0
     
     
-    public init(barValues:[Double], barColors: [UIColor], marker: UIView? = nil , markerLabelTitle: String, currentValue: Double, showShowBarValues: Bool) {
+    public init(barValues:[Double], barColors: [UIColor], marker: UIView? = nil , markerLabelTitle: String? = nil, currentValue: Double, showShowBarValues: Bool) {
         
         self.barColors = barColors
         self.barValues = barValues.sorted(by: { (first, second) -> Bool in
@@ -52,7 +52,10 @@ public class CardPartProgressBarView: UIView, CardPartView {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        self.markerTitle = markerLabelTitle
+        if let markerTitle = markerLabelTitle {
+            self.markerTitle = markerTitle
+        }
+        
         self.currentVal = currentValue
         self.customMarker = marker
         
