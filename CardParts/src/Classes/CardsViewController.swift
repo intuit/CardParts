@@ -82,18 +82,21 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
-        cardCellWidth.accept(view.bounds.width - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right))
     }
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        cardCellWidth.accept(size.width - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right))
+        cardCellWidth.accept(size.width.rounded() - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right))
         invalidateLayout()
     }
     
     // functionality that happens when the view appears
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        let newValue = view.bounds.width.rounded() - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
+        if newValue != cardCellWidth.value {
+            cardCellWidth.accept(newValue)
+        }
+
         // make sure that we set this as the first time we are checking for visibility
         lastScrollViewBounds = nil
         notifyCardsVisibility()
