@@ -13,6 +13,7 @@
 		1B1E204022F4ADE900734EDA /* CardPartRoundedStackViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1E203F22F4ADE900734EDA /* CardPartRoundedStackViewCardController.swift */; };
 		1B1F9541231F3F4900085906 /* CardPartConfettiViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1F9540231F3F4900085906 /* CardPartConfettiViewCardController.swift */; };
 		1B1F9543231FF58400085906 /* ConfettiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1F9542231FF58300085906 /* ConfettiViewController.swift */; };
+		1B5F65412333DA3D001B473F /* CardPartProgressBarViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F65402333DA3D001B473F /* CardPartProgressBarViewCardController.swift */; };
 		1B693BA1230DAE2900662382 /* CardPartIconLabelCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B693BA0230DAE2900662382 /* CardPartIconLabelCardController.swift */; };
 		1BD1074022F22823000163D2 /* CardPartBorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD1073F22F22823000163D2 /* CardPartBorderViewController.swift */; };
 		5570914320D18B07004D8E5A /* CardPartOrientedViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5570914220D18B07004D8E5A /* CardPartOrientedViewCardController.swift */; };
@@ -65,6 +66,7 @@
 		1B1E203F22F4ADE900734EDA /* CardPartRoundedStackViewCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartRoundedStackViewCardController.swift; sourceTree = "<group>"; };
 		1B1F9540231F3F4900085906 /* CardPartConfettiViewCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartConfettiViewCardController.swift; sourceTree = "<group>"; };
 		1B1F9542231FF58300085906 /* ConfettiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiViewController.swift; sourceTree = "<group>"; };
+		1B5F65402333DA3D001B473F /* CardPartProgressBarViewCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartProgressBarViewCardController.swift; sourceTree = "<group>"; };
 		1B693BA0230DAE2900662382 /* CardPartIconLabelCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartIconLabelCardController.swift; sourceTree = "<group>"; };
 		1BD1073F22F22823000163D2 /* CardPartBorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartBorderViewController.swift; sourceTree = "<group>"; };
 		2BA2B86E3C2946F91C18390D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				1B1E203F22F4ADE900734EDA /* CardPartRoundedStackViewCardController.swift */,
 				1B693BA0230DAE2900662382 /* CardPartIconLabelCardController.swift */,
 				1B1F9540231F3F4900085906 /* CardPartConfettiViewCardController.swift */,
+				1B5F65402333DA3D001B473F /* CardPartProgressBarViewCardController.swift */,
 			);
 			name = "Type of CardParts";
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				70F595DA20B5C9F200B6E688 /* CardPartStackViewCardController.swift in Sources */,
 				5570914320D18B07004D8E5A /* CardPartOrientedViewCardController.swift in Sources */,
 				55809E2620DABBF3008BE0D2 /* CardPartCenteredViewCardController.swift in Sources */,
+				1B5F65412333DA3D001B473F /* CardPartProgressBarViewCardController.swift in Sources */,
 				1BD1074022F22823000163D2 /* CardPartBorderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

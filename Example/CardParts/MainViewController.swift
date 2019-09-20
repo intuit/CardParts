@@ -36,7 +36,8 @@ class MainViewController: CardsViewController {
             CardPartBorderViewController(), // Border Cards
             CardPartPillLabelCardController(), // Pill label
             CardPartRoundedStackViewCardController(), //Rounded Stackview
-            CardPartIconLabelCardController() // Icon label
+            CardPartIconLabelCardController(), // Icon label
+            CardPartProgressBarViewCardController() // ProgresBarView
         ]
         
         loadCards(cards: cards)

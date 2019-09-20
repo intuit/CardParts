@@ -59,6 +59,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartCenteredView](#cardpartcenteredview)
     - [CardPartOrientedView](#cardpartorientedview)
     - [CardPartConfettiView](#cardpartconfettiview)
+    - [CardPartProgressBarView](#cardpartprogressbarview)
   - [Card States](#card-states)
   - [Data Binding](#data-binding)
   - [Themes](#themes)
@@ -930,6 +931,19 @@ Provides the capability to add confetti with various types ( diamonds, star, mix
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/confetti.gif" width="300" alt="Confetti"/>
+</p>
+
+### `CardPartProgressBarView`
+
+Provides the capability to configure different colors and custom marker , it's position to indicate the progress based on the value provided.
+
+```swift
+    let progressBarView = CardPartProgressBarView(barValues: barValues, barColors: barColors, marker: nil, markerLabelTitle: "", currentValue: Double(720), showShowBarValues: false)
+    progressBarView.barCornerRadius = 4.0
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/progressBarView.png" width="300" alt="ProgressBarView"/>
 </p>
 
 ## Card States
