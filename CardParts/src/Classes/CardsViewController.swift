@@ -82,6 +82,11 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
+        
+        let newValue = view.bounds.width.rounded() - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
+        if newValue != cardCellWidth.value {
+            cardCellWidth.accept(newValue)
+        }
     }
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
