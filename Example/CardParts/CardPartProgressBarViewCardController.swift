@@ -21,12 +21,10 @@ class CardPartProgressBarViewCardController: CardPartsViewController {
                                 UIColor.purple,
                                 UIColor.blue]
     
-    let barValues: [Double] = [300, 600, 650, 700, 750, 850]
-    
     override func viewDidLoad() {
-        let progressBarView = CardPartProgressBarView(barValues: barValues, barColors: barColors, marker: nil, markerLabelTitle: "", currentValue: Double(600), showShowBarValues: false)
+        let progressBarView = CardPartProgressBarView(barColors: barColors, marker: nil, markerLabelTitle: "", currentValue: 2, showShowBarValues: false)
         progressBarView.barCornerRadius = 4.0
-        
+        progressBarView.margins = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 70)
         viewModel.currentValue.asObservable().bind(to: progressBarView.rx.currentValue).disposed(by: bag)
         
         setupCardParts([progressBarView])
@@ -38,8 +36,8 @@ class CardPartProgressBarViewCardController: CardPartsViewController {
 
 class ReactiveCardPartProgressBarViewModel {
     
-    var currentValue = BehaviorRelay(value: Double(100))
-
+    var currentValue = BehaviorRelay(value: Int(3))
+    
     init() {
         randomise()
     }
@@ -51,11 +49,11 @@ class ReactiveCardPartProgressBarViewModel {
     @objc func random() {
         switch arc4random() % 3 {
         case 0:
-            currentValue.accept(200)
+            currentValue.accept(1)
         case 1:
-            currentValue.accept(400)
+            currentValue.accept(2)
         case 2:
-            currentValue.accept(600)
+            currentValue.accept(3)
             
         default:
             return
@@ -63,3 +61,4 @@ class ReactiveCardPartProgressBarViewModel {
     }
     
 }
+
