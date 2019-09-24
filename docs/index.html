@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CardParts  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="CardParts  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">CardParts Docs</a> (0% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">CardParts Reference</a>
+        <img id="carat" src="img/carat.png" />
+        CardParts  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p align="center">
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartsLogo.png" width="300" alt="Mint Logo"/>
+</p>
+
+<p align="center"> </p>
+
+<p><a href="https://travis-ci.org/intuit/CardParts"><img src="https://travis-ci.org/intuit/CardParts.svg?branch=master" alt="Build Status"></a>
+<a href="http://cocoapods.org/pods/CardParts"><img src="https://img.shields.io/cocoapods/v/CardParts.svg?style=flat" alt="Version"></a>
+<a href="http://cocoapods.org/pods/CardParts"><img src="https://img.shields.io/cocoapods/l/CardParts.svg?style=flat" alt="License"></a>
+<a href="http://cocoapods.org/pods/CardParts"><img src="https://img.shields.io/cocoapods/p/CardParts.svg?style=flat" alt="Platform"></a></p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintsights.gif" width="290" alt="MintSights by CardParts"/>
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mintCardParts.gif" width="290" alt="CardParts in Mint"/>
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/turboCardParts.gif" width="290" alt="CardParts in Turbo"/>
+</p>
+
+<p>CardParts - made with ❤️ by Intuit:</p>
+
+<ul>
+<li><a href="#example">Example</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#communication-and-contribution">Communication &amp; Contribution</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#architecture">Architecture</a>
+
+<ul>
+<li><a href="#cardsviewcontroller">CardsViewController</a></li>
+<li><a href="#card-traits">Card Traits</a></li>
+<li><a href="#notopbottommarginscardtrait">NoTopBottomMarginsCardTrait</a></li>
+<li><a href="#transparentcardtrait">TransparentCardTrait</a></li>
+<li><a href="#editablecardtrait">EditableCardTrait</a></li>
+<li><a href="#hiddencardtrait">HiddenCardTrait</a></li>
+<li><a href="#shadowcardtrait">ShadowCardTrait</a></li>
+<li><a href="#roundedcardtrait">RoundedCardTrait</a></li>
+<li><a href="#gradientcardtrait">GradientCardTrait</a></li>
+<li><a href="#bordercardtrait">BorderCardTrait</a></li>
+<li><a href="#cardpartsviewcontroller">CardPartsViewController</a></li>
+<li><a href="#cardpartsfullscreenviewcontroller">CardPartsFullScreenViewController</a></li>
+<li><a href="#card-parts">CardParts</a></li>
+<li><a href="#cardparttextview">CardPartTextView</a></li>
+<li><a href="#cardpartimageview">CardPartImageView</a></li>
+<li><a href="#cardpartbuttonview">CardPartButtonView</a></li>
+<li><a href="#cardparttitleview">CardPartTitleView</a></li>
+<li><a href="#cardparttitleview">CardPartTitleDescriptionView</a></li>
+<li><a href="#cardpartpilllabel">CardPartPillLabel</a></li>
+<li><a href="#cardparticonlabel">CardPartIconLabel</a></li>
+<li><a href="#cardpartseparatorview">CardPartSeparatorView</a></li>
+<li><a href="#cardpartverticalseparatorview">CardPartVerticalSeparatorView</a></li>
+<li><a href="#cardparttableview">CardPartTableView</a></li>
+<li><a href="#cardparttableviewcell">CardPartTableViewCell</a></li>
+<li><a href="#cardparttableviewcardpartscell">CardPartTableViewCardPartsCell</a></li>
+<li><a href="#cardpartcollectionview">CardPartCollectionView</a></li>
+<li><a href="#cardpartcollectionviewcardpartscell">CardPartCollectionViewCardPartsCell</a></li>
+<li><a href="#cardpartbarview">CardPartBarView</a></li>
+<li><a href="#cardpartpagedview">CardPartPagedView</a></li>
+<li><a href="#cardpartsliderview">CardPartSliderView</a></li>
+<li><a href="#cardpartspacerview">CardPartSpacerView</a></li>
+<li><a href="#cardparttextfield">CardPartTextField</a></li>
+<li><a href="#cardpartcenteredview">CardPartCenteredView</a></li>
+<li><a href="#cardpartorientedview">CardPartOrientedView</a></li>
+<li><a href="#cardpartconfettiview">CardPartConfettiView</a></li>
+<li><a href="#cardpartprogressbarview">CardPartProgressBarView</a></li>
+<li><a href="#card-states">Card States</a></li>
+<li><a href="#data-binding">Data Binding</a></li>
+<li><a href="#themes">Themes</a></li>
+<li><a href="#clickable-cards">Clickable Cards</a></li>
+<li><a href="#listeners">Listeners</a></li>
+</ul></li>
+<li><a href="#apps-that-love-cardparts">Apps That Love CardParts</a></li>
+<li><a href="#publications">Publications</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h1 id='example' class='heading'>Example</h1>
+
+<p>To run the example project, clone the repo, and run <code>pod install</code> from the Example directory first.</p>
+
+<p>In <code>ViewController.swift</code> you will be able to change the cards displayed and/or their order by commenting out one of the <code>loadCards(cards: )</code> functions.
+If you want to change the content of any of these cards, you can look into each of the <code>CardPartsViewController</code> you pass into the function such as: <code>TestCardController</code>, <code>Thing1CardController</code>, <code>Thing2CardController</code>, etc.</p>
+<h1 id='requirements' class='heading'>Requirements</h1>
+
+<ul>
+<li>iOS 10.0+</li>
+<li>Xcode 10.2+</li>
+<li>Swift 5.0+</li>
+<li>CocoaPods 1.6.1+</li>
+</ul>
+<h1 id='installation' class='heading'>Installation</h1>
+
+<p>CardParts is available through <a href="http://cocoapods.org">CocoaPods</a>. You can install it with the following command:</p>
+<pre class="highlight shell"><code><span class="nv">$ </span>gem <span class="nb">install </span>cocoapods
+</code></pre>
+
+<p>To add CardParts to your project, simply add the following line to your Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'10.0'</span>
+<span class="n">use_frameworks!</span>
+
+<span class="n">target</span> <span class="s1">'&lt;Your Target Name&gt;'</span> <span class="k">do</span>
+    <span class="n">pod</span> <span class="s1">'CardParts'</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>Then, run the following command:</p>
+<pre class="highlight shell"><code><span class="nv">$ </span>pod <span class="nb">install</span>
+</code></pre>
+<h1 id='communication-and-contribution' class='heading'>Communication and Contribution</h1>
+
+<ul>
+<li>If you <strong>need help</strong>, open an issue and tag as <code>help wanted</code>.</li>
+<li>If you <strong>found a bug</strong>, open an issue and tag as <code>bug</code>.</li>
+<li>If you <strong>have a feature request</strong>, open an issue and tag as <code>feature</code>.</li>
+<li>If you <strong>want to contribute</strong>, submit a pull request.
+
+<ul>
+<li>In order to submit a pull request, please fork this repo and submit a PR from your forked repo.</li>
+<li>Have a detailed message as to what your PR fixes/enhances/adds.</li>
+<li>Each PR must get two approvals from our team before we will merge.</li>
+</ul></li>
+</ul>
+<h1 id='overview' class='heading'>Overview</h1>
+
+<p>CardParts is the second generation Card UI framework for the iOS Mint application. This version includes many updates to the original card part framework, including improved MVVM, data binding (via <a href="https://github.com/ReactiveX/RxSwift">RxSwift</a>), use of stack views and self sizing collection views instead sizing cells, 100% swift and much more. The result is a much simpler, easier to use, more powerful, and easier to maintain framework. This framework is currently used by the iOS Mint application and the iOS Turbo application.</p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartExample.png" alt="CardPart Example in Mint"/>
+</p>
+<h1 id='quick-start' class='heading'>Quick Start</h1>
+
+<p>See how quickly you can get a card displayed on the screen while adhering to the MVVM design pattern:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">RxCocoa</span>
+
+<span class="kd">class</span> <span class="kt">MyCardsViewController</span><span class="p">:</span> <span class="kt">CardsViewController</span> <span class="p">{</span>
+
+    <span class="k">let</span> <span class="nv">cards</span><span class="p">:</span> <span class="p">[</span><span class="kt">CardController</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">TestCardController</span><span class="p">()]</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+        <span class="nf">loadCards</span><span class="p">(</span><span class="nv">cards</span><span class="p">:</span> <span class="n">cards</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">TestCardController</span><span class="p">:</span> <span class="kt">CardPartsViewController</span>  <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="kt">TestViewModel</span><span class="p">()</span>
+    <span class="k">var</span> <span class="nv">titlePart</span> <span class="o">=</span> <span class="kt">CardPartTitleView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">titleOnly</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">textPart</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+        <span class="n">viewModel</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">titlePart</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">title</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+        <span class="n">viewModel</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">textPart</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+
+        <span class="nf">setupCardParts</span><span class="p">([</span><span class="n">titlePart</span><span class="p">,</span> <span class="n">textPart</span><span class="p">])</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">TestViewModel</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">title</span> <span class="o">=</span> <span class="kt">BehaviorRelay</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">text</span> <span class="o">=</span> <span class="kt">BehaviorRelay</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+
+        <span class="c1">// When these values change, the UI in the TestCardController</span>
+        <span class="c1">// will automatically update</span>
+        <span class="n">title</span><span class="o">.</span><span class="nf">accept</span><span class="p">(</span><span class="s">"Hello, world!"</span><span class="p">)</span>
+        <span class="n">text</span><span class="o">.</span><span class="nf">accept</span><span class="p">(</span><span class="s">"CardParts is awesome!"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p><em>Note:</em> <code>RxCocoa</code> is required for <code>BehaviorRelay</code>, thus you must import it wherever you may find yourself using it.</p>
+<h1 id='architecture' class='heading'>Architecture</h1>
+
+<p>There are two major parts to the card parts framework. The first is the <code>CardsViewController</code> which will display the cards. It is responsible for displaying cards in the proper order and managing the lifetime of the cards. The second major component is the cards themselves which are typically instances of <code>CardPartsViewController</code>. Each instance of <code>CardPartsViewController</code> displays the content of a single card, using one or more card parts (more details later).</p>
+<h2 id='code-cardsviewcontroller-code' class='heading'><code>CardsViewController</code></h2>
+
+<p>The <code>CardsViewController</code> uses a collection view where each cell is a single card. The cells will render the frames for the cards, but are designed to have a child ViewController that will display the contents of the card. Thus <code>CardsViewController</code> is essentially a list of child view controllers that are rendered in special cells that draw the card frames.</p>
+
+<p>To use a <code>CardsViewController</code>, you first need to subclass it. Then in the <code>viewDidLoad</code> method call the super class <code>loadCards</code> method passing an array of <code>CardController</code>s. Each instance of a <code>CardController</code> will be rendered as a single card. The <code>loadCards</code> method does this by getting the view controller for each <code>CardController</code> and adding them as child view controllers to the card cells. Here is an example:</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">TestCardsViewController</span><span class="p">:</span> <span class="kt">CardsViewController</span> <span class="p">{</span>
+
+    <span class="k">let</span> <span class="nv">cards</span><span class="p">:</span> <span class="p">[</span><span class="kt">CardController</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt">TestCardController</span><span class="p">(),</span> <span class="kt">AnotherTestCardController</span><span class="p">()]</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+        <span class="nf">loadCards</span><span class="p">(</span><span class="nv">cards</span><span class="p">:</span> <span class="n">cards</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Each card must implement the CardController protocol (note that <code>CardPartsViewController</code> discussed later implements this protocol already). The
+CardController protocol has a single method:</p>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">CardController</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span> <span class="p">{</span>
+
+    <span class="kd">func</span> <span class="nf">viewController</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span>
+
+<span class="p">}</span>
+</code></pre>
+
+<p>The viewController() method must return the viewController that will be added as a child controller to the card cell. If the CardController is a UIViewController it can simply return self for this method.</p>
+<h2 id='card-traits' class='heading'>Card Traits</h2>
+
+<p>The Card Parts framework defines a set of traits that can be used to modify the appearance and behavior of cards. These traits are implemented as protocols and protocol extensions. To add a trait to a card simply add the trait protocol to the CardController definition. For example:</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">MyCard</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">CardController</span><span class="p">,</span> <span class="kt">TransparentCardTrait</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre>
+
+<p>MyCard will now render itself with a transparent card background and frame. No extra code is needed, just adding the TransparentCardTrait as a protocol is all that is necessary.</p>
+
+<p>Most traits require no extra code. The default protocol extensions implemented by the framework implement all the code required for the trait to modify the card. A few traits do require implementing a function or property. See the documentation for each trait below for more information.</p>
+<h4 id='code-notopbottommarginscardtrait-code' class='heading'><code>NoTopBottomMarginsCardTrait</code></h4>
+
+<p>By default each card has margin at the top and bottom of the card frame. Adding the NoTopBottomMarginsCardTrait trait will remove that margin allowing the card to render to use the entire space inside the card frame.</p>
+<h4 id='code-transparentcardtrait-code' class='heading'><code>TransparentCardTrait</code></h4>
+
+<p>Each card is rendered with a frame that draws the border around the card. Adding TransparentCardTrait will not display that border allowing the card to render without a frame.</p>
+<h4 id='code-editablecardtrait-code' class='heading'><code>EditableCardTrait</code></h4>
+
+<p>If the EditableCardTrait trait is added, the card will be rendered with an edit button in upper right of the card. When user taps in the edit button, the framework will call the cards <em>onEditButtonTap()</em> method. The EditableCardTrait protocol requires the CardController to implement the <em>onEditButtonTap()</em> method.</p>
+<h4 id='code-hiddencardtrait-code' class='heading'><code>HiddenCardTrait</code></h4>
+
+<p>The HiddenCardTrait trait requires the CardController to implement an isHidden variable:</p>
+<pre class="highlight swift"><code>    <span class="k">var</span> <span class="nv">isHidden</span><span class="p">:</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span>
+</code></pre>
+
+<p>The framework will then observe the isHidden variable so that whenever its value is changed the card will be hidden or shown based upon the new value. This allows the CardController to control its visibility by simply modifying the value of its isHidden variable.</p>
+<h4 id='code-shadowcardtrait-code' class='heading'><code>ShadowCardTrait</code></h4>
+
+<p>The ShadowCardTrait protocol requires CardController to implement <code>shadowColor()</code>, <code>shadowRadius()</code>, <code>shadowOpacity()</code> and <code>shadowOffset()</code> methods.</p>
+<pre class="highlight swift"><code>    <span class="kd">func</span> <span class="nf">shadowColor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CGColor</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">lightGray</span><span class="o">.</span><span class="n">cgColor</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">shadowRadius</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mf">10.0</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The value can be from 0.0 to 1.0.</span>
+    <span class="c1">// 0.0 =&gt; lighter shadow</span>
+    <span class="c1">// 1.0 =&gt; darker shadow</span>
+    <span class="kd">func</span> <span class="nf">shadowOpacity</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Float</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mf">1.0</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">shadowOffset</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CGSize</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="p">}</span>
+
+</code></pre>
+
+<p align="center">
+shadowColor: lightGray, shadowRadius: 5.0, shadowOpacity: 0.5 <br/>
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/shadow_5.png" width="300" alt="Shadow radius 5.0"/>
+</p>
+
+<p align="center">
+shadowColor: lightGray, shadowRadius: 10.0, shadowOpacity: 0.5 <br/>
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/shadow_10.png" width="300" alt="Shadow radius 10.0"/>
+</p>
+<h4 id='code-roundedcardtrait-code' class='heading'><code>RoundedCardTrait</code></h4>
+
+<p>Use this protocol to define the roundness for the card by implementing the method <code>cornerRadius()</code>.</p>
+<pre class="highlight swift"><code>    <span class="kd">func</span> <span class="nf">cornerRadius</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mf">10.0</span>
+    <span class="p">}</span>
+</code></pre>
+
+<p align="center">
+cornerRadius: 10.0 <br/>
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/shadow_5.png" width="300" alt="Shadow radius 5.0"/>
+</p>
+<h4 id='code-gradientcardtrait-code' class='heading'><code>GradientCardTrait</code></h4>
+
+<p>Use this protocol to add a gradient background for the card. The gradients will be added vertically from top to bottom. Optionally you can apply an angle to the gradient. Angles are defined in degrees, any negative or positive degree value is valid.</p>
+<pre class="highlight swift"><code>    <span class="kd">func</span> <span class="nf">gradientColors</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">UIColor</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span><span class="kt">UIColor</span><span class="o">.</span><span class="n">lavender</span><span class="p">,</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">aqua</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">gradientAngle</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Float</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mf">45.0</span>
+    <span class="p">}</span>
+
+
+</code></pre>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/gradient.png" width="300" alt="Shadow radius 10.0"/>
+</p>
+<h4 id='code-bordercardtrait-code' class='heading'><code>BorderCardTrait</code></h4>
+
+<p>Use this protocol to add border color and border width for the card, implement <code>borderWidth()</code>, and <code>borderColor()</code> methods.</p>
+<pre class="highlight swift"><code>    <span class="kd">func</span> <span class="nf">borderWidth</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mf">2.0</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">borderColor</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">CGColor</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">darkGray</span><span class="o">.</span><span class="n">cgColor</span>
+    <span class="p">}</span>
+
+
+</code></pre>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/border.png" width="300" alt="border"/>
+</p>
+<h2 id='code-cardpartsviewcontroller-code' class='heading'><code>CardPartsViewController</code></h2>
+
+<p>CardPartsViewController implements the CardController protocol and builds its card UI by displaying one or more card part views using an MVVM pattern that includes automatic data binding. Each CardPartsViewController displays a list of CardPartView as its subviews. Each CardPartView renders as a row in the card. The CardParts framework implements several different types of CardPartView that display basic views, such as title, text, image, button, separator, etc. All CardPartView implemented by the framework are already styled to correctly match the applied themes UI guidelines.</p>
+
+<p>In addition to the card parts, a CardPartsViewController also uses a view model to expose data properties that are bound to the card parts. The view model should contain all the business logic for the card, thus keeping the role of the CardPartsViewController to just creating its view parts and setting up bindings from the view model to the card parts. A simple implementation of a CardPartsViewController based card might look like the following:</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">TestCardController</span><span class="p">:</span> <span class="kt">CardPartsViewController</span>  <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="kt">TestViewModel</span><span class="p">()</span>
+    <span class="k">var</span> <span class="nv">titlePart</span> <span class="o">=</span> <span class="kt">CardPartTitleView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">titleOnly</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">textPart</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+        <span class="n">viewModel</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">titlePart</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">title</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+        <span class="n">viewModel</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">textPart</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+
+        <span class="nf">setupCardParts</span><span class="p">([</span><span class="n">titlePart</span><span class="p">,</span> <span class="n">textPart</span><span class="p">])</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">TestViewModel</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">title</span> <span class="o">=</span> <span class="kt">BehaviorRelay</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">text</span> <span class="o">=</span> <span class="kt">BehaviorRelay</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span>
+
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+
+        <span class="c1">// When these values change, the UI in the TestCardController</span>
+        <span class="c1">// will automatically update</span>
+        <span class="n">title</span><span class="o">.</span><span class="nf">accept</span><span class="p">(</span><span class="s">"Hello, world!"</span><span class="p">)</span>
+        <span class="n">text</span><span class="o">.</span><span class="nf">accept</span><span class="p">(</span><span class="s">"CardParts is awesome!"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>The above example creates a card that displays two card parts, a title card part and a text part. The bind calls setup automatic data binding between view model properties and the card part view properties so that whenever the view model properties change, the card part views will automatically update with the correct data.</p>
+
+<p>The call to setupCardParts adds the card part views to the card. It takes an array of CardPartView that specifies which card parts to display, and in what order to display them.</p>
+<h2 id='code-cardpartsfullscreenviewcontroller-code' class='heading'><code>CardPartsFullScreenViewController</code></h2>
+
+<p>This will make the card a full screen view controller. So if you do not want to build with an array of Cards, instead you can make a singular card full-screen.</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">TestCardController</span><span class="p">:</span> <span class="kt">CardPartsFullScreenViewController</span>  <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='cardparts' class='heading'>CardParts</h2>
+
+<p>The framework includes several predefined card parts that are ready to use. It is also possible to create custom card parts. The following sections list all the predefined card parts and their reactive properties that can be bound to view models.</p>
+<h4 id='code-cardparttextview-code' class='heading'><code>CardPartTextView</code></h4>
+
+<p>CardPartTextView displays a single text string. The string can wrap to multiple lines. The initializer for CardPartTextView takes a type parameter which can be set to: normal, title, or detail. The type is used to set the default font and textColor for the text.</p>
+
+<p>CardPartTextView exposes the following reactive properties that can be bound to view model properties:</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">attributedText</span><span class="p">:</span> <span class="kt">NSAttributedString</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">font</span><span class="p">:</span> <span class="kt">UIFont</span><span class="o">!</span>
+<span class="k">var</span> <span class="nv">textColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="o">!</span>
+<span class="k">var</span> <span class="nv">textAlignment</span><span class="p">:</span> <span class="kt">NSTextAlignment</span>
+<span class="k">var</span> <span class="nv">lineSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">lineHeightMultiple</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">alpha</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">backgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">isHidden</span><span class="p">:</span> <span class="kt">Bool</span>
+<span class="k">var</span> <span class="nv">isUserInteractionEnabled</span><span class="p">:</span> <span class="kt">Bool</span>
+<span class="k">var</span> <span class="nv">tintColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span>
+</code></pre>
+<h4 id='code-cardpartimageview-code' class='heading'><code>CardPartImageView</code></h4>
+
+<p>CardPartImageView displays a single image.
+CardPartImageView exposes the following reactive properties that can be bound to view model properties:</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">imageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">alpha</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">backgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">isHidden</span><span class="p">:</span> <span class="kt">Bool</span>
+<span class="k">var</span> <span class="nv">isUserInteractionEnabled</span><span class="p">:</span> <span class="kt">Bool</span>
+<span class="k">var</span> <span class="nv">tintColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span>
+</code></pre>
+<h4 id='code-cardpartbuttonview-code' class='heading'><code>CardPartButtonView</code></h4>
+
+<p>CardPartButtonView displays a single button.</p>
+
+<p>CardPartButtonView exposes the following reactive properties that can be bound to view model properties:</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">buttonTitle</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">isSelected</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">isHighlighted</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">contentHorizontalAlignment</span><span class="p">:</span> <span class="kt">UIControlContentHorizontalAlignment</span>
+<span class="k">var</span> <span class="nv">alpha</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">backgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">isHidden</span><span class="p">:</span> <span class="kt">Bool</span>
+<span class="k">var</span> <span class="nv">isUserInteractionEnabled</span><span class="p">:</span> <span class="kt">Bool</span>
+<span class="k">var</span> <span class="nv">tintColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span>
+</code></pre>
+<h4 id='code-cardparttitleview-code' class='heading'><code>CardPartTitleView</code></h4>
+
+<p>CardPartTitleView displays a view with a title, and an optional options menu. The initializer requires a type parameter which can be set to either titleOnly or titleWithMenu. If the type is set to titleWithMenu the card part will display a menu icon, that when tapped will display a menu containing the options specified in the menuOptions array. The menuOptionObserver property can be set to a block that will be called when the user selects an item from the menu.</p>
+
+<p>As an example for a title with menu buttons:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">titlePart</span> <span class="o">=</span> <span class="kt">CardPartTitleView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">titleWithMenu</span><span class="p">)</span>
+<span class="n">titlePart</span><span class="o">.</span><span class="n">menuTitle</span> <span class="o">=</span> <span class="s">"Hide this offer"</span>
+<span class="n">titlePart</span><span class="o">.</span><span class="n">menuOptions</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Hide"</span><span class="p">]</span>
+<span class="n">titlePart</span><span class="o">.</span><span class="n">menuOptionObserver</span>  <span class="o">=</span> <span class="p">{[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="k">in</span>
+    <span class="c1">// Logic to determine which menu option was clicked</span>
+    <span class="c1">// and how to respond</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">self</span><span class="p">?</span><span class="o">.</span><span class="nf">hideOfferClicked</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>CardPartButtonView exposes the following reactive properties that can be bound to view model properties:</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">titleFont</span><span class="p">:</span> <span class="kt">UIFont</span>
+<span class="k">var</span> <span class="nv">titleColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">menuTitle</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">menuOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span>
+<span class="k">var</span> <span class="nv">menuButtonImageName</span><span class="p">:</span> <span class="kt">String</span>
+<span class="k">var</span> <span class="nv">alpha</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">backgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">isHidden</span><span class="p">:</span> <span class="kt">Bool</span>
+<span class="k">var</span> <span class="nv">isUserInteractionEnabled</span><span class="p">:</span> <span class="kt">Bool</span>
+<span class="k">var</span> <span class="nv">tintColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span>
+</code></pre>
+<h4 id='code-cardparttitledescriptionview-code' class='heading'><code>CardPartTitleDescriptionView</code></h4>
+
+<p>CardPartTitleDescriptionView allows you to have a left and right title and description label, however, you are able to also choose the alignment of the right title/description labels. See below:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">rightAligned</span> <span class="o">=</span> <span class="kt">CardPartTitleDescriptionView</span><span class="p">(</span><span class="nv">titlePosition</span><span class="p">:</span> <span class="o">.</span><span class="n">top</span><span class="p">,</span> <span class="nv">secondaryPosition</span><span class="p">:</span> <span class="o">.</span><span class="n">right</span><span class="p">)</span> <span class="c1">// This will be right aligned</span>
+<span class="k">let</span> <span class="nv">centerAligned</span> <span class="o">=</span> <span class="kt">CardPartTitleDescriptionView</span><span class="p">(</span><span class="nv">titlePosition</span><span class="p">:</span> <span class="o">.</span><span class="n">top</span><span class="p">,</span> <span class="nv">secondaryPosition</span><span class="p">:</span> <span class="o">.</span><span class="nf">center</span><span class="p">(</span><span class="nv">amount</span><span class="p">:</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">// This will be center aligned with an offset of 0.  You may increase that amount param to shift right your desired amount</span>
+</code></pre>
+<h4 id='code-cardpartpilllabel-code' class='heading'><code>CardPartPillLabel</code></h4>
+
+<p>CardPartPillLabel provides you the rounded corners, text aligned  being at the center along with vertical and horizontal padding capability.</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">verticalPadding</span><span class="p">:</span><span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">horizontalPadding</span><span class="p">:</span><span class="kt">CGFloat</span>
+</code></pre>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/pillLabels.png" width="300" alt="pillLabel"/>
+</p>
+
+<p>See the example app for a working example.</p>
+<h4 id='code-cardparticonlabel-code' class='heading'><code>CardPartIconLabel</code></h4>
+
+<p>CardPartIconLabel provides the capability to add images in eithet directions supporting left , right and center text alignments.</p>
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">iconLabel</span> <span class="o">=</span> <span class="kt">CardPartIconLabel</span><span class="p">()</span>
+    <span class="n">iconLabel</span><span class="o">.</span><span class="n">verticalPadding</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">iconLabel</span><span class="o">.</span><span class="n">horizontalPadding</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">iconLabel</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">blue</span>
+    <span class="n">iconLabel</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="kt">UIFont</span><span class="o">.</span><span class="nf">systemFont</span><span class="p">(</span><span class="nv">ofSize</span><span class="p">:</span> <span class="mi">12</span><span class="p">)</span>
+    <span class="n">iconLabel</span><span class="o">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span>
+    <span class="n">iconLabel</span><span class="o">.</span><span class="n">numberOfLines</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">iconLabel</span><span class="o">.</span><span class="n">iconPadding</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">iconLabel</span><span class="o">.</span><span class="n">icon</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"cardIcon"</span><span class="p">)</span>
+</code></pre>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartIconLabel.png" width="300" alt="cardPartIconLabel"/>
+</p>
+<h4 id='code-cardpartseparatorview-code' class='heading'><code>CardPartSeparatorView</code></h4>
+
+<p>CardPartSeparatorView displays a separator line. There are no reactive properties define for CardPartSeparatorView.</p>
+<h4 id='code-cardpartverticalseparatorview-code' class='heading'><code>CardPartVerticalSeparatorView</code></h4>
+
+<p>As the name describes, it shows a vertical separator view opposed to a horizontal one</p>
+<h4 id='code-cardpartstackview-code' class='heading'><code>CardPartStackView</code></h4>
+
+<p>CardPartStackView displays a UIStackView that can contain other card parts, and even other CardPartStackViews. Using CardPartStackView allows for creating custom layouts of card parts. By nesting CardPartStackViews you can create almost any layout.</p>
+
+<p>To add a card part to the stack view call its addArrangedSubview method, specifying the card part&rsquo;s view property as the view to be added to the stack view. For example:</p>
+<pre class="highlight swift"><code><span class="n">horizStackPart</span><span class="o">.</span><span class="nf">addArrangedSubview</span><span class="p">(</span><span class="n">imagePart</span><span class="p">)</span>
+</code></pre>
+
+<p>Also,provides an option to round the corners of the stackview</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">roundedStackView</span> <span class="o">=</span> <span class="kt">CardPartStackView</span><span class="p">()</span>
+<span class="n">roundedStackView</span><span class="o">.</span><span class="n">cornerRadius</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">roundedStackView</span><span class="o">.</span><span class="nf">pinBackground</span><span class="p">(</span><span class="n">roundedStackView</span><span class="o">.</span><span class="n">backgroundView</span><span class="p">,</span> <span class="nv">to</span><span class="p">:</span> <span class="n">roundedStackView</span><span class="p">)</span>
+</code></pre>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/roundedStackView.png" width="300" alt="roundedStackView"/>
+</p>
+
+<p>There are no reactive properties defined for CardPartStackView. However you can use the default UIStackView properties (distribution, alignment, spacing, and axis) to configure the stack view.</p>
+<h4 id='code-cardparttableview-code' class='heading'><code>CardPartTableView</code></h4>
+
+<p>CardPartTableView displays a table view as a card part such that all items in the table view are displayed in the card part (i.e. the table view does not scroll). CardPartTableView leverages Bond&rsquo;s reactive data source support allowing a MutableObservableArray to be bound to the table view.</p>
+
+<p>To setup the data source binding the view model class should expose MutableObservableArray property that contains the table view&rsquo;s data. For example:</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">listData</span> <span class="o">=</span> <span class="kt">MutableObservableArray</span><span class="p">([</span><span class="s">"item 1"</span><span class="p">,</span> <span class="s">"item 2"</span><span class="p">,</span> <span class="s">"item 3"</span><span class="p">,</span> <span class="s">"item 4"</span><span class="p">])</span>
+</code></pre>
+
+<p>Then in the view controller the data source binding can be setup as follows:</p>
+<pre class="highlight swift"><code><span class="n">viewModel</span><span class="o">.</span><span class="n">listData</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">tableViewPart</span><span class="o">.</span><span class="n">tableView</span><span class="p">)</span> <span class="p">{</span> <span class="n">listData</span><span class="p">,</span> <span class="n">indexPath</span><span class="p">,</span> <span class="n">tableView</span> <span class="k">in</span>
+
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="n">tableView</span><span class="o">.</span><span class="nf">dequeueReusableCell</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="n">tableViewPart</span><span class="o">.</span><span class="n">kDefaultCellId</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="k">as?</span> <span class="kt">CardPartTableViewCell</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kt">UITableViewCell</span><span class="p">()</span> <span class="p">}</span>
+
+    <span class="n">cell</span><span class="o">.</span><span class="n">leftTitleLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">listData</span><span class="p">[</span><span class="n">indexPath</span><span class="o">.</span><span class="n">row</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">cell</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>The last parameter to the bind call is block that will be called when the tableview&rsquo;s cellForRowAt data source method is called. The first parameter to the block is the MutableObservableArray being bound to.</p>
+
+<p>CardPartTableView registers a default cell class (CardPartTableViewCell) that can be used with no additional work. CardPartTableViewCell contains 4 labels, a left justified title, left justified description, right justified title, and a right justified description. Each label can be optionally used, if no text is specified in a label the cell&rsquo;s layout code will correctly layout the remaining labels.</p>
+
+<p>It is also possible to register your own custom cells by calling the register method on <code>tableViewPart.tableView</code>.</p>
+
+<p>You also have access to two delegate methods being called by the tableView as follows:</p>
+<pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardPartTableViewDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">didSelectRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span>
+    <span class="kd">@objc</span> <span class="kd">optional</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">heightForRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span>
+<span class="p">}</span>
+</code></pre>
+<h4 id='code-cardparttableviewcell-code' class='heading'><code>CardPartTableViewCell</code></h4>
+
+<p>CardPartTableViewCell is the default cell registered for CardPartTableView. The cell contains the following properties:</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">leftTitleLabel</span><span class="p">:</span> <span class="kt">UILabel</span>
+<span class="k">var</span> <span class="nv">leftDescriptionLabel</span><span class="p">:</span> <span class="kt">UILabel</span>
+<span class="k">var</span> <span class="nv">rightTitleLabel</span><span class="p">:</span> <span class="kt">UILabel</span>
+<span class="k">var</span> <span class="nv">rightDescriptionLabel</span><span class="p">:</span> <span class="kt">UILabel</span>
+<span class="k">var</span> <span class="nv">rightTopButton</span><span class="p">:</span> <span class="kt">UIButton</span>
+<span class="k">var</span> <span class="nv">shouldCenterRightLabel</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="k">var</span> <span class="nv">leftTitleFont</span><span class="p">:</span> <span class="kt">UIFont</span>
+<span class="k">var</span> <span class="nv">leftDescriptionFont</span><span class="p">:</span> <span class="kt">UIFont</span>
+<span class="k">var</span> <span class="nv">rightTitleFont</span><span class="p">:</span> <span class="kt">UIFont</span>
+<span class="k">var</span> <span class="nv">rightDescriptionFont</span><span class="p">:</span> <span class="kt">UIFont</span>
+<span class="k">var</span> <span class="nv">leftTitleColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">leftDescriptionColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">rightTitleColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">rightDescriptionColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+</code></pre>
+<h4 id='code-cardparttableviewcardpartscell-code' class='heading'><code>CardPartTableViewCardPartsCell</code></h4>
+
+<p>This will give you the ability to create custom tableView cells out of CardParts. The following code allows you to create a cell:</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">MyCustomTableViewCell</span><span class="p">:</span> <span class="kt">CardPartTableViewCardPartsCell</span> <span class="p">{</span>
+
+    <span class="k">let</span> <span class="nv">bag</span> <span class="o">=</span> <span class="kt">DisposeBag</span><span class="p">()</span>
+
+    <span class="k">let</span> <span class="nv">attrHeader1</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">attrHeader2</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">attrHeader3</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+
+    <span class="k">override</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">style</span><span class="p">:</span> <span class="kt">UITableViewCellStyle</span><span class="p">,</span> <span class="nv">reuseIdentifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">style</span><span class="p">:</span> <span class="n">style</span><span class="p">,</span> <span class="nv">reuseIdentifier</span><span class="p">:</span> <span class="n">reuseIdentifier</span><span class="p">)</span>
+
+        <span class="n">selectionStyle</span> <span class="o">=</span> <span class="o">.</span><span class="k">none</span>
+
+        <span class="nf">setupCardParts</span><span class="p">([</span><span class="n">attrHeader1</span><span class="p">,</span> <span class="n">attrHeader2</span><span class="p">,</span> <span class="n">attrHeader3</span><span class="p">])</span>
+    <span class="p">}</span>
+
+    <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">fatalError</span><span class="p">(</span><span class="s">"init(coder:) has not been implemented"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">setData</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">MyCustomStruct</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Do something in here</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>If you do create a custom cell, you must register it to the <code>CardPartTableView</code>:</p>
+<pre class="highlight swift"><code><span class="n">tableViewCardPart</span><span class="o">.</span><span class="n">tableView</span><span class="o">.</span><span class="nf">register</span><span class="p">(</span><span class="kt">MyCustomTableViewCell</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">forCellReuseIdentifier</span><span class="p">:</span> <span class="s">"MyCustomTableViewCell"</span><span class="p">)</span>
+</code></pre>
+
+<p>And then as normal, you would bind to your viewModel&rsquo;s data:</p>
+<pre class="highlight swift"><code><span class="n">viewModel</span><span class="o">.</span><span class="n">listData</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">tableViewPart</span><span class="o">.</span><span class="n">tableView</span><span class="p">)</span> <span class="p">{</span> <span class="n">tableView</span><span class="p">,</span> <span class="n">indexPath</span><span class="p">,</span> <span class="n">data</span> <span class="k">in</span>
+
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="n">tableView</span><span class="o">.</span><span class="nf">dequeueReusableCell</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"MyCustomTableViewCell"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="k">as?</span> <span class="kt">MyCustomTableViewCell</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kt">UITableViewCell</span><span class="p">()</span> <span class="p">}</span>
+
+    <span class="n">cell</span><span class="o">.</span><span class="nf">setData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cell</span>
+<span class="p">}</span>
+</code></pre>
+<h4 id='code-cardpartcollectionview-code' class='heading'><code>CardPartCollectionView</code></h4>
+
+<p>CardPartCollectionView underlying engine is <a href="https://github.com/RxSwiftCommunity/RxDataSources">RxDataSource</a>. You can look at their documentation for a deeper look but here is an overall approach to how it works:</p>
+
+<p>Start by initializing a <code>CardPartCollectionView</code> with a custom <code>UICollectionViewFlowLayout</code>:</p>
+<pre class="highlight swift"><code><span class="kd">lazy</span> <span class="k">var</span> <span class="nv">collectionViewCardPart</span> <span class="o">=</span> <span class="kt">CardPartCollectionView</span><span class="p">(</span><span class="nv">collectionViewLayout</span><span class="p">:</span> <span class="n">collectionViewLayout</span><span class="p">)</span>
+<span class="k">var</span> <span class="nv">collectionViewLayout</span><span class="p">:</span> <span class="kt">UICollectionViewFlowLayout</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">layout</span> <span class="o">=</span> <span class="kt">UICollectionViewFlowLayout</span><span class="p">()</span>
+    <span class="n">layout</span><span class="o">.</span><span class="n">minimumInteritemSpacing</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="n">layout</span><span class="o">.</span><span class="n">minimumLineSpacing</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="n">layout</span><span class="o">.</span><span class="n">scrollDirection</span> <span class="o">=</span> <span class="o">.</span><span class="n">horizontal</span>
+    <span class="n">layout</span><span class="o">.</span><span class="n">itemSize</span> <span class="o">=</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">96</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">128</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">layout</span>
+<span class="p">}()</span>
+</code></pre>
+
+<p>Now say you have a custom struct you want to pass into your CollectionViewCell:</p>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">MyStruct</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>You will need to create a new struct to conform to <code>SectionModelType</code>:</p>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SectionOfCustomStruct</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">header</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">Item</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">SectionOfCustomStruct</span><span class="p">:</span> <span class="kt">SectionModelType</span> <span class="p">{</span>
+
+    <span class="kd">typealias</span> <span class="kt">Item</span> <span class="o">=</span> <span class="kt">MyStruct</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">original</span><span class="p">:</span> <span class="kt">SectionOfCustomStruct</span><span class="p">,</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">Item</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">self</span> <span class="o">=</span> <span class="n">original</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">items</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Next, create a data source that you will bind to you data:
+<em>Note: You can create a custom CardPartCollectionViewCell as well - see below.</em></p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">dataSource</span> <span class="o">=</span> <span class="kt">RxCollectionViewSectionedReloadDataSource</span><span class="o">&lt;</span><span class="kt">SectionOfCustomStruct</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">configureCell</span><span class="p">:</span> <span class="p">{[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">collectionView</span><span class="p">,</span> <span class="n">indexPath</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UICollectionViewCell</span> <span class="k">in</span>
+
+    <span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="n">collectionView</span><span class="o">.</span><span class="nf">dequeueReusableCell</span><span class="p">(</span><span class="nv">withReuseIdentifier</span><span class="p">:</span> <span class="s">"Cell"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cell</span>
+<span class="p">})</span>
+</code></pre>
+
+<p>Finally, bind your viewModel data to the collectionView and its newly created data source:</p>
+<pre class="highlight swift"><code><span class="n">viewModel</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">collectionViewCardPart</span><span class="o">.</span><span class="n">collectionView</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="nf">items</span><span class="p">(</span><span class="nv">dataSource</span><span class="p">:</span> <span class="n">dataSource</span><span class="p">))</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+</code></pre>
+
+<p><em>Note: <code>viewModel.data</code> will be a reactive array of <code>SectionOfCustomStruct</code></em>:</p>
+<pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">ReactiveSection</span> <span class="o">=</span> <span class="kt">BehaviorRelay</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">SectionOfCustomStruct</span><span class="p">]</span><span class="o">&gt;</span>
+<span class="k">var</span> <span class="nv">data</span> <span class="o">=</span> <span class="kt">ReactiveSection</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="p">[])</span>
+</code></pre>
+<h4 id='code-cardpartcollectionviewcardpartscell-code' class='heading'><code>CardPartCollectionViewCardPartsCell</code></h4>
+
+<p>Just how CardPartTableViewCell has the ability to create tableView cells out of CardParts - so do CollectionViews. Below is an example of how you may create a custom <code>CardPartCollectionViewCardPartsCell</code>:</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">MyCustomCollectionViewCell</span><span class="p">:</span> <span class="kt">CardPartCollectionViewCardPartsCell</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">bag</span> <span class="o">=</span> <span class="kt">DisposeBag</span><span class="p">()</span>
+
+    <span class="k">let</span> <span class="nv">mainSV</span> <span class="o">=</span> <span class="kt">CardPartStackView</span><span class="p">()</span>
+    <span class="k">let</span> <span class="nv">titleCP</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">title</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">descriptionCP</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+
+    <span class="k">override</span> <span class="nf">init</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="n">frame</span><span class="p">)</span>
+
+        <span class="n">mainSV</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="o">.</span><span class="n">vertical</span>
+        <span class="n">mainSV</span><span class="o">.</span><span class="n">alignment</span> <span class="o">=</span> <span class="o">.</span><span class="n">center</span>
+        <span class="n">mainSV</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="mi">10</span>
+
+        <span class="n">mainSV</span><span class="o">.</span><span class="nf">addArrangedSubview</span><span class="p">(</span><span class="n">titleCP</span><span class="p">)</span>
+        <span class="n">mainSV</span><span class="o">.</span><span class="nf">addArrangedSubview</span><span class="p">(</span><span class="n">descriptionCP</span><span class="p">)</span>
+
+        <span class="nf">setupCardParts</span><span class="p">([</span><span class="n">mainSV</span><span class="p">])</span>
+    <span class="p">}</span>
+
+    <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">fatalError</span><span class="p">(</span><span class="s">"init(coder:) has not been implemented"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">setData</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">MyStruct</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">titleCP</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">title</span>
+        <span class="n">descriptionCP</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">description</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>To use this, you must register it to the CollectionView during <code>viewDidLoad</code> as follows:</p>
+<pre class="highlight swift"><code><span class="n">collectionViewCardPart</span><span class="o">.</span><span class="n">collectionView</span><span class="o">.</span><span class="nf">register</span><span class="p">(</span><span class="kt">MyCustomCollectionViewCell</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">forCellWithReuseIdentifier</span><span class="p">:</span> <span class="s">"MyCustomCollectionViewCell"</span><span class="p">)</span>
+</code></pre>
+
+<p>Then, inside your data source, simply dequeue this cell:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">dataSource</span> <span class="o">=</span> <span class="kt">RxCollectionViewSectionedReloadDataSource</span><span class="o">&lt;</span><span class="kt">SectionOfSuggestedAccounts</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">configureCell</span><span class="p">:</span> <span class="p">{[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">collectionView</span><span class="p">,</span> <span class="n">indexPath</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UICollectionViewCell</span> <span class="k">in</span>
+
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">cell</span> <span class="o">=</span> <span class="n">collectionView</span><span class="o">.</span><span class="nf">dequeueReusableCell</span><span class="p">(</span><span class="nv">withReuseIdentifier</span><span class="p">:</span> <span class="s">"MyCustomCollectionViewCell"</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="k">as?</span> <span class="kt">MyCustomCollectionViewCell</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="kt">UICollectionViewCell</span><span class="p">()</span> <span class="p">}</span>
+
+    <span class="n">cell</span><span class="o">.</span><span class="nf">setData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cell</span>
+<span class="p">})</span>
+</code></pre>
+<h4 id='code-cardpartbarview-code' class='heading'><code>CardPartBarView</code></h4>
+
+<p>CardPartBarView present a horizontal bar graph that can be filled to a certain percentage of your choice. Both the color of the fill and the percent is reactive</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">barView</span> <span class="o">=</span> <span class="kt">CardPartBarView</span><span class="p">()</span>
+<span class="n">viewModel</span><span class="o">.</span><span class="n">percent</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">barView</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">percent</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span><span class="n">bag</span><span class="p">)</span>
+<span class="n">viewModel</span><span class="o">.</span><span class="n">barColor</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">barView</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">barColor</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+</code></pre>
+<h4 id='code-cardpartpagedview-code' class='heading'><code>CardPartPagedView</code></h4>
+
+<p>This CardPart allows you to create a horizontal paged carousel with page controls. Simply feed it with your desired height and an array of <code>CardPartStackView</code>:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">cardPartPages</span> <span class="o">=</span> <span class="kt">CardPartPagedView</span><span class="p">(</span><span class="nv">withPages</span><span class="p">:</span> <span class="n">initialPages</span><span class="p">,</span> <span class="nv">andHeight</span><span class="p">:</span> <span class="n">desiredHeight</span><span class="p">)</span>
+<span class="n">cardPartPages</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+</code></pre>
+
+<p>This CardPart also has a delegate:</p>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">didMoveToPage</span><span class="p">(</span><span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span>
+</code></pre>
+
+<p>Which will fire whenever the user swipes to another page</p>
+<h4 id='code-cardpartsliderview-code' class='heading'><code>CardPartSliderView</code></h4>
+
+<p>You can set min and max value as well as bind to the current set amount:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">slider</span> <span class="o">=</span> <span class="kt">CardPartSliderView</span><span class="p">()</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">minimumValue</span> <span class="o">=</span> <span class="n">sliderViewModel</span><span class="o">.</span><span class="n">min</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">maximumValue</span> <span class="o">=</span> <span class="n">sliderViewModel</span><span class="o">.</span><span class="n">max</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">sliderViewModel</span><span class="o">.</span><span class="n">defaultAmount</span>
+<span class="n">slider</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">sliderViewModel</span><span class="o">.</span><span class="n">amount</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+</code></pre>
+<h4 id='code-cardpartspacerview-code' class='heading'><code>CardPartSpacerView</code></h4>
+
+<p>Allows you to add a space between card parts in case you need a space larger than the default margin. Initialize it with a specific height:</p>
+<pre class="highlight swift"><code><span class="kt">CardPartSpacerView</span><span class="p">(</span><span class="nv">height</span><span class="p">:</span> <span class="mi">30</span><span class="p">)</span>
+</code></pre>
+<h4 id='code-cardparttextfield-code' class='heading'><code>CardPartTextField</code></h4>
+
+<p>CardPartTextField can take a parameter of type <code>CardPartTextFieldFormat</code> which determines formatting for the UITextField. You may also set properties such as <code>keyboardType</code>, <code>placeholder</code>, <code>font</code>, <code>text</code>, etc.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">amount</span> <span class="o">=</span> <span class="kt">CardPartTextField</span><span class="p">(</span><span class="nv">format</span><span class="p">:</span> <span class="o">.</span><span class="n">phone</span><span class="p">)</span>
+<span class="n">amount</span><span class="o">.</span><span class="n">keyboardType</span> <span class="o">=</span> <span class="o">.</span><span class="n">numberPad</span>
+<span class="n">amount</span><span class="o">.</span><span class="n">placeholder</span> <span class="o">=</span> <span class="n">textViewModel</span><span class="o">.</span><span class="n">placeholder</span>
+<span class="n">amount</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="n">dataFont</span>
+<span class="n">amount</span><span class="o">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="nf">colorFromHex</span><span class="p">(</span><span class="mh">0x3a3f47</span><span class="p">)</span>
+<span class="n">amount</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">textViewModel</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">value</span>
+<span class="n">amount</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">orEmpty</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">textViewModel</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+</code></pre>
+
+<p>The different formats are as follows:</p>
+<pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">CardPartTextFieldFormat</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="k">none</span>
+    <span class="k">case</span> <span class="nf">currency</span><span class="p">(</span><span class="nv">maxLength</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">zipcode</span>
+    <span class="k">case</span> <span class="n">phone</span>
+    <span class="k">case</span> <span class="n">ssn</span>
+<span class="p">}</span>
+</code></pre>
+<h4 id='code-cardpartorientedview-code' class='heading'><code>CardPartOrientedView</code></h4>
+
+<p><code>CardPartOrientedView</code> allows you to create an oriented list view of card part elements. This is similar to the <code>CardPartStackView</code> except that this view can orient elements to the top or bottom of the view. This is advantageous when you are using horizontal stack views and need elements to be oriented differently (top arranged or bottom arranged) relative to the other views in the horizontal stack view. To see a good example of this element please take a look at the example application.</p>
+
+<p>The supported orientations are as follows:</p>
+<pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Orientation</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">top</span>
+    <span class="k">case</span> <span class="n">bottom</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>To create an oriented view you can use the following code:</p>
+<pre class="highlight plaintext"><code>let orientedView = CardPartOrientedView(cardParts: [&lt;elements to list vertically&gt;], orientation: .top)
+</code></pre>
+
+<p>Add the above orientedView to any list of card parts or an existing stack view to orient your elements to the top or bottom of the enclosing view.</p>
+<h4 id='code-cardpartcenteredview-code' class='heading'><code>CardPartCenteredView</code></h4>
+
+<p><code>CardPartCenteredView</code> is a CardPart that fits a centered card part proportionally on the phone screen while allowing a left and right side card part to scale appropriately. To create a centered card part please use the following example:</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">TestCardController</span> <span class="p">:</span> <span class="kt">CardPartsViewController</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+        <span class="k">let</span> <span class="nv">rightTextCardPart</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">rightTextCardPart</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"Right text in a label"</span>
+
+        <span class="k">let</span> <span class="nv">centeredSeparator</span> <span class="o">=</span> <span class="kt">CardPartVerticalSeparator</span><span class="p">()</span>
+
+        <span class="k">let</span> <span class="nv">leftTextCardPart</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="n">leftTextCardPart</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"Left text in a label"</span>
+
+        <span class="k">let</span> <span class="nv">centeredCardPart</span> <span class="o">=</span> <span class="kt">CardPartCenteredView</span><span class="p">(</span><span class="nv">leftView</span><span class="p">:</span> <span class="n">leftTextCardPart</span><span class="p">,</span> <span class="nv">centeredView</span><span class="p">:</span> <span class="n">centeredSeparator</span><span class="p">,</span> <span class="nv">rightView</span><span class="p">:</span> <span class="n">rightTextCardPart</span><span class="p">)</span>
+
+        <span class="nf">setupCardParts</span><span class="p">([</span><span class="n">centeredCardPart</span><span class="p">])</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>A <code>CardPartCenteredView</code> can take in any card part that conforms to <code>CardPartView</code> as the left, center, and right components. To see a graphical example of the centered card part please look at the example application packaged with this cocoapod.</p>
+<h4 id='code-cardpartconfettiview-code' class='heading'><code>CardPartConfettiView</code></h4>
+
+<p>Provides the capability to add confetti with various types ( diamonds, star, mixed )  and colors, along with different level of intensity</p>
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">confettiView</span> <span class="o">=</span> <span class="kt">CardPartConfettiView</span><span class="p">()</span>
+    <span class="n">confettiView</span><span class="o">.</span><span class="n">type</span>  <span class="o">=</span> <span class="o">.</span><span class="n">diamond</span>
+    <span class="n">confettiView</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="kt">CAEmitterLayerEmitterShape</span><span class="o">.</span><span class="n">line</span>
+    <span class="n">confettiView</span><span class="o">.</span><span class="nf">startConfetti</span><span class="p">()</span>
+</code></pre>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/confetti.gif" width="300" alt="Confetti"/>
+</p>
+<h3 id='code-cardpartprogressbarview-code' class='heading'><code>CardPartProgressBarView</code></h3>
+
+<p>Provides the capability to configure different colors and custom marker , it&rsquo;s position to indicate the progress based on the value provided.</p>
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">progressBarView</span> <span class="o">=</span> <span class="kt">CardPartProgressBarView</span><span class="p">(</span><span class="nv">barValues</span><span class="p">:</span> <span class="n">barValues</span><span class="p">,</span> <span class="nv">barColors</span><span class="p">:</span> <span class="n">barColors</span><span class="p">,</span> <span class="nv">marker</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">markerLabelTitle</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span> <span class="nv">currentValue</span><span class="p">:</span> <span class="kt">Double</span><span class="p">(</span><span class="mi">720</span><span class="p">),</span> <span class="nv">showShowBarValues</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+    <span class="n">progressBarView</span><span class="o">.</span><span class="n">barCornerRadius</span> <span class="o">=</span> <span class="mf">4.0</span>
+</code></pre>
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/progressBarView.png" width="300" alt="ProgressBarView"/>
+</p>
+<h2 id='card-states' class='heading'>Card States</h2>
+
+<p>CardPartsViewController can optionally support the notion of card states, where a card can be in 3 different states: loading, empty, and hasData. For each state you can specify a unique set of card parts to display. Then when the CardPartsViewController state property is changed, the framework will automatically switch the card parts to display the card parts for that state. Typically you would bind the state property to a state property in your view model so that when the view model changes state the card parts are changed. A simple example:</p>
+<pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">CardState</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="k">none</span>
+    <span class="k">case</span> <span class="n">loading</span>
+    <span class="k">case</span> <span class="n">empty</span>
+    <span class="k">case</span> <span class="n">hasData</span>
+    <span class="k">case</span> <span class="nf">custom</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">TestCardController</span> <span class="p">:</span> <span class="kt">CardPartsViewController</span>  <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="kt">TestViewModel</span><span class="p">()</span>
+    <span class="k">var</span> <span class="nv">titlePart</span> <span class="o">=</span> <span class="kt">CardPartTitleView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">titleOnly</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">textPart</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">loadingText</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">emptyText</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">customText</span> <span class="o">=</span> <span class="kt">CardPartTextView</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+        <span class="n">viewModel</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">titlePart</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">title</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+        <span class="n">viewModel</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">textPart</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+
+        <span class="n">loadingText</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"Loading..."</span>
+        <span class="n">emptyText</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"No data found."</span>
+        <span class="n">customText</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"I am some custom state"</span>
+
+        <span class="n">viewModel</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">state</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+
+        <span class="nf">setupCardParts</span><span class="p">([</span><span class="n">titlePart</span><span class="p">,</span> <span class="n">textPart</span><span class="p">],</span> <span class="nv">forState</span><span class="p">:</span> <span class="o">.</span><span class="n">hasData</span><span class="p">)</span>
+        <span class="nf">setupCardParts</span><span class="p">([</span><span class="n">titlePart</span><span class="p">,</span> <span class="n">loadingText</span><span class="p">],</span> <span class="nv">forState</span><span class="p">:</span> <span class="o">.</span><span class="n">loading</span><span class="p">)</span>
+        <span class="nf">setupCardParts</span><span class="p">([</span><span class="n">titlePart</span><span class="p">,</span> <span class="n">emptyText</span><span class="p">],</span> <span class="nv">forState</span><span class="p">:</span> <span class="o">.</span><span class="n">empty</span><span class="p">)</span>
+        <span class="nf">setupCardParts</span><span class="p">([</span><span class="n">titlePart</span><span class="p">,</span> <span class="n">customText</span><span class="p">],</span> <span class="nv">forState</span><span class="p">:</span> <span class="o">.</span><span class="nf">custom</span><span class="p">(</span><span class="s">"myCustomState"</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p><em>Note: There is a <code>custom(String)</code> state which allows you to use more than our predefined set of states:</em></p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">custom</span><span class="p">(</span><span class="s">"myCustomState"</span><span class="p">)</span>
+</code></pre>
+<h2 id='data-binding' class='heading'>Data Binding</h2>
+
+<p>Data binding is implemented using the RxSwift library (<a href="https://github.com/ReactiveX/RxSwift">https://github.com/ReactiveX/RxSwift</a>). View models should expose their data as bindable properties using the Variable class. In the example above the view model might look like this:</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">TestViewModel</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">title</span> <span class="o">=</span> <span class="kt">BehaviorRelay</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="s">"Testing"</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">text</span> <span class="o">=</span> <span class="kt">BehaviorRelay</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="s">"Card Part Text"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Later when the view model&rsquo;s data has changed it can update its property by setting the value attribute of the property:</p>
+<pre class="highlight swift"><code><span class="n">title</span><span class="o">.</span><span class="nf">accept</span><span class="p">(</span><span class="err">“</span><span class="kt">Hello</span><span class="err">”</span><span class="p">)</span>
+</code></pre>
+
+<p>The view controller can bind the view model property to a view:</p>
+<pre class="highlight swift"><code><span class="n">viewModel</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="nf">asObservable</span><span class="p">()</span><span class="o">.</span><span class="nf">bind</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">titlePart</span><span class="o">.</span><span class="n">rx</span><span class="o">.</span><span class="n">title</span><span class="p">)</span><span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">bag</span><span class="p">)</span>
+</code></pre>
+
+<p>Now, whenever the view model&rsquo;s title property value is changed it will automatically update the titlePart&rsquo;s title.</p>
+
+<p>RxSwift use the concept of <q>Disposable</q> and <q>DisposeBag</q> to remove bindings. Each call to bind returns a Disposable that can be added to a DisposeBag. CardPartsViewController defines an instance of DisposeBag called <q>bag</q> that you can use to automatically remove all your bindings when your CardPartsViewController is deallocated. See the RxSwift documentation for more information on disposables and DisposeBags.</p>
+<h2 id='themes' class='heading'>Themes</h2>
+
+<p>Out of the box we support 2 themes: Mint and Turbo. These are the 2 Intuit app&rsquo;s that are currently built on top of CardParts. As you can find in the file <code>CardPartsTheme.swift</code> we have a protocol called <code>CardPartsTheme</code>. You may create a class that conforms to <code>CardPartsTheme</code> and set all properties in order to theme CardParts however you may like. Below is an example of some of the themeable properties:</p>
+<pre class="highlight swift"><code><span class="c1">// CardPartTextView</span>
+<span class="k">var</span> <span class="nv">smallTextFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">smallTextColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">normalTextFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">normalTextColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">titleTextFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">titleTextColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">headerTextFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">headerTextColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">detailTextFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">detailTextColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+
+<span class="c1">// CardPartTitleView</span>
+<span class="k">var</span> <span class="nv">titleFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">titleColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+
+<span class="c1">// CardPartButtonView</span>
+<span class="k">var</span> <span class="nv">buttonTitleFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">buttonTitleColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="k">var</span> <span class="nv">buttonCornerRadius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+
+</code></pre>
+<h3 id='applying-a-theme' class='heading'>Applying a theme</h3>
+
+<p>Generate a class as follows:</p>
+<pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">YourCardPartTheme</span><span class="p">:</span> <span class="kt">CardPartsTheme</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>And then in your <code>AppDelegete</code> call <code>YourCardPartTheme().apply()</code> it apply your theme.</p>
+<h2 id='clickable-cards' class='heading'>Clickable Cards</h2>
+
+<p>You have the ability to add a tap action for each <a href="#card-states">state</a> of any given card. If a part of the card is clicked, the given action will be fired:</p>
+<pre class="highlight swift"><code><span class="k">self</span><span class="o">.</span><span class="nf">cardTapped</span><span class="p">(</span><span class="nv">forState</span><span class="p">:</span> <span class="o">.</span><span class="n">empty</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Card was tapped in .empty state!"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">self</span><span class="o">.</span><span class="nf">cardTapped</span><span class="p">(</span><span class="nv">forState</span><span class="p">:</span> <span class="o">.</span><span class="n">hasData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Card was tapped in .hasData state!"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// The default state for setupCardParts([]) is .none</span>
+<span class="k">self</span><span class="o">.</span><span class="n">cardTapped</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Card was tapped in .none state"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+
+<p><em>Note: It is always a good idea to weakify self in a closure:</em></p>
+<pre class="highlight swift"><code><span class="p">{[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="k">in</span>
+
+<span class="p">}</span>
+</code></pre>
+<h2 id='listeners' class='heading'>Listeners</h2>
+
+<p>CardParts also supports a listener that allows you to listen to visibility changes in the cards that you have created. In your <code>CardPartsViewController</code> you may implement the <code>CardVisibilityDelegate</code> to gain insight into the visibility of your card within the <code>CardsViewController</code> you have created. This optional delegate can be implemented as follows:</p>
+<pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">YourCardPartsViewController</span><span class="p">:</span> <span class="kt">CardPartsViewController</span><span class="p">,</span> <span class="kt">CardVisibilityDelegate</span> <span class="p">{</span>
+    <span class="o">...</span>
+
+    <span class="cm">/**
+    Notifies your card parts view controller of the ratio that the card is visible in its container
+    and the ratio of its container that the card takes up.
+    */</span>
+     <span class="kd">func</span> <span class="nf">cardVisibility</span><span class="p">(</span><span class="nv">cardVisibilityRatio</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">containerCoverageRatio</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Any logic you would like to perform based on these ratios</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='delegates' class='heading'>Delegates</h2>
+
+<p>Any view controller which is a subclass of CardPartsViewController supports gesture delegate for long press on the view. Just need to conform your controller to CardPartsLongPressGestureRecognizerDelegate protocol.</p>
+
+<p>When the view is long pressed <code>didLongPress(_:)</code> will be called where you can custom handle the gesture.
+Example: Zoom in and Zoom out on gesture state begin/ended.</p>
+<pre class="highlight swift"><code>    <span class="kd">func</span> <span class="nf">didLongPress</span><span class="p">(</span><span class="n">_</span> <span class="nv">gesture</span><span class="p">:</span> <span class="kt">UILongPressGestureRecognizer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
+</code></pre>
+
+<p>You can set the minimumPressDuration for your press to register as gesture began. The value is in seconds.
+<code>default is set to 1 second</code>.</p>
+<pre class="highlight swift"><code>    <span class="k">var</span> <span class="nv">minimumPressDuration</span><span class="p">:</span> <span class="kt">CFTimeInterval</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span> <span class="c1">// In seconds</span>
+</code></pre>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">MYOwnCardPartController</span><span class="p">:</span> <span class="kt">CardPartsLongPressGestureRecognizerDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">didLongPress</span><span class="p">(</span><span class="n">_</span> <span class="nv">gesture</span><span class="p">:</span> <span class="kt">UILongPressGestureRecognizer</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">v</span> <span class="o">=</span> <span class="n">gesture</span><span class="o">.</span><span class="n">view</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+
+        <span class="k">switch</span> <span class="n">gesture</span><span class="o">.</span><span class="n">state</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">began</span><span class="p">:</span>
+            <span class="c1">// Zoom in</span>
+        <span class="k">case</span> <span class="o">.</span><span class="n">ended</span><span class="p">,</span> <span class="o">.</span><span class="nv">cancelled</span><span class="p">:</span>
+            <span class="c1">// Zoom out</span>
+        <span class="k">default</span><span class="p">:</span> <span class="k">break</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// Gesture starts registering after pressing for more than 0.5 seconds.</span>
+    <span class="k">var</span> <span class="nv">minimumPressDuration</span><span class="p">:</span> <span class="kt">CFTimeInterval</span> <span class="p">{</span> <span class="k">return</span> <span class="mf">0.5</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h1 id='apps-that-love-cardparts' class='heading'>Apps That Love CardParts</h1>
+
+<ul>
+<li><a href="https://itunes.apple.com/us/app/mint-personal-finance-money/id300238550?mt=8">Mint - Personal Finance &amp; Money</a></li>
+<li><a href="https://itunes.apple.com/us/app/turbo-scores-income-credit/id1242998361?mt=8">Turbo: Scores-Income &amp; Credit</a></li>
+<li>More to come.. hopefully!</li>
+</ul>
+<h1 id='publications' class='heading'>Publications</h1>
+
+<ul>
+<li><a href="https://medium.com/blueprint-by-intuit/rebuilding-mints-ui-from-the-ground-up-using-cardparts-ios-817aac6c863f">Rebuilding Mint’s UI From the Ground Up Using CardParts (iOS)</a></li>
+<li><a href="https://medium.mybridge.co/top-10-swift-open-source-of-the-month-v-may-2018-c581e2accc66">Top 10 Swift Open Source of the Month</a></li>
+<li><a href="https://medium.mybridge.co/23-amazing-ios-ui-libraries-written-in-swift-for-the-past-year-v-2019-3e5456318768">23 Amazing iOS UI Libraries</a></li>
+</ul>
+<h1 id='license' class='heading'>License</h1>
+
+<p>CardParts is available under the Apache 2.0 license. See the <a href="https://github.com/intuit/CardParts/blob/master/LICENSE">LICENSE</a> file for more info.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/intuit/CardParts" target="_blank" rel="external">Chase Roossin, Bharath Urs, Lucien Dupont, and Badarinath Venkatnarayansetty</a>. All rights reserved. (Last updated: 2019-09-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
