@@ -1,0 +1,11 @@
+# copyright: ?
+# podspec: Path/to/pod.podspec?
+# readme: path/tofile.md?
+# swift_version: ??
+author_url: https://intuit.com
+author: Intuit
+documentation: CardParts/src/**/*.swift
+github_url: https://github.com/intuit/CardParts
+module: CardParts
+sdk: iphone
+source_directory: CardParts/src
