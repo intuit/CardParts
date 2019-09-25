@@ -5,3 +5,4 @@ module: CardParts
 podspec: CardParts.podspec
 readme: README.md
 sdk: iphone
+theme: fullwidth
