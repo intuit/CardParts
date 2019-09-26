@@ -1,0 +1,9 @@
+# Requires RxSwift / RxCocoa
+github "ReactiveX/RxSwift" ~> 4.5
+
+# Requires RxDataSources
+github "RxSwiftCommunity/RxDataSources" ~> 3.1
+
+# Requires RxGesture
+github "RxSwiftCommunity/RxGesture" ~> 2.2
+
