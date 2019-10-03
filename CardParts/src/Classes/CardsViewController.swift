@@ -433,11 +433,7 @@ extension CardsViewController {
                 
                 let visibilityRatios = CardUtils.calculateVisibilityRatios(containerFrame: collectionView.bounds, cardFrame: cell.frame)
                 
-                // check to see if the visibility has changed (card visibility can change or the container coverage can change)
-                if visibilityRatios.cardVisibilityRatio != cardVC.cardVisibilityRatio || visibilityRatios.containerCoverageRatio != cardVC.containerCoverageRatio,
-                    let vc = cardVC as? CardVisibilityDelegate {
-                    cardVC.cardVisibilityRatio = visibilityRatios.cardVisibilityRatio
-                    cardVC.containerCoverageRatio = visibilityRatios.containerCoverageRatio
+                if let vc = cardVC as? CardVisibilityDelegate {
                     vc.cardVisibility?(cardVisibilityRatio: visibilityRatios.cardVisibilityRatio, containerCoverageRatio: visibilityRatios.containerCoverageRatio)
                 }
             }
