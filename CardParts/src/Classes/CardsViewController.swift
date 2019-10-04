@@ -36,6 +36,22 @@ struct CardInfo: Equatable {
 	}
 }
 
+
+/// The `CardsViewController` uses a collection view where each cell is a single card. The cells will render the frames for the cards, but are designed to have a child ViewController that will display the contents of the card. Thus `CardsViewController` is essentially a list of child view controllers that are rendered in special cells that draw the card frames.
+/// To use a `CardsViewController`, you first need to subclass it. Then in the `viewDidLoad` method call the super class `loadCards` method passing an array of `CardController`s. Each instance of a `CardController` will be rendered as a single card. The `loadCards` method does this by getting the view controller for each `CardController` and adding them as child view controllers to the card cells. Here is an example:
+
+/// ```swift
+/// class TestCardsViewController: CardsViewController {
+///
+///    let cards: [CardController] = [TestCardController(), AnotherTestCardController()]
+///
+///    override func viewDidLoad() {
+///        super.viewDidLoad()
+///
+///        loadCards(cards: cards)
+///    }
+///}
+///```
 open class CardsViewController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate {
 	
     let cardCellWidth = BehaviorRelay(value: CGFloat(0))

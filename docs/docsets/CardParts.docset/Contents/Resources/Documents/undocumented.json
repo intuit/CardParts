@@ -3551,154 +3551,133 @@
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 39,
-      "symbol": "CardsViewController",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 54,
+      "line": 70,
       "symbol": "CardsViewController.collectionView",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 59,
+      "line": 75,
       "symbol": "CardsViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 87,
+      "line": 103,
       "symbol": "CardsViewController.viewWillTransition(to:with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 93,
+      "line": 109,
       "symbol": "CardsViewController.viewDidAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 105,
+      "line": 121,
       "symbol": "CardsViewController.invalidateLayout()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 113,
+      "line": 129,
       "symbol": "CardsViewController.loadCards(cards:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 152,
+      "line": 168,
       "symbol": "CardsViewController.registerCells(cards:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 158,
+      "line": 174,
       "symbol": "CardsViewController.reload(cards:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 163,
+      "line": 179,
       "symbol": "CardsViewController.collectionView(_:numberOfItemsInSection:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 168,
+      "line": 184,
       "symbol": "CardsViewController.collectionView(_:cellForItemAt:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 262,
+      "line": 278,
       "symbol": "CardsViewController.getCardControllerCount()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 267,
+      "line": 283,
       "symbol": "CardsViewController.getCardControllerForIndexPath(indexPath:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 308,
+      "line": 324,
       "symbol": "CardsViewController.scrollViewWillBeginDragging(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 312,
+      "line": 328,
       "symbol": "CardsViewController.shouldListenToKeyboardNotifications",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 323,
-      "symbol": "CardsViewController",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 325,
+      "line": 341,
       "symbol": "CardsViewController.viewWillAppear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 332,
+      "line": 348,
       "symbol": "CardsViewController.viewWillDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 351,
+      "line": 367,
       "symbol": "CardsViewController.keyboardWillShow(notification:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 396,
+      "line": 412,
       "symbol": "CardsViewController.keyboardWillHide(notification:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 414,
-      "symbol": "CardsViewController",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/xtops/code/devos/CardParts/CardParts/src/Classes/CardsViewController.swift",
-      "line": 445,
+      "line": 461,
       "symbol": "CardsViewController.scrollViewDidScroll(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
