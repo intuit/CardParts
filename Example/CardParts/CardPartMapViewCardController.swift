@@ -18,14 +18,14 @@ class CardPartMapViewCardController: CardPartsViewController {
     let viewModel = ReactiveCardPartMapViewModel()
     
     let cardPartTextView = CardPartTextView(type: .normal)
-    let cardPartTextField = CardPartTextField(format: .zipcode)
+    let cardPartTextField = CardPartTextField(format: .none)
     let cardPartMapView = CardPartMapView(type: .standard, location: CLLocation(latitude: 37.430489, longitude: -122.096260), zoom: 10_000)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cardPartTextView.text = "This is a CardPartMapView"
-        cardPartTextField.placeholder = "Enter Zipcode"
+        cardPartTextField.placeholder = "Enter Address"
  
         setupCardParts([
             cardPartTextView,
@@ -42,7 +42,6 @@ class CardPartMapViewCardController: CardPartsViewController {
     }
     
     private func setupBindings() {
-        
         cardPartTextField.rx.text
             .distinctUntilChanged()
             .debounce(1, scheduler: MainScheduler.instance)
@@ -50,18 +49,10 @@ class CardPartMapViewCardController: CardPartsViewController {
             .flatMap { self.viewModel.getLocation(from: $0!) }
             .bind(to: cardPartMapView.rx.location)
             .disposed(by: bag)
-
-        viewModel.zoom
-            .bind(to: cardPartMapView.rx.zoom)
-            .disposed(by: bag)
     }
 }
 
 class ReactiveCardPartMapViewModel {
-    
-    // Outputs
-    var zoom = BehaviorRelay<CardPartMapView.Meters>(value: 10_000)
-    
     /// Converts an address string to an observable stream of CLLocation
     func getLocation(from address: String) -> Observable<CLLocation> {
         return Observable<CLLocation>.create { observer in
@@ -75,5 +66,4 @@ class ReactiveCardPartMapViewModel {
             return Disposables.create()
         }
     }
-    
 }
