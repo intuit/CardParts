@@ -19,7 +19,7 @@ class CardPartMapViewCardController: CardPartsViewController {
     
     let cardPartTextView = CardPartTextView(type: .normal)
     let cardPartTextField = CardPartTextField(format: .zipcode)
-    let cardPartMapView = CardPartMapView(type: .standard, CLLocation(latitude: 37.430489, longitude: -122.096260), zoom: 10_000)
+    let cardPartMapView = CardPartMapView(type: .standard, location: CLLocation(latitude: 37.430489, longitude: -122.096260), zoom: 10_000)
     
     override func viewDidLoad() {
         super.viewDidLoad()
