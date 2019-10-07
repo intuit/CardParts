@@ -43,8 +43,6 @@ public class CardPartMapView: UIView, CardPartView {
         }
         
         super.init(frame: .zero)
-
-        mapView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(mapView)
         setNeedsUpdateConstraints()
@@ -56,14 +54,12 @@ public class CardPartMapView: UIView, CardPartView {
     }
     
     public override func updateConstraints() {
-        let constraints = [
-            NSLayoutConstraint(item: mapView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: mapView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: mapView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: mapView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
-        ]
-
-        self.addConstraints(constraints)
+        mapView.layout {
+            $0.top == self.topAnchor
+            $0.leading == self.leadingAnchor
+            $0.trailing == self.trailingAnchor
+            $0.bottom == self.bottomAnchor
+        }
         super.updateConstraints()
     }
     
