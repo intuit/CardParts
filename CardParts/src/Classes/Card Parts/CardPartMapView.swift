@@ -11,11 +11,9 @@ import RxCocoa
 import RxSwift
 
 public class CardPartMapView: UIView, CardPartView {
-    public typealias Meters = Double
-
     public var mapType: MKMapType {
         didSet {
-            mapView.mapType = mapType
+            updateMap()
         }
     }
     
@@ -25,7 +23,7 @@ public class CardPartMapView: UIView, CardPartView {
         }
     }
     
-    public var zoom: Meters = 1000 {
+    public var span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1) {
         didSet {
             updateMap()
         }
@@ -35,21 +33,22 @@ public class CardPartMapView: UIView, CardPartView {
     
     public var mapView: MKMapView
     
-    public init(type: MKMapType, location: CLLocation, zoom: Meters?) {
+    public init(type: MKMapType, location: CLLocation, span: MKCoordinateSpan?) {
         mapView = MKMapView(frame: .zero)
         self.mapType = type
         self.location = location
         
-        if let zoom = zoom {
-            self.zoom = zoom
+        if let span = span {
+            self.span = span
         }
         
         super.init(frame: .zero)
 
         mapView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         addSubview(mapView)
         setNeedsUpdateConstraints()
+        updateMap()
     }
     
     required init?(coder: NSCoder) {
@@ -69,7 +68,9 @@ public class CardPartMapView: UIView, CardPartView {
     }
     
     private func updateMap() {
-        mapView.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), latitudinalMeters: zoom, longitudinalMeters: zoom), animated: true)
+        mapView.mapType = mapType
+
+        mapView.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), span: span), animated: true)
     }
 }
 
@@ -81,15 +82,15 @@ extension Reactive where Base: CardPartMapView {
         }
     }
     
-    public var zoom: Binder<CardPartMapView.Meters> {
-        return Binder(self.base) { (mapView, zoom) -> () in
-            mapView.zoom = zoom
-        }
-    }
-    
     public var mapType: Binder<MKMapType> {
         return Binder(self.base) { (mapView, mapType) -> () in
             mapView.mapType = mapType
+        }
+    }
+    
+    public var span: Binder<MKCoordinateSpan> {
+        return Binder(self.base) { (mapView, span) -> () in
+            mapView.span = span
         }
     }
 

@@ -33,7 +33,7 @@ class CardPartMapViewTests: XCTestCase {
     func testLocationProperty() {
         let bag = DisposeBag()
         
-        let cardPartMapView = CardPartMapView(type: .standard, location: location1, zoom: 10_000)
+        let cardPartMapView = CardPartMapView(type: .standard, location: location1, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
         let locationRelay = PublishRelay<CLLocation>()
         locationRelay.asObservable().bind(to: cardPartMapView.rx.location).disposed(by: bag)
 
@@ -53,7 +53,7 @@ class CardPartMapViewTests: XCTestCase {
     func testMapTypeProperty() {
         let bag = DisposeBag()
         
-        let cardPartMapView = CardPartMapView(type: .standard, location: location1, zoom: 10_000)
+        let cardPartMapView = CardPartMapView(type: .standard, location: location1, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
         let mapTypeRelay = PublishRelay<MKMapType>()
         mapTypeRelay.asObservable().bind(to: cardPartMapView.rx.mapType).disposed(by: bag)
         
@@ -66,13 +66,16 @@ class CardPartMapViewTests: XCTestCase {
     func testZoomProperty() {
         let bag = DisposeBag()
         
-        let cardPartMapView = CardPartMapView(type: .standard, location: location1, zoom: 10_000)
-        let zoomRelay = PublishRelay<CardPartMapView.Meters>()
-        zoomRelay.asObservable().bind(to: cardPartMapView.rx.zoom).disposed(by: bag)
+        let cardPartMapView = CardPartMapView(type: .standard, location: location1, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        let zoomRelay = PublishRelay<MKCoordinateSpan>()
+        zoomRelay.asObservable().bind(to: cardPartMapView.rx.span).disposed(by: bag)
         
-        XCTAssertEqual(cardPartMapView.zoom, 10000)
-        
-        zoomRelay.accept(3000)
-        XCTAssertEqual(cardPartMapView.zoom, 3000)
+        // MKCoordinateSpan doesn't conform to equatible so we just test the underlying lat/long deltas
+        XCTAssertEqual(cardPartMapView.span.latitudeDelta, MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1).latitudeDelta)
+        XCTAssertEqual(cardPartMapView.span.longitudeDelta, MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1).longitudeDelta)
+
+        zoomRelay.accept(MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5))
+        XCTAssertEqual(cardPartMapView.span.latitudeDelta, MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5).latitudeDelta)
+        XCTAssertEqual(cardPartMapView.span.longitudeDelta, MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5).longitudeDelta)
     }
 }
