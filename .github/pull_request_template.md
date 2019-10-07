@@ -1,5 +1,5 @@
 
-## Before you make a Pull Request, read important guidelines:
+## Before you make a Pull Request, read the important guidelines:
 
  <ul>
   <li> Why is the change important? </li>
@@ -14,14 +14,12 @@
 
 Please delete options that are not relevant.
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
+- [ ] Bug fix 
+- [ ] New feature 
 
 ## How Has This Been Tested?
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration
+Please let us know if you have tested your PR and if we need to reproduce the issues. Also, please let us know if we need any relevant information for running the tests.
 
 - [ ] Test A
 - [ ] Test B
@@ -32,15 +30,14 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 * Toolchain:
 * SDK:
 
-## Checklist:
+## Things to check on:
 
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published in downstream modules
+- [ ] My Pull Request code follows the coding standards and styles of the project
+- [ ] I have worked on unit tests and reviewed my code to the best of my ability
+- [ ] I have used comments to make other coders understand my code better
+- [ ] My changes are good to go without any warnings
+- [ ] I have added unit tests both for the happy and sad path
+- [ ] All of my unit tests pass successfully before pushing the PR
+- [ ] I have made sure all dependent downstream changes impacted by my PR are working
 
   
