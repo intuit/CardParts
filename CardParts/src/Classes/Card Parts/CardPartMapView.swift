@@ -10,8 +10,9 @@ import MapKit
 import RxCocoa
 import RxSwift
 
-public class CardPartMapView: UIView, CardPartView, MKMapViewDelegate {
-    
+public class CardPartMapView: UIView, CardPartView {
+    public typealias Meters = Double
+
     public var mapType: MKMapType {
         didSet {
             mapView.mapType = mapType
@@ -24,7 +25,7 @@ public class CardPartMapView: UIView, CardPartView, MKMapViewDelegate {
         }
     }
     
-    public var zoomInMeters: Double = 1000 {
+    public var zoom: Meters = 1000 {
         didSet {
             updateMap()
         }
@@ -34,12 +35,15 @@ public class CardPartMapView: UIView, CardPartView, MKMapViewDelegate {
     
     public var mapView: MKMapView
     
-    public init(location: CLLocation, type: MKMapType) {
-
+    public init(type: MKMapType, location: CLLocation, zoom: Meters?) {
         mapView = MKMapView(frame: .zero)
+        self.mapType = type
         self.location = location
-        mapType = type
-
+        
+        if let zoom = zoom {
+            self.zoom = zoom
+        }
+        
         super.init(frame: .zero)
 
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +69,7 @@ public class CardPartMapView: UIView, CardPartView, MKMapViewDelegate {
     }
     
     private func updateMap() {
-        mapView.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), latitudinalMeters: zoomInMeters, longitudinalMeters: zoomInMeters), animated: true)
+        mapView.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), latitudinalMeters: zoom, longitudinalMeters: zoom), animated: true)
     }
 }
 
@@ -74,6 +78,12 @@ extension Reactive where Base: CardPartMapView {
     public var location: Binder<CLLocation> {
         return Binder(self.base) { (mapView, location) -> () in
             mapView.location = location
+        }
+    }
+    
+    public var zoom: Binder<CardPartMapView.Meters> {
+        return Binder(self.base) { (mapView, zoom) -> () in
+            mapView.zoom = zoom
         }
     }
 
