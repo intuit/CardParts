@@ -60,6 +60,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartOrientedView](#cardpartorientedview)
     - [CardPartConfettiView](#cardpartconfettiview)
     - [CardPartProgressBarView](#cardpartprogressbarview)
+    - [CardPartMapView](#cardpartmapview)
   - [Card States](#card-states)
   - [Data Binding](#data-binding)
   - [Themes](#themes)
@@ -944,6 +945,26 @@ Provides the capability to configure different colors and custom marker , it's p
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/progressBarView.png" width="300" alt="ProgressBarView"/>
+</p>
+
+### `CardPartMapView`
+
+Provides the capability to display a MapView and reactively configure location, map type, and coordinate span (zoom). You also have direct access to the MKMapView instance so that you can add annotations, hook into it's MKMapViewDelegate, or whatever else you'd normally do with Maps.
+
+Here's a small example of how to reactively set the location from a changing address field (See the Example project for a working example):
+
+```swift
+    let initialLocation = CLLocation(latitude: 37.430489, longitude: -122.096260)
+    let cardPartMapView = CardPartMapView(type: .standard, location: initialLocation, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+
+    cardPartTextField.rx.text
+            .flatMap { self.viewModel.getLocation(from: $0) }
+            .bind(to: cardPartMapView.rx.location)
+            .disposed(by: bag)
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mapView.png" width="300" alt="MapView" />
 </p>
 
 ## Card States
