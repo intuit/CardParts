@@ -86,5 +86,11 @@ extension Reactive where Base: CardPartMapView {
             mapView.zoom = zoom
         }
     }
+    
+    public var mapType: Binder<MKMapType> {
+        return Binder(self.base) { (mapView, mapType) -> () in
+            mapView.mapType = mapType
+        }
+    }
 
 }
