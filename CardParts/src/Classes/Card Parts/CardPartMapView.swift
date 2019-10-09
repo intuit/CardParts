@@ -31,7 +31,15 @@ public class CardPartMapView: UIView, CardPartView {
     
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
+    /// The instance of MKMapView used inside of the CardPartMapView
     public var mapView: MKMapView
+    
+    /// The height of the CardPartMapView. Default is 300 points. Override this to set a custom height.
+    open var intrensicHeight: CGFloat = 300 {
+        didSet {
+            setNeedsUpdateConstraints()
+        }
+    }
     
     public init(type: MKMapType, location: CLLocation, span: MKCoordinateSpan?) {
         mapView = MKMapView(frame: .zero)
@@ -45,6 +53,7 @@ public class CardPartMapView: UIView, CardPartView {
         super.init(frame: .zero)
         
         addSubview(mapView)
+        setupConstraints()
         setNeedsUpdateConstraints()
         updateMap()
     }
@@ -54,15 +63,27 @@ public class CardPartMapView: UIView, CardPartView {
     }
     
     public override func updateConstraints() {
+        if let heightConstraint = constraints.first(where: { $0.identifier == "CPMVHeight" }) {
+            heightConstraint.constant = self.intrensicHeight
+        }
+        super.updateConstraints()
+    }
+    
+    /// Setup the initial constraints
+    private func setupConstraints() {
+        let heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: intrensicHeight)
+        heightConstraint.identifier = "CPMVHeight"
+        self.addConstraint(heightConstraint)
+
         mapView.layout {
             $0.top == self.topAnchor
             $0.leading == self.leadingAnchor
             $0.trailing == self.trailingAnchor
             $0.bottom == self.bottomAnchor
         }
-        super.updateConstraints()
     }
     
+    /// Update the map with any new changes
     private func updateMap() {
         mapView.mapType = mapType
 

@@ -951,6 +951,8 @@ Provides the capability to configure different colors and custom marker , it's p
 
 Provides the capability to display a MapView and reactively configure location, map type, and coordinate span (zoom). You also have direct access to the MKMapView instance so that you can add annotations, hook into it's MKMapViewDelegate, or whatever else you'd normally do with Maps.
 
+By default the card part will be rendered at a height of 300 points but you can set a custom height just be resetting the CardPartMapView.intrensicHeight property.
+
 Here's a small example of how to reactively set the location from a changing address field (See the Example project for a working example):
 
 ```swift

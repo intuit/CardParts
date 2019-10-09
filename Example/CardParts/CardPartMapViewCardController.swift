@@ -20,26 +20,21 @@ class CardPartMapViewCardController: CardPartsViewController {
     let cardPartTextView = CardPartTextView(type: .normal)
     let cardPartTextField = CardPartTextField(format: .none)
     let cardPartMapView = CardPartMapView(type: .standard, location: CLLocation(latitude: 37.430489, longitude: -122.096260), span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cardPartTextView.text = "This is a CardPartMapView"
         cardPartTextField.placeholder = "Enter Address"
- 
+        cardPartMapView.intrensicHeight = 400 // Setting a custom height
+
         setupCardParts([
             cardPartTextView,
             cardPartTextField,
             cardPartMapView
         ])
         
-        setupConstraints()
         setupBindings()
-    }
-    
-    private func setupConstraints() {
-        // Must set a height to the card part since it's map view doesn't have an intrensic height.
-        cardPartMapView.addConstraint(NSLayoutConstraint(item: cardPartMapView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 300))
     }
     
     private func setupBindings() {

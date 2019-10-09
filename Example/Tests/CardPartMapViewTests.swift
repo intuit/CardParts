@@ -78,4 +78,15 @@ class CardPartMapViewTests: XCTestCase {
         XCTAssertEqual(cardPartMapView.span.latitudeDelta, MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5).latitudeDelta)
         XCTAssertEqual(cardPartMapView.span.longitudeDelta, MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5).longitudeDelta)
     }
+    
+    func testIntrensicHeightConstraintCanBeReset() {
+        let cardPartMapView = CardPartMapView(type: .standard, location: location1, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+
+        let heightConstraint = cardPartMapView.constraints.first(where: { $0.identifier == "CPMVHeight" })
+        XCTAssertEqual(cardPartMapView.intrensicHeight, heightConstraint?.constant)
+       
+        cardPartMapView.intrensicHeight = 400
+        cardPartMapView.updateConstraints() // UIKit will automatically do this.
+        XCTAssertEqual(heightConstraint?.constant, 400)
+    }
 }
