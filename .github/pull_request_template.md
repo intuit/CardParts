@@ -1,13 +1,13 @@
 
 ## Before you make a Pull Request, read the important guidelines:
 
-### Issue Link :link:
+## Issue Link :link:
  <ul>
    <li> Is this a bug fix or a feature? </li>
    <li> Does it break any existing functionality?</li>
 </ul>
 
-### Goals of this PR :tada:
+## Goals of this PR :tada:
  <ul>
    <li> Why is the change important? </li>
    <li> What does this fix? </li>
