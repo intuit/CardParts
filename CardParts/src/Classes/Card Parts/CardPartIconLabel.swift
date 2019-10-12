@@ -216,7 +216,6 @@ extension CardPartIconLabel {
         let iconViewFrame = (sender.view as? CardPartIconLabel)?.iconView?.frame
         if let action = self.tapGestureRecognizerAction {
             guard let iconWidth = iconViewFrame?.size.width , let originX = iconViewFrame?.origin.x else {
-                print("no action")
                 return
             }
             if iconViewPosition.x <= ( iconWidth + originX ){
