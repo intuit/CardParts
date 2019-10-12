@@ -12,6 +12,22 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+
+/// CardPartButtonView displays a single button.
+///
+/// CardPartButtonView exposes the following reactive properties that can be bound to view model properties:
+///
+/// ```
+/// var buttonTitle: String?
+/// var isSelected: Bool?
+/// var isHighlighted: Bool?
+/// var contentHorizontalAlignment: UIControlContentHorizontalAlignment
+/// var alpha: CGFloat
+/// var backgroundColor: UIColor?
+/// var isHidden: Bool
+/// var isUserInteractionEnabled: Bool
+/// var tintColor: UIColor?
+///```
 public class CardPartButtonView : UIButton, CardPartView {
 	
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
@@ -37,7 +53,7 @@ public class CardPartButtonView : UIButton, CardPartView {
 }
 
 extension Reactive where Base: CardPartButtonView {
-
+    
 	public var buttonTitle: Binder<String>{
 		return Binder(self.base) { (buttonView, title) -> () in
 			buttonView.setTitle(title, for: .normal)
