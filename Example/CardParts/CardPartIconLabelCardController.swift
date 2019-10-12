@@ -10,6 +10,7 @@ import Foundation
 import CardParts
 import RxSwift
 import RxCocoa
+import RxGesture
 
 class CardPartIconLabelCardController: CardPartsViewController {
     
@@ -23,7 +24,7 @@ class CardPartIconLabelCardController: CardPartsViewController {
         stackView.axis = .vertical
         stackView.spacing = 10
         
-        for index in 0...5 {
+        for index in 0..<5 {
 
             let iconLabel = CardPartIconLabel()
             iconLabel.verticalPadding = 10
@@ -73,13 +74,17 @@ class CardPartIconLabelCardController: CardPartsViewController {
             
             stackView.addArrangedSubview(iconLabel)
             
-            if index == 1 {
+            if index == 2 {
                 viewModel.labelText.asObservable().bind(to: iconLabel.rx.labelText).disposed(by: bag)
                 viewModel.iconView.asObservable().bind(to: iconLabel.rx.iconView).disposed(by: bag)
                 invalidateLayout(onChanges: [viewModel.iconView])
+                
+                iconLabel.addTapGestureRecognizer(action: {
+                    print("Second Index Image Tapped")
+                })
             }
         }
-        
+
         setupCardParts([stackView])
     }
 }
