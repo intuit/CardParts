@@ -10,12 +10,55 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+
+/// CardPartBarView present a horizontal bar graph that can be filled to a certain percentage of your choice. Both the color of the fill and the percent is reactive
+///
+/// Example:
+/// ```
+/// let barView = CardPartBarView()
+/// viewModel.percent.asObservable().bind(to: barView.rx.percent).disposed(by:bag)
+/// viewModel.barColor.asObservable().bind(to: barView.rx.barColor).disposed(by: bag)
+/// ```
 public class CardPartBarView: UIView, CardPartView {
+    
+    // MARK: Properties
+    
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     public var backgroundLayer: CALayer!
     public var barLayer: CALayer!
     public var verticalLine: CALayer!
+    
+    public var barHeight: CGFloat? = CardParts.theme.barHeight {
+        didSet {
+            updateBarLayer()
+        }
+    }
 
+    // MARK: Reactive Properties
+    
+    /**
+     The value of percent has to be between 0 and 1.
+     If percent is 0.3, the bar will be filled 30% of its width.
+     */
+    public var percent: Double = 0.0 {
+        didSet {
+            if percent.isNaN {
+                percent = 0
+            }
+            if percent.isInfinite {
+                percent = 0
+            }
+            updateBarLayer()
+        }
+    }
+    
+    public var barColor: UIColor = CardParts.theme.barColor {
+        didSet {
+            updateBarLayer()
+        }
+    }
+    
+    // MARK: Methods
     
     public init() {
         super.init(frame: CGRect.zero)
@@ -39,40 +82,12 @@ public class CardPartBarView: UIView, CardPartView {
         }
     }
     
-    /**
-     The value of percent has to be between 0 and 1.
-     If percent is 0.3, the bar will be filled 30% of its width.
-     */
-    public var percent: Double = 0.0 {
-        didSet {
-            if percent.isNaN {
-                percent = 0
-            }
-            if percent.isInfinite {
-                percent = 0
-            }
-            updateBarLayer()
-        }
-    }
-    
-    public var barHeight: CGFloat? = CardParts.theme.barHeight {
-        didSet {
-            updateBarLayer()
-        }
-    }
-    
-    public var barColor: UIColor = CardParts.theme.barColor {
-        didSet {
-            updateBarLayer()
-        }
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override public func layoutSubviews() {
         updateBarLayer()
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override public var intrinsicContentSize: CGSize {
