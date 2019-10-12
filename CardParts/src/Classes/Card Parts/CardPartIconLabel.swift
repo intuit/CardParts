@@ -180,15 +180,14 @@ extension Reactive where Base: CardPartIconLabel {
 
 extension CardPartIconLabel {
 
-    // In order to create computed properties for extensions, we need a key to
-    // store and access the stored property
+    // create computed properties for extensions, we need a key to store and access the stored property
     fileprivate struct AssociatedObjectKeys {
         static var tapGestureRecognizer = "CardPartIconLabel_ImageView"
     }
 
     fileprivate typealias Action = (() -> Void)?
 
-    // Set our computed property type to a closure
+    // set computed property type to a closure
     fileprivate var tapGestureRecognizerAction: Action? {
         set {
             if let newValue = newValue {
@@ -202,7 +201,7 @@ extension CardPartIconLabel {
         }
     }
 
-    // Here we create tapGesture recognizer and store the closure the user passed to us in the associated object we declared above
+    // here we create tapGesture recognizer and store the closure user passed to us in the associated object.
     public func addTapGestureRecognizer(action: (() -> Void)?) {
         self.isUserInteractionEnabled = true
         self.tapGestureRecognizerAction = action
@@ -210,8 +209,7 @@ extension CardPartIconLabel {
         self.addGestureRecognizer(tapGestureRecognizer)
     }
 
-    // Every time the user taps on the UIImageView, this function gets called,
-    // which triggers the closure we stored
+    // Every time the user taps on the UIImageView, this function gets called, which triggers the closure we stored
     @objc fileprivate func handleTapGesture(sender: UITapGestureRecognizer) {
         let iconViewFrame = (sender.view as? CardPartIconLabel)?.iconView?.frame
         if let action = self.tapGestureRecognizerAction {
