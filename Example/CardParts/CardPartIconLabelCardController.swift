@@ -10,7 +10,6 @@ import Foundation
 import CardParts
 import RxSwift
 import RxCocoa
-import RxGesture
 
 class CardPartIconLabelCardController: CardPartsViewController {
     
