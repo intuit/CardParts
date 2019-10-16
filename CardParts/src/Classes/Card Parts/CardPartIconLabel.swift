@@ -212,13 +212,15 @@ extension CardPartIconLabel {
     // Every time the user taps on the UIImageView, this function gets called, which triggers the closure we stored
     @objc fileprivate func handleTapGesture(sender: UITapGestureRecognizer) {
         let iconViewFrame = (sender.view as? CardPartIconLabel)?.iconView?.frame
-        if let action = self.tapGestureRecognizerAction {
-            guard let iconWidth = iconViewFrame?.size.width , let originX = iconViewFrame?.origin.x else {
-                return
-            }
-            if iconViewPosition.x <= ( iconWidth + originX ){
-                  action?()
-            }
+    
+        guard let iconWidth = iconViewFrame?.size.width ,
+            let originX = iconViewFrame?.origin.x,
+            let action = self.tapGestureRecognizerAction else {
+            return
+        }
+        
+        if iconViewPosition.x <= ( iconWidth + originX ){
+            action?()
         }
     }
     
