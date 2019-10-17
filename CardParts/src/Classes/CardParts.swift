@@ -8,5 +8,5 @@
 import Foundation
 
 public class CardParts {
-    public static var theme: CardPartsTheme = CardPartsTurboTheme()
+    public static var theme: CardPartsTheme = CardPartsSystemTheme()
 }
