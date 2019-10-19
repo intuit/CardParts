@@ -112,18 +112,4 @@ class CardPartTitleViewTests: XCTestCase {
 		XCTAssertEqual(titlePart.menuOptions!, ["111", "222"])
 	}
 
-	func testMenuButtonImageNameProperty() {
-		
-		let bag = DisposeBag()
-		
-		let titlePart = CardPartTitleView(type: .titleOnly)
-		
-        let buttonImageProperty = BehaviorRelay(value: "hello")
-		buttonImageProperty.asObservable().bind(to: titlePart.rx.menuButtonImageName).disposed(by: bag)
-		XCTAssertEqual(titlePart.menuButtonImageName, "hello")
-		
-		buttonImageProperty.accept("New Value")
-		XCTAssertEqual(titlePart.menuButtonImageName, "New Value")
-	}
-
 }
