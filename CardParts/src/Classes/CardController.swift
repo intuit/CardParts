@@ -62,15 +62,15 @@ public protocol HiddenCardTrait {
 }
 
 public protocol ShadowCardTrait {
-    func shadowColor() -> CGColor
+    func shadowColor() -> UIColor
     func shadowRadius() -> CGFloat
     func shadowOpacity() -> Float
     func shadowOffset() -> CGSize
 }
 
 extension ShadowCardTrait {
-    func shadowColor() -> CGColor {
-        return UIColor.Gray2.cgColor
+    func shadowColor() -> UIColor {
+        return UIColor.Gray2
     }
 
     func shadowRadius() -> CGFloat {
@@ -111,7 +111,7 @@ extension CardPartsLongPressGestureRecognizerDelegate {
 
 public protocol BorderCardTrait {
     func borderWidth() -> CGFloat
-    func borderColor() -> CGColor
+    func borderColor() -> UIColor
 }
 
 extension BorderCardTrait {
@@ -120,8 +120,8 @@ extension BorderCardTrait {
         return 0.5
     }
     
-    func borderColor() -> CGColor {
-        return UIColor.Gray7.cgColor
+    func borderColor() -> UIColor {
+        return UIColor.Gray7
     }
 }
 

@@ -26,18 +26,18 @@ open class CardCell : UICollectionViewCell {
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.backgroundColor = UIColor.white
-        contentView.layer.borderColor = UIColor.Gray7.cgColor
+        contentView.backgroundColor = CardParts.theme.cardBackgroundColor
+        contentView.layer.borderColor = CardParts.theme.cardBorderColor.cgColor(with: traitCollection)
         contentView.layer.borderWidth = 0.5
         if CardParts.theme.cardShadow {
-            contentView.layer.shadowColor = UIColor.Gray7.cgColor
+            contentView.layer.shadowColor = CardParts.theme.cardBorderColor.cgColor(with: traitCollection)
             contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
             contentView.layer.shadowRadius = 1.0
             contentView.layer.shadowOpacity = 0.9
         }
         
         contentView.addSubview(cardContentView)
-        contentView.backgroundColor = UIColor.white
+        contentView.backgroundColor = CardParts.theme.cardBackgroundColor
         
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[cardContentView]|",
                                                                   options: [],
@@ -111,6 +111,13 @@ open class CardCell : UICollectionViewCell {
         return layoutAttributes
     }
     
+    override open func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        contentView.layer.borderColor = CardParts.theme.cardBorderColor.cgColor(with: traitCollection)
+        if CardParts.theme.cardShadow {
+            contentView.layer.shadowColor = CardParts.theme.cardBorderColor.cgColor(with: traitCollection)
+        }
+    }
+    
     func requiresNoTopBottomMargins(_ noTopBottomMargins: Bool) {
         
         contentView.removeConstraints(topBottomMarginConstraints)
@@ -142,11 +149,11 @@ open class CardCell : UICollectionViewCell {
             contentView.layer.shadowRadius = 0.0
             contentView.layer.shadowOpacity = 0.0
         } else {
-            contentView.backgroundColor = UIColor.white
-            contentView.layer.borderColor = UIColor.Gray7.cgColor
+            contentView.backgroundColor = CardParts.theme.cardBackgroundColor
+            contentView.layer.borderColor = CardParts.theme.cardBorderColor.cgColor(with: traitCollection)
             contentView.layer.borderWidth = 0.5
             if CardParts.theme.cardShadow {
-                contentView.layer.shadowColor = UIColor.Gray7.cgColor
+                contentView.layer.shadowColor = CardParts.theme.cardShadowColor.cgColor(with: traitCollection)
                 contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
                 contentView.layer.shadowRadius = 1.0
                 contentView.layer.shadowOpacity = 0.9
@@ -154,8 +161,8 @@ open class CardCell : UICollectionViewCell {
         }
     }
     
-    func addShadowToCard(shadowRadius: CGFloat = 8.0, shadowOpacity: Float = 0.7, shadowColor: CGColor = UIColor.Gray2.cgColor, shadowOffset: CGSize = CGSize(width: 0, height: 5)) {
-        contentView.layer.shadowColor = shadowColor
+    func addShadowToCard(shadowRadius: CGFloat = 8.0, shadowOpacity: Float = 0.7, shadowColor: UIColor = UIColor.Gray2, shadowOffset: CGSize = CGSize(width: 0, height: 5)) {
+        contentView.layer.shadowColor = shadowColor.cgColor(with: traitCollection)
         contentView.layer.shadowOffset = shadowOffset
         contentView.layer.shadowRadius = shadowRadius
         contentView.layer.shadowOpacity = shadowOpacity
@@ -166,9 +173,9 @@ open class CardCell : UICollectionViewCell {
         gradientLayer.cornerRadius = radius
     }
     
-    func addBorderToCard(borderWidth: CGFloat = 0.5, borderColor: CGColor = UIColor.Gray7.cgColor) {
+    func addBorderToCard(borderWidth: CGFloat = 0.5, borderColor: UIColor = UIColor.SystemGray6) {
         contentView.layer.borderWidth = borderWidth
-        contentView.layer.borderColor = borderColor
+        contentView.layer.borderColor = borderColor.cgColor(with: traitCollection)
     }
     
     func addLongGestureRecognizer(minimumPressDuration: CFTimeInterval, delegate: CardPartsLongPressGestureRecognizerDelegate) {
