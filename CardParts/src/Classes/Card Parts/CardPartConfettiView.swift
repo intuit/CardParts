@@ -24,10 +24,22 @@ public enum ConfettiType {
     case image(UIImage)
 }
 
+/// Provides the capability to add confetti with various types ( diamonds, star, mixed ) and colors, along with different level of intensity
+///```
+///let confettiView = CardPartConfettiView()
+///confettiView.type  = .diamond
+///confettiView.shape = CAEmitterLayerEmitterShape.line
+///confettiView.startConfetti()
+///```
+/// ![Confetti!](https://raw.githubusercontent.com/Intuit/CardParts/master/images/confetti.gif)
 public class CardPartConfettiView: UIView, CardPartView {
     
+    /// CardPart theme margins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
+    
+    /// [`.red` 🔴, `.green` 💚, `.blue` 🔵] - by default
     public var colors:[UIColor] = [ UIColor.red, UIColor.green, UIColor.blue ]
+    /// ⭐️ `.star` by default
     public var type:ConfettiType = .star
     /// default : 0.5 value ranges from 0 - 1(being very slow)
     public var intensity:Float = 0.5
