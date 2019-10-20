@@ -7,6 +7,15 @@
 
 import Foundation
 
+///Out of the box we support 2 themes: Mint and Turbo. These are the 2 Intuit app's that are currently built on top of CardParts. As you can find in the file CardPartsTheme.swift we have a protocol called CardPartsTheme. You may create a class that conforms to CardPartsTheme and set all properties in order to theme CardParts however you may like.
+/// <h3>Applying a theme</h3>
+///Generate a class as follows:
+///```
+///public class YourCardPartTheme: CardPartsTheme {
+///    ...
+///}
+///```
+///And then in your `AppDelegate` call `YourCardPartTheme().apply()` to apply your theme.
 public protocol CardPartsTheme {
     
     var cardsViewContentInsetTop: CGFloat { get set }
@@ -16,11 +25,11 @@ public protocol CardPartsTheme {
     var cardCellMargins: UIEdgeInsets { get set }
     var cardPartMargins: UIEdgeInsets { get set }
     
-    // CardPartSeparatorView and CardPartVerticalSeparatorView
+    // MARK: CardPartSeparatorView and CardPartVerticalSeparatorView
     var separatorColor: UIColor { get set }
     var horizontalSeparatorMargins: UIEdgeInsets { get set }
     
-    // CardPartTextView
+    // MARK: CardPartTextView
     var smallTextFont: UIFont { get set }
     var smallTextColor: UIColor { get set }
     var normalTextFont: UIFont { get set }
@@ -32,17 +41,17 @@ public protocol CardPartsTheme {
     var detailTextFont: UIFont { get set }
     var detailTextColor: UIColor { get set }
     
-    // CardPartTitleView
+    // MARK: CardPartTitleView
     var titleFont: UIFont { get set }
     var titleColor: UIColor { get set }
     var titleViewMargins: UIEdgeInsets { get set }
 
-    // CardPartButtonView
+    // MARK: CardPartButtonView
     var buttonTitleFont: UIFont { get set }
     var buttonTitleColor: UIColor { get set }
     var buttonCornerRadius: CGFloat { get set }
 
-    // CardPartBarView
+    // MARK: CardPartBarView
     var barBackgroundColor: UIColor { get set }
     var barHeight: CGFloat { get set }
     var barColor: UIColor { get set }
@@ -50,10 +59,10 @@ public protocol CardPartsTheme {
     var roundedCorners: Bool { get set }
     var showTodayLine: Bool { get set }
 
-    // CardPartTableView and CardPartCollectionView
+    // MARK: CardPartTableView and CardPartCollectionView
     var tableViewMargins: UIEdgeInsets { get set }
 
-    // CardPartTableViewCell and CardPartTitleDescriptionView
+    // MARK: CardPartTableViewCell and CardPartTitleDescriptionView
     var leftTitleFont: UIFont { get set }
     var leftDescriptionFont: UIFont { get set }
     var rightTitleFont: UIFont { get set }
