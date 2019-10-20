@@ -9,6 +9,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// You can set min and max value as well as bind to the current set amount:
+///```
+///let slider = CardPartSliderView()
+///slider.minimumValue = sliderViewModel.min
+///slider.maximumValue = sliderViewModel.max
+///slider.value = sliderViewModel.defaultAmount
+///slider.rx.value.asObservable().bind(to: sliderViewModel.amount).disposed(by: bag)
+///```
+/// <h3>Reactive Properties</h3>
+///```
+///minimumValue: Float
+///maximumValue: Float
+///```
 public class CardPartSliderView : UISlider, CardPartView {
     
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
