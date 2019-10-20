@@ -59,58 +59,85 @@ public enum CardPartTextType {
 	case detail
 }
 
+///CardPartTextView displays a single text string. The string can wrap to multiple lines. The initializer for CardPartTextView takes a type parameter which can be set to: normal, title, or detail. The type is used to set the default font and textColor for the text.
+///
+///CardPartTextView exposes the following reactive properties that can be bound to view model properties:
+///```
+///var text: String?
+///var attributedText: NSAttributedString?
+///var font: UIFont!
+///var textColor: UIColor!
+///var textAlignment: NSTextAlignment
+///var lineSpacing: CGFloat
+///var lineHeightMultiple: CGFloat
+///var alpha: CGFloat
+///var backgroundColor: UIColor?
+///var isHidden: Bool
+///var isUserInteractionEnabled: Bool
+///var tintColor: UIColor?
+///```
 public class CardPartTextView : UIView, CardPartView {
 	
+    /// Text
 	public var text: String? {
 		didSet {
 			updateText()
 		}
 	}
 	
+    /// Attributed text
 	public var attributedText: NSAttributedString? {
 		didSet {
 			updateText()
 		}
 	}
 	
+    /// UIFont
 	public var font: UIFont! {
 		didSet {
 			updateText()
 		}
 	}
 	
+    /// UIColor
 	public var textColor: UIColor! {
 		didSet {
 			updateText()
 		}
 	}
 	
+    /// `.left` by default
 	public var textAlignment: NSTextAlignment = .left {
 		didSet {
 			updateText()
 		}
 	}
 	
+    /// `.center by default
     public var verticalAlignment: CardPartLabelVerticalAlignment = .center {
         didSet {
             updateText()
         }
     }
 
+    /// 1.0 by default
     public var lineSpacing: CGFloat = 1.0 {
 		didSet {
 			updateText()
 		}
 	}
 	
+    /// 1.1 by default
 	public var lineHeightMultiple: CGFloat = 1.1 {
 		didSet {
 			updateText()
 		}
 	}
 	
+    /// CardParts theme margins by default
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
 	
+    /// `CardPartLabel`
 	public var label: CardPartLabel
 
 	public init(type: CardPartTextType) {
