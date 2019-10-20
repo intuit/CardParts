@@ -10,8 +10,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// Allows you to add a space between card parts in case you need a space larger than the default margin. Initialize it with a specific height:
+///```
+///CardPartSpacerView(height: 30)
+///```
 public class CardPartSpacerView : UIView, CardPartView {
 	
+    /// .Zero by default
     public var margins: UIEdgeInsets = UIEdgeInsets.zero
 
 	private var height: CGFloat
