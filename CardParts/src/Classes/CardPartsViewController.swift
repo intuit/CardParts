@@ -23,11 +23,49 @@ class CardStateData {
     var constraints: [NSLayoutConstraint] = []
 }
 
+///CardPartsViewController implements the CardController protocol and builds its card UI by displaying one or more card part views using an MVVM pattern that includes automatic data binding. Each CardPartsViewController displays a list of CardPartView as its subviews. Each CardPartView renders as a row in the card. The CardParts framework implements several different types of CardPartView that display basic views, such as title, text, image, button, separator, etc. All CardPartView implemented by the framework are already styled to correctly match the applied themes UI guidelines.
+///
+///In addition to the card parts, a CardPartsViewController also uses a view model to expose data properties that are bound to the card parts. The view model should contain all the business logic for the card, thus keeping the role of the CardPartsViewController to just creating its view parts and setting up bindings from the view model to the card parts. A simple implementation of a CardPartsViewController based card might look like the following:
+///```
+///class TestCardController: CardPartsViewController  {
+///
+///    var viewModel = TestViewModel()
+///    var titlePart = CardPartTitleView(type: .titleOnly)
+///    var textPart = CardPartTextView(type: .normal)
+///
+///    override func viewDidLoad() {
+///        super.viewDidLoad()
+///
+///        viewModel.title.asObservable().bind(to: titlePart.rx.title).disposed(by: bag)
+///        viewModel.text.asObservable().bind(to: textPart.rx.text).disposed(by: bag)
+///
+///        setupCardParts([titlePart, textPart])
+///    }
+///}
+///
+///class TestViewModel {
+///
+///    var title = BehaviorRelay(value: "")
+///    var text = BehaviorRelay(value: "")
+///
+///    init() {
+///
+///        // When these values change, the UI in the TestCardController
+///        // will automatically update
+///        title.accept("Hello, world!")
+///        text.accept("CardParts is awesome!")
+///    }
+///}
+///````
+///The above example creates a card that displays two card parts, a title card part and a text part. The bind calls setup automatic data binding between view model properties and the card part view properties so that whenever the view model properties change, the card part views will automatically update with the correct data.
+///
+///The call to `setupCardParts` adds the card part views to the card. It takes an array of CardPartView that specifies which card parts to display, and in what order to display them.
 open class CardPartsViewController : UIViewController, CardController {
     
     public var isEditable = false
 	var vertContraints: [NSLayoutConstraint]?
 	
+    /// `.none` by default
 	public var state: CardState = .none {
 		didSet {
 			updateState(oldState: oldValue, newState: state)
