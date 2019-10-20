@@ -13,10 +13,22 @@ public protocol CardPartPagedViewDelegate {
 	func didMoveToPage(page: Int)
 }
 
+/// This CardPart allows you to create a horizontal paged carousel with page controls. Simply feed it with your desired height and an array of `CardPartStackView`:
+///```
+///let cardPartPages = CardPartPagedView(withPages: initialPages, andHeight: desiredHeight)
+///cardPartPages.delegate = self
+///```
+/// This CardPart also has a delegate:
+///```
+///func didMoveToPage(page: Int)
+///```
+/// Which will fire whenever the user swipes to another page
 public class CardPartPagedView: UIView, CardPartView {
 	
+    /// CardParts theme marges by default
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
 	
+    /// Views to be used in each page
 	public var pages: [CardPartView]! {
 		didSet {
 			DispatchQueue.main.async{ [weak self] in
@@ -28,18 +40,25 @@ public class CardPartPagedView: UIView, CardPartView {
 		}
 	}
 	
+    /// Current page index
 	public var currentPage: Int {
 		didSet{
 			updatePageControl()
 		}
 	}
 	
+    /// `CardPartPagedViewDelegate`
 	public var delegate: CardPartPagedViewDelegate?
 	
 	fileprivate var pageControl: UIPageControl
 	fileprivate var scrollView: UIScrollView
 	fileprivate var height: CGFloat
 	
+    /// Instantiate a paged view with pages, and desired height
+    ///
+    /// - Parameters:
+    ///   - pages: Array of `CardPartStackView`s
+    ///   - height: Height to be used for the pages
 	public init(withPages pages: [CardPartStackView], andHeight height: CGFloat) {
 		
 		scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: 250, height: height))
@@ -115,6 +134,9 @@ public class CardPartPagedView: UIView, CardPartView {
 
 extension CardPartPagedView: UIScrollViewDelegate {
 	
+    /// Snaps page based on swiped/scrolled amount and calls `didMoveToPage` delegate
+    ///
+    /// - Parameter scrollView: scrollView being scrolled
 	public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 		
 		let pageWidth:CGFloat = scrollView.frame.width
