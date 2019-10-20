@@ -25,8 +25,14 @@ public enum CardPartSecondaryTitleDescPosition {
     case right
 }
 
+/// CardPartTitleDescriptionView allows you to have a left and right title and description label, however, you are able to also choose the alignment of the right title/description labels. See below:
+///```
+///let rightAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryPosition: .right) // This will be right aligned
+///let centerAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryPosition: .center(amount: 0)) // This will be center aligned with an offset of 0.  You may increase that amount param to shift right your desired amount
+///```
 public class CardPartTitleDescriptionView : UIView, CardPartView {
 	
+    /// CardParts theme margins by default
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
 	
 	public var leftTitleLabel: UILabel
