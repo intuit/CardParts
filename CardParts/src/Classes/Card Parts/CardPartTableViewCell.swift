@@ -9,60 +9,92 @@
 import Foundation
 import UIKit
 
-
+///CardPartTableViewCell is the default cell registered for `CardPartTableView`. The cell contains the following properties:
+///```
+///var leftTitleLabel: UILabel
+///var leftDescriptionLabel: UILabel
+///var rightTitleLabel: UILabel
+///var rightDescriptionLabel: UILabel
+///var rightTopButton: UIButton
+///var shouldCenterRightLabel = false
+///var leftTitleFont: UIFont
+///var leftDescriptionFont: UIFont
+///var rightTitleFont: UIFont
+///var rightDescriptionFont: UIFont
+///var leftTitleColor: UIColor
+///var leftDescriptionColor: UIColor
+///var rightTitleColor: UIColor
+///var rightDescriptionColor: UIColor
+///```
 public class CardPartTableViewCell : UITableViewCell {
 	
+    /// top: 12.0, bottom: 12.0, left: 0.0, right: 0.0 by default
     public var margins: UIEdgeInsets = .init(top: 12.0, left: 0.0, bottom: 12.0, right: 0.0)
 
+    /// Left title label
     public var leftTitleLabel: UILabel
+    /// Left description (below left title)
 	public var leftDescriptionLabel: UILabel
+    /// Right title label
 	public var rightTitleLabel: UILabel
+    /// Right description (below right title)
 	public var rightDescriptionLabel: UILabel
+    /// Right button
 	public var rightTopButton: UIButton
+    /// Center right label, `false` by default
 	public var shouldCenterRightLabel = false
 
+    /// CardParts leftTitleFont theme by default
     public var leftTitleFont: UIFont = CardParts.theme.leftTitleFont {
 		didSet {
 			leftTitleLabel.font = leftTitleFont
 		}
 	}
+    /// CardParts leftDescriptionFont theme by default
 	public var leftDescriptionFont: UIFont = CardParts.theme.leftDescriptionFont {
 		didSet {
 			leftDescriptionLabel.font = leftDescriptionFont
 		}
 	}
+    /// CardParts rightTitleFont theme by default
 	public var rightTitleFont: UIFont = CardParts.theme.rightTitleFont {
 		didSet {
 			rightTitleLabel.font = rightTitleFont
 		}
 	}
+    /// CardParts rightDescriptionFont theme by default
 	public var rightDescriptionFont: UIFont = CardParts.theme.rightDescriptionFont {
 		didSet {
 			rightDescriptionLabel.font = rightDescriptionFont
 		}
 	}
 	
+    /// CardParts leftTitleColor theme by default
 	public var leftTitleColor: UIColor = CardParts.theme.leftTitleColor {
 		didSet {
 			leftTitleLabel.textColor = leftTitleColor
 		}
 	}
+    /// CardParts leftDescriptionColor theme by default
 	public var leftDescriptionColor: UIColor = CardParts.theme.leftDescriptionColor {
 		didSet {
 			leftDescriptionLabel.textColor = leftDescriptionColor
 		}
 	}
+    /// CardParts rightTitleColor theme by default
 	public var rightTitleColor: UIColor = CardParts.theme.rightTitleColor {
 		didSet {
 			rightTitleLabel.textColor = rightTitleColor
 		}
 	}
+    /// CardParts rightDescriptionColor theme by default
 	public var rightDescriptionColor: UIColor = CardParts.theme.rightDescriptionColor {
 		didSet {
 			rightDescriptionLabel.textColor = rightDescriptionColor
 		}
 	}
 	
+    /// Grays out text and lowers opacity
 	public var displayAsHidden: Bool = false {
 		didSet {
 			leftTitleLabel.textColor = displayAsHidden ? UIColor.Gray2 : leftTitleColor
@@ -79,6 +111,7 @@ public class CardPartTableViewCell : UITableViewCell {
 		}
 	}
 	
+    /// `.right` by default
 	public var titleCompression: CardPartTitleCompression = .right {
 		didSet {
 			setNeedsUpdateConstraints()
