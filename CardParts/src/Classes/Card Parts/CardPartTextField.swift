@@ -18,10 +18,32 @@ public enum CardPartTextFieldFormat {
     case ssn
 }
 
+///CardPartTextField can take a parameter of type `CardPartTextFieldFormat` which determines formatting for the UITextField. You may also set properties such as keyboardType, placeholder, font, text, etc.
+///```
+///let amount = CardPartTextField(format: .phone)
+///amount.keyboardType = .numberPad
+///amount.placeholder = textViewModel.placeholder
+///amount.font = dataFont
+///amount.textColor = UIColor.colorFromHex(0x3a3f47)
+///amount.text = textViewModel.text.value
+///amount.rx.text.orEmpty.bind(to: textViewModel.text).disposed(by: bag)
+///```
+///The different formats are as follows:
+///```
+///public enum CardPartTextFieldFormat {
+///    case none
+///    case currency(maxLength: Int)
+///    case zipcode
+///    case phone
+///    case ssn
+///}
+///```
 public class CardPartTextField : UITextField, CardPartView {
     
+    /// CardParts theme margins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
+    /// One of `CardPartTextFieldFormat`: `.none` by default
     public var format: CardPartTextFieldFormat = .none {
         didSet {
             switch format {
@@ -38,8 +60,10 @@ public class CardPartTextField : UITextField, CardPartView {
             }
         }
     }
+    /// 0 by default
     public var maxLength = 0
     
+    /// Returns the raw value, stripped of all formatting characters
     public var unformattedString: String? {
         if case .none = format {
             return super.text
