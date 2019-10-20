@@ -10,8 +10,11 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// CardPartSeparatorView displays a separator line. There are no reactive properties define for CardPartSeparatorView.
+/// Uses CardParts theme separatorColor for backgroundColor.
 public class CardPartSeparatorView : UIView, CardPartView {
 	
+    /// CardParts theme margins by default
 	public var margins: UIEdgeInsets = CardParts.theme.horizontalSeparatorMargins
 	
 	public init() {
