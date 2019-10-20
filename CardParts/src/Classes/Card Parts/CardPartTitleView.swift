@@ -16,6 +16,35 @@ public enum CardPartTitleType {
 	case titleWithActionableButton
 }
 
+///CardPartTitleView displays a view with a title, and an optional options menu. The initializer requires a type parameter which can be set to either titleOnly or titleWithMenu. If the type is set to titleWithMenu the card part will display a menu icon, that when tapped will display a menu containing the options specified in the menuOptions array. The menuOptionObserver property can be set to a block that will be called when the user selects an item from the menu.
+///
+///As an example for a title with menu buttons:
+///````
+///let titlePart = CardPartTitleView(type: .titleWithMenu)
+///titlePart.menuTitle = "Hide this offer"
+///titlePart.menuOptions = ["Hide"]
+///titlePart.menuOptionObserver  = {[weak self] (title, index) in
+///    // Logic to determine which menu option was clicked
+///    // and how to respond
+///    if index == 0 {
+///        self?.hideOfferClicked()
+///    }
+///}
+///```
+///`CardPartButtonView` exposes the following reactive properties that can be bound to view model properties:
+///```
+///var title: String?
+///var titleFont: UIFont
+///var titleColor: UIColor
+///var menuTitle: String?
+///var menuOptions: [String]?
+///var menuButtonImageName: String
+///var alpha: CGFloat
+///var backgroundColor: UIColor?
+///var isHidden: Bool
+///var isUserInteractionEnabled: Bool
+///var tintColor: UIColor?
+///```
 public class CardPartTitleView : UIView, CardPartView {
 	
 	public var title: String? {
@@ -23,11 +52,13 @@ public class CardPartTitleView : UIView, CardPartView {
 			label.text = title
 		}
 	}
+    /// CardParts theme titleFont by default
 	public var titleFont: UIFont = CardParts.theme.titleFont {
 		didSet {
 			label.font = titleFont
 		}
 	}
+    /// CardParts theme titleColor by default
 	public var titleColor: UIColor = CardParts.theme.titleColor {
 		didSet {
 			label.textColor = titleColor
@@ -44,6 +75,7 @@ public class CardPartTitleView : UIView, CardPartView {
             }
         }
     }
+    /// "arrowdown" by default
 	public var menuButtonImageName: String = "arrowdown" {
 		didSet {
 			if type == .titleWithMenu || type == .titleWithActionableButton {
@@ -54,6 +86,7 @@ public class CardPartTitleView : UIView, CardPartView {
 	public var menuOptionObserver: ((String, Int) -> Void)?
 	public var menuActionableCallback: (()->())?
 	
+    /// CardParts theme titleViewMargs by default
 	public var margins: UIEdgeInsets = CardParts.theme.titleViewMargins
 	
 	private let type: CardPartTitleType
