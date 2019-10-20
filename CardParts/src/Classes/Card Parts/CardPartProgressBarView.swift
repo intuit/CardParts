@@ -10,10 +10,27 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// Provides the capability to configure different colors and custom marker , it's position to indicate the progress based on the value provided.
+///
+///```
+///let progressBarView = CardPartProgressBarView(barValues: barValues, barColors: barColors, marker: nil, markerLabelTitle: "", currentValue: Double(720), showShowBarValues: false)
+///progressBarView.barCornerRadius = 4.0
+///```
+/// ![Progress Bar Example](https://raw.githubusercontent.com/Intuit/CardParts/master/images/progressBarView.png)
+///
+/// <h3>Reactive Properties</h3>
+///```
+/// currentValue: Double
+/// bgColor: UIColor
+/// barCornerRadius: CGFloat
+/// markerColor: UIColor
+///```
 public class CardPartProgressBarView: UIView, CardPartView {
     
+    /// CardParts theme margins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
+    /// Animatable
     public var animatable: Bool = false
     
     private var markerView: UIView!
@@ -41,6 +58,16 @@ public class CardPartProgressBarView: UIView, CardPartView {
     fileprivate var currentVal: Double = 0
     
     
+    /// Initializes progress bar view by taking an array of bar values (and sorting them - ASC).
+    /// The number of bar values should match the number of bar colors, and will `assert` in debug builds.
+    ///
+    /// - Parameters:
+    ///   - barValues: Array of values to segment
+    ///   - barColors: Array of colors to align to values
+    ///   - marker: (Optional) Custom view for marker
+    ///   - markerLabelTitle: (Optional) marker title
+    ///   - currentValue: Start value of progress
+    ///   - showShowBarValues: Show/Hide bar values
     public init(barValues:[Double], barColors: [UIColor], marker: UIView? = nil , markerLabelTitle: String? = nil, currentValue: Double, showShowBarValues: Bool) {
         
         self.barColors = barColors
@@ -107,6 +134,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         super.layoutSubviews()
     }
     
+    /// Add marker text to view if not empty
     private var markerTitle: String = "" {
         didSet {
             if markerTitle != "" {
@@ -122,6 +150,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// `UIFont.titleTextMedium` by default
     public var markerTitleFont: UIFont = UIFont.titleTextMedium {
         didSet {
             markerLabel.font = markerTitleFont
@@ -129,12 +158,14 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// 10.0 by default
     public var colorsBarOffset: CGFloat = 10 {
         didSet {
             layoutSubviews()
         }
     }
     
+    /// 4.0 by default
     public var markerToColorsBarCushion: CGFloat = 4 {
         didSet(newValue){
             totalHeight -= self.markerToColorsBarCushion
@@ -144,6 +175,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// 0.0 by default
     public var colorsBarToValuesBarCushion: CGFloat = 0 {
         didSet(newValue){
             totalHeight -= self.colorsBarToValuesBarCushion
@@ -153,6 +185,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// 0.0 by default
     public var labelToMarkerCushion: CGFloat = 0 {
         didSet(newValue){
             totalHeight -= self.labelToMarkerCushion
@@ -162,6 +195,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// Custom marker view
     private var customMarker: UIView? {
         didSet {
             addMarker(marker: customMarker)
@@ -169,6 +203,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// `UIColor.white` by default
     public var bgColor: UIColor = UIColor.white {
         didSet {
             addMarker(marker: customMarker)
@@ -176,6 +211,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// `UIColor.black` by default
     public var markerColor: UIColor? = UIColor.Black {
         didSet {
             if markerColor != nil {
@@ -208,12 +244,14 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// Optional rounding value for bar corners
     public var barCornerRadius: CGFloat? {
         didSet {
             layoutIfNeeded()
         }
     }
     
+    /// Optional rounding value for view
     public var viewCornerRadius: CGFloat? {
         didSet {
             if  viewCornerRadius != nil {
@@ -222,6 +260,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// Bar height override
     public var barHeight: CGFloat? {
         didSet {
             if let height = barHeight {
@@ -233,6 +272,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// Container height override
     public var buttomValuesContainerHeight: CGFloat? {
         didSet {
             if let height = buttomValuesContainerHeight {
@@ -244,6 +284,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// Marker view height override
     public var markerViewHeight: CGFloat?  {
         didSet {
             if let height = markerViewHeight {
@@ -255,6 +296,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// Marker label height override
     public var markerLabelHeight: CGFloat?  {
         didSet {
             if let height = markerLabelHeight {
@@ -266,6 +308,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// Manual constraint update
     public override func updateConstraints() {
         NSLayoutConstraint.activate([
             self.markerView.bottomAnchor.constraint(equalTo: self.colorBarsStackView.topAnchor, constant: -self.markerToColorsBarCushion),
@@ -333,7 +376,9 @@ public class CardPartProgressBarView: UIView, CardPartView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    /// Add's custom marker, or falls back to Triangle marker
+    ///
+    /// - Parameter marker: Custom marker view
     fileprivate func addMarker(marker: UIView?) {
         let color: UIColor = UIColor.black
         
