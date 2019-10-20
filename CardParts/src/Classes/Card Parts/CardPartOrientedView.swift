@@ -12,17 +12,35 @@ public enum Orientation {
     case bottom
 }
 
-/**
- * This card part allows for oriented elements. It takes a list of card part views that can be oriented towards the top or bottom of a view.
- * Although a stack view has the power to orient elements this oriented card part goes beyond the alignment and distribution types that a stack view can offer.
- */
+/// CardPartOrientedView allows you to create an oriented list view of card part elements. This is similar to the `CardPartStackView` except that this view can orient elements to the top or bottom of the view. This is advantageous when you are using horizontal stack views and need elements to be oriented differently (top arranged or bottom arranged) relative to the other views in the horizontal stack view. To see a good example of this element please take a look at the example application.
+///
+/// The supported orientations are as follows:
+///```
+///public enum Orientation {
+///    case top
+///    case bottom
+///}
+///```
+///
+/// To create an oriented view you can use the following code:
+///```
+///let orientedView = CardPartOrientedView(cardParts: [<elements to list vertically>], orientation: .top)
+///```
+///
+/// Add the above orientedView to any list of card parts or an existing stack view to orient your elements to the top or bottom of the enclosing view.
 public class CardPartOrientedView: UIView, CardPartView {
     
+    /// CardParts theme margins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
     private var orientation: Orientation
     private var cardParts: [CardPartView]
     
+    /// Takes an array of `CardPartView`s and arranges them to `Orientation`
+    ///
+    /// - Parameters:
+    ///   - cardParts: Array of `CardPartView`s
+    ///   - orientation: `Orientation` of views
     public init(cardParts: [CardPartView], orientation: Orientation) {
         self.orientation = orientation
         self.cardParts = cardParts
