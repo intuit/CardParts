@@ -7,7 +7,9 @@
 
 import Foundation
 
+/// Triangle shape
 class CardPartTriangleView: UIView {
+    /// `UIColor.white` by default
     var fillColor: UIColor = UIColor.white
     
     override init(frame: CGRect) {
