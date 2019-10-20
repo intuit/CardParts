@@ -9,10 +9,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// CardPartPillLabel provides you the rounded corners, text aligned being at the center along with vertical and horizontal padding capability.
+///```
+///var verticalPadding:CGFloat
+///var horizontalPadding:CGFloat
+///```
+/// ![Pill Label examples](https://raw.githubusercontent.com/Intuit/CardParts/master/images/pillLabels.png)
 public class CardPartPillLabel: UILabel, CardPartView {
     
+    /// CardPart theme margins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
+    // MARK: - Reactive Properties
+    
+    /// Text in label
     public var labelText: String? {
         didSet {
             guard let text = labelText else { return }
@@ -20,10 +30,12 @@ public class CardPartPillLabel: UILabel, CardPartView {
         }
     }
     
-    /// provides vertical and horizontal spacing
+    /// verticalPadding - 2.0 by default
     public var verticalPadding:CGFloat = 2.0
+    /// horizontalPadding - 2.0 by default
     public var horizontalPadding:CGFloat = 2.0
     
+    // MARK: - 
 
     override init(frame: CGRect) {
         super.init(frame: frame)
