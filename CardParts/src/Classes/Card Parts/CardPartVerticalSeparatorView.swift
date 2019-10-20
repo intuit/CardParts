@@ -10,8 +10,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// As the name describes, it shows a vertical separator view opposed to a horizontal one
+///
+/// `backgroundColor` is CardParts theme separatorColor by default
 public class CardPartVerticalSeparatorView : UIView, CardPartView {
 	
+    /// CardParts theme cardPartMargins by default
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
 	
 	public init() {
