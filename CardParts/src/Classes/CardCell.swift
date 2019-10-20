@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// CollectionViewCell used in `CardsViewController` by default
 open class CardCell : UICollectionViewCell {
     
     var cardContentView : UIView
@@ -62,6 +63,7 @@ open class CardCell : UICollectionViewCell {
         }
     }
     
+    /// Applies gradient colors when set, removes borders
     var gradientColors: [UIColor] = [] {
         didSet {
             gradientLayer.colors = gradientColors.map({ (color) -> CGColor in
