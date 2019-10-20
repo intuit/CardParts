@@ -10,26 +10,49 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// CardPartIconLabel provides the capability to add images in eithet directions supporting left , right and center text alignments.
+///```
+///let iconLabel = CardPartIconLabel()
+///iconLabel.verticalPadding = 10
+///iconLabel.horizontalPadding = 10
+///iconLabel.backgroundColor = UIColor.blue
+///iconLabel.font = UIFont.systemFont(ofSize: 12)
+///iconLabel.textColor = UIColor.black
+///iconLabel.numberOfLines = 0
+///iconLabel.iconPadding = 5
+///iconLabel.icon = UIImage(named: "cardIcon")
+///```
+/// ![Icon Label Example](https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartIconLabel.png)
 public class CardPartIconLabel: UILabel, CardPartView {
     
+    /// Horizontal position
     public enum HorizontalPosition {
         case left
         case right
     }
-    
+
+    // Vertical position
     public enum VerticalPosition {
         case top
         case center
         case bottom
     }
     
-    public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
+    // MARK: - Reactive Properties
     
-    /// provides vertical and horizontal spacing
+    /// label for icon
+    public var labelText: String? {
+        didSet {
+            guard let text = labelText else { return }
+            self.text = text
+        }
+    }
+    /// verticalPadding - 2.0 by default
     public var verticalPadding:CGFloat = 2.0
+    /// horizontalPadding - 2.0 by default
     public var horizontalPadding:CGFloat = 2.0
-    public var padding:CGFloat = 10.0
     
+    /// icon imageView
     public var iconView: UIImageView? {
         didSet {
             guard let image = iconView?.image else { return }
@@ -37,26 +60,30 @@ public class CardPartIconLabel: UILabel, CardPartView {
         }
     }
     
+    // MARK: Normal Properties
+
+    /// CardParts theme margins by default
+    public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
+    
+    /// padding - 10.0 by default
+    public var padding:CGFloat = 10.0
+    
+    
     /// Horizontal and vertical position
     public typealias Position = (horizontal: CardPartIconLabel.HorizontalPosition, vertical: CardPartIconLabel.VerticalPosition)
+    /// defaults to (`.left`, `.top`)
     open var iconPosition: Position = (.left , .top)
     
     /// additional spacing between text and the image
     public var iconPadding: CGFloat = 0
     
+    /// icon image
     public var icon:UIImage? {
         didSet {
             if icon == nil {
                 iconView?.removeFromSuperview()
             }
             setNeedsDisplay()
-        }
-    }
-    
-    public var labelText: String? {
-        didSet {
-            guard let text = labelText else { return }
-            self.text = text
         }
     }
     
@@ -73,6 +100,7 @@ public class CardPartIconLabel: UILabel, CardPartView {
         self.clipsToBounds = true
     }
     
+    /// Draws label text specially within the frame with icon
     open override func drawText(in rect: CGRect) {
         guard let text = text as NSString? else { return }
         
