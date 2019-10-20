@@ -99,6 +99,11 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
+        
+        let newValue = view.bounds.width.rounded() - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
+        if newValue != cardCellWidth.value {
+            cardCellWidth.accept(newValue)
+        }
     }
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -445,11 +450,7 @@ extension CardsViewController {
                 
                 let visibilityRatios = CardUtils.calculateVisibilityRatios(containerFrame: collectionView.bounds, cardFrame: cell.frame)
                 
-                // check to see if the visibility has changed (card visibility can change or the container coverage can change)
-                if visibilityRatios.cardVisibilityRatio != cardVC.cardVisibilityRatio || visibilityRatios.containerCoverageRatio != cardVC.containerCoverageRatio,
-                    let vc = cardVC as? CardVisibilityDelegate {
-                    cardVC.cardVisibilityRatio = visibilityRatios.cardVisibilityRatio
-                    cardVC.containerCoverageRatio = visibilityRatios.containerCoverageRatio
+                if let vc = cardVC as? CardVisibilityDelegate {
                     vc.cardVisibility?(cardVisibilityRatio: visibilityRatios.cardVisibilityRatio, containerCoverageRatio: visibilityRatios.containerCoverageRatio)
                 }
             }

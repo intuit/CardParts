@@ -10,21 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-/// Provides the capability to configure different colors and custom marker , it's position to indicate the progress based on the value provided.
-///
-///```
-///let progressBarView = CardPartProgressBarView(barValues: barValues, barColors: barColors, marker: nil, markerLabelTitle: "", currentValue: Double(720), showShowBarValues: false)
-///progressBarView.barCornerRadius = 4.0
-///```
-/// ![Progress Bar Example](https://raw.githubusercontent.com/Intuit/CardParts/master/images/progressBarView.png)
-///
-/// <h3>Reactive Properties</h3>
-///```
-/// currentValue: Double
-/// bgColor: UIColor
-/// barCornerRadius: CGFloat
-/// markerColor: UIColor
-///```
 public class CardPartProgressBarView: UIView, CardPartView {
     
     /// CardParts theme margins by default
@@ -55,25 +40,17 @@ public class CardPartProgressBarView: UIView, CardPartView {
     
     private var markerLabelViewHeight: CGFloat = 0
     
-    fileprivate var currentVal: Double = 0
+    private var progressBarWidth: CGFloat
     
+    private var barWidth: CGFloat
     
-    /// Initializes progress bar view by taking an array of bar values (and sorting them - ASC).
-    /// The number of bar values should match the number of bar colors, and will `assert` in debug builds.
-    ///
-    /// - Parameters:
-    ///   - barValues: Array of values to segment
-    ///   - barColors: Array of colors to align to values
-    ///   - marker: (Optional) Custom view for marker
-    ///   - markerLabelTitle: (Optional) marker title
-    ///   - currentValue: Start value of progress
-    ///   - showShowBarValues: Show/Hide bar values
-    public init(barValues:[Double], barColors: [UIColor], marker: UIView? = nil , markerLabelTitle: String? = nil, currentValue: Double, showShowBarValues: Bool) {
+    fileprivate var currentVal: Int = 0
+
+    public init(barColors: [UIColor], marker: UIView? = nil , markerLabelTitle: String? = nil, currentValue: Int, showShowBarValues: Bool, progressBarWidth: CGFloat = 120) {
         
         self.barColors = barColors
-        self.barValues = barValues.sorted(by: { (first, second) -> Bool in
-            return first < second
-        })
+        self.progressBarWidth = progressBarWidth
+        self.barWidth = progressBarWidth / CGFloat(barColors.count)
         
         super.init(frame: CGRect.zero)
         
@@ -123,7 +100,6 @@ public class CardPartProgressBarView: UIView, CardPartView {
         self.view.addSubview(markerView)
         addMarker(marker: marker)
         setupColorBarsStack()
-        setupValueBarsStack()
         
         setNeedsUpdateConstraints()
         layoutIfNeeded()
@@ -230,21 +206,6 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
-    private var barValues: [Double] = [] {
-        didSet {
-            assert(barValues.count > 1, "Requirement: barValues >=2")
-            if !barValues.isEmpty {
-                assert(self.barValues.count == self.barColors.count + 1, "Requirement: barValues = barColors + 1 ")
-                setupValueBarsStack()
-                layoutSubviews()
-            } else {
-                layoutSubviews()
-                valuesBarHeight = 0
-            }
-        }
-    }
-    
-    /// Optional rounding value for bar corners
     public var barCornerRadius: CGFloat? {
         didSet {
             layoutIfNeeded()
@@ -312,32 +273,28 @@ public class CardPartProgressBarView: UIView, CardPartView {
     public override func updateConstraints() {
         NSLayoutConstraint.activate([
             self.markerView.bottomAnchor.constraint(equalTo: self.colorBarsStackView.topAnchor, constant: -self.markerToColorsBarCushion),
-            self.markerView.widthAnchor.constraint(equalTo: self.markerView.heightAnchor, multiplier: 1.0, constant: 0),
-            self.markerView.centerXAnchor.constraint(equalTo: colorBarsStackView.leadingAnchor),
-
+            
             self.markerLabel.bottomAnchor.constraint(equalTo: self.markerView.topAnchor, constant: -self.labelToMarkerCushion),
-
+            
             self.colorBarsStackView.bottomAnchor.constraint(equalTo: self.valueBarsStackView.topAnchor),
-            self.colorBarsStackViewContainerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -self.colorsBarOffset),
             self.colorBarsStackViewContainerView.heightAnchor.constraint(equalToConstant: self.progressBarOnlyHeight),
-            self.colorBarsStackViewContainerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.colorsBarOffset),
+            self.colorBarsStackViewContainerView.widthAnchor.constraint(equalToConstant: self.progressBarWidth),
             self.colorBarsStackViewContainerView.bottomAnchor.constraint(equalTo: self.valueBarsStackView.topAnchor, constant: -self.colorsBarToValuesBarCushion),
             
-            self.colorBarsStackView.trailingAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.trailingAnchor),
-            //self.colorBarsStackView.leadingAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.leadingAnchor),
             self.colorBarsStackView.topAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.topAnchor),
             self.colorBarsStackView.bottomAnchor.constraint(equalTo: self.colorBarsStackViewContainerView.bottomAnchor),
-
+            self.colorBarsStackView.widthAnchor.constraint(equalToConstant: self.progressBarWidth),
+            
             self.valueBarsStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.valueBarsStackView.heightAnchor.constraint(equalToConstant: self.valuesBarHeight),
             self.valueBarsStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.valueBarsStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        ])
+            ])
         
         let viewContraints = [
             NSLayoutConstraint(item: colorBarsStackView as Any, attribute: .leading, relatedBy: .equal, toItem: colorBarsStackViewContainerView, attribute: .leading, multiplier: 1, constant: 0)
         ]
-
+        
         self.addConstraints(viewContraints)
         super.updateConstraints()
     }
@@ -347,11 +304,12 @@ public class CardPartProgressBarView: UIView, CardPartView {
         updateConstraints()
         
         if let barRadius = barCornerRadius {
-            colorBarsStackView.clipsToBounds = true
             colorBarsStackViewContainerView.layer.cornerRadius = barRadius
         }
         
-        let markerFrame = CGRect(x: self.colorBarsStackView.frame.origin.x, y: 0, width: markerHeight + 3, height: markerHeight)
+        let increment: CGFloat = self.barWidth * CGFloat(currentVal)
+        
+        let markerFrame = CGRect(x: increment - (markerHeight / 2) - (barWidth / 2), y: 0, width: markerHeight, height: markerHeight)
         markerView.frame = markerFrame
         
         let markerLabelFrame = CGRect(x: 0, y: 0, width: 40, height: self.markerLabelViewHeight)
@@ -364,10 +322,6 @@ public class CardPartProgressBarView: UIView, CardPartView {
         let mainFrame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: viewHeight)
         self.view.frame = mainFrame
         self.frame = mainFrame
-        
-        if barValues.count > 1, barColors.count > 0, barValues.count == barColors.count + 1 {
-            animateBasedOnCurrentValue(currentVal)
-        }
         
         updateConstraints()
     }
@@ -406,82 +360,11 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
         layoutSubviews()
     }
-    
-    fileprivate func setupValueBarsStack(){
-        guard barValues.count != 0 && showButtomValues else {return}
-        for value in barValues {
-            let count = barValues.count
-            let width = valueBarsStackView.frame.width/CGFloat(count)
-            let height = valueBarsStackView.frame.height
-            let valueLabel = UILabel()
-            valueLabel.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            valueLabel.text = "\(value)"
-            valueLabel.textAlignment = .center
-            valueBarsStackView.addArrangedSubview(valueLabel)
-        }
-        layoutSubviews()
-    }
-    
-    private func animateBasedOnCurrentValue(_ value: Double) {
-        if value <= barValues[0] {
-            // MARK: - Case 1: current value is less than the smallest value
-            animateProgressBar(0)
-            return
-        }
-        
-        if let lastBarValue = barValues.last,
-            // MARK: - Case 2: current value is greater or equal than greatest value
-            value >= lastBarValue {
-            
-            markerLabel.centerXAnchor.constraint(equalTo: markerView.centerXAnchor)
-            let trailingMarkerAndLabelConstraint = self.markerView.trailingAnchor.constraint(equalTo: self.markerLabel.trailingAnchor)
-            trailingMarkerAndLabelConstraint.priority = .required
-            animateProgressBar(1.0)
-            return
-        }
-        
-        // MARK: - Case 3: current value falls within the range
-        for segment in 0..<barValues.count - 1 {
-            let start = barValues[segment]
-            let end = barValues[segment+1]
-            let centerConstraint = self.markerLabel.centerXAnchor.constraint(equalTo: self.markerView.centerXAnchor)
-            centerConstraint.priority = .required
-            
-            if value >= start && value < end {
-                animateMarkerWithinRange(from: start, to: end, currentValue: value, offset: Double(segment))
-                break
-            }
-        }
-    }
-    
-    private func animateMarkerWithinRange(from bottomRange: Double, to topRange: Double, currentValue: Double, offset: Double) {
-        
-        let range = topRange - bottomRange
-        let currentRange = currentValue - bottomRange
-        let currentRatio = currentRange / range
-        
-        let finalPercent = currentRatio/Double(barColors.count) + (offset*0.2)
-        animateProgressBar(finalPercent)
-    }
-    
-    private func animateProgressBar(_ percentOfBar: Double) {
-        updateConstraints()
-        let change = (self.colorBarsStackView.frame.width * CGFloat(percentOfBar) + (self.markerView.frame.size.width/(3/2)))
-        if animatable {
-            UIView.animate(withDuration: 1, animations: {
-                self.markerView.center.x += change
-                self.view.layoutIfNeeded()
-            })
-        } else {
-            self.markerView.center.x += change
-            self.view.layoutIfNeeded()
-        }
-    }
 }
 
 extension Reactive where Base: CardPartProgressBarView {
     
-    public var currentValue: Binder<Double> {
+    public var currentValue: Binder<Int> {
         return Binder(self.base) { (progressBarView, value) -> () in
             progressBarView.currentVal = value
         }
@@ -505,4 +388,3 @@ extension Reactive where Base: CardPartProgressBarView {
         }
     }
 }
-
