@@ -30,106 +30,146 @@ public enum CardPartSecondaryTitleDescPosition {
 ///let rightAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryPosition: .right) // This will be right aligned
 ///let centerAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryPosition: .center(amount: 0)) // This will be center aligned with an offset of 0.  You may increase that amount param to shift right your desired amount
 ///```
+/// <h3>Reactive Properties</h3>
+///```
+///leftTitleText: String
+///leftDescriptionText: String
+///leftDescriptionAttributedText: NSAttributedString
+///leftTitleAttributedText: NSAttributedString
+///rightDescriptionAttributedText: NSAttributedString
+///rightTitleAttributedText: NSAttributedString
+///rightTitleText: String
+///rightDescriptionText: String
+///leftTitleFont: UIFont
+///leftDescriptionFont: UIFont
+///rightTitleFont: UIFont
+///rightDescriptionFont: UIFont
+///leftTitleColor: UIColor
+///leftDescriptionColor: UIColor
+///rightTitleColor: UIColor
+///rightDescriptionColor: UIColor
+///```
 public class CardPartTitleDescriptionView : UIView, CardPartView {
 	
     /// CardParts theme margins by default
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
 	
+    /// Label in upper left position
 	public var leftTitleLabel: UILabel
+    /// Label in bottom left position
 	public var leftDescriptionLabel: UILabel
+    /// Label in upper fight position
 	public var rightTitleLabel: UILabel
+    /// Label in lower right position
 	public var rightDescriptionLabel: UILabel
 	
+    /// Text for left title
 	public var leftTitleText: String? {
 		didSet {
 			leftTitleLabel.text = leftTitleText
 		}
 	}
 
+    /// Plain text for left description
 	public var leftDescriptionText: String? {
 		didSet {
 			leftDescriptionLabel.text = leftDescriptionText
 		}
 	}
 	
+    /// Attributed text for left description
 	public var leftDescriptionAttributedText: NSAttributedString? {
 		didSet {
 			leftDescriptionLabel.attributedText = leftDescriptionAttributedText
 		}
 	}
     
+    /// Attributed text for left title
     public var leftTitleAttributedText: NSAttributedString? {
         didSet {
             leftTitleLabel.attributedText = leftTitleAttributedText
         }
     }
 	
+    /// Plain text for right title
 	public var rightTitleText: String? {
 		didSet {
 			rightTitleLabel.text = rightTitleText
 		}
 	}
 	
+    /// Plain text for right description
 	public var rightDescriptionText: String? {
 		didSet {
 			rightDescriptionLabel.text = rightDescriptionText
 		}
 	}
 	
+    /// Attributed text for right description
 	public var rightDescriptionAttributedText: NSAttributedString? {
 		didSet {
 			rightDescriptionLabel.attributedText = rightDescriptionAttributedText
 		}
 	}
     
+    /// Attributed text for right title
     public var rightTitleAttributedText: NSAttributedString? {
         didSet {
             rightTitleLabel.attributedText = rightTitleAttributedText
         }
     }
 	
+    /// Font for left title
 	public var leftTitleFont: UIFont = CardParts.theme.leftTitleFont {
 		didSet {
 			leftTitleLabel.font = leftTitleFont
 		}
 	}
+    /// Font for left description
 	public var leftDescriptionFont: UIFont = CardParts.theme.leftDescriptionFont {
 		didSet {
 			leftDescriptionLabel.font = leftDescriptionFont
 		}
 	}
+    /// Font for right title
 	public var rightTitleFont: UIFont = CardParts.theme.rightTitleFont {
 		didSet {
 			rightTitleLabel.font = rightTitleFont
 		}
 	}
+    /// Font for right description
 	public var rightDescriptionFont: UIFont = CardParts.theme.rightDescriptionFont {
 		didSet {
 			rightDescriptionLabel.font = rightDescriptionFont
 		}
 	}
 	
+    /// Color for left title
 	public var leftTitleColor: UIColor = CardParts.theme.leftTitleColor {
 		didSet {
 			leftTitleLabel.textColor = leftTitleColor
 		}
 	}
+    /// Color for left description
 	public var leftDescriptionColor: UIColor = CardParts.theme.leftDescriptionColor {
 		didSet {
 			leftDescriptionLabel.textColor = leftDescriptionColor
 		}
 	}
+    /// Color for right title
 	public var rightTitleColor: UIColor = CardParts.theme.rightTitleColor {
 		didSet {
 			rightTitleLabel.textColor = rightTitleColor
 		}
 	}
+    /// Color for right description
 	public var rightDescriptionColor: UIColor = CardParts.theme.rightDescriptionColor {
 		didSet {
 			rightDescriptionLabel.textColor = rightDescriptionColor
 		}
 	}
 	
+    /// Compression for title, `.right` by default
 	public var titleCompression: CardPartTitleCompression = .right {
 		didSet {
 			setNeedsUpdateConstraints()
@@ -142,6 +182,11 @@ public class CardPartTitleDescriptionView : UIView, CardPartView {
 	private var titlePos: CardPartTitlePosition
     private var secondaryPos: CardPartSecondaryTitleDescPosition
 
+    /// Initializes a CardPartTitleDescriptionView, defaulting to `.top` and CardParts theme `secondaryTitlePosition`
+    ///
+    /// - Parameters:
+    ///   - titlePosition: position of title
+    ///   - secondaryPosition: alignment of other title/description
     public init(titlePosition: CardPartTitlePosition = .top, secondaryPosition:CardPartSecondaryTitleDescPosition = CardParts.theme.secondaryTitlePosition) {
 		
 		titlePos = titlePosition
@@ -179,10 +224,12 @@ public class CardPartTitleDescriptionView : UIView, CardPartView {
 		setNeedsUpdateConstraints()
 	}
 	
+    /// Required init
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+    /// Update constraints based on title/description text existence and compression settings
 	override public func updateConstraints() {
 		
 		if !constraintsAdded {
@@ -223,6 +270,7 @@ public class CardPartTitleDescriptionView : UIView, CardPartView {
 		super.updateConstraints()
 	}
 	
+    /// Manually configure constraints based on titles and descriptions existing, and initializer configuration
 	func setupContraints() {
 		
 		constraintsAdded = true
