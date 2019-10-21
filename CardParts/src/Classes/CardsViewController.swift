@@ -68,11 +68,17 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
     var lastScrollViewBounds: CGRect?
     
     let kCardCellIndentifier = "CardCell"
+    /// CollectionView containing array of cells to display Cards
     public var collectionView : UICollectionView!
     var layout : UICollectionViewFlowLayout!
     
     var savedContentInset: UIEdgeInsets = UIEdgeInsets.zero
     
+    /// Sets up the collection view:
+    /// - Uses automatic sizing for collection view cells (if >iOS 10)
+    /// - `.vertical` scroll direction
+    /// - backgroundColor, insets
+    /// - Pinning constraints, CardParts theme spacing
     open override func viewDidLoad() {
         super.viewDidLoad()
  
@@ -106,12 +112,13 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         }
     }
 
+    /// Applies size during custom transition
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         cardCellWidth.accept(size.width.rounded() - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right))
         invalidateLayout()
     }
     
-    // functionality that happens when the view appears
+    /// functionality that happens when the view appears
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let newValue = view.bounds.width.rounded() - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
@@ -124,6 +131,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         notifyCardsVisibility()
     }
 	
+    /// Invalidate layout to redraw
     public func invalidateLayout() {
         DispatchQueue.main.async { [weak self] in
 			let context = UICollectionViewFlowLayoutInvalidationContext()
@@ -132,6 +140,9 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         }
     }
 
+    /// Sets internal `cardControllers` to `cards` and registers cells for each card. Reloads data and invalidates layout.
+    ///
+    /// - Parameter cards: Array of `CardController`
 	public func loadCards(cards:[CardController]) {
 		setCardControllers(cards: cards)
 		
@@ -171,22 +182,30 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 		}
 	}
 	
+    /// Registers each card to the collectionView by its hashString
+    ///
+    /// - Parameter cards: Array of `CardController`
 	public func registerCells(cards: [CardController]) {
 		cards.forEach {
 			collectionView.register(CardCell.self, forCellWithReuseIdentifier: $0.hashString)
 		}
 	}
 
+    /// Calls `loadCards`
+    ///
+    /// - Parameter cards: Array of `CardController`
     public func reload(cards: [CardController]) {
 
         self.loadCards(cards: cards)
     }
 	
+    /// Returns number of card conterollers
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return getCardControllerCount()
     }
     
     
+    /// Dequeues collection view cell. Constructs and applies delegates/protocols as needed if `cell.cardContentView` doesn't already exist
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		let cardController = getCardControllerForIndexPath(indexPath: indexPath)
@@ -281,11 +300,13 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         cell.layoutIfNeeded()
     }
 
+    /// Number of `cardControllers`
 	open func getCardControllerCount() -> Int {
 		
 		return cardControllers.count
 	}
 
+    /// `cardController` from `cardControllers` model
     open func getCardControllerForIndexPath(indexPath: IndexPath) -> CardController {
 		
         return cardControllers[indexPath.row].cardController
@@ -327,10 +348,12 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 //		collectionView.animateItemChanges(oldData: oldCardControllers, newData: cardControllers)
 	}
     
+    /// Resigns first responder
     open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         UIResponder.first?.resignFirstResponder()
     }
     
+    /// Toggle listening to keyboard notifications
     public var shouldListenToKeyboardNotifications: Bool = true {
         didSet {
             if shouldListenToKeyboardNotifications {
@@ -344,6 +367,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 
 extension CardsViewController {
     
+    /// Subscribe to keyboard notifications, if enabled
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if shouldListenToKeyboardNotifications {
@@ -351,6 +375,7 @@ extension CardsViewController {
         }
     }
     
+    /// Unsubscribe to keyboard notifications, if enabled
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if shouldListenToKeyboardNotifications {
@@ -370,6 +395,7 @@ extension CardsViewController {
         notificationCenter.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    /// Animates and offsets collectionView so that the input will not be hidden when keyboard is displayed
     @objc open func keyboardWillShow(notification: Notification) {
         guard var keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
               let keyboardCurve = (notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
@@ -415,6 +441,7 @@ extension CardsViewController {
         
     }
  
+    /// Animates and resets collectionView contentInsets when keyboard is being hidden
     @objc open func keyboardWillHide(notification: Notification) {
         guard let keyboardCurve = (notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue,
               let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
@@ -459,7 +486,7 @@ extension CardsViewController {
         lastScrollViewBounds = collectionView.bounds
     }
     
-    // calls for visibility of card when the scroll view scrolls
+    /// calls for visibility of card when the scroll view scrolls
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         notifyCardsVisibility()
     }
