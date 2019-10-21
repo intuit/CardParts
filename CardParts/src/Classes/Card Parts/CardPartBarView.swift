@@ -23,11 +23,16 @@ public class CardPartBarView: UIView, CardPartView {
     
     // MARK: Properties
     
+    /// CardParts theme cardPartMargins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
+    /// Background layer
     public var backgroundLayer: CALayer!
+    /// Bar layer
     public var barLayer: CALayer!
+    /// Vertical line
     public var verticalLine: CALayer!
     
+    /// CardParts theme barHeight by default
     public var barHeight: CGFloat? = CardParts.theme.barHeight {
         didSet {
             updateBarLayer()
@@ -52,6 +57,7 @@ public class CardPartBarView: UIView, CardPartView {
         }
     }
     
+    /// CardParts theme barColor by default
     public var barColor: UIColor = CardParts.theme.barColor {
         didSet {
             updateBarLayer()
@@ -60,6 +66,7 @@ public class CardPartBarView: UIView, CardPartView {
     
     // MARK: Methods
     
+    /// Setup background layer, backgroundColor, and initialize barLayer and verticalLine. Conditionally add verticalLine if `showTodayLine` is enabled in the theme
     public init() {
         super.init(frame: CGRect.zero)
         
@@ -86,10 +93,12 @@ public class CardPartBarView: UIView, CardPartView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Updates bar layer
     override public func layoutSubviews() {
         updateBarLayer()
     }
     
+    /// Returns height: 10
     override public var intrinsicContentSize: CGSize {
         return CGSize(width: UIView.noIntrinsicMetric, height: 18.0)
     }
