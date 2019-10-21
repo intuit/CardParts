@@ -36,6 +36,7 @@ public class CardPartCenteredView: UIView, CardPartView {
     /// `margins` set by CardParts Theme by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
+    /// Initializes views, applying constraints to center view relative to left and right view
     public init(leftView: CardPartView, centeredView: CardPartView, rightView: CardPartView) {
         super.init(frame: CGRect.zero)
         
@@ -73,6 +74,7 @@ public class CardPartCenteredView: UIView, CardPartView {
         layoutIfNeeded()
     }
     
+    /// Required init
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

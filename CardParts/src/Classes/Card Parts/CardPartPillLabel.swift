@@ -37,11 +37,13 @@ public class CardPartPillLabel: UILabel, CardPartView {
     
     // MARK: - 
 
+    /// init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
+    /// Required init
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -61,6 +63,7 @@ public class CardPartPillLabel: UILabel, CardPartView {
         return size
     }
     
+    /// layout subviews
     public override func layoutSubviews() {
         super.layoutSubviews()
         setup()

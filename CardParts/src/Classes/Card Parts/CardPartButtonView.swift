@@ -32,6 +32,7 @@ public class CardPartButtonView : UIButton, CardPartView {
 	
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
 
+    /// Initializes button view setting up titleLabel, titleColor and cornerRadius
     public init() {
 		
 		super.init(frame: CGRect.zero)
@@ -46,6 +47,7 @@ public class CardPartButtonView : UIButton, CardPartView {
 		layer.cornerRadius = CardParts.theme.buttonCornerRadius
 	}
     
+    /// Required init
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

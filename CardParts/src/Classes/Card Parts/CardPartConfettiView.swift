@@ -42,6 +42,7 @@ public class CardPartConfettiView: UIView, CardPartView {
     public var type:ConfettiType = .star
     /// default : 0.5 value ranges from 0 - 1(being very slow)
     public var intensity:Float = 0.5
+    /// emitter shape, default to `.sphere`
     public var shape:CAEmitterLayerEmitterShape = .sphere {
         didSet {
             emitter.emitterShape = shape
@@ -54,6 +55,7 @@ public class CardPartConfettiView: UIView, CardPartView {
     //A layer that emits, animates, and renders a particle system.
     var emitter: CAEmitterLayer = CAEmitterLayer()
 
+    /// init(frame:)
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }

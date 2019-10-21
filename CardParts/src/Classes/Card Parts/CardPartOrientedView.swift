@@ -119,6 +119,7 @@ public class CardPartOrientedView: UIView, CardPartView {
         self.addConstraints(constraints)
     }
     
+    /// Required init
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
