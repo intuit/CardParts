@@ -229,48 +229,56 @@ public class CardPartTextView : UIView, CardPartView {
 
 extension Reactive where Base: CardPartTextView {
 	
+    /// Updates textView's text
 	public var text: Binder<String?>{
 		return Binder(self.base) { (textView, text) -> () in
 			textView.text = text
 		}
 	}
 	
+    /// Updates textView's attributedText
 	public var attributedText: Binder<NSAttributedString?>{
 		return Binder(self.base) { (textView, attributedText) -> () in
 			textView.attributedText = attributedText
 		}
 	}
 
+    /// Updates textView's font
 	public var font: Binder<UIFont>{
 		return Binder(self.base) { (textView, font) -> () in
 			textView.font = font
 		}
 	}
 	
+    /// Updates textView's textColor
 	public var textColor: Binder<UIColor>{
 		return Binder(self.base) { (textView, textColor) -> () in
 			textView.textColor = textColor
 		}
 	}
 	
+    /// Updates textView's textAlignment
 	public var textAlignment: Binder<NSTextAlignment>{
 		return Binder(self.base) { (textView, textAlignment) -> () in
 			textView.textAlignment = textAlignment
 		}
 	}
 	
+    /// Updates textView's verticalAlignment
     public var verticalAlignment: Binder<CardPartLabelVerticalAlignment>{
         return Binder(self.base) { (textView, verticalAlignment) -> () in
             textView.verticalAlignment = verticalAlignment
         }
     }
 
+    /// Updates textView's lineSpacing
     public var lineSpacing: Binder<CGFloat>{
 		return Binder(self.base) { (textView, lineSpacing) -> () in
 			textView.lineSpacing = lineSpacing
 		}
 	}
 	
+    /// Updates textView's lineHeightMultiple
 	public var lineHeightMultiple: Binder<CGFloat>{
 		return Binder(self.base) { (textView, lineHeightMultiple) -> () in
 			textView.lineHeightMultiple = lineHeightMultiple

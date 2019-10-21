@@ -143,6 +143,7 @@ extension Reactive where Base: CardPartBarView {
         }
     }
     
+    /// Sets the barColor of the barView
     public var barColor: Binder<UIColor>{
         return Binder(self.base) { (barView, barColor) -> () in
             barView.barColor = barColor

@@ -194,42 +194,49 @@ public class CardPartTitleView : UIView, CardPartView {
 
 extension Reactive where Base: CardPartTitleView {
 
-	public var title: Binder<String?>{
+	/// Updates titleView's title
+    public var title: Binder<String?>{
 		return Binder<String?>(self.base) { (titleView, title) -> () in
 			titleView.title = title
 		}
 	}
 	
-	public var titleFont: Binder<UIFont>{
+	/// Updates titleView's titleFont
+    public var titleFont: Binder<UIFont>{
 		return Binder(self.base) { (titleView, titleFont) -> () in
 			titleView.titleFont = titleFont
 		}
 	}
 	
-	public var titleColor: Binder<UIColor>{
+	/// Updates titleView's titleColor
+    public var titleColor: Binder<UIColor>{
 		return Binder(self.base) { (titleView, titleColor) -> () in
 			titleView.titleColor = titleColor
 		}
 	}
 	
-	public var menuTitle: Binder<String?>{
+	/// Updates titleView's menuTitle
+    public var menuTitle: Binder<String?>{
 		return Binder(self.base) { (titleView, menuTitle) -> () in
 			titleView.menuTitle = menuTitle
 		}
 	}
 	
-	public var menuOptions: Binder<[String]?>{
+	/// Updates titleView's menuOptions
+    public var menuOptions: Binder<[String]?>{
 		return Binder(self.base) { (titleView, menuOptions) -> () in
 			titleView.menuOptions = menuOptions
 		}
 	}
 	
-	public var menuButtonImageName: Binder<String>{
+	/// Updates titleView's menuButtonImageName
+    public var menuButtonImageName: Binder<String>{
 		return Binder(self.base) { (titleView, menuButtonImageName) -> () in
 			titleView.menuButtonImageName = menuButtonImageName
 		}
 	}
     
+    /// Updates titleView's menuButtonImage
     public var menuButtonImage: Binder<UIImage?>{
         return Binder(self.base) { (titleView, menuButtonImage) -> () in
             titleView.menuButtonImage = menuButtonImage

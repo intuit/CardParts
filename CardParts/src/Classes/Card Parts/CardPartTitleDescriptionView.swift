@@ -437,96 +437,112 @@ public class CardPartTitleDescriptionView : UIView, CardPartView {
 
 extension Reactive where Base: CardPartTitleDescriptionView {
 	
+    /// Updates titleDescriptionView's leftTitleText
 	public var leftTitleText: Binder<String?>{
 		return Binder(self.base) { (titleDescriptionView, leftTitleText) -> () in
 			titleDescriptionView.leftTitleText = leftTitleText
 		}
 	}
 
+    /// Updates titleDescriptionView's leftDescriptionText
 	public var leftDescriptionText: Binder<String?>{
 		return Binder(self.base) { (titleDescriptionView, leftDescriptionText) -> () in
 			titleDescriptionView.leftDescriptionText = leftDescriptionText
 		}
 	}
 	
+    /// Updates titleDescriptionView's leftDescriptionAttributedText
 	public var leftDescriptionAttributedText: Binder<NSAttributedString?>{
 		return Binder(self.base) { (titleDescriptionView, leftDescriptionAttributedText) -> () in
 			titleDescriptionView.leftDescriptionAttributedText = leftDescriptionAttributedText
 		}
 	}
     
+    /// Updates titleDescriptionView's leftTitleAttributedText
     public var leftTitleAttributedText: Binder<NSAttributedString?>{
         return Binder(self.base) { (titleDescriptionView, leftTitleAttributedText) -> () in
             titleDescriptionView.leftTitleAttributedText = leftTitleAttributedText
         }
     }
     
+    /// Updates titleDescriptionView's rightDescriptionAttributedText
 	public var rightDescriptionAttributedText: Binder<NSAttributedString?>{
 		return Binder(self.base) { (titleDescriptionView, rightDescriptionAttributedText) -> () in
 			titleDescriptionView.rightDescriptionAttributedText = rightDescriptionAttributedText
 		}
 	}
     
+    /// Updates titleDescriptionView's rightTitleAttributedText
     public var rightTitleAttributedText: Binder<NSAttributedString?>{
         return Binder(self.base) { (titleDescriptionView, rightTitleAttributedText) -> () in
             titleDescriptionView.rightTitleAttributedText = rightTitleAttributedText
         }
     }
 
+    /// Updates titleDescriptionView's rightTitleText
 	public var rightTitleText: Binder<String?>{
 		return Binder(self.base) { (titleDescriptionView, rightTitleText) -> () in
 			titleDescriptionView.rightTitleText = rightTitleText
 		}
 	}
 
+    /// Updates titleDescriptionView's rightDescriptionText
 	public var rightDescriptionText: Binder<String?>{
 		return Binder(self.base) { (titleDescriptionView, rightDescriptionText) -> () in
 			titleDescriptionView.rightDescriptionText = rightDescriptionText
 		}
 	}
 
+    /// Updates titleDescriptionView's leftTitleFont
 	public var leftTitleFont: Binder<UIFont>{
 		return Binder(self.base) { (titleDescriptionView, leftTitleFont) -> () in
 			titleDescriptionView.leftTitleFont = leftTitleFont
 		}
 	}
 
+    /// Updates titleDescriptionView's leftDescriptionFont
 	public var leftDescriptionFont: Binder<UIFont>{
 		return Binder(self.base) { (titleDescriptionView, leftDescriptionFont) -> () in
 			titleDescriptionView.leftDescriptionFont = leftDescriptionFont
 		}
 	}
 
+    /// Updates titleDescriptionView's rightTitleFont
 	public var rightTitleFont: Binder<UIFont>{
 		return Binder(self.base) { (titleDescriptionView, rightTitleFont) -> () in
 			titleDescriptionView.rightTitleFont = rightTitleFont
 		}
 	}
 
+    /// Updates titleDescriptionView's rightDescriptionFont
 	public var rightDescriptionFont: Binder<UIFont>{
 		return Binder(self.base) { (titleDescriptionView, rightDescriptionFont) -> () in
 			titleDescriptionView.rightDescriptionFont = rightDescriptionFont
 		}
 	}
 
+    /// Updates titleDescriptionView's leftTitleColor
 	public var leftTitleColor: Binder<UIColor>{
 		return Binder(self.base) { (titleDescriptionView, leftTitleColor) -> () in
 			titleDescriptionView.leftTitleColor = leftTitleColor
 		}
 	}
 
+    /// Updates titleDescriptionView's leftDescriptionColor
 	public var leftDescriptionColor: Binder<UIColor>{
 		return Binder(self.base) { (titleDescriptionView, leftDescriptionColor) -> () in
 			titleDescriptionView.leftDescriptionColor = leftDescriptionColor
 		}
 	}
 	
+    /// Updates titleDescriptionView's rightTitleColor
 	public var rightTitleColor: Binder<UIColor>{
 		return Binder(self.base) { (titleDescriptionView, rightTitleColor) -> () in
 			titleDescriptionView.rightTitleColor = rightTitleColor
 		}
 	}
 
+    /// Updates titleDescriptionView's rightDescriptionColor
 	public var rightDescriptionColor: Binder<UIColor>{
 		return Binder(self.base) { (titleDescriptionView, rightDescriptionColor) -> () in
 			titleDescriptionView.rightDescriptionColor = rightDescriptionColor

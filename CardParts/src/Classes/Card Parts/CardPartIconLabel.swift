@@ -179,24 +179,28 @@ public class CardPartIconLabel: UILabel, CardPartView {
 // MARK: - Reactive binding for label's text , vertical & horizontal padding.
 extension Reactive where Base: CardPartIconLabel {
     
+    /// Updates label's text
     public var labelText: Binder<String?>{
         return Binder(self.base) { (label, labelText) -> () in
             label.text = labelText
         }
     }
     
+    /// Updates label's vertical padding
     public var verticalPadding: Binder<CGFloat> {
         return Binder(self.base) { (label, verticalPadding) -> () in
             label.verticalPadding = verticalPadding
         }
     }
     
+    /// Updates label's horizontalPadding
     public var horizontalPadding: Binder<CGFloat> {
         return Binder(self.base) { (label, horizontalPadding) -> () in
             label.horizontalPadding = horizontalPadding
         }
     }
     
+    /// Updates imageView/s iconView
     public var iconView: Binder<UIImageView> {
         return Binder(self.base) { (imageView, iconView) -> () in
            imageView.iconView = iconView

@@ -36,12 +36,14 @@ public class CardPartImageView : UIImageView, CardPartView {
 
 extension Reactive where Base: CardPartImageView {
 	
+    /// Updates imageView's imageName
 	public var imageName: Binder<String?>{
 		return Binder(self.base) { (imageView, imageName) -> () in
 			imageView.imageName = imageName
 		}
 	}
 
+    /// Updates imageView's contentMode
 	public var contentMode: Binder<UIView.ContentMode>{
 		return Binder(self.base) { (imageView, contentMode) -> () in
 			imageView.contentMode = contentMode

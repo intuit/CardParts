@@ -70,18 +70,21 @@ public class CardPartPillLabel: UILabel, CardPartView {
 // MARK: - Reactive binding for label's text , vertical & horizontal padding.
 extension Reactive where Base: CardPartPillLabel {
     
+    /// Updates labe;'s text
     public var labelText: Binder<String?>{
         return Binder(self.base) { (label, labelText) -> () in
             label.text = labelText
         }
     }
     
+    /// Updates label's verticalPadding
     public var verticalPadding: Binder<CGFloat> {
         return Binder(self.base) { (label, verticalPadding) -> () in
             label.verticalPadding = verticalPadding
         }
     }
     
+    /// Updates label's horizontalPadding
     public var horizontalPadding: Binder<CGFloat> {
         return Binder(self.base) { (label, horizontalPadding) -> () in
             label.horizontalPadding = horizontalPadding

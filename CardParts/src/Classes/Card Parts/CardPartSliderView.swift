@@ -30,12 +30,14 @@ public class CardPartSliderView : UISlider, CardPartView {
 
 extension Reactive where Base: CardPartSliderView {
     
+    /// Updates sliderView's minimumValue
     public var minimumValue: Binder<Float> {
         return Binder(self.base) { (sliderView, minimumValue) -> () in
             sliderView.minimumValue = minimumValue
         }
     }
     
+    /// Updates sliderView's maximumValue
     public var maximumValue: Binder<Float> {
         return Binder(self.base) { (sliderView, maximumValue) -> () in
             sliderView.maximumValue = maximumValue

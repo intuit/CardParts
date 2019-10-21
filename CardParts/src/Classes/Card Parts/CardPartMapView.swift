@@ -11,24 +11,28 @@ import RxCocoa
 import RxSwift
 
 public class CardPartMapView: UIView, CardPartView {
+    /// Calls updateMap on set
     public var mapType: MKMapType {
         didSet {
             updateMap()
         }
     }
     
+    /// Calls updateMap on set
     public var location: CLLocation {
         didSet {
             updateMap()
         }
     }
     
+    /// Calls updateMap on set
     public var span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1) {
         didSet {
             updateMap()
         }
     }
     
+    /// CardParts theme cardPartMargins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
     /// The instance of MKMapView used inside of the CardPartMapView
@@ -41,6 +45,12 @@ public class CardPartMapView: UIView, CardPartView {
         }
     }
     
+    /// Initializes map of type at location using span
+    ///
+    /// - Parameters:
+    ///   - type: MKMapTyoe
+    ///   - location: CLLocation
+    ///   - span: (optional) MKCoordinateSpan
     public init(type: MKMapType, location: CLLocation, span: MKCoordinateSpan?) {
         mapView = MKMapView(frame: .zero)
         self.mapType = type
@@ -62,6 +72,7 @@ public class CardPartMapView: UIView, CardPartView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Updates height using intrensicHeight
     public override func updateConstraints() {
         if let heightConstraint = constraints.first(where: { $0.identifier == "CPMVHeight" }) {
             heightConstraint.constant = self.intrensicHeight
@@ -93,18 +104,21 @@ public class CardPartMapView: UIView, CardPartView {
 
 extension Reactive where Base: CardPartMapView {
     
+    /// Updates mapView's location
     public var location: Binder<CLLocation> {
         return Binder(self.base) { (mapView, location) -> () in
             mapView.location = location
         }
     }
     
+    /// Updates mapView's mapType
     public var mapType: Binder<MKMapType> {
         return Binder(self.base) { (mapView, mapType) -> () in
             mapView.mapType = mapType
         }
     }
     
+    /// Update mapView's span
     public var span: Binder<MKCoordinateSpan> {
         return Binder(self.base) { (mapView, span) -> () in
             mapView.span = span

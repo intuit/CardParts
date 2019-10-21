@@ -231,6 +231,7 @@ extension CardPartsViewController {
 
 extension Reactive where Base: CardPartsViewController {
 	
+    /// Updates cardPartsViewController state
 	public var state: Binder<CardState>{
 		return Binder(self.base) { (cardPartsViewController, state) -> () in
 			cardPartsViewController.state = state

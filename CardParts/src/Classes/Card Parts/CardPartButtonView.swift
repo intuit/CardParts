@@ -54,12 +54,14 @@ public class CardPartButtonView : UIButton, CardPartView {
 
 extension Reactive where Base: CardPartButtonView {
     
+    /// Updates buttonView's title
 	public var buttonTitle: Binder<String>{
 		return Binder(self.base) { (buttonView, title) -> () in
 			buttonView.setTitle(title, for: .normal)
 		}
 	}
 
+    /// Updates buttonView's content horizontal alignment
 	public var contentHorizontalAlignment: Binder<UIControl.ContentHorizontalAlignment>{
 		return Binder(self.base) { (buttonView, contentHorizontalAlignment) -> () in
 			buttonView.contentHorizontalAlignment = contentHorizontalAlignment

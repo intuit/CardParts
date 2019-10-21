@@ -364,24 +364,28 @@ public class CardPartProgressBarView: UIView, CardPartView {
 
 extension Reactive where Base: CardPartProgressBarView {
     
+    /// Updates progressBarView's currentVal
     public var currentValue: Binder<Int> {
         return Binder(self.base) { (progressBarView, value) -> () in
             progressBarView.currentVal = value
         }
     }
     
+    /// Updates view's bgColor
     public var bgColor: Binder<UIColor> {
         return Binder(self.base) { (view, color) -> () in
             view.bgColor = color
         }
     }
     
+    /// Updates view's barCornerRadius
     public var barCornerRadius: Binder<CGFloat> {
         return Binder(self.base) { (view, radius) -> () in
             view.barCornerRadius = radius
         }
     }
-    
+
+    /// Updates view's markerColor
     public var markerColor: Binder<UIColor> {
         return Binder(self.base) { (view, markerColor) -> () in
             view.markerColor = markerColor
