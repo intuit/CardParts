@@ -11,10 +11,15 @@ import RxSwift
 import RxCocoa
 
 public enum CardPartTextFieldFormat {
+    /// No formatting
     case none
+    /// Currency with maxLength
     case currency(maxLength: Int)
+    /// Zipcode
     case zipcode
+    /// Phone
     case phone
+    /// SSN
     case ssn
 }
 
@@ -71,6 +76,7 @@ public class CardPartTextField : UITextField, CardPartView {
         return super.text?.uppercased().components(separatedBy: CharacterSet(charactersIn: "0123456789").inverted).joined(separator: "")
     }
     
+    /// Calls `textDidChange()`, returns `super.text` or `unformattedString`
     override public var text: String? {
         set {
             super.text = newValue
@@ -86,6 +92,9 @@ public class CardPartTextField : UITextField, CardPartView {
         }
     }
     
+    /// Initializes with format (`.none` by default) and subscribes to textChangeNotification
+    ///
+    /// - Parameter format: <#format description#>
     public init(format: CardPartTextFieldFormat = .none) {
         super.init(frame: CGRect.zero)
         
@@ -98,10 +107,12 @@ public class CardPartTextField : UITextField, CardPartView {
         NotificationCenter.default.removeObserver(self)
     }
     
+    /// Required init
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// calls `textDidChange()`
     @objc public func textChangeNotifcation(notification: NSNotification) {
         if let notifObject = notification.object as? CardPartTextField, notifObject == self {
             textDidChange()

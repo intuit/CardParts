@@ -52,10 +52,15 @@ public class CardPartLabel: UILabel {
 
 
 public enum CardPartTextType {
-	case small
+    /// small
+    case small
+    /// normal
 	case normal
+    /// title
 	case title
+    /// header
     case header
+    /// detail
 	case detail
 }
 

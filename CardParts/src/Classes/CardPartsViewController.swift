@@ -11,10 +11,15 @@ import RxSwift
 import RxCocoa
 
 public enum CardState: Hashable {
+    /// No state
     case none
+    /// Loading
     case loading
+    /// Empty
     case empty
+    /// Has data
     case hasData
+    /// Custom state
     case custom(String)
 }
 
