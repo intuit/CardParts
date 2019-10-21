@@ -10,17 +10,16 @@ import UIKit
 import QuartzCore
 
 /// Enum which tells which type of confetti partciles to choose.
-///
-/// - diamond: displays diamond shaped particles
-/// - confetti: displays arc symbol shaped particles
-/// - star: displays star shaped particles
-/// - mixed: provides a way to mix and macth multiple images as confetti particles.
-/// - image: provides option of displaying custom image as confetti particles.
 public enum ConfettiType {
+    /// displays arc symbol shaped particles
     case confetti
+    /// displays diamond shaped particles
     case diamond
+    /// displays star shaped particles
     case star
+    /// provides a way to mix and macth multiple images as confetti particles.
     case mixed
+    /// provides option of displaying custom image as confetti particles.
     case image(UIImage)
 }
 

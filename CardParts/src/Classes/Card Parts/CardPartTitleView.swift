@@ -10,9 +10,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// Card Part title configuration
 public enum CardPartTitleType {
-	case titleOnly
-	case titleWithMenu
+    /// only title
+    case titleOnly
+    /// title and menu
+    case titleWithMenu
+    /// title and action button
 	case titleWithActionableButton
 }
 
@@ -47,6 +51,7 @@ public enum CardPartTitleType {
 ///```
 public class CardPartTitleView : UIView, CardPartView {
 	
+    /// Label's title text
 	public var title: String? {
 		didSet {
 			label.text = title
@@ -64,8 +69,11 @@ public class CardPartTitleView : UIView, CardPartView {
 			label.textColor = titleColor
 		}
 	}
+    /// menu title
 	public var menuTitle: String?
+    /// array of menu options
 	public var menuOptions: [String]?
+    /// image for menu button
     public var menuButtonImage: UIImage? = nil {
         didSet {
             if type == .titleWithMenu || type == .titleWithActionableButton {
@@ -83,16 +91,21 @@ public class CardPartTitleView : UIView, CardPartView {
 			}
 		}
 	}
+    /// menu option observer
 	public var menuOptionObserver: ((String, Int) -> Void)?
+    /// callback for menu action
 	public var menuActionableCallback: (()->())?
 	
     /// CardParts theme titleViewMargs by default
 	public var margins: UIEdgeInsets = CardParts.theme.titleViewMargins
 	
 	private let type: CardPartTitleType
+    /// label
 	public var label: UILabel
+    /// button
 	public var button: UIButton?
 	
+    /// initializes CardPartTitle of `CardPartTitleType`
     public init(type: CardPartTitleType) {
 		
 		self.type = type
@@ -135,10 +148,12 @@ public class CardPartTitleView : UIView, CardPartView {
 		setNeedsUpdateConstraints()
     }
     
+    /// Required init
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 	
+    /// Update constraints based on button or not
 	override public func updateConstraints() {
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label]|", options: [], metrics: nil, views: ["label" : label]))
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]|", options: [], metrics: nil, views: ["label" : label]))		
@@ -157,6 +172,7 @@ public class CardPartTitleView : UIView, CardPartView {
 		super.updateConstraints()
 	}
 	
+    /// Create and present menu
 	@objc func menuButtonTapped() {
 		
 		guard let menuTitle = menuTitle, let menuOptions = menuOptions else { return }
@@ -183,6 +199,7 @@ public class CardPartTitleView : UIView, CardPartView {
 		UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
 	}
 	
+    /// Call callback for menu action
 	@objc func actionableMenuTapped() {
 		
 		guard let action = menuActionableCallback else { return }
