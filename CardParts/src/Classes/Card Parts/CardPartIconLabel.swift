@@ -27,14 +27,19 @@ public class CardPartIconLabel: UILabel, CardPartView {
     
     /// Horizontal position
     public enum HorizontalPosition {
+        /// left
         case left
+        /// right
         case right
     }
 
-    // Vertical position
+    /// Vertical position
     public enum VerticalPosition {
+        /// top
         case top
+        /// center
         case center
+        /// bottom
         case bottom
     }
     

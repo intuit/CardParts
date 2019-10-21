@@ -10,12 +10,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// Label vertical alignment
 public enum CardPartLabelVerticalAlignment {
-    case top, center, bottom
+    /// top
+    case top
+    /// center
+    case center
+    /// bottom
+    case bottom
 }
 
+/// Label
 public class CardPartLabel: UILabel {
     
+    /// Default: `.zero`
     public var textInsets = UIEdgeInsets.zero {
         didSet { invalidateIntrinsicContentSize() }
     }
@@ -51,6 +59,7 @@ public class CardPartLabel: UILabel {
 }
 
 
+/// Text sizing
 public enum CardPartTextType {
     /// small
     case small
