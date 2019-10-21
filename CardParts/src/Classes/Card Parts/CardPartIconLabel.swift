@@ -37,6 +37,8 @@ public class CardPartIconLabel: UILabel, CardPartView {
         }
     }
     
+    fileprivate var iconViewPosition:CGPoint = CGPoint.zero
+    
     /// Horizontal and vertical position
     public typealias Position = (horizontal: CardPartIconLabel.HorizontalPosition, vertical: CardPartIconLabel.VerticalPosition)
     open var iconPosition: Position = (.left , .top)
@@ -173,5 +175,57 @@ extension Reactive where Base: CardPartIconLabel {
         return Binder(self.base) { (imageView, iconView) -> () in
            imageView.iconView = iconView
         }
+    }
+}
+
+extension CardPartIconLabel {
+
+    // create computed properties for extensions, we need a key to store and access the stored property
+    fileprivate struct AssociatedObjectKeys {
+        static var tapGestureRecognizer = "CardPartIconLabel_ImageView"
+    }
+
+    fileprivate typealias Action = (() -> Void)?
+
+    // set computed property type to a closure
+    fileprivate var tapGestureRecognizerAction: Action? {
+        set {
+            if let newValue = newValue {
+                // Computed properties get stored as associated objects
+                objc_setAssociatedObject(self, &AssociatedObjectKeys.tapGestureRecognizer, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+            }
+        }
+        get {
+            let tapGestureRecognizerActionInstance = objc_getAssociatedObject(self, &AssociatedObjectKeys.tapGestureRecognizer) as? Action
+            return tapGestureRecognizerActionInstance
+        }
+    }
+
+    // here we create tapGesture recognizer and store the closure user passed to us in the associated object.
+    public func addTapGestureRecognizer(action: (() -> Void)?) {
+        self.isUserInteractionEnabled = true
+        self.tapGestureRecognizerAction = action
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    // Every time the user taps on the UIImageView, this function gets called, which triggers the closure we stored
+    @objc fileprivate func handleTapGesture(sender: UITapGestureRecognizer) {
+        let iconViewFrame = (sender.view as? CardPartIconLabel)?.iconView?.frame
+    
+        guard let iconWidth = iconViewFrame?.size.width ,
+            let originX = iconViewFrame?.origin.x,
+            let action = self.tapGestureRecognizerAction else {
+            return
+        }
+        
+        if iconViewPosition.x <= ( iconWidth + originX ){
+            action?()
+        }
+    }
+    
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        self.iconViewPosition = touch.location(in: self)
     }
 }
