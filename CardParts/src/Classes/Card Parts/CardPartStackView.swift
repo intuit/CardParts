@@ -33,10 +33,12 @@ public class CardPartStackView : UIStackView, CardPartView {
     /// CardParts theme margins by default
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
+    /// backgroundView
     public var backgroundView:UIView = UIView()
     /// 4.0 by default
     public var cornerRadius: CGFloat = 4.0
     
+    /// Pins background to leading, trailing, top, bottom
     public func pinBackground(_ view: UIView, to stackView: UIStackView) {
         view.translatesAutoresizingMaskIntoConstraints = false
         

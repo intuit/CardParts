@@ -10,18 +10,27 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// Title position
 public enum CardPartTitlePosition {
+    /// top
 	case top
+    /// bottom
 	case bottom
 }
 
+/// Compression
 public enum CardPartTitleCompression {
+    /// left
 	case left
+    /// right
 	case right
 }
 
+/// Secondary Position
 public enum CardPartSecondaryTitleDescPosition {
+    /// center, amount: shifted
     case center(amount: CGFloat)
+    /// right
     case right
 }
 

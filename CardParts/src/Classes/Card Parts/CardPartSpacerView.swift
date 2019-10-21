@@ -21,6 +21,9 @@ public class CardPartSpacerView : UIView, CardPartView {
 
 	private var height: CGFloat
 	
+    /// Initiailzes with `height`
+    ///
+    /// - Parameter height: CGFloat
 	public init(height: CGFloat) {
 		
 		self.height = height
@@ -30,10 +33,12 @@ public class CardPartSpacerView : UIView, CardPartView {
 		backgroundColor = UIColor.clear
 	}
 	
+    /// Required init
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+    /// IntrinsicContentSize
 	override public var intrinsicContentSize: CGSize {
 		return CGSize(width: UIView.noIntrinsicMetric, height: height)
 	}

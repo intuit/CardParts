@@ -48,6 +48,7 @@ open class CardCell : UICollectionViewCell {
         contentView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    /// Required init
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -56,6 +57,7 @@ open class CardCell : UICollectionViewCell {
         gestureRecognizers?.forEach { removeGestureRecognizer($0) }
     }
     
+    /// bounds
     override open var bounds: CGRect {
         didSet {
             contentView.frame = bounds
@@ -98,6 +100,7 @@ open class CardCell : UICollectionViewCell {
         }
     }
     
+    /// Adjusts layoutAttributes to fit desired size
     override open func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         
         let desiredHeight: CGFloat = contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
@@ -179,6 +182,7 @@ open class CardCell : UICollectionViewCell {
         self.addGestureRecognizer(longGesture)
     }
     
+    /// Update constraints
     override open func updateConstraints() {
         super.updateConstraints()
     }

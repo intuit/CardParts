@@ -30,6 +30,7 @@ public class CardPartLabel: UILabel {
     
     fileprivate var verticalAlignment: CardPartLabelVerticalAlignment = .center
     
+    /// Modifies textRect based on insets and vertical alignment
     override public func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
         var resultRect = super.textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
         
@@ -52,6 +53,7 @@ public class CardPartLabel: UILabel {
     }
 
     
+    /// drawText override
     override public func drawText(in rect: CGRect) {
         let r = self.textRect(forBounds: rect, limitedToNumberOfLines: numberOfLines)
         super.drawText(in: r)
@@ -154,6 +156,9 @@ public class CardPartTextView : UIView, CardPartView {
     /// `CardPartLabel`
 	public var label: CardPartLabel
 
+    /// Initializes CardPartTextView based on type
+    ///
+    /// - Parameter type: `CardPartTextType`
 	public init(type: CardPartTextType) {
 
 		label = CardPartLabel(frame: .zero)
@@ -171,10 +176,12 @@ public class CardPartTextView : UIView, CardPartView {
 		setNeedsUpdateConstraints()
     }
     
+    /// Required init
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 	
+    /// Pinning constraints
 	override public func updateConstraints() {
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[label]|", options: [], metrics: nil, views: ["label" : label]))
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]|", options: [], metrics: nil, views: ["label" : label]))
@@ -204,6 +211,7 @@ public class CardPartTextView : UIView, CardPartView {
 		}
 	}
 	
+    /// Updates alignment, paragraphStyle, etc for text based on if it's attributtedText or normal text
     @objc func updateText() {
 		
         if Thread.current != .main {

@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// TextField Format
 public enum CardPartTextFieldFormat {
     /// No formatting
     case none

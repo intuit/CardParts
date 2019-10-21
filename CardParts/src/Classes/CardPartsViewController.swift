@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// CardState
 public enum CardState: Hashable {
     /// No state
     case none
@@ -67,6 +68,7 @@ class CardStateData {
 ///The call to `setupCardParts` adds the card part views to the card. It takes an array of CardPartView that specifies which card parts to display, and in what order to display them.
 open class CardPartsViewController : UIViewController, CardController {
     
+    /// Default to false
     public var isEditable = false
 	var vertContraints: [NSLayoutConstraint]?
 	
@@ -98,6 +100,7 @@ open class CardPartsViewController : UIViewController, CardController {
 	
 	private var cardParts:[CardState : CardStateData] = [:]
 	
+    /// DisposeBag
 	public let bag = DisposeBag()
     
     deinit {
@@ -106,10 +109,16 @@ open class CardPartsViewController : UIViewController, CardController {
         self.cardClickedCallback = [:]
     }
 	
+    /// ViewDidLoad
     override open func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    /// Sets up card parts storing state data, and stacking cards vertically
+    ///
+    /// - Parameters:
+    ///   - cardParts: Array of `CardPartView`
+    ///   - forState: `CardState`
 	public func setupCardParts(_ cardParts:[CardPartView], forState: CardState = .none) {
 		
         let stateData = CardStateData()
@@ -155,16 +164,19 @@ open class CardPartsViewController : UIViewController, CardController {
     }
     
     
+    /// Protocol conformance
     public func viewController() -> UIViewController {
         return self
     }
 
+    /// InvalidateLayout
 	public func invalidateLayout() {
 		if let parent = parent as? CardsViewController {
 			parent.invalidateLayout()
 		}
 	}
 	
+    /// Invalidate layout for any change from observables
 	public func invalidateLayout<T>(onChanges variables: [BehaviorRelay<T>]) {
 		for variable in variables {
 			variable.asObservable().subscribe(onNext: { [weak self] _ in
@@ -180,6 +192,7 @@ open class CardPartsViewController : UIViewController, CardController {
 		invalidateLayout()
 	}
     
+    /// Triggers cardTapped delegate for `CardState`
     public func cardTapped(forState state: CardState = .none, action: @escaping (()->())) {
         self.cardClickedCallback[state] = action
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Orientation
 public enum Orientation {
     /// top
     case top
