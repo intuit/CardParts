@@ -48,6 +48,7 @@ public class CardPartConfettiView: UIView, CardPartView {
         }
     }
     
+    /// Default images unsed in confetti
     public var confettiImages = [UIImage(named: "confetti", in: Bundle(for: CardPartConfettiView.self),compatibleWith: nil)] as? [UIImage]
     
     //A layer that emits, animates, and renders a particle system.

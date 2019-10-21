@@ -33,8 +33,11 @@ private class SelfSizingTableView: UITableView {
 	}
 }
 
+/// CardPartTableViewDelegate
 @objc public protocol CardPartTableViewDelegate {
+    /// didSelectRowAt
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    /// heightForRowAt
 	@objc optional func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
 }
 
@@ -73,6 +76,7 @@ public class CardPartTableView : UIView, CardPartView, UITableViewDelegate {
     /// CardParts theme margins by default
 	public var margins: UIEdgeInsets = CardParts.theme.tableViewMargins
 	
+    /// tableView
 	public var tableView: UITableView
 	
     /// 60.0 by default
@@ -81,6 +85,7 @@ public class CardPartTableView : UIView, CardPartView, UITableViewDelegate {
     /// CardPartTableViewDelegate
 	public var delegate: CardPartTableViewDelegate?
 	
+    /// Initializes table, registering CardPartTableViewCell, with separator
 	public init() {
 		
 		tableView = SelfSizingTableView(frame: CGRect.zero)
@@ -98,14 +103,17 @@ public class CardPartTableView : UIView, CardPartView, UITableViewDelegate {
 		setNeedsUpdateConstraints()
 	}
 	
+    /// Required init
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+    /// IntrinsicContentSize
 	override public var intrinsicContentSize: CGSize {
 		return CGSize(width: UIView.noIntrinsicMetric, height: tableView.contentSize.height)
 	}
 
+    /// Update constraints, pinning
 	override public func updateConstraints() {
 		
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[tableView]|", options: [], metrics: nil, views: ["tableView" : tableView]))
@@ -119,6 +127,7 @@ public class CardPartTableView : UIView, CardPartView, UITableViewDelegate {
 		return delegate?.tableView?(tableView, heightForRowAt: indexPath) ?? rowHeight
 	}
 	
+    /// didSelectRowAt proxy to delegate
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		delegate?.tableView(tableView, didSelectRowAt: indexPath)
 	}

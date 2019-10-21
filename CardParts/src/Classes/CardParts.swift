@@ -9,5 +9,6 @@ import Foundation
 
 /// Class to hold `CardPartsTheme`. Defaults to "Turbo" theme
 public class CardParts {
+    /// holds current theme
     public static var theme: CardPartsTheme = CardPartsTurboTheme()
 }

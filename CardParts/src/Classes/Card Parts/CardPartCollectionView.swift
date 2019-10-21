@@ -9,7 +9,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// CollectionView delegate
 @objc public protocol CardPartCollectionViewDelegte {
+    /// didSelectItemAt
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
 }
 
@@ -80,10 +82,13 @@ public class CardPartCollectionView : UIView, CardPartView, UICollectionViewDele
     /// CardPart theme tableViewMargins by default
     public var margins: UIEdgeInsets = CardParts.theme.tableViewMargins
 
+    /// collectionView
     public var collectionView: UICollectionView
 
+    /// didSelectItemAt delegate
     public var delegate: CardPartCollectionViewDelegte?
 
+    /// Initialize CardPartCollectionView with `collectionViewLayout` or `UICollectionViewLayout` by default
     public init(collectionViewLayout: UICollectionViewLayout? = nil) {
 
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout ?? UICollectionViewLayout())
@@ -98,14 +103,17 @@ public class CardPartCollectionView : UIView, CardPartView, UICollectionViewDele
         setNeedsUpdateConstraints()
     }
 
+    /// Required init
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// Intrinsic content size
     override public var intrinsicContentSize: CGSize {
         return CGSize(width: UIView.noIntrinsicMetric, height: collectionView.frame.height)
     }
 
+    /// Pinning constraints
     override public func updateConstraints() {
 
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView]))
@@ -114,6 +122,7 @@ public class CardPartCollectionView : UIView, CardPartView, UICollectionViewDele
         super.updateConstraints()
     }
 
+    /// didSelectItemAt proxy to delegate
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.collectionView(collectionView, didSelectItemAt: indexPath)
     }

@@ -123,6 +123,7 @@ public class CardPartTableViewCell : UITableViewCell {
 	private var constraintsAdded = false
 
 
+    /// Initializes tableViewCell placing left, right title's and description as subviews
 	override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 
 		leftTitleLabel = UILabel(frame: CGRect.zero)
@@ -168,10 +169,12 @@ public class CardPartTableViewCell : UITableViewCell {
 		setNeedsUpdateConstraints()
 	}
 	
+    /// Required init
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+    /// Update constraints, considering if description labels are empty, and compression settings
 	override public func updateConstraints() {
 		
 		if !constraintsAdded {
@@ -212,6 +215,7 @@ public class CardPartTableViewCell : UITableViewCell {
 		super.updateConstraints()
 	}
 	
+    /// Configure constraints based labels and configuration
 	func setupContraints() {
 		
 		constraintsAdded = true

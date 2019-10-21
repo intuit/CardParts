@@ -10,6 +10,7 @@ import MapKit
 import RxCocoa
 import RxSwift
 
+/// MapView
 public class CardPartMapView: UIView, CardPartView {
     /// Calls updateMap on set
     public var mapType: MKMapType {

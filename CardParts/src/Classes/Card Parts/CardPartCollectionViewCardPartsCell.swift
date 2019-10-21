@@ -63,6 +63,7 @@ open class CardPartCollectionViewCardPartsCell : UICollectionViewCell {
     
     private var cardParts:[CardPartView] = []
 
+    /// Initializes cell and removes any existing subviews
     override public init(frame: CGRect) {
 
         super.init(frame: .zero)
@@ -74,10 +75,12 @@ open class CardPartCollectionViewCardPartsCell : UICollectionViewCell {
         setNeedsUpdateConstraints()
     }
 
+    /// Required init
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// Initializes CardPartsViews and stacks them on top of each other, using the theming/margins
     public func setupCardParts(_ cardParts:[CardPartView]) {
 
         self.cardParts = cardParts
