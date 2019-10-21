@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
+/// didMoveToPage delegate
 public protocol CardPartPagedViewDelegate {
+    /// didMoveToPage
 	func didMoveToPage(page: Int)
 }
 
@@ -90,15 +92,18 @@ public class CardPartPagedView: UIView, CardPartView {
 		self.pages = pages
 	}
 	
+    /// Required init
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
     
+    /// Layout Subviews
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.updatePageControl()
     }
 	
+    /// Update constraints with horizontal and vertical padding
 	override public func updateConstraints() {
 		let metrics = ["height": height]
 		addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[scrollView(height)]-40-|", options: [], metrics: metrics, views: ["scrollView" : scrollView]))

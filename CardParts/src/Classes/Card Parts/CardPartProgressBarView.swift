@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// ProgressBarView
 public class CardPartProgressBarView: UIView, CardPartView {
     
     /// CardParts theme margins by default
@@ -46,6 +47,15 @@ public class CardPartProgressBarView: UIView, CardPartView {
     
     fileprivate var currentVal: Int = 0
 
+    /// Initializes progress bar with colors, optional marker and marker label, at currentValue, with a width. Conditionally shows bar values.
+    ///
+    /// - Parameters:
+    ///   - barColors: [`UIColor`]
+    ///   - marker: (Optional)) marker UIView
+    ///   - markerLabelTitle: (Optional) label
+    ///   - currentValue: starting value
+    ///   - showShowBarValues: toggle showing of bar values
+    ///   - progressBarWidth: 120 by default
     public init(barColors: [UIColor], marker: UIView? = nil , markerLabelTitle: String? = nil, currentValue: Int, showShowBarValues: Bool, progressBarWidth: CGFloat = 120) {
         
         self.barColors = barColors
@@ -105,6 +115,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         layoutIfNeeded()
     }
     
+    /// Calls layout() before layoutSubviews()
     public override func layoutSubviews() {
         layout()
         super.layoutSubviews()
@@ -196,6 +207,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// Colors for bar segments
     private var barColors: [UIColor] = [] {
         didSet {
             assert(barColors.count > 0, "Requirement: barColors >=1")
@@ -206,6 +218,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
+    /// Corner radius
     public var barCornerRadius: CGFloat? {
         didSet {
             layoutIfNeeded()
@@ -326,6 +339,7 @@ public class CardPartProgressBarView: UIView, CardPartView {
         updateConstraints()
     }
     
+    /// Required init
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

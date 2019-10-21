@@ -58,6 +58,7 @@ open class CardPartTableViewCardPartsCell : UITableViewCell {
 	var stackView : UIStackView
 	private var cardParts:[CardPartView] = []
 
+    /// Initialize cell with statckview, removing subviews and replacing with a new stackView as a subview
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		
 		stackView = UIStackView()
@@ -79,10 +80,12 @@ open class CardPartTableViewCardPartsCell : UITableViewCell {
 		setNeedsUpdateConstraints()
 	}
 	
+    /// Required init
 	public required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+    /// UpdateConstraints
     open override func updateConstraints() {
 		
 		if !constraintsAdded {
@@ -100,6 +103,9 @@ open class CardPartTableViewCardPartsCell : UITableViewCell {
 		contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[stackView]|", options: [], metrics: nil, views: ["stackView" : stackView]))
 	}
 	
+    /// Sets up and stacks `CardPartView` vertically, with margins
+    ///
+    /// - Parameter cardParts: [`CardPartView`]
 	public func setupCardParts(_ cardParts:[CardPartView]) {
 		
 		self.cardParts = cardParts
