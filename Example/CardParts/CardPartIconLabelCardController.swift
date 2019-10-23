@@ -78,7 +78,7 @@ class CardPartIconLabelCardController: CardPartsViewController {
                 viewModel.iconView.asObservable().bind(to: iconLabel.rx.iconView).disposed(by: bag)
                 invalidateLayout(onChanges: [viewModel.iconView])
                 
-                iconLabel.addTapGestureRecognizer(action: {
+                iconLabel.tapIconGestureRecognizer(action: {
                     print("Second Index Image Tapped")
                 })
             }

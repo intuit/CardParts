@@ -116,7 +116,7 @@ public class CardPartIconLabel: UILabel, CardPartView {
         case .right:
             if textAlignment == .left {
                 iconView.frame = iconView.frame.offsetBy(dx: size.width + iconPadding + padding, dy: iconYPosition)
-                newRect = CGRect(x: 10, y: 0, width: size.width, height: height)
+                newRect = CGRect(x: 0, y: 0, width: size.width, height: height)
             }else if textAlignment == .right {
                 iconView.frame = iconView.frame.offsetBy(dx: frame.width - iconView.frame.width - padding , dy: iconYPosition)
                 newRect = CGRect(x: frame.width - size.width - iconView.frame.width - iconPadding - 2 * padding, y: 0, width: size.width + iconPadding, height: height)
@@ -202,7 +202,7 @@ extension CardPartIconLabel {
     }
 
     // here we create tapGesture recognizer and store the closure user passed to us in the associated object.
-    public func addTapGestureRecognizer(action: (() -> Void)?) {
+    public func tapIconGestureRecognizer(action: (() -> Void)?) {
         self.isUserInteractionEnabled = true
         self.tapGestureRecognizerAction = action
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
