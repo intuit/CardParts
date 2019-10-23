@@ -8,21 +8,27 @@
 import UIKit
 
 class AssetManager {
-    static var shared = AssetManager()
+    static let shared = AssetManager()
     
-    private var assets: [Icon: UIImage] = [:]
+    private let cache: NSCache = NSCache<NSString, UIImage>()
     
     init() {
-        Icon.allCases.forEach { icon in
-            assets[icon] = render(icon)
+        // render and cache the default size images
+        Icon.allCases.forEach { icon in _ = image(for: icon)}
+    }
+    
+    func image(for icon: Icon, in rect: CGRect = CGRect(x: 0, y: 0, width: 24.0, height: 24.0)) -> UIImage {
+        let key = "\(icon)_\(rect.width)x\(rect.height)" as NSString
+        if let cachedImage = cache.object(forKey: key) {
+            return cachedImage
         }
+        
+        let image = render(icon, in: rect)
+        cache.setObject(image, forKey: key)
+        return image
     }
     
-    func image(for icon: Icon) -> UIImage? {
-        return assets[icon]
-    }
-    
-    private func render(_ icon: Icon, in rect: CGRect = CGRect(x: 0, y: 0, width: 24.0, height: 24.0)) -> UIImage {
+    private func render(_ icon: Icon, in rect: CGRect) -> UIImage {
         let format = UIGraphicsImageRendererFormat.default()
         let renderer = UIGraphicsImageRenderer(size: rect.size, format: format)
         
