@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-/// CardPartIconLabel provides the capability to add images in eithet directions supporting left , right and center text alignments.
+/// CardPartIconLabel provides the capability to add images in either directions supporting left , right and center text alignments.
 ///```
 ///let iconLabel = CardPartIconLabel()
 ///iconLabel.verticalPadding = 10
@@ -237,7 +237,7 @@ extension CardPartIconLabel {
         }
     }
 
-    // here we create tapGesture recognizer and store the closure user passed to us in the associated object.
+    /// here we create tapGesture recognizer and store the closure user passed to us in the associated object.
     public func tapIconGestureRecognizer(action: (() -> Void)?) {
         self.isUserInteractionEnabled = true
         self.tapGestureRecognizerAction = action
@@ -245,7 +245,7 @@ extension CardPartIconLabel {
         self.addGestureRecognizer(tapGestureRecognizer)
     }
 
-    // Every time the user taps on the UIImageView, this function gets called, which triggers the closure we stored
+    /// Every time the user taps on the UIImageView, this function gets called, which triggers the closure we stored
     @objc fileprivate func handleTapGesture(sender: UITapGestureRecognizer) {
         let iconViewFrame = (sender.view as? CardPartIconLabel)?.iconView?.frame
 
@@ -260,6 +260,7 @@ extension CardPartIconLabel {
         }
     }
 
+    /// Proxy touches location to icon position to help determine if action should be called
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         self.iconViewPosition = touch.location(in: self)
