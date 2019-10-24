@@ -10,7 +10,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-/// ProgressBarView
+/// ProgressBarView provides the capability to configure different colors and custom marker , it's position to indicate the progress based on the value provided.
+///```
+///let progressBarView = CardPartProgressBarView(barValues: barValues, barColors: barColors, marker: nil, markerLabelTitle: "", currentValue: Double(720), showShowBarValues: false)
+///progressBarView.barCornerRadius = 4.0
+///```
+///![ProgressBar Example](https://raw.githubusercontent.com/Intuit/CardParts/master/images/progressBarView.png)
 public class CardPartProgressBarView: UIView, CardPartView {
     
     /// CardParts theme margins by default
