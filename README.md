@@ -61,6 +61,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartConfettiView](#cardpartconfettiview)
     - [CardPartProgressBarView](#cardpartprogressbarview)
     - [CardPartMapView](#cardpartmapview)
+    - [CardPartRadioButton](#cardpartradiobutton)
   - [Card States](#card-states)
   - [Data Binding](#data-binding)
   - [Themes](#themes)
@@ -967,6 +968,24 @@ Here's a small example of how to reactively set the location from a changing add
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mapView.png" width="300" alt="MapView" />
+</p>
+
+### `CardPartRadioButton`
+
+Provides the capability to add  radio buttons with configurable inner/outer circle line width , colors along with tap etc..
+
+```swift
+    let radioButton = CardPartRadioButton()
+    radioButton.outerCircleColor = UIColor.orange
+    radioButton.outerCircleLineWidth = 2.0
+    
+    radioButton2.rx.tap.subscribe(onNext: {
+        print("Radio Button Tapped")
+    }).disposed(by: bag)
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/radioButtons.png" width="300" alt="RadioButton" />
 </p>
 
 ## Card States
