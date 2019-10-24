@@ -44,13 +44,6 @@ public class CardPartTitleView : UIView, CardPartView {
             }
         }
     }
-	public var menuButtonImageName: String = "arrowdown" {
-		didSet {
-			if type == .titleWithMenu || type == .titleWithActionableButton {
-                menuButtonImage = UIImage(named: menuButtonImageName, in: Bundle(for: CardPartTitleView.self), compatibleWith: nil)
-			}
-		}
-	}
 	public var menuOptionObserver: ((String, Int) -> Void)?
 	public var menuActionableCallback: (()->())?
 	
@@ -80,7 +73,7 @@ public class CardPartTitleView : UIView, CardPartView {
                 if let image = menuButtonImage {
                     button.setImage(image, for: .normal)
                 } else {
-                    button.setImage(UIImage(named: menuButtonImageName, in: Bundle(for: CardPartTitleView.self), compatibleWith: nil), for: .normal)
+                    button.setImage(AssetManager.shared.image(for: .arrowDown), for: .normal)
                 }
 				button.addTarget(self, action: #selector(menuButtonTapped), for: UIControl.Event.touchUpInside)
 				addSubview(button)
@@ -92,7 +85,7 @@ public class CardPartTitleView : UIView, CardPartView {
                 if let image = menuButtonImage {
                     button.setImage(image, for: .normal)
                 } else {
-                    button.setImage(UIImage(named: menuButtonImageName, in: Bundle(for: CardPartTitleView.self), compatibleWith: nil), for: .normal)
+                    button.setImage(AssetManager.shared.image(for: .arrowDown), for: .normal)
                 }
 				button.addTarget(self, action: #selector(actionableMenuTapped), for: UIControl.Event.touchUpInside)
 				addSubview(button)
@@ -188,12 +181,6 @@ extension Reactive where Base: CardPartTitleView {
 	public var menuOptions: Binder<[String]?>{
 		return Binder(self.base) { (titleView, menuOptions) -> () in
 			titleView.menuOptions = menuOptions
-		}
-	}
-	
-	public var menuButtonImageName: Binder<String>{
-		return Binder(self.base) { (titleView, menuButtonImageName) -> () in
-			titleView.menuButtonImageName = menuButtonImageName
 		}
 	}
     

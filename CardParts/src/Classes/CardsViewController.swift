@@ -42,7 +42,6 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
     let editButtonOffset : CGFloat = 24
     let editButtonHeight : CGFloat = 50
     let editButtonWidth : CGFloat = 50
-    let editButtonImage = "budgets_disclosure_icon"
 
     var cardControllers = [CardInfo]()
 	var bag = DisposeBag()
@@ -230,7 +229,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
             }.disposed(by: bag)
 			if getEditModeForIndexPath(indexPath: indexPath) {
 				let editButton = UIButton(frame: CGRect(x: view.bounds.size.width - editButtonOffset - editButtonWidth, y: 0, width: editButtonWidth, height: editButtonHeight))
-				editButton.setImage(UIImage(named: editButtonImage, in: Bundle(for: CardsViewController.self), compatibleWith: nil), for: .normal)
+                editButton.setImage(AssetManager.shared.image(for: .pencil), for: .normal)
 				editButton.addTargetClosure { _ in
 					if let editibalCardTrait = cardController as? EditableCardTrait {
 						editibalCardTrait.onEditButtonTap()
