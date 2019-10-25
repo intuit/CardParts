@@ -43,6 +43,9 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
     let editButtonHeight : CGFloat = 50
     let editButtonWidth : CGFloat = 50
     let editButtonImage = "budgets_disclosure_icon"
+    
+    // allow customization of cardCellMargins for an individual CardsViewController; still default to theme
+    public var cardCellMargins : UIEdgeInsets = CardParts.theme.cardCellMargins
 
     var cardControllers = [CardInfo]()
 	var bag = DisposeBag()
@@ -83,21 +86,21 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
         
-        let newValue = view.bounds.width.rounded() - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
+        let newValue = view.bounds.width.rounded() - (cardCellMargins.left + cardCellMargins.right)
         if newValue != cardCellWidth.value {
             cardCellWidth.accept(newValue)
         }
     }
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        cardCellWidth.accept(size.width.rounded() - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right))
+        cardCellWidth.accept(size.width.rounded() - (cardCellMargins.left + cardCellMargins.right))
         invalidateLayout()
     }
     
     // functionality that happens when the view appears
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let newValue = view.bounds.width.rounded() - (CardParts.theme.cardCellMargins.left + CardParts.theme.cardCellMargins.right)
+        let newValue = view.bounds.width.rounded() - (cardCellMargins.left + cardCellMargins.right)
         if newValue != cardCellWidth.value {
             cardCellWidth.accept(newValue)
         }
