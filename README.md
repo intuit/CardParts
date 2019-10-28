@@ -62,6 +62,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartProgressBarView](#cardpartprogressbarview)
     - [CardPartMapView](#cardpartmapview)
     - [CardPartRadioButton](#cardpartradiobutton)
+    - [CardPartHistogramView](#cardparthistogramview)
   - [Card States](#card-states)
   - [Data Binding](#data-binding)
   - [Themes](#themes)
@@ -986,6 +987,22 @@ Provides the capability to add  radio buttons with configurable inner/outer circ
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/radioButtons.png" width="300" alt="RadioButton" />
+</p>
+
+### `CardPartHistogramView`
+
+Provides the caoability to generate the bar graph based on the data ranges with customizable bars , lines, colors etc..
+
+```swift
+    let dataEntries = self.generateRandomDataEntries()
+    barHistogram.width = 8
+    barHistogram.spacing = 8
+    barHistogram.histogramLines = HistogramLine.lines(bottom: true, middle: false, top: false)
+    self.barHistogram.updateDataEntries(dataEntries: dataEntries, animated: true)
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/histogram.gif" width="334" alt="Histogram" />
 </p>
 
 ## Card States

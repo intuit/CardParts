@@ -7,7 +7,10 @@
 
 import Foundation
 
-class CardPartTriangleView: UIView {
+class CardPartTriangleView: UIView,CardPartView {
+        
+    var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
+    
     var fillColor: UIColor = UIColor.white
     
     override init(frame: CGRect) {
