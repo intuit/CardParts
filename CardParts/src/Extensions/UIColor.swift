@@ -38,13 +38,13 @@ extension UIColor {
     static var Gray8 : UIColor {get{return UIColor.colorFromHex(0xB2B2B2)}}
 
     //Confetti Colors
-    public static var flushOrange : UIColor {get{return UIColor.colorFromHex(0xFF8000)}}
-    public static var eggBlue : UIColor {get{return UIColor.colorFromHex(0x07C4D9)}}
-    public static var blushPink: UIColor {get{return UIColor.colorFromHex(0xFF88EC)}}
-    public static var cerulean: UIColor {get{return UIColor.colorFromHex(0x0097E6)}}
-    public static var limeGreen: UIColor {get{return UIColor.colorFromHex(0x53B700)}}
-    public static var yellowSea: UIColor {get{return UIColor.colorFromHex(0xFFAD00)}}
-    public static var superNova: UIColor {get{return UIColor.colorFromHex(0xFFCA00)}}
+    public static var flushOrange : UIColor {get{return UIColor.dynamicColor(light: UIColor.colorFromHex(0xFF8000), dark: UIColor.colorFromHex(0xFF9A1A))}}
+    public static var eggBlue : UIColor {get{return UIColor.dynamicColor(light: UIColor.colorFromHex(0x07C4D9), dark: UIColor.colorFromHex(0x21DEF3))}}
+    public static var blushPink: UIColor {get{return UIColor.dynamicColor(light: UIColor.colorFromHex(0xFF88EC), dark: UIColor.colorFromHex(0xFFA2FF))}}
+    public static var cerulean: UIColor {get{return UIColor.dynamicColor(light: UIColor.colorFromHex(0x0097E6), dark: UIColor.colorFromHex(0x1AB1FF))}}
+    public static var limeGreen: UIColor {get{return UIColor.dynamicColor(light: UIColor.colorFromHex(0x53B700), dark: UIColor.colorFromHex(0x6DD11A))}}
+    public static var yellowSea: UIColor {get{return UIColor.dynamicColor(light: UIColor.colorFromHex(0xFFAD00), dark: UIColor.colorFromHex(0xFFC71A))}}
+    public static var superNova: UIColor {get{return UIColor.dynamicColor(light: UIColor.colorFromHex(0xFFCA00), dark: UIColor.colorFromHex(0xFFE41A))}}
 }
 
 // MARK: - Pre-iOS 13 Compatibility
