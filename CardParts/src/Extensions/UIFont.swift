@@ -12,35 +12,35 @@ enum FontSize: Int {
 
 extension UIFont {
     
-    class func turboGenericFont(_ fontSize: FontSize) -> UIFont {
+    class func cardPartsFont(_ fontSize: FontSize) -> UIFont {
         return UIFont.systemFont(ofSize: CGFloat(fontSize.rawValue), weight: UIFont.Weight.regular)
     }
     
-    class func turboGenericFontBlack(_ fontSize: FontSize) -> UIFont {
+    class func cardPartsFontBlack(_ fontSize: FontSize) -> UIFont {
         return UIFont.systemFont(ofSize: CGFloat(fontSize.rawValue), weight: UIFont.Weight.black)
     }
 
-    class func turboGenericFontBold(_ fontSize: FontSize) -> UIFont {
+    class func cardPartsFontBold(_ fontSize: FontSize) -> UIFont {
         return UIFont.systemFont(ofSize: CGFloat(fontSize.rawValue), weight: UIFont.Weight.bold)
     }
     
-    class func turboGenericMediumFont(_ fontSize: FontSize) -> UIFont {
+    class func cardPartsMediumFont(_ fontSize: FontSize) -> UIFont {
         return UIFont.systemFont(ofSize: CGFloat(fontSize.rawValue), weight: UIFont.Weight.medium)
     }
     
-    class func turboGenericLightFont(_ fontSize: FontSize) -> UIFont {
+    class func cardPartsLightFont(_ fontSize: FontSize) -> UIFont {
         return UIFont.systemFont(ofSize: CGFloat(fontSize.rawValue), weight: UIFont.Weight.light)
     }
     
-    class func turboGenericFontWithSize(_ size: CGFloat) -> UIFont {
+    class func cardPartsFontWithSize(_ size: CGFloat) -> UIFont {
         return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.regular)
     }
     
-    class func turboGenericMediumFontWithSize(_ size: CGFloat) -> UIFont {
+    class func cardPartsMediumFontWithSize(_ size: CGFloat) -> UIFont {
         return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
     }
     
-    class func turboGenericLightFontWithSize(_ size: CGFloat) -> UIFont {
+    class func cardPartsLightFontWithSize(_ size: CGFloat) -> UIFont {
         return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
     }
 

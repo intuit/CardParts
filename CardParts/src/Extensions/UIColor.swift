@@ -18,14 +18,13 @@ extension UIColor {
         return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
     
-    static var turboGenericGreyTextColor : UIColor {get{return UIColor.color(169, green: 169, blue: 169)}}
-    static var turboCardPartTitleColor : UIColor {get{return UIColor.color(17, green: 17, blue: 17)}}
-    static var turboCardPartTextColor : UIColor {get{return UIColor.color(136, green: 136, blue: 136)}}
-    static var turboSeperatorColor : UIColor {get{return UIColor.color(221, green: 221, blue: 221)}}
-    static var turboBlueColor : UIColor {get{return UIColor(red: 69.0/255.0, green: 202.0/255.0, blue: 230.0/255.0, alpha: 1.0)}}
-    static var turboHeaderBlueColor: UIColor { get { return UIColor.colorFromHex(0x05A4B5) }}
-    static var turboGreenColor : UIColor {get{return UIColor(red: 10.0/255.0, green: 199.0/255.0, blue: 117.0/255.0, alpha: 1.0)}}
-    static var turboSeperatorGray : UIColor {get{return UIColor(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)}}
+    static var cardPartGrayTextColor : UIColor {get{return UIColor.dynamicColor(light: .Gray2, dark: .Gray3)}}
+    static var cardPartTitleColor : UIColor {get{return UIColor.dynamicColor(light: .Black, dark: .white)}}
+    static var cardPartTextColor : UIColor {get{return UIColor.dynamicColor(light: .Gray0, dark: .Gray7)}}
+    static var cardPartSeparatorColor : UIColor {get{return UIColor.dynamicColor(light: .Gray4, dark: .Gray2)}}
+    static var cardPartBlueColor : UIColor {get{return .SystemBlue}}
+    static var cardPartHeaderBlueColor: UIColor { get { return .SystemBlue}}
+    static var cardPartGreenColor : UIColor {get{return UIColor.dynamicColor(light: UIColor.colorFromHex(0x0AC775), dark: UIColor.colorFromHex(0x3DFAA8))}}
     
     static var Black : UIColor {get{return UIColor.colorFromHex(0x000000)}}
     static var Gray0 : UIColor {get{return UIColor.colorFromHex(0x333333)}}
@@ -104,6 +103,18 @@ extension UIColor {
     
     // Nonadaptable Colors
     static var DarkText : UIColor {get {if #available(iOS 13.0, *){return .link} else {return UIColor.color(242, green: 242, blue: 247)}}}
+    
+    static func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor(dynamicProvider: { traits in
+                if traits.userInterfaceStyle == .dark {
+                    return dark
+                }
+                return light
+            })
+        }
+        return light
+    }
     
     // CGColor for traitCollection
     func cgColor(with traitCollection: UITraitCollection) -> CGColor {
