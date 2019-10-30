@@ -18,7 +18,8 @@ class CardPartRoundedStackViewCardController: CardPartsViewController {
         let textView = CardPartTextView(type: .title)
         textView.text = "Card Parts"
         
-        let cardPartsImage = CardPartImageView(image: UIImage(named: "cardIcon"))
+        let icon = UIImage(named: "cardIcon")?.withRenderingMode(.alwaysTemplate)
+        let cardPartsImage = CardPartImageView(image: icon)
         cardPartsImage.contentMode = .scaleAspectFit
         
         let roundedStackView = CardPartStackView()
@@ -29,8 +30,21 @@ class CardPartRoundedStackViewCardController: CardPartsViewController {
         roundedStackView.isLayoutMarginsRelativeArrangement = true
         roundedStackView.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         roundedStackView.cornerRadius = 10.0
-        roundedStackView.backgroundView.backgroundColor = UIColor(red: 16.0 / 255.0, green: 128.0 / 255.0, blue: 0, alpha: 0.16)
         roundedStackView.pinBackground(roundedStackView.backgroundView, to: roundedStackView)
+        
+        
+        if #available(iOS 13.0, *) {
+            cardPartsImage.tintColor = .label
+            roundedStackView.backgroundView.backgroundColor = UIColor(dynamicProvider: { traitCollection in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return UIColor(red: 27.0 / 255.0, green: 223.0 / 255.0, blue: 0, alpha: 0.16)
+                }
+                return UIColor(red: 16.0 / 255.0, green: 128.0 / 255.0, blue: 0, alpha: 0.16)
+            })
+        } else {
+            cardPartsImage.tintColor = .black
+            roundedStackView.backgroundView.backgroundColor = UIColor(red: 16.0 / 255.0, green: 128.0 / 255.0, blue: 0, alpha: 0.16)
+        }
         
         roundedStackView.addArrangedSubview(textView)
         roundedStackView.addArrangedSubview(cardPartsImage)
