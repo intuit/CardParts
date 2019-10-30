@@ -21,22 +21,22 @@ class CardPartStackViewCardController: CardPartsViewController {
         
         let cardPartTextView1 = CardPartTextView(type: .normal)
         cardPartTextView1.text = "This"
-        cardPartTextView1.textColor = .purple
+        cardPartTextView1.textColor = .systemPurple
         cardPartSV.addArrangedSubview(cardPartTextView1)
         
         let cardPartTextView2 = CardPartTextView(type: .normal)
         cardPartTextView2.text = "is"
-        cardPartTextView2.textColor = .blue
+        cardPartTextView2.textColor = .systemBlue
         cardPartSV.addArrangedSubview(cardPartTextView2)
         
         let cardPartTextView3 = CardPartTextView(type: .normal)
         cardPartTextView3.text = "a"
-        cardPartTextView3.textColor = .orange
+        cardPartTextView3.textColor = .systemOrange
         cardPartSV.addArrangedSubview(cardPartTextView3)
         
         let cardPartTextView4 = CardPartTextView(type: .normal)
         cardPartTextView4.text = "CardPartStackView"
-        cardPartTextView4.textColor = .red
+        cardPartTextView4.textColor = .systemRed
         cardPartSV.addArrangedSubview(cardPartTextView4)
         
         setupCardParts([cardPartSV])
