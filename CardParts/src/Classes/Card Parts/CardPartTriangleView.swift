@@ -11,7 +11,7 @@ class CardPartTriangleView: UIView,CardPartView {
         
     var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
-    var fillColor: UIColor = UIColor.white
+    var fillColor: UIColor = .Label
     
     override init(frame: CGRect) {
         super.init(frame: frame)
