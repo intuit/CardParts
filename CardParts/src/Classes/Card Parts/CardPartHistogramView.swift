@@ -46,7 +46,7 @@ public class CardPartHistogramView: UIView, CardPartView {
     /// Responsible for compute all positions and frames of all elements represent on the bar chart
     private var presenter:CardPartBarChart = CardPartBarChart(barWidth: 20, space: 10)
     
-    /// height for the histiogram to render
+    /// height for the histogram to render
     public var intrinsicHeight:CGFloat = 450
     
     /// An array of bar entries. Each BasicBarEntry contain information about line segments, curved line segments, positions and frames of all elements on a bar.
@@ -89,7 +89,7 @@ public class CardPartHistogramView: UIView, CardPartView {
         ])
     }
     
-    /// confiogures width and spacing betweent the bar items
+    /// configures width and spacing betweent the bar items
     private func setupChartPresenter() {
         self.presenter = CardPartBarChart(barWidth: self.width, space: self.spacing)
     }
@@ -166,7 +166,7 @@ public class CardPartBarChart {
         self.space = space
     }
     
-    /// width of the entier bars
+    /// width of the entire bars
     func computeContentWidth() -> CGFloat {
         return (barWidth + space) * CGFloat(dataEntries.count) + space
     }
