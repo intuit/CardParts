@@ -65,17 +65,17 @@ public class CardPartTableViewCell : UITableViewCell {
 	
 	public var displayAsHidden: Bool = false {
 		didSet {
-			leftTitleLabel.textColor = displayAsHidden ? UIColor.Gray2 : leftTitleColor
-			rightTitleLabel.textColor = displayAsHidden ? UIColor.Gray2 : rightTitleColor
-			leftDescriptionLabel.textColor = displayAsHidden ? UIColor.Gray2 : leftDescriptionColor
-			rightDescriptionLabel.textColor = displayAsHidden ? UIColor.Gray2 : rightDescriptionColor
+			leftTitleLabel.textColor = displayAsHidden ? UIColor.SystemGray2 : leftTitleColor
+			rightTitleLabel.textColor = displayAsHidden ? UIColor.SystemGray2 : rightTitleColor
+			leftDescriptionLabel.textColor = displayAsHidden ? UIColor.SystemGray2 : leftDescriptionColor
+			rightDescriptionLabel.textColor = displayAsHidden ? UIColor.SystemGray2 : rightDescriptionColor
 			
 			leftTitleLabel.alpha = displayAsHidden ? 0.6 : 1.0
 			rightTitleLabel.alpha = displayAsHidden ? 0.6 : 1.0
 			leftDescriptionLabel.alpha = displayAsHidden ? 0.6 : 1.0
 			rightDescriptionLabel.alpha = displayAsHidden ? 0.6 : 1.0
 			
-			backgroundColor = displayAsHidden ? UIColor.Gray6 : UIColor.white
+            backgroundColor = displayAsHidden ? UIColor.SystemGray6 : CardParts.theme.cardBackgroundColor
 		}
 	}
 	
@@ -121,6 +121,7 @@ public class CardPartTableViewCell : UITableViewCell {
 		
 		separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
 		
+        backgroundColor = CardParts.theme.cardBackgroundColor
 		
 		for subview in contentView.subviews {
 			subview.removeFromSuperview()
