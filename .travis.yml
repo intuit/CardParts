@@ -1,7 +1,7 @@
 language: swift
 xcode_workspace: Example/CardParts.xcworkspace
 xcode_scheme: CardParts-Example
-osx_image: xcode10.2
+osx_image: xcode11.1
 podfile: Example/Podfile
 before_install:
   - gem install cocoapods
