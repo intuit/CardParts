@@ -25,6 +25,7 @@ CardParts - made with ❤️ by Intuit:
 - [Quick Start](#quick-start)
 - [Architecture](#architecture)
   - [CardsViewController](#cardsviewcontroller)
+    - [Custom Card Margins](#custom-card-margins)
   - [Card Traits](#card-traits)
     - [NoTopBottomMarginsCardTrait](#notopbottommarginscardtrait)
     - [TransparentCardTrait](#transparentcardtrait)
@@ -60,6 +61,9 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartOrientedView](#cardpartorientedview)
     - [CardPartConfettiView](#cardpartconfettiview)
     - [CardPartProgressBarView](#cardpartprogressbarview)
+    - [CardPartMapView](#cardpartmapview)
+    - [CardPartRadioButton](#cardpartradiobutton)
+    - [CardPartHistogramView](#cardparthistogramview)
   - [Card States](#card-states)
   - [Data Binding](#data-binding)
   - [Themes](#themes)
@@ -214,6 +218,23 @@ protocol CardController : NSObjectProtocol {
 
 The viewController() method must return the viewController that will be added as a child controller to the card cell. If the CardController is a UIViewController it can simply return self for this method.
 
+### Custom Card Margins
+
+By default, the margins of your `CardsViewController` will match the theme's `cardCellMargins` property. You can change the margins for all `CardsViewController`s in your application by applying a new [theme](#themes) or setting `CardParts.theme.cardCellMargins = UIEdgeInsets(...)`. Alternatively, if you want to change the margins for just one `CardsViewController`, you can set the `cardCellMargins` property of that `CardsViewController`. This property will default to use the theme's margins if you do not specify a new value for it. Changing this value should be done in the `init` of your custom `CardsViewController`, but must occur after `super.init` because it is changing a property of the super class. For example:
+
+```swift
+class MyCardsViewController: CardsViewController {
+
+	init() {
+		// set up properties
+		super.init(nibName: nil, bundle: nil)
+		self.cardCellMargins = UIEdgeInsets(/* custom card margins */)
+	}
+	
+	...
+}
+```
+
 ## Card Traits
 
 The Card Parts framework defines a set of traits that can be used to modify the appearance and behavior of cards. These traits are implemented as protocols and protocol extensions. To add a trait to a card simply add the trait protocol to the CardController definition. For example:
@@ -343,7 +364,8 @@ Use this protocol to add border color and border width for the card, implement `
 
 ## `CardPartsViewController`
 
-CardPartsViewController implements the CardController protocol and builds its card UI by displaying one or more card part views using an MVVM pattern that includes automatic data binding. Each CardPartsViewController displays a list of CardPartView as its subviews. Each CardPartView renders as a row in the card. The CardParts framework implements several different types of CardPartView that display basic views, such as title, text, image, button, separator, etc. All CardPartView implemented by the framework are already styled to correctly match the applied themes UI guidelines.
+CardPartsViewController implements the CardController protocol and builds its card UI by displaying one or more card part views using an MVVM pattern that includes automatic data binding. Each CardPartsViewController displays a list of CardPartView as its subviews. Each CardPartView renders as a row in the card. The CardParts framework implements several different types of CardPartView that display basic views, such as title, text, image, button, separator, etc. All CardPartView implemented by the framework are already styled to correctly match the applied 
+s UI guidelines.
 
 In addition to the card parts, a CardPartsViewController also uses a view model to expose data properties that are bound to the card parts. The view model should contain all the business logic for the card, thus keeping the role of the CardPartsViewController to just creating its view parts and setting up bindings from the view model to the card parts. A simple implementation of a CardPartsViewController based card might look like the following:
 
@@ -944,6 +966,62 @@ Provides the capability to configure different colors and custom marker , it's p
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/progressBarView.png" width="300" alt="ProgressBarView"/>
+</p>
+
+### `CardPartMapView`
+
+Provides the capability to display a MapView and reactively configure location, map type, and coordinate span (zoom). You also have direct access to the MKMapView instance so that you can add annotations, hook into it's MKMapViewDelegate, or whatever else you'd normally do with Maps.
+
+By default the card part will be rendered at a height of 300 points but you can set a custom height just be resetting the CardPartMapView.intrensicHeight property.
+
+Here's a small example of how to reactively set the location from a changing address field (See the Example project for a working example):
+
+```swift
+    let initialLocation = CLLocation(latitude: 37.430489, longitude: -122.096260)
+    let cardPartMapView = CardPartMapView(type: .standard, location: initialLocation, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+
+    cardPartTextField.rx.text
+            .flatMap { self.viewModel.getLocation(from: $0) }
+            .bind(to: cardPartMapView.rx.location)
+            .disposed(by: bag)
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/mapView.png" width="300" alt="MapView" />
+</p>
+
+### `CardPartRadioButton`
+
+Provides the capability to add  radio buttons with configurable inner/outer circle line width , colors along with tap etc..
+
+```swift
+    let radioButton = CardPartRadioButton()
+    radioButton.outerCircleColor = UIColor.orange
+    radioButton.outerCircleLineWidth = 2.0
+    
+    radioButton2.rx.tap.subscribe(onNext: {
+        print("Radio Button Tapped")
+    }).disposed(by: bag)
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/radioButtons.png" width="300" alt="RadioButton" />
+</p>
+
+### `CardPartHistogramView`
+
+Provides the caoability to generate the bar graph based on the data ranges with customizable bars , lines, colors etc..
+
+```swift
+    let dataEntries = self.generateRandomDataEntries()
+    barHistogram.width = 8
+    barHistogram.spacing = 8
+    barHistogram.histogramLines = HistogramLine.lines(bottom: true, middle: false, top: false)
+    self.barHistogram.updateDataEntries(dataEntries: dataEntries, animated: true)
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/histogram.gif" width="334" alt="Histogram" />
 </p>
 
 ## Card States

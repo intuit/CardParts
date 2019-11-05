@@ -37,7 +37,10 @@ class MainViewController: CardsViewController {
             CardPartPillLabelCardController(), // Pill label
             CardPartRoundedStackViewCardController(), //Rounded Stackview
             CardPartIconLabelCardController(), // Icon label
-            CardPartProgressBarViewCardController() // ProgresBarView
+            CardPartProgressBarViewCardController(), // ProgresBarView
+            CardPartMapViewCardController(), // MapView
+            CardPartRadioButtonCardController(), // Radio Button
+            CardPartHistogramCardController(), // Histogram
         ]
         
         loadCards(cards: cards)
