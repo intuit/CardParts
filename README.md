@@ -235,6 +235,15 @@ class MyCardsViewController: CardsViewController {
 }
 ```
 
+If you use storyboards with `CardsViewController` subclasses in your storyboard, the `cardCellMargins` property will take the value of the `CardParts.theme.cardCellMargins` when the `required init(coder:)` initializer is called. If you are trying to change the theme for your whole application, you will need to do so in this initializer of the first view controller in your storyboard to be initialized, and changes will take effect in all other view controllers. For example:
+
+```swift
+required init?(coder: NSCoder) {
+	CardPartsMintTheme().apply()
+	super.init(coder: coder)
+}
+```
+
 ## Card Traits
 
 The Card Parts framework defines a set of traits that can be used to modify the appearance and behavior of cards. These traits are implemented as protocols and protocol extensions. To add a trait to a card simply add the trait protocol to the CardController definition. For example:
