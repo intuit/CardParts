@@ -6,9 +6,6 @@
 build/
 DerivedData/
 
-# TEMPORARY
-docs/
-
 ## Various settings
 *.pbxuser
 !default.pbxuser

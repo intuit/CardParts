@@ -2,7 +2,8 @@ author_url: https://intuit.com
 author: Intuit
 github_url: https://github.com/intuit/CardParts
 module: CardParts
-podspec: CardParts.podspec
+output: ../docs
+podspec: ../CardParts.podspec
 readme: README.md
 sdk: iphone
 theme: fullwidth
