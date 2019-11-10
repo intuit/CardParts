@@ -6,6 +6,9 @@
 build/
 DerivedData/
 
+## Jazzy
+docs/**/undocumented.json
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
