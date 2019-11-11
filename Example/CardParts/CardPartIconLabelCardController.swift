@@ -98,7 +98,6 @@ class ReactiveCardPartIconViewModel {
     }
     
     func startTimer() {
-       //iconView.accept( UIImageView(image: UIImage(named: "cardIcon")))
         icon.accept(UIImage(named: "cardIcon"))
         Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.randomise), userInfo: nil, repeats: true)
     }

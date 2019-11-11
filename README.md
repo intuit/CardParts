@@ -534,7 +534,7 @@ See the example app for a working example.
 
 #### `CardPartIconLabel`
 
-CardPartIconLabel provides the capability to add images in eithet directions supporting left , right and center text alignments.
+CardPartIconLabel provides the capability to add images in eithet directions supporting left , right and center text alignments along with icon binding capability.
 
 ```swift
     let iconLabel = CardPartIconLabel()
