@@ -75,8 +75,8 @@ class CardPartIconLabelCardController: CardPartsViewController {
             
             if index == 2 {
                 viewModel.labelText.asObservable().bind(to: iconLabel.rx.labelText).disposed(by: bag)
-                viewModel.iconView.asObservable().bind(to: iconLabel.rx.iconView).disposed(by: bag)
-                invalidateLayout(onChanges: [viewModel.iconView])
+                viewModel.icon.asObservable().bind(to: iconLabel.rx.icon).disposed(by: bag)
+                 invalidateLayout(onChanges: [viewModel.icon])
                 
                 iconLabel.tapIconGestureRecognizer(action: {
                     print("Second Index Image Tapped")
@@ -91,14 +91,14 @@ class CardPartIconLabelCardController: CardPartsViewController {
 class ReactiveCardPartIconViewModel {
     
     var labelText = BehaviorRelay(value: "Defaul Label")
-    var iconView = BehaviorRelay(value: UIImageView(image: UIImage(named: "")))
+    var icon:BehaviorRelay<UIImage?> = BehaviorRelay(value:  UIImage(named: ""))
     
     init() {
         startTimer()
     }
     
     func startTimer() {
-       iconView.accept( UIImageView(image: UIImage(named: "cardIcon")))
+        icon.accept(UIImage(named: "cardIcon"))
         Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.randomise), userInfo: nil, repeats: true)
     }
     
