@@ -176,6 +176,12 @@ extension Reactive where Base: CardPartIconLabel {
            imageView.iconView = iconView
         }
     }
+    
+    public var icon:Binder<UIImage?> {
+        return Binder(self.base) { (image, icon) -> () in
+            image.icon = icon
+        }
+    }
 }
 
 extension CardPartIconLabel {

@@ -11,6 +11,11 @@ import CardParts
 
 class MainViewController: CardsViewController {
 
+    required init?(coder: NSCoder) {
+        CardPartsMintTheme().apply()
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
