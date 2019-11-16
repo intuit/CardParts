@@ -1,0 +1,10 @@
+author_url: https://intuit.com
+author: Intuit
+github_url: https://github.com/intuit/CardParts
+min_acl: private
+module: CardParts
+output: docs
+podspec: CardParts.podspec
+readme: README.md
+sdk: iphone
+theme: fullwidth

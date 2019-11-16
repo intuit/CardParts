@@ -39,11 +39,18 @@ extension UIColor {
     }
     
     //Confetti Colors
+    /// orange
     public static var flushOrange : UIColor {get{return UIColor.colorFromHex(0xFF8000)}}
+    /// blue
     public static var eggBlue : UIColor {get{return UIColor.colorFromHex(0x07C4D9)}}
+    /// pink
     public static var blushPink: UIColor {get{return UIColor.colorFromHex(0xFF88EC)}}
+    /// cerulean
     public static var cerulean: UIColor {get{return UIColor.colorFromHex(0x0097E6)}}
+    /// green
     public static var limeGreen: UIColor {get{return UIColor.colorFromHex(0x53B700)}}
+    /// yellow
     public static var yellowSea: UIColor {get{return UIColor.colorFromHex(0xFFAD00)}}
+    /// supernova
     public static var superNova: UIColor {get{return UIColor.colorFromHex(0xFFCA00)}}
 }

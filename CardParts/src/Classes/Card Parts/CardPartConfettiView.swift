@@ -10,38 +10,52 @@ import UIKit
 import QuartzCore
 
 /// Enum which tells which type of confetti partciles to choose.
-///
-/// - diamond: displays diamond shaped particles
-/// - confetti: displays arc symbol shaped particles
-/// - star: displays star shaped particles
-/// - mixed: provides a way to mix and macth multiple images as confetti particles.
-/// - image: provides option of displaying custom image as confetti particles.
 public enum ConfettiType {
+    /// displays arc symbol shaped particles
     case confetti
+    /// displays diamond shaped particles
     case diamond
+    /// displays star shaped particles
     case star
+    /// provides a way to mix and macth multiple images as confetti particles.
     case mixed
+    /// provides option of displaying custom image as confetti particles.
     case image(UIImage)
 }
 
+/// Provides the capability to add confetti with various types ( diamonds, star, mixed ) and colors, along with different level of intensity
+///```
+///let confettiView = CardPartConfettiView()
+///confettiView.type  = .diamond
+///confettiView.shape = CAEmitterLayerEmitterShape.line
+///confettiView.startConfetti()
+///```
+/// ![Confetti!](https://raw.githubusercontent.com/Intuit/CardParts/master/images/confetti.gif)
 public class CardPartConfettiView: UIView, CardPartView {
     
+    /// CardPart theme margins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
+    
+    /// [`.red` 🔴, `.green` 💚, `.blue` 🔵] - by default
     public var colors:[UIColor] = [ UIColor.red, UIColor.green, UIColor.blue ]
+    /// ⭐️ `.star` by default
     public var type:ConfettiType = .star
     /// default : 0.5 value ranges from 0 - 1(being very slow)
     public var intensity:Float = 0.5
+    /// emitter shape, default to `.sphere`
     public var shape:CAEmitterLayerEmitterShape = .sphere {
         didSet {
             emitter.emitterShape = shape
         }
     }
     
+    /// Default images unsed in confetti
     public var confettiImages = [UIImage(named: "confetti", in: Bundle(for: CardPartConfettiView.self),compatibleWith: nil)] as? [UIImage]
     
     //A layer that emits, animates, and renders a particle system.
     var emitter: CAEmitterLayer = CAEmitterLayer()
 
+    /// init(frame:)
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }

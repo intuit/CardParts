@@ -7,9 +7,36 @@
 
 import Foundation
 
+/// CardPartCenteredView is a CardPart that fits a centered card part proportionally on the phone screen while allowing a left and right side card part to scale appropriately.
+///
+/// A CardPartCenteredView can take in any card part that conforms to CardPartView as the left, center, and right components. To see a graphical example of the centered card part please look at the example application packaged with this cocoapod.
+///
+/// Example:
+///```
+///class TestCardController : CardPartsViewController {
+///    override func viewDidLoad() {
+///        super.viewDidLoad()
+///
+///        let rightTextCardPart = CardPartTextView(type: .normal)
+///        rightTextCardPart.text = "Right text in a label"
+///
+///        let centeredSeparator = CardPartVerticalSeparator()
+///
+///        let leftTextCardPart = CardPartTextView(type: .normal)
+///        leftTextCardPart.text = "Left text in a label"
+///
+///        let centeredCardPart = CardPartCenteredView(leftView: leftTextCardPart, centeredView: centeredSeparator, rightView: rightTextCardPart)
+///
+///        setupCardParts([centeredCardPart])
+///    }
+///}
+///```
 public class CardPartCenteredView: UIView, CardPartView {
+    
+    /// `margins` set by CardParts Theme by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
+    /// Initializes views, applying constraints to center view relative to left and right view
     public init(leftView: CardPartView, centeredView: CardPartView, rightView: CardPartView) {
         super.init(frame: CGRect.zero)
         
@@ -47,6 +74,7 @@ public class CardPartCenteredView: UIView, CardPartView {
         layoutIfNeeded()
     }
     
+    /// Required init
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

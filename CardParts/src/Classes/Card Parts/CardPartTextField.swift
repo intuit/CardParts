@@ -10,18 +10,46 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// TextField Format
 public enum CardPartTextFieldFormat {
+    /// No formatting
     case none
+    /// Currency with maxLength
     case currency(maxLength: Int)
+    /// Zipcode
     case zipcode
+    /// Phone
     case phone
+    /// SSN
     case ssn
 }
 
+///CardPartTextField can take a parameter of type `CardPartTextFieldFormat` which determines formatting for the UITextField. You may also set properties such as keyboardType, placeholder, font, text, etc.
+///```
+///let amount = CardPartTextField(format: .phone)
+///amount.keyboardType = .numberPad
+///amount.placeholder = textViewModel.placeholder
+///amount.font = dataFont
+///amount.textColor = UIColor.colorFromHex(0x3a3f47)
+///amount.text = textViewModel.text.value
+///amount.rx.text.orEmpty.bind(to: textViewModel.text).disposed(by: bag)
+///```
+///The different formats are as follows:
+///```
+///public enum CardPartTextFieldFormat {
+///    case none
+///    case currency(maxLength: Int)
+///    case zipcode
+///    case phone
+///    case ssn
+///}
+///```
 public class CardPartTextField : UITextField, CardPartView {
     
+    /// CardParts theme margins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
+    /// One of `CardPartTextFieldFormat`: `.none` by default
     public var format: CardPartTextFieldFormat = .none {
         didSet {
             switch format {
@@ -38,8 +66,10 @@ public class CardPartTextField : UITextField, CardPartView {
             }
         }
     }
+    /// 0 by default
     public var maxLength = 0
     
+    /// Returns the raw value, stripped of all formatting characters
     public var unformattedString: String? {
         if case .none = format {
             return super.text
@@ -47,6 +77,7 @@ public class CardPartTextField : UITextField, CardPartView {
         return super.text?.uppercased().components(separatedBy: CharacterSet(charactersIn: "0123456789").inverted).joined(separator: "")
     }
     
+    /// Calls `textDidChange()`, returns `super.text` or `unformattedString`
     override public var text: String? {
         set {
             super.text = newValue
@@ -62,6 +93,9 @@ public class CardPartTextField : UITextField, CardPartView {
         }
     }
     
+    /// Initializes with format (`.none` by default) and subscribes to textChangeNotification
+    ///
+    /// - Parameter format: <#format description#>
     public init(format: CardPartTextFieldFormat = .none) {
         super.init(frame: CGRect.zero)
         
@@ -74,10 +108,12 @@ public class CardPartTextField : UITextField, CardPartView {
         NotificationCenter.default.removeObserver(self)
     }
     
+    /// Required init
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// calls `textDidChange()`
     @objc public func textChangeNotifcation(notification: NSNotification) {
         if let notifObject = notification.object as? CardPartTextField, notifObject == self {
             textDidChange()

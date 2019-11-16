@@ -9,10 +9,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// CardPartPillLabel provides you the rounded corners, text aligned being at the center along with vertical and horizontal padding capability.
+///```
+///var verticalPadding:CGFloat
+///var horizontalPadding:CGFloat
+///```
+/// ![Pill Label examples](https://raw.githubusercontent.com/Intuit/CardParts/master/images/pillLabels.png)
 public class CardPartPillLabel: UILabel, CardPartView {
     
+    /// CardPart theme margins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
+    // MARK: - Reactive Properties
+    
+    /// Text in label
     public var labelText: String? {
         didSet {
             guard let text = labelText else { return }
@@ -20,16 +30,20 @@ public class CardPartPillLabel: UILabel, CardPartView {
         }
     }
     
-    /// provides vertical and horizontal spacing
+    /// verticalPadding - 2.0 by default
     public var verticalPadding:CGFloat = 2.0
+    /// horizontalPadding - 2.0 by default
     public var horizontalPadding:CGFloat = 2.0
     
+    // MARK: - 
 
+    /// init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
+    /// Required init
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -49,6 +63,7 @@ public class CardPartPillLabel: UILabel, CardPartView {
         return size
     }
     
+    /// layout subviews
     public override func layoutSubviews() {
         super.layoutSubviews()
         setup()
@@ -58,18 +73,21 @@ public class CardPartPillLabel: UILabel, CardPartView {
 // MARK: - Reactive binding for label's text , vertical & horizontal padding.
 extension Reactive where Base: CardPartPillLabel {
     
+    /// Updates labe;'s text
     public var labelText: Binder<String?>{
         return Binder(self.base) { (label, labelText) -> () in
             label.text = labelText
         }
     }
     
+    /// Updates label's verticalPadding
     public var verticalPadding: Binder<CGFloat> {
         return Binder(self.base) { (label, verticalPadding) -> () in
             label.verticalPadding = verticalPadding
         }
     }
     
+    /// Updates label's horizontalPadding
     public var horizontalPadding: Binder<CGFloat> {
         return Binder(self.base) { (label, horizontalPadding) -> () in
             label.horizontalPadding = horizontalPadding

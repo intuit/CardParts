@@ -10,10 +10,15 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// As the name describes, it shows a vertical separator view opposed to a horizontal one
+///
+/// `backgroundColor` is CardParts theme separatorColor by default
 public class CardPartVerticalSeparatorView : UIView, CardPartView {
 	
+    /// CardParts theme cardPartMargins by default
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
 	
+    /// Instantiate CardPartVerticalSeparatorView with width constraint
 	public init() {
 		
 		super.init(frame: CGRect.zero)
@@ -25,6 +30,7 @@ public class CardPartVerticalSeparatorView : UIView, CardPartView {
 		self.addConstraint(separatorWidthConstraint)
 	}
 	
+    /// Required init
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

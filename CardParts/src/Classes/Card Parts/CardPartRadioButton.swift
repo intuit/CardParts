@@ -10,43 +10,62 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// Provides the capability to add  radio buttons with configurable inner/outer circle line width , colors along with tap etc..
+///
+///```
+///let radioButton = CardPartRadioButton()
+///radioButton.outerCircleColor = UIColor.orange
+///radioButton.outerCircleLineWidth = 2.0
+///
+///radioButton2.rx.tap.subscribe(onNext: {
+///    print("Radio Button Tapped")
+///}).disposed(by: bag)
+///```
+///![Radio Button Example](https://raw.githubusercontent.com/Intuit/CardParts/master/images/radioButtons.png)
 public class CardPartRadioButton: UIButton, CardPartView  {
     
+    /// Card Parts theme cardPartMargins by default
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
     var outerCircleLayer = CAShapeLayer()
     var innerCircleLayer = CAShapeLayer()
     
+    /// Outer circle color, `.blue` by default
     public var outerCircleColor:UIColor = .blue {
         didSet{
             outerCircleLayer.strokeColor = outerCircleColor.cgColor
         }
     }
     
+    /// Inner circle color, `.blue` by default
     public var innerCircleColor:UIColor = .blue {
         didSet {
             setFillState()
         }
     }
     
+    /// Outer circle line width, `3.0` by default
     public var outerCircleLineWidth:CGFloat = 3.0 {
         didSet {
             setCircleLayouts()
         }
     }
     
+    /// Inner circle spacing, `3.0` by default
     public var innerCircleGap:CGFloat = 3.0  {
         didSet {
             setCircleLayouts()
         }
     }
     
+    /// Selected state, triggers fillState
     override public var isSelected :Bool {
         didSet {
             setFillState()
         }
     }
     
+    /// Circle radius, computation of smaller size minus outer line width
     public var circleRadius: CGFloat {
         let width = bounds.width
         let height = bounds.height
@@ -55,11 +74,13 @@ public class CardPartRadioButton: UIButton, CardPartView  {
         return (length - outerCircleLineWidth) / 2
     }
     
+    /// Init
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
+    /// Required init
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -81,6 +102,7 @@ public class CardPartRadioButton: UIButton, CardPartView  {
         setFillState()
     }
     
+    /// Layout subviews
     override public func layoutSubviews() {
         super.layoutSubviews()
         setCircleLayouts()
@@ -129,6 +151,7 @@ extension CardPartRadioButton {
 
 extension Reactive where Base : CardPartRadioButton {
     
+    /// Button selected state
     public var radioButtonValue: Binder<Bool>{
         return Binder(self.base) { (button, status) -> () in
             button.isSelected = status

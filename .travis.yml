@@ -5,5 +5,6 @@ osx_image: xcode11.1
 podfile: Example/Podfile
 before_install:
   - gem install cocoapods
+  - gem install jazzy
   - pod repo update
 script: xcodebuild test -workspace Example/CardParts.xcworkspace -scheme CardParts-Example -sdk iphonesimulator -destination "platform=iOS Simulator,OS=13.1,name=iPhone 11 Pro Max" ONLY_ACTIVE_ARCH=NO -quiet

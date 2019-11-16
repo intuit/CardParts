@@ -10,120 +10,175 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// Title position
 public enum CardPartTitlePosition {
+    /// top
 	case top
+    /// bottom
 	case bottom
 }
 
+/// Compression
 public enum CardPartTitleCompression {
+    /// left
 	case left
+    /// right
 	case right
 }
 
+/// Secondary Position
 public enum CardPartSecondaryTitleDescPosition {
+    /// center, amount: shifted
     case center(amount: CGFloat)
+    /// right
     case right
 }
 
+/// CardPartTitleDescriptionView allows you to have a left and right title and description label, however, you are able to also choose the alignment of the right title/description labels. See below:
+///```
+///let rightAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryPosition: .right) // This will be right aligned
+///let centerAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryPosition: .center(amount: 0)) // This will be center aligned with an offset of 0.  You may increase that amount param to shift right your desired amount
+///```
+/// <h3>Reactive Properties</h3>
+///```
+///leftTitleText: String
+///leftDescriptionText: String
+///leftDescriptionAttributedText: NSAttributedString
+///leftTitleAttributedText: NSAttributedString
+///rightDescriptionAttributedText: NSAttributedString
+///rightTitleAttributedText: NSAttributedString
+///rightTitleText: String
+///rightDescriptionText: String
+///leftTitleFont: UIFont
+///leftDescriptionFont: UIFont
+///rightTitleFont: UIFont
+///rightDescriptionFont: UIFont
+///leftTitleColor: UIColor
+///leftDescriptionColor: UIColor
+///rightTitleColor: UIColor
+///rightDescriptionColor: UIColor
+///```
 public class CardPartTitleDescriptionView : UIView, CardPartView {
 	
+    /// CardParts theme margins by default
 	public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
 	
+    /// Label in upper left position
 	public var leftTitleLabel: UILabel
+    /// Label in bottom left position
 	public var leftDescriptionLabel: UILabel
+    /// Label in upper fight position
 	public var rightTitleLabel: UILabel
+    /// Label in lower right position
 	public var rightDescriptionLabel: UILabel
 	
+    /// Text for left title
 	public var leftTitleText: String? {
 		didSet {
 			leftTitleLabel.text = leftTitleText
 		}
 	}
 
+    /// Plain text for left description
 	public var leftDescriptionText: String? {
 		didSet {
 			leftDescriptionLabel.text = leftDescriptionText
 		}
 	}
 	
+    /// Attributed text for left description
 	public var leftDescriptionAttributedText: NSAttributedString? {
 		didSet {
 			leftDescriptionLabel.attributedText = leftDescriptionAttributedText
 		}
 	}
     
+    /// Attributed text for left title
     public var leftTitleAttributedText: NSAttributedString? {
         didSet {
             leftTitleLabel.attributedText = leftTitleAttributedText
         }
     }
 	
+    /// Plain text for right title
 	public var rightTitleText: String? {
 		didSet {
 			rightTitleLabel.text = rightTitleText
 		}
 	}
 	
+    /// Plain text for right description
 	public var rightDescriptionText: String? {
 		didSet {
 			rightDescriptionLabel.text = rightDescriptionText
 		}
 	}
 	
+    /// Attributed text for right description
 	public var rightDescriptionAttributedText: NSAttributedString? {
 		didSet {
 			rightDescriptionLabel.attributedText = rightDescriptionAttributedText
 		}
 	}
     
+    /// Attributed text for right title
     public var rightTitleAttributedText: NSAttributedString? {
         didSet {
             rightTitleLabel.attributedText = rightTitleAttributedText
         }
     }
 	
+    /// Font for left title
 	public var leftTitleFont: UIFont = CardParts.theme.leftTitleFont {
 		didSet {
 			leftTitleLabel.font = leftTitleFont
 		}
 	}
+    /// Font for left description
 	public var leftDescriptionFont: UIFont = CardParts.theme.leftDescriptionFont {
 		didSet {
 			leftDescriptionLabel.font = leftDescriptionFont
 		}
 	}
+    /// Font for right title
 	public var rightTitleFont: UIFont = CardParts.theme.rightTitleFont {
 		didSet {
 			rightTitleLabel.font = rightTitleFont
 		}
 	}
+    /// Font for right description
 	public var rightDescriptionFont: UIFont = CardParts.theme.rightDescriptionFont {
 		didSet {
 			rightDescriptionLabel.font = rightDescriptionFont
 		}
 	}
 	
+    /// Color for left title
 	public var leftTitleColor: UIColor = CardParts.theme.leftTitleColor {
 		didSet {
 			leftTitleLabel.textColor = leftTitleColor
 		}
 	}
+    /// Color for left description
 	public var leftDescriptionColor: UIColor = CardParts.theme.leftDescriptionColor {
 		didSet {
 			leftDescriptionLabel.textColor = leftDescriptionColor
 		}
 	}
+    /// Color for right title
 	public var rightTitleColor: UIColor = CardParts.theme.rightTitleColor {
 		didSet {
 			rightTitleLabel.textColor = rightTitleColor
 		}
 	}
+    /// Color for right description
 	public var rightDescriptionColor: UIColor = CardParts.theme.rightDescriptionColor {
 		didSet {
 			rightDescriptionLabel.textColor = rightDescriptionColor
 		}
 	}
 	
+    /// Compression for title, `.right` by default
 	public var titleCompression: CardPartTitleCompression = .right {
 		didSet {
 			setNeedsUpdateConstraints()
@@ -136,6 +191,11 @@ public class CardPartTitleDescriptionView : UIView, CardPartView {
 	private var titlePos: CardPartTitlePosition
     private var secondaryPos: CardPartSecondaryTitleDescPosition
 
+    /// Initializes a CardPartTitleDescriptionView, defaulting to `.top` and CardParts theme `secondaryTitlePosition`
+    ///
+    /// - Parameters:
+    ///   - titlePosition: position of title
+    ///   - secondaryPosition: alignment of other title/description
     public init(titlePosition: CardPartTitlePosition = .top, secondaryPosition:CardPartSecondaryTitleDescPosition = CardParts.theme.secondaryTitlePosition) {
 		
 		titlePos = titlePosition
@@ -173,10 +233,12 @@ public class CardPartTitleDescriptionView : UIView, CardPartView {
 		setNeedsUpdateConstraints()
 	}
 	
+    /// Required init
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+    /// Update constraints based on title/description text existence and compression settings
 	override public func updateConstraints() {
 		
 		if !constraintsAdded {
@@ -217,6 +279,7 @@ public class CardPartTitleDescriptionView : UIView, CardPartView {
 		super.updateConstraints()
 	}
 	
+    /// Manually configure constraints based on titles and descriptions existing, and initializer configuration
 	func setupContraints() {
 		
 		constraintsAdded = true
@@ -383,96 +446,112 @@ public class CardPartTitleDescriptionView : UIView, CardPartView {
 
 extension Reactive where Base: CardPartTitleDescriptionView {
 	
+    /// Updates titleDescriptionView's leftTitleText
 	public var leftTitleText: Binder<String?>{
 		return Binder(self.base) { (titleDescriptionView, leftTitleText) -> () in
 			titleDescriptionView.leftTitleText = leftTitleText
 		}
 	}
 
+    /// Updates titleDescriptionView's leftDescriptionText
 	public var leftDescriptionText: Binder<String?>{
 		return Binder(self.base) { (titleDescriptionView, leftDescriptionText) -> () in
 			titleDescriptionView.leftDescriptionText = leftDescriptionText
 		}
 	}
 	
+    /// Updates titleDescriptionView's leftDescriptionAttributedText
 	public var leftDescriptionAttributedText: Binder<NSAttributedString?>{
 		return Binder(self.base) { (titleDescriptionView, leftDescriptionAttributedText) -> () in
 			titleDescriptionView.leftDescriptionAttributedText = leftDescriptionAttributedText
 		}
 	}
     
+    /// Updates titleDescriptionView's leftTitleAttributedText
     public var leftTitleAttributedText: Binder<NSAttributedString?>{
         return Binder(self.base) { (titleDescriptionView, leftTitleAttributedText) -> () in
             titleDescriptionView.leftTitleAttributedText = leftTitleAttributedText
         }
     }
     
+    /// Updates titleDescriptionView's rightDescriptionAttributedText
 	public var rightDescriptionAttributedText: Binder<NSAttributedString?>{
 		return Binder(self.base) { (titleDescriptionView, rightDescriptionAttributedText) -> () in
 			titleDescriptionView.rightDescriptionAttributedText = rightDescriptionAttributedText
 		}
 	}
     
+    /// Updates titleDescriptionView's rightTitleAttributedText
     public var rightTitleAttributedText: Binder<NSAttributedString?>{
         return Binder(self.base) { (titleDescriptionView, rightTitleAttributedText) -> () in
             titleDescriptionView.rightTitleAttributedText = rightTitleAttributedText
         }
     }
 
+    /// Updates titleDescriptionView's rightTitleText
 	public var rightTitleText: Binder<String?>{
 		return Binder(self.base) { (titleDescriptionView, rightTitleText) -> () in
 			titleDescriptionView.rightTitleText = rightTitleText
 		}
 	}
 
+    /// Updates titleDescriptionView's rightDescriptionText
 	public var rightDescriptionText: Binder<String?>{
 		return Binder(self.base) { (titleDescriptionView, rightDescriptionText) -> () in
 			titleDescriptionView.rightDescriptionText = rightDescriptionText
 		}
 	}
 
+    /// Updates titleDescriptionView's leftTitleFont
 	public var leftTitleFont: Binder<UIFont>{
 		return Binder(self.base) { (titleDescriptionView, leftTitleFont) -> () in
 			titleDescriptionView.leftTitleFont = leftTitleFont
 		}
 	}
 
+    /// Updates titleDescriptionView's leftDescriptionFont
 	public var leftDescriptionFont: Binder<UIFont>{
 		return Binder(self.base) { (titleDescriptionView, leftDescriptionFont) -> () in
 			titleDescriptionView.leftDescriptionFont = leftDescriptionFont
 		}
 	}
 
+    /// Updates titleDescriptionView's rightTitleFont
 	public var rightTitleFont: Binder<UIFont>{
 		return Binder(self.base) { (titleDescriptionView, rightTitleFont) -> () in
 			titleDescriptionView.rightTitleFont = rightTitleFont
 		}
 	}
 
+    /// Updates titleDescriptionView's rightDescriptionFont
 	public var rightDescriptionFont: Binder<UIFont>{
 		return Binder(self.base) { (titleDescriptionView, rightDescriptionFont) -> () in
 			titleDescriptionView.rightDescriptionFont = rightDescriptionFont
 		}
 	}
 
+    /// Updates titleDescriptionView's leftTitleColor
 	public var leftTitleColor: Binder<UIColor>{
 		return Binder(self.base) { (titleDescriptionView, leftTitleColor) -> () in
 			titleDescriptionView.leftTitleColor = leftTitleColor
 		}
 	}
 
+    /// Updates titleDescriptionView's leftDescriptionColor
 	public var leftDescriptionColor: Binder<UIColor>{
 		return Binder(self.base) { (titleDescriptionView, leftDescriptionColor) -> () in
 			titleDescriptionView.leftDescriptionColor = leftDescriptionColor
 		}
 	}
 	
+    /// Updates titleDescriptionView's rightTitleColor
 	public var rightTitleColor: Binder<UIColor>{
 		return Binder(self.base) { (titleDescriptionView, rightTitleColor) -> () in
 			titleDescriptionView.rightTitleColor = rightTitleColor
 		}
 	}
 
+    /// Updates titleDescriptionView's rightDescriptionColor
 	public var rightDescriptionColor: Binder<UIColor>{
 		return Binder(self.base) { (titleDescriptionView, rightDescriptionColor) -> () in
 			titleDescriptionView.rightDescriptionColor = rightDescriptionColor
