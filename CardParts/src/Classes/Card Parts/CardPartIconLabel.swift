@@ -116,7 +116,7 @@ public class CardPartIconLabel: UILabel, CardPartView {
         case .right:
             if textAlignment == .left {
                 iconView.frame = iconView.frame.offsetBy(dx: size.width + iconPadding + padding, dy: iconYPosition)
-                newRect = CGRect(x: 0, y: 0, width: size.width, height: height)
+                newRect = CGRect(x: padding, y: 0, width: size.width, height: height)
             }else if textAlignment == .right {
                 iconView.frame = iconView.frame.offsetBy(dx: frame.width - iconView.frame.width - padding , dy: iconYPosition)
                 newRect = CGRect(x: frame.width - size.width - iconView.frame.width - iconPadding - 2 * padding, y: 0, width: size.width + iconPadding, height: height)
