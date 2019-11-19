@@ -75,8 +75,15 @@ public class CardPartIconLabel: UILabel, CardPartView {
         self.clipsToBounds = true
     }
     
+    private func getAdjustedTextSize() -> CGSize? {
+        guard let text = text as NSString?, let icon = icon else { return nil }
+        return text.boundingRect(with: CGSize(width: frame.width - icon.size.width - iconPadding - padding * 2, height: .greatestFiniteMagnitude),
+                                     options: NSStringDrawingOptions.usesLineFragmentOrigin,
+                                     attributes: [.font : font as Any ],
+                                     context: nil).size
+    }
+    
     open override func drawText(in rect: CGRect) {
-        guard let text = text as NSString? else { return }
         
         guard let icon = icon else  {
             super.drawText(in: rect)
@@ -88,10 +95,7 @@ public class CardPartIconLabel: UILabel, CardPartView {
         iconView = UIImageView(image: icon)
         
         //calculate frame of the text based on content.
-        let size = text.boundingRect(with: CGSize(width: frame.width - icon.size.width - iconPadding, height: .greatestFiniteMagnitude),
-                                     options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                     attributes: [.font : font as Any ],
-                                     context: nil).size
+        guard let size = getAdjustedTextSize() else { return }
         
         var newRect = CGRect.zero
         guard let iconView = iconView else { return }
@@ -108,18 +112,18 @@ public class CardPartIconLabel: UILabel, CardPartView {
                 newRect = CGRect(x: iconView.frame.width + iconPadding + padding, y: 0, width: frame.width - (iconView.frame.width + iconPadding), height: height)
             }else if textAlignment == .right {
                 iconView.frame = iconView.frame.offsetBy(dx: frame.width - size.width - iconPadding - iconView.frame.width - padding, dy: iconYPosition)
-                newRect = CGRect(x: frame.width - size.width - iconPadding - padding , y: 0, width: size.width + iconPadding, height: height)
+                newRect = CGRect(x: frame.width - size.width - padding , y: 0, width: size.width, height: height)
             }else if textAlignment == .center {
                 iconView.frame = iconView.frame.offsetBy(dx: (frame.width - size.width) / 2 - iconPadding - iconView.frame.width, dy: iconYPosition)
-                newRect = CGRect(x: (frame.width - size.width) / 2 , y: 0, width: size.width + iconPadding, height: height)
+                newRect = CGRect(x: (frame.width - size.width) / 2 , y: 0, width: size.width, height: height)
             }
         case .right:
             if textAlignment == .left {
                 iconView.frame = iconView.frame.offsetBy(dx: size.width + iconPadding + padding, dy: iconYPosition)
-                newRect = CGRect(x: 0, y: 0, width: size.width, height: height)
+                newRect = CGRect(x: padding, y: 0, width: size.width, height: height)
             }else if textAlignment == .right {
                 iconView.frame = iconView.frame.offsetBy(dx: frame.width - iconView.frame.width - padding , dy: iconYPosition)
-                newRect = CGRect(x: frame.width - size.width - iconView.frame.width - iconPadding - 2 * padding, y: 0, width: size.width + iconPadding, height: height)
+                newRect = CGRect(x: frame.width - size.width - iconView.frame.width - iconPadding - padding, y: 0, width: size.width, height: height)
             }else if textAlignment == .center {
                 iconView.frame = iconView.frame.offsetBy(dx: frame.width / 2 + size.width / 2 + iconPadding, dy: iconYPosition)
                 newRect = CGRect(x: (frame.width - size.width) / 2, y: 0, width: size.width, height: height)
@@ -142,8 +146,9 @@ public class CardPartIconLabel: UILabel, CardPartView {
     
     /// returns new size with updated vertical and horizantal padding.
     public override var intrinsicContentSize: CGSize {
-        let superSize = super.intrinsicContentSize
-        let newWidth = superSize.width + superSize.height + (2 * horizontalPadding)
+        let superSize = getAdjustedTextSize() ?? super.intrinsicContentSize
+        let iconWidth : CGFloat = iconView?.frame.width ?? 0.0
+        let newWidth = superSize.width + iconPadding + iconWidth + (padding * 2) + (2 * horizontalPadding)
         let newHeight = superSize.height + (2 * verticalPadding)
         let size = CGSize(width: newWidth, height: newHeight)
         return size
