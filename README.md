@@ -35,6 +35,7 @@ CardParts - made with ❤️ by Intuit:
     - [RoundedCardTrait](#roundedcardtrait)
     - [GradientCardTrait](#gradientcardtrait)
     - [BorderCardTrait](#bordercardtrait)
+    - [CustomMarginCardTrait](#custommargincardtrait)
   - [CardPartsViewController](#cardpartsviewcontroller)
   - [CardPartsFullScreenViewController](#cardpartsfullscreenviewcontroller)
   - [CardParts](#card-parts)
@@ -220,7 +221,7 @@ The viewController() method must return the viewController that will be added as
 
 ### Custom Card Margins
 
-By default, the margins of your `CardsViewController` will match the theme's `cardCellMargins` property. You can change the margins for all `CardsViewController`s in your application by applying a new [theme](#themes) or setting `CardParts.theme.cardCellMargins = UIEdgeInsets(...)`. Alternatively, if you want to change the margins for just one `CardsViewController`, you can set the `cardCellMargins` property of that `CardsViewController`. This property will default to use the theme's margins if you do not specify a new value for it. Changing this value should be done in the `init` of your custom `CardsViewController`, but must occur after `super.init` because it is changing a property of the super class. For example:
+By default, the margins of your `CardsViewController` will match the theme's `cardCellMargins` property. You can change the margins for all `CardsViewController`s in your application by applying a new [theme](#themes) or setting `CardParts.theme.cardCellMargins = UIEdgeInsets(...)`. Alternatively, if you want to change the margins for just one `CardsViewController`, you can set the `cardCellMargins` property of that `CardsViewController`. To change the margin for an individual card see [`CustomMarginCardTrait`](#custommargincardtrait). This property will default to use the theme's margins if you do not specify a new value for it. Changing this value should be done in the `init` of your custom `CardsViewController`, but must occur after `super.init` because it is changing a property of the super class. For example:
 
 ```swift
 class MyCardsViewController: CardsViewController {
@@ -370,6 +371,18 @@ Use this protocol to add border color and border width for the card, implement `
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/border.png" width="300" alt="border"/>
 </p>
+
+#### `CustomMarginCardTrait`
+
+Use this protocol to specifiy a custom margin for the card, implement `customMargin()` method. Value returned will be used for left and right margins thus centering the card in the superview.
+
+```swift
+    func customMargin() -> CGFloat {
+        return 42.0
+    }
+
+
+```
 
 ## `CardPartsViewController`
 
