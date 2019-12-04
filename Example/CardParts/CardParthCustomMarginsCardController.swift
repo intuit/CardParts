@@ -9,13 +9,9 @@
 import Foundation
 import CardParts
 
-class CustomMarginsCardController: CardPartsViewController, CustomMarginCardTrait {
+class CardPartCustomMarginsCardController: CardPartsViewController {
     
     let cardPartTextView = CardPartTextView(type: .title)
-    
-    func customMargin() -> CGFloat {
-        return 50
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,5 +19,12 @@ class CustomMarginsCardController: CardPartsViewController, CustomMarginCardTrai
         cardPartTextView.text = "This card has custom margins"
         cardPartTextView.textAlignment = .center
         setupCardParts([cardPartTextView])
+    }
+}
+
+extension CardPartCustomMarginsCardController: CustomMarginCardTrait {
+    
+    func customMargin() -> CGFloat {
+        return 50
     }
 }

@@ -46,7 +46,7 @@ class MainViewController: CardsViewController {
             CardPartMapViewCardController(), // MapView
             CardPartRadioButtonCardController(), // Radio Button
             CardPartHistogramCardController(), // Histogram
-            CustomMarginsCardController(), // Custom margins trait
+            CardPartCustomMarginsCardController(), // Custom margins trait
         ]
         
         loadCards(cards: cards)

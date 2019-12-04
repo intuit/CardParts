@@ -53,7 +53,7 @@
 		70F595E020B5CDCE00B6E688 /* CardPartCollectionViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F595DF20B5CDCE00B6E688 /* CardPartCollectionViewCardController.swift */; };
 		80F3C7662348F32300F5D271 /* CardPartMapViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F3C7652348F32300F5D271 /* CardPartMapViewCardController.swift */; };
 		80F3C768234ADA7900F5D271 /* CardPartMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F3C767234ADA7900F5D271 /* CardPartMapViewTests.swift */; };
-		EB16E38A2396E8FD003F70A2 /* CustomMarginsCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB16E3892396E8FD003F70A2 /* CustomMarginsCardController.swift */; };
+		EB16E38A2396E8FD003F70A2 /* CardParthCustomMarginsCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB16E3892396E8FD003F70A2 /* CardParthCustomMarginsCardController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +124,7 @@
 		80F3C767234ADA7900F5D271 /* CardPartMapViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartMapViewTests.swift; sourceTree = "<group>"; };
 		B21177744B384387575CB614 /* Pods-CardParts_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardParts_Tests.debug.xcconfig"; path = "Target Support Files/Pods-CardParts_Tests/Pods-CardParts_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E768E0B2422010080EDB1A52 /* Pods-CardParts_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardParts_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardParts_Tests/Pods-CardParts_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		EB16E3892396E8FD003F70A2 /* CustomMarginsCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarginsCardController.swift; sourceTree = "<group>"; };
+		EB16E3892396E8FD003F70A2 /* CardParthCustomMarginsCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardParthCustomMarginsCardController.swift; sourceTree = "<group>"; };
 		ED96724FD3D3088F4E52A4B3 /* CardParts.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CardParts.podspec; path = ../CardParts.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EDB3B26F1BF024EF68A0F8CC /* Pods-CardParts_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardParts_Tests.release.xcconfig"; path = "Target Support Files/Pods-CardParts_Tests/Pods-CardParts_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F639F94EB1911C332F07F7C5 /* Pods_CardParts_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardParts_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,7 +263,7 @@
 				80F3C7652348F32300F5D271 /* CardPartMapViewCardController.swift */,
 				1BCE6B772360AE26006B7325 /* CardPartRadioButtonCardController.swift */,
 				1BC4B4E0236762DD00EE7A31 /* CardPartHistogramCardController.swift */,
-				EB16E3892396E8FD003F70A2 /* CustomMarginsCardController.swift */,
+				EB16E3892396E8FD003F70A2 /* CardParthCustomMarginsCardController.swift */,
 			);
 			name = "Type of CardParts";
 			sourceTree = "<group>";
@@ -522,7 +522,7 @@
 				7051279D20B5D3D900B8E635 /* CardPartPagedViewCardController.swift in Sources */,
 				70F595DC20B5CAF800B6E688 /* CardPartTableViewCardController.swift in Sources */,
 				7051279F20B5E2ED00B8E635 /* CardPartTextFieldCardController.swift in Sources */,
-				EB16E38A2396E8FD003F70A2 /* CustomMarginsCardController.swift in Sources */,
+				EB16E38A2396E8FD003F70A2 /* CardParthCustomMarginsCardController.swift in Sources */,
 				70BB3BF420FF89A500F55D57 /* CardPartTitleDescriptionViewCardController.swift in Sources */,
 				1B1E204022F4ADE900734EDA /* CardPartRoundedStackViewCardController.swift in Sources */,
 				1B693BA1230DAE2900662382 /* CardPartIconLabelCardController.swift in Sources */,
