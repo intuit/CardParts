@@ -255,7 +255,13 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         cell.cardContentView.removeConstraints(cell.cardContentConstraints)
         cell.cardContentConstraints.removeAll()
         
-        let metrics = ["cardContentWidth": cardCellWidth.value]
+        let metrics : [String: Any]
+        if let customMarginController = viewController as? CustomMarginCardTrait {
+            let margin = customMarginController.customMargin()
+            metrics = ["cardContentWidth": cardCellWidth.value + (cardCellMargins.left + cardCellMargins.right) - (2 * margin)]
+        } else {
+            metrics = ["cardContentWidth": cardCellWidth.value]
+        }
         
         cell.cardContentConstraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat: "H:|[view(cardContentWidth)]|", options: [], metrics: metrics, views: ["view" : viewController.view!]))
         cell.cardContentConstraints.append(contentsOf:NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: nil, views: ["view" : viewController.view!]))
