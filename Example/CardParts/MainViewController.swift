@@ -21,32 +21,32 @@ class MainViewController: CardsViewController {
         
         // Comment out one of the CardPartViewController in the card Array to change cards and/or their order
         let cards: [CardPartsViewController] = [
-//            CardPartTextViewCardController(), // Text, built on UILabel
+            CardPartTextViewCardController(), // Text, built on UILabel
             CardPartAttributedTextViewController(), // Text, built on UITextView
-//            CardPartTitleDescriptionViewCardController(), // Title/Description
-//            CardPartImageViewCardController(), // Image
-//            CardPartButtonViewCardController(), // Button
-//            CardPartTitleViewCardController(), // Titles
-//            CardPartSeparatorViewCardController(), // Separator
-//            CardPartStackViewCardController(), // UIStackView
-//            CardPartTableViewCardController(), // UITableView
-//            CardPartCollectionViewCardController(), // UICollectionView
-//            CardPartBarViewCardController(), // Bar
-//            CardPartPagedViewCardController(), // Pages
-//            CardPartSliderViewCardController(), // Slider
-//            CardPartTextFieldCardController(), // TextField
-//            CardPartOrientedViewCardController(), // Oriented card part
-//            CardPartCenteredViewCardController(), // Centered card part
-//            ReactiveCardController(), // Demo RxSwift
-//            StateCardController(), // Demo states
-//            CardPartBorderViewController(), // Border Cards
-//            CardPartPillLabelCardController(), // Pill label
-//            CardPartRoundedStackViewCardController(), //Rounded Stackview
-//            CardPartIconLabelCardController(), // Icon label
-//            CardPartProgressBarViewCardController(), // ProgresBarView
-//            CardPartMapViewCardController(), // MapView
-//            CardPartRadioButtonCardController(), // Radio Button
-//            CardPartHistogramCardController(), // Histogram
+            CardPartTitleDescriptionViewCardController(), // Title/Description
+            CardPartImageViewCardController(), // Image
+            CardPartButtonViewCardController(), // Button
+            CardPartTitleViewCardController(), // Titles
+            CardPartSeparatorViewCardController(), // Separator
+            CardPartStackViewCardController(), // UIStackView
+            CardPartTableViewCardController(), // UITableView
+            CardPartCollectionViewCardController(), // UICollectionView
+            CardPartBarViewCardController(), // Bar
+            CardPartPagedViewCardController(), // Pages
+            CardPartSliderViewCardController(), // Slider
+            CardPartTextFieldCardController(), // TextField
+            CardPartOrientedViewCardController(), // Oriented card part
+            CardPartCenteredViewCardController(), // Centered card part
+            ReactiveCardController(), // Demo RxSwift
+            StateCardController(), // Demo states
+            CardPartBorderViewController(), // Border Cards
+            CardPartPillLabelCardController(), // Pill label
+            CardPartRoundedStackViewCardController(), //Rounded Stackview
+            CardPartIconLabelCardController(), // Icon label
+            CardPartProgressBarViewCardController(), // ProgresBarView
+            CardPartMapViewCardController(), // MapView
+            CardPartRadioButtonCardController(), // Radio Button
+            CardPartHistogramCardController(), // Histogram
         ]
         
         loadCards(cards: cards)
