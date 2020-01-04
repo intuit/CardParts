@@ -11,19 +11,24 @@ import RxCocoa
 
 public class CardPartUITextView: UITextView {
     
+    /// prevents blue background from a selection
     public override var selectedTextRange: UITextRange? {
         get { return nil }
         set {}
     }
     
+    /// prevents selection except in the case of links
     public override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        // compatibility with isScrollEnabled
         if gestureRecognizer is UIPanGestureRecognizer {
             return super.gestureRecognizerShouldBegin(gestureRecognizer)
         }
+        /// compatibility with links
         if let tapGestureRecognizer = gestureRecognizer as? UITapGestureRecognizer,
             tapGestureRecognizer.numberOfTapsRequired == 1 {
             return super.gestureRecognizerShouldBegin(gestureRecognizer)
         }
+        /// differentiates between short press and a longer press
         if let longPressGestureRecognizer = gestureRecognizer as? UILongPressGestureRecognizer,
             longPressGestureRecognizer.minimumPressDuration < 0.325 {
             return super.gestureRecognizerShouldBegin(gestureRecognizer)
@@ -59,13 +64,13 @@ public enum CardPartAttributedTextType {
 }
 
 public class CardPartAttributedTextView: UIView, CardPartView {
-    
+    /// use in cases of plain text
     public var text: String? {
         didSet {
             textView.text = text
         }
     }
-    
+    /// use in cases of links or other
     public var attributedText: NSMutableAttributedString? {
         didSet {
             textView.attributedText = attributedText
@@ -101,14 +106,14 @@ public class CardPartAttributedTextView: UIView, CardPartView {
             textView.textAlignment = textAlignment
         }
     }
-
+    /// set attributes of linked text
     public var linkTextAttributes: [NSAttributedString.Key : Any] {
         didSet {
             textView.linkTextAttributes = linkTextAttributes
         }
     }
     
-    // allows for exclusion paths to be added for text wrapping
+    /// allows for exclusion paths to be added for text wrapping
     public var exclusionPath: [UIBezierPath]? {
         didSet {
             let imageFrame = updateExclusionPath()
@@ -133,12 +138,13 @@ public class CardPartAttributedTextView: UIView, CardPartView {
     }
     
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
+    /// allows for modifications to the text as if it were a UITextView
     public var textView: CardPartUITextView
     
+    /// supports nested images in textfield
     public var textViewImage: CardPartImageView?
     
     public init(type: CardPartAttributedTextType) {
-        
         
         textView = CardPartUITextView(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -155,7 +161,6 @@ public class CardPartAttributedTextView: UIView, CardPartView {
         self.linkTextAttributes = textView.linkTextAttributes
         self.exclusionPath = textView.textContainer.exclusionPaths
         
-        
         super.init(frame: CGRect.zero)
 
         addSubview(textView)
@@ -165,7 +170,7 @@ public class CardPartAttributedTextView: UIView, CardPartView {
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    /// allows for constraints to be set 
     override public func updateConstraints() {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[textView]|", options: [], metrics: nil, views: ["textView" : textView]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[textView]|", options: [], metrics: nil, views: ["textView" : textView]))
@@ -193,7 +198,8 @@ public class CardPartAttributedTextView: UIView, CardPartView {
             textColor = CardParts.theme.detailTextColor
         }
     }
-        
+    
+    /// returns image perimeter for text to wrap around
     func updateExclusionPath() -> CGRect {
         let x = textViewImage?.frame.origin.x ?? 0
         let y = textViewImage?.frame.origin.y ?? 0
