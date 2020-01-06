@@ -173,8 +173,13 @@ public class CardPartAttributedTextView: UIView, CardPartView {
     }
     /// allows for constraints to be set 
     override public func updateConstraints() {
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[textView]|", options: [], metrics: nil, views: ["textView" : textView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[textView]|", options: [], metrics: nil, views: ["textView" : textView]))
+        
+        textView.layout {
+            $0.leading == self.leadingAnchor
+            $0.trailing == self.trailingAnchor
+            $0.top == self.topAnchor
+            $0.bottom == self.bottomAnchor
+        }
         
         super.updateConstraints()
     }

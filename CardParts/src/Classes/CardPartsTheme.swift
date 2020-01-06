@@ -164,7 +164,7 @@ public class CardPartsTurboTheme: CardPartsTheme {
     public var detailTextFont: UIFont = UIFont.turboGenericFont(.small)
     public var detailTextColor: UIColor = UIColor.turboCardPartTextColor
     public var attributedTextFont: UIFont = UIFont.turboGenericFont(.small)
-    public var attributedTextColor: UIColor = UIColor.turboCardPartAttributedTextColor
+    public var attributedTextColor: UIColor = UIColor.cardPartAttributedTextColor
     
     // CardPartTitleView
     public var titleFont: UIFont = UIFont.turboGenericMediumFont(.medium)
