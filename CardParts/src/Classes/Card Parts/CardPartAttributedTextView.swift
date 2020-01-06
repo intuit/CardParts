@@ -33,6 +33,7 @@ public class CardPartUITextView: UITextView {
             longPressGestureRecognizer.minimumPressDuration < 0.325 {
             return super.gestureRecognizerShouldBegin(gestureRecognizer)
         }
+        /// makes this card part unresonsive to touch
         gestureRecognizer.isEnabled = false
         return false
     }
@@ -50,8 +51,8 @@ public class CardPartUITextView: UITextView {
     }
     
     override public func draw(_ rect: CGRect) {
-        let r = self.frame(forAlignmentRect: rect)
-        super.draw(r)
+        let rect = self.frame(forAlignmentRect: rect)
+        super.draw(rect)
     }
 }
 
@@ -76,31 +77,31 @@ public class CardPartAttributedTextView: UIView, CardPartView {
             textView.attributedText = attributedText
         }
     }
-    
+    /// set text font
     public var font: UIFont? {
         didSet {
             textView.font = font
         }
     }
-    
+    /// set text color
     public var textColor: UIColor? {
         didSet {
             textView.textColor = textColor
         }
     }
-    
+    /// set whether the text within a text field is editable
     public var isEditable: Bool {
         didSet {
             textView.isEditable = isEditable
         }
     }
-    
+    /// use to specify data that should automatically be passed toother applications as URLs, e.g. phone numbers
     public var dataDetectorTypes: UIDataDetectorTypes {
         didSet {
             textView.dataDetectorTypes = dataDetectorTypes
         }
     }
-    
+    /// use to specify text alignment wthin the text field
     public var textAlignment: NSTextAlignment {
         didSet {
             textView.textAlignment = textAlignment
@@ -121,7 +122,7 @@ public class CardPartAttributedTextView: UIView, CardPartView {
             self.textView.textContainer.exclusionPaths = [exclusionPath]
         }
     }
-    
+    /// set line spacing
     public var lineSpacing: CGFloat = 1.0 {
         didSet {
             let style = NSMutableParagraphStyle()
@@ -129,7 +130,7 @@ public class CardPartAttributedTextView: UIView, CardPartView {
             
         }
     }
-
+    /// set line height
     public var lineHeightMultiple: CGFloat = 1.1 {
         didSet {
             let style = NSMutableParagraphStyle()
@@ -179,7 +180,6 @@ public class CardPartAttributedTextView: UIView, CardPartView {
     }
     
     func setDefaultsForType(_ type: CardPartAttributedTextType) {
-        
         switch type {
         case .small:
             font = CardParts.theme.smallTextFont

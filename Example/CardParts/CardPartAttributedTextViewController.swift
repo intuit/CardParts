@@ -17,7 +17,7 @@ class CardPartAttributedTextViewController: CardPartsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        let url: String = "https://www.google.com"
+        let url: String = "https://github.com/intuit/CardParts"
 
         cardPartAttributedTextView.textAlignment = .left
         let explanation = NSMutableAttributedString(string: "This is a card part for text built off UITextView instead of UILabels. What's the difference you may ask? Well, for one thing, CardPartAttributedTextView supports text wrapping. In addition, this part allows for links to be imbedded and subsequently followed. Text selection is disabled.")

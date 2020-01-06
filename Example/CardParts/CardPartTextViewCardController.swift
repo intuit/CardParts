@@ -17,12 +17,6 @@ class CardPartTextViewCardController: CardPartsViewController {
         super.viewDidLoad()
         
         cardPartTextView.attributedText = NSAttributedString(string: "This is a CardPartTextView")
-//        let url: String = "https://www.google.com"
-//        let attText = NSMutableAttributedString()
-//
-//        attText.append(NSAttributedString(string: "https://www.google.com"))
-//        attText.addAttribute(.link, value: url, range: NSRange(location: 0, length: url.count))
-//        cardPartTextView.attributedText = attText
         
         cardPartTextView.text = "Hello World"
         
