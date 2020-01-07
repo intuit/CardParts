@@ -61,10 +61,15 @@ class CardPartCollectionViewCardController: CardPartsViewController {
 
             cell.setData(data)
             
-            cell.backgroundColor = UIColor.lightGray
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 1
-            cell.layer.borderColor = UIColor(red: 0.93, green: 0.93, blue: 0.95, alpha: 1.0).cgColor
+            
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor.quaternarySystemFill
+                cell.borderColor = UIColor.separator
+            } else {
+                cell.backgroundColor = UIColor.lightGray
+            }
             
             return cell
         })
@@ -120,10 +125,16 @@ class MyCustomCollectionViewCell: CardPartCollectionViewCardPartsCell {
         
         titleCP.text = data.title
         titleCP.textAlignment = .center
-        titleCP.textColor = .white
         
         descriptionCP.text = data.description
         descriptionCP.textAlignment = .center
-        descriptionCP.textColor = .white
+        
+        if #available(iOS 13.0, *) {
+            titleCP.textColor = .label
+            descriptionCP.textColor = .secondaryLabel
+        } else {
+            titleCP.textColor = .white
+            descriptionCP.textColor = .white
+        }
     }
 }

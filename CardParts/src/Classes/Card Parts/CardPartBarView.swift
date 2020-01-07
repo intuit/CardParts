@@ -22,14 +22,12 @@ public class CardPartBarView: UIView, CardPartView {
         
         backgroundLayer = CALayer()
         backgroundLayer.anchorPoint = .zero
-        backgroundLayer.backgroundColor = CardParts.theme.barBackgroundColor.cgColor
         
         barLayer = CALayer()
         barLayer.anchorPoint = .zero
         
         verticalLine = CALayer()
         verticalLine.anchorPoint = .zero
-        verticalLine.backgroundColor = CardParts.theme.todayLineColor.cgColor
 
         self.layer.addSublayer(backgroundLayer)
         self.layer.addSublayer(barLayer)
@@ -78,6 +76,9 @@ public class CardPartBarView: UIView, CardPartView {
     override public var intrinsicContentSize: CGSize {
         return CGSize(width: UIView.noIntrinsicMetric, height: 18.0)
     }
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        updateBarLayer()
+    }
     
     fileprivate func updateBarLayer() {
         
@@ -85,17 +86,19 @@ public class CardPartBarView: UIView, CardPartView {
         
         let bounds = CGRect(x: 0, y: 0, width: CGFloat(percent) * self.bounds.width , height: desiredHeight)
         barLayer.bounds = bounds
-        barLayer.backgroundColor = barColor.cgColor
+        barLayer.backgroundColor = barColor.cgColor(with: traitCollection)
         if CardParts.theme.roundedCorners {
             barLayer.cornerRadius = bounds.height / 2
         }
         
         let backgroundBounds = CGRect(x: 0, y: 0, width: self.bounds.width , height: desiredHeight)
         backgroundLayer.bounds = backgroundBounds
+        backgroundLayer.backgroundColor = CardParts.theme.barBackgroundColor.cgColor(with: traitCollection)
         if CardParts.theme.roundedCorners {
             backgroundLayer.cornerRadius = bounds.height / 2
         }
         
+        verticalLine.backgroundColor = CardParts.theme.todayLineColor.cgColor(with: traitCollection)
         if CardParts.theme.showTodayLine {
             let verticalLineBounds = CGRect(x: 0, y: 0, width: 1.0 , height: self.bounds.height)
             verticalLine.bounds = verticalLineBounds

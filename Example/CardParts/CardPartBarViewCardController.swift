@@ -20,7 +20,7 @@ class CardPartBarViewCardController: CardPartsViewController {
         cardPartTextView.text = "This is a CardPartBarView"
         
         cardPartBarView.percent = 0.5
-        cardPartBarView.barColor = .blue
+        cardPartBarView.barColor = .systemBlue
         
         setupCardParts([cardPartTextView, cardPartBarView])
     }

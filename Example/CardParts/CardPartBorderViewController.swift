@@ -18,8 +18,8 @@ class CardPartBorderViewController: CardPartsViewController, BorderCardTrait, Ro
         return 2.0
     }
     
-    func borderColor() -> CGColor {
-        return UIColor.darkGray.cgColor
+    func borderColor() -> UIColor {
+        return UIColor.systemGray
     }
     
     

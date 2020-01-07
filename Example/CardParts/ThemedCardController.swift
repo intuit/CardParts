@@ -54,8 +54,11 @@ extension ThemedCardController: ShadowCardTrait {
         return CGSize(width: 1.0, height: 1.0)
     }
     
-    func shadowColor() -> CGColor {
-        return UIColor.lightGray.cgColor
+    func shadowColor() -> UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor.systemGray6
+        }
+        return UIColor.lightGray
     }
     
     func shadowRadius() -> CGFloat {

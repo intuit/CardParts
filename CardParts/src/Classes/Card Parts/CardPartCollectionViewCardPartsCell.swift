@@ -12,6 +12,12 @@ open class CardPartCollectionViewCardPartsCell : UICollectionViewCell {
     private var rightTopConstraint: NSLayoutConstraint!
     private var leftTopConstraint: NSLayoutConstraint!
     
+    public var borderColor = UIColor.SystemGray6 {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
+    }
+    
     private var cardParts:[CardPartView] = []
 
     override public init(frame: CGRect) {
@@ -27,6 +33,10 @@ open class CardPartCollectionViewCardPartsCell : UICollectionViewCell {
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        layer.borderColor = borderColor.cgColor(with: traitCollection)
     }
 
     public func setupCardParts(_ cardParts:[CardPartView]) {

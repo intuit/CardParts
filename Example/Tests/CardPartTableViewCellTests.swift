@@ -91,10 +91,10 @@ class CardPartTableViewCellTests: XCTestCase {
 		cell.leftTitleColor = UIColor.red
 
 		cell.displayAsHidden = true
-		XCTAssertEqual(cell.leftTitleLabel.textColor, UIColor.Gray2)
-		XCTAssertEqual(cell.rightTitleLabel.textColor, UIColor.Gray2)
-		XCTAssertEqual(cell.leftDescriptionLabel.textColor, UIColor.Gray2)
-		XCTAssertEqual(cell.rightDescriptionLabel.textColor, UIColor.Gray2)
+		XCTAssertEqual(cell.leftTitleLabel.textColor, UIColor.SystemGray2)
+		XCTAssertEqual(cell.rightTitleLabel.textColor, UIColor.SystemGray2)
+		XCTAssertEqual(cell.leftDescriptionLabel.textColor, UIColor.SystemGray2)
+		XCTAssertEqual(cell.rightDescriptionLabel.textColor, UIColor.SystemGray2)
 
 		cell.displayAsHidden = false
 		XCTAssertEqual(cell.leftTitleLabel.textColor, UIColor.red)

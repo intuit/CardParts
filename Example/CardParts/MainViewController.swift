@@ -12,7 +12,9 @@ import CardParts
 class MainViewController: CardsViewController {
 
     required init?(coder: NSCoder) {
-        CardPartsMintTheme().apply()
+        // Override point for customization after application launch.
+        // Uncomment the following to try use our custom theme.
+//        CardPartsCustomTheme().apply()
         super.init(coder: coder)
     }
     

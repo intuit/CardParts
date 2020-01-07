@@ -75,7 +75,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
 
-        collectionView.backgroundColor = UIColor.color(245, green: 245, blue: 245)
+        collectionView.backgroundColor = CardParts.theme.backgroundColor
 //        collectionView.register(CardCell.self, forCellWithReuseIdentifier: kCardCellIndentifier)
         collectionView.dataSource = self
 		let insets = UIEdgeInsets(top: CardParts.theme.cardsViewContentInsetTop, left: 0, bottom: (tabBarController?.tabBar.bounds.size.height ?? 0) + layout.minimumLineSpacing * 2, right: 0)

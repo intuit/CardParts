@@ -29,14 +29,14 @@ class CardPartRadioButtonCardController : CardPartsViewController {
         
        
         let radioButton1 = CardPartRadioButton()
-        radioButton1.outerCircleColor = UIColor.red
+        radioButton1.outerCircleColor = UIColor.systemRed
         radioButton1.outerCircleLineWidth = 2.0
         radioButton1.tag = 1
         radioButton1.isSelected = false
         radioButton1.widthAnchor.constraint(equalToConstant: 20).isActive = true
         radioButton1.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        firstLabel.textColor = UIColor.red
+        firstLabel.textColor = UIColor.systemRed
         firstLabel.text = "Not Selected"
         
         [radioButton1, firstLabel].forEach { component in
@@ -57,14 +57,14 @@ class CardPartRadioButtonCardController : CardPartsViewController {
         secondRowStackView.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
         let radioButton2 = CardPartRadioButton()
-        radioButton2.outerCircleColor = UIColor.orange
+        radioButton2.outerCircleColor = UIColor.systemOrange
         radioButton2.outerCircleLineWidth = 2.0
         radioButton2.tag = 2
         radioButton2.isSelected = true
         radioButton2.widthAnchor.constraint(equalToConstant: 20).isActive = true
         radioButton2.heightAnchor.constraint(equalToConstant: 20).isActive = true
     
-        secondLabel.textColor = UIColor.orange
+        secondLabel.textColor = UIColor.systemOrange
         secondLabel.text = "Selected"
         
         [radioButton2, secondLabel].forEach { component in
