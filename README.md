@@ -40,6 +40,7 @@ CardParts - made with ❤️ by Intuit:
   - [CardPartsFullScreenViewController](#cardpartsfullscreenviewcontroller)
   - [CardParts](#card-parts)
     - [CardPartTextView](#cardparttextview)
+    - [CardPartAttributedTextView](#cardpartattributedtextview)
     - [CardPartImageView](#cardpartimageview)
     - [CardPartButtonView](#cardpartbuttonview)
     - [CardPartTitleView](#cardparttitleview)
@@ -458,6 +459,28 @@ var lineHeightMultiple: CGFloat
 var alpha: CGFloat
 var backgroundColor: UIColor?
 var isHidden: Bool
+var isUserInteractionEnabled: Bool
+var tintColor: UIColor?
+```
+
+#### `CardPartAttributedTextView`
+
+CardPartAttributedTextView is comparable to CardPartTextView, but it is built upon UITextView rather than UILabel. This allows for CardPartImageViews to be nested within the CardPartAttrbutedTextView and for text to be wrapped around these nested images. In addition, CardPartAttributedTextView allows for links to be set and opened.
+CartPartAttributedTextView exposes the following reactive properties that can be bound to view model properties:
+
+```swift
+var text: String?
+var attributedText: NSAttributedString?
+var font: UIFont!
+var textColor: UIColor!
+var textAlignment: NSTextAlignment
+var lineSpacing: CGFloat
+var lineHeightMultiple: CGFloat
+var isEditable: Bool
+var dataDetectorTypes: UIDataDetectorTypes
+var exclusionPath: [UIBezierPath]?
+var linkTextAttributes: [NSAttributedString.Key : Any]
+var textViewImage: CardPartImageView?
 var isUserInteractionEnabled: Bool
 var tintColor: UIColor?
 ```

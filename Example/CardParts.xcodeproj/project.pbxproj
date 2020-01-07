@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0019E5D623A1960300ABB19D /* CardPartAttributedTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0019E5D523A1960300ABB19D /* CardPartAttributedTextViewController.swift */; };
 		0AC06A50F9EFC07A051126DA /* Pods_CardParts_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F639F94EB1911C332F07F7C5 /* Pods_CardParts_Example.framework */; };
 		1964FC2A3640A8318B06FAE2 /* Pods_CardParts_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411FA9F08E0EF1AF5B1D8EA1 /* Pods_CardParts_Tests.framework */; };
 		1B1E203D22F47A8700734EDA /* CardPartPillLabelCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1E203C22F47A8700734EDA /* CardPartPillLabelCardController.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0019E5D523A1960300ABB19D /* CardPartAttributedTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartAttributedTextViewController.swift; sourceTree = "<group>"; };
 		1B1E203C22F47A8700734EDA /* CardPartPillLabelCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartPillLabelCardController.swift; sourceTree = "<group>"; };
 		1B1E203F22F4ADE900734EDA /* CardPartRoundedStackViewCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartRoundedStackViewCardController.swift; sourceTree = "<group>"; };
 		1B1F9540231F3F4900085906 /* CardPartConfettiViewCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartConfettiViewCardController.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				61D470641FDA6D1A00F451F0 /* ReactiveCardController.swift */,
 				61D470611FDA6D1A00F451F0 /* StateCardController.swift */,
 				70F595CF20B5C56200B6E688 /* CardPartTextViewCardController.swift */,
+				0019E5D523A1960300ABB19D /* CardPartAttributedTextViewController.swift */,
 				70F595D120B5C66100B6E688 /* CardPartImageViewCardController.swift */,
 				70F595D320B5C7B300B6E688 /* CardPartButtonViewCardController.swift */,
 				70F595D520B5C87300B6E688 /* CardPartTitleViewCardController.swift */,
@@ -505,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* MainViewController.swift in Sources */,
+				0019E5D623A1960300ABB19D /* CardPartAttributedTextViewController.swift in Sources */,
 				70F595D220B5C66100B6E688 /* CardPartImageViewCardController.swift in Sources */,
 				61D470681FDA6D1B00F451F0 /* ReactiveCardController.swift in Sources */,
 				1B1E203D22F47A8700734EDA /* CardPartPillLabelCardController.swift in Sources */,

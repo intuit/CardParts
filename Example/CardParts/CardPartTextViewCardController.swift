@@ -16,7 +16,9 @@ class CardPartTextViewCardController: CardPartsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cardPartTextView.text = "This is a CardPartTextView"
+        cardPartTextView.attributedText = NSAttributedString(string: "This is a CardPartTextView")
+        
+        cardPartTextView.text = "Hello World"
         
         setupCardParts([cardPartTextView])
     }

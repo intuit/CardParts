@@ -11,6 +11,8 @@ extension UIColor {
     static var turboGenericGreyTextColor : UIColor {get{return UIColor.color(169, green: 169, blue: 169)}}
     static var turboCardPartTitleColor : UIColor {get{return UIColor.color(17, green: 17, blue: 17)}}
     static var turboCardPartTextColor : UIColor {get{return UIColor.color(136, green: 136, blue: 136)}}
+    static var cardPartAttributedTextColor : UIColor {get{return UIColor.color(0, green: 0, blue: 255)}}
+
     static var turboSeperatorColor : UIColor {get{return UIColor.color(221, green: 221, blue: 221)}}
     static var turboBlueColor : UIColor {get{return UIColor(red: 69.0/255.0, green: 202.0/255.0, blue: 230.0/255.0, alpha: 1.0)}}
     static var turboHeaderBlueColor: UIColor { get { return UIColor.colorFromHex(0x05A4B5) }}
