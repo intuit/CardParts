@@ -277,7 +277,6 @@ extension Reactive where Base: CardPartAttributedTextView {
             textView.lineHeightMultiple = lineHeightMultiple
         }
     }
-    
 }
 
 extension UITextView {
