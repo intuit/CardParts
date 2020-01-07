@@ -152,8 +152,7 @@ public class CardPartAttributedTextView: UIView, CardPartView {
         textView.textContainer.lineBreakMode = NSLineBreakMode.byWordWrapping
         textView.isScrollEnabled = false
         textView.text = text
-        textView.font = font
-        textView.textColor = textColor
+        textView.backgroundColor = CardParts.theme.attributedTextBackgroundColor
         textView.isEditable = false
         self.textView.isSelectable = textView.isSelectable
         self.isEditable = textView.isEditable

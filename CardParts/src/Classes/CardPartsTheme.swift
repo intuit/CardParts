@@ -39,6 +39,7 @@ public protocol CardPartsTheme {
     var detailTextColor: UIColor { get set }
     var attributedTextFont: UIFont { get set }
     var attributedTextColor: UIColor { get set }
+    var attributedTextBackgroundColor: UIColor { get set }
     
     // CardPartTitleView
     var titleFont: UIFont { get set }
@@ -113,6 +114,7 @@ public class CardPartsSystemTheme: CardPartsTheme {
     public var detailTextColor: UIColor = .TertiaryLabel
     public var attributedTextFont: UIFont = .systemFont(ofSize: 12.0)
     public var attributedTextColor: UIColor = .Label
+    public var attributedTextBackgroundColor: UIColor = .SecondarySystemGroupedBackground
     
     // CardPartTitleView
     public var titleFont: UIFont = .systemFont(ofSize: 16, weight: .medium)
@@ -183,7 +185,8 @@ public class CardPartsCustomTheme: CardPartsTheme {
     public var detailTextFont: UIFont = .cardPartsFont(.small)
     public var detailTextColor: UIColor = .cardPartGrayTextColor
     public var attributedTextFont: UIFont = .cardPartsFont(.small)
-    public var attributedTextColor: UIColor = .cardPartTextColor
+    public var attributedTextColor: UIColor = .cardPartTitleColor
+    public var attributedTextBackgroundColor: UIColor = UIColor.dynamicColor(light: UIColor.colorFromHex(0xfefffe), dark: UIColor.colorFromHex(0x0A172C))
     
     // CardPartTitleView
     public var titleFont: UIFont = .cardPartsMediumFont(.medium)

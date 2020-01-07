@@ -28,8 +28,6 @@ class CardPartAttributedTextViewController: CardPartsViewController {
             gestureRecognizer.isEnabled = true
         })
         
-        cardPartAttributedTextView.backgroundColor = UIColor.white
-        
         cardPartImage.contentMode = .center
         cardPartAttributedTextView.addSubview(cardPartImage)
         cardPartAttributedTextView.textViewImage = cardPartImage
