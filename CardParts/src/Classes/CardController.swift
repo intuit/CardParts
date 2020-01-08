@@ -125,3 +125,8 @@ extension BorderCardTrait {
     }
 }
 
+
+public protocol CustomMarginCardTrait {
+    
+    func customMargin() -> CGFloat
+}
