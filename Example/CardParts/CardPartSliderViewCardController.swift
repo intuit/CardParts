@@ -12,7 +12,7 @@ import CardParts
 class CardPartSliderViewCardController: CardPartsViewController {
     
     let cardPartTextView = CardPartTextView(type: .normal)
-    let cardPartSliderView = CardPartSliderView()
+    let cardPartSliderView = CardPartSliderView(height: 8)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,9 @@ class CardPartSliderViewCardController: CardPartsViewController {
         cardPartSliderView.minimumValue = 0
         cardPartSliderView.maximumValue = 100
         cardPartSliderView.value = 50
+        cardPartSliderView.minimumTrackTintColor = .blue
+        cardPartSliderView.maximumTrackTintColor = .green
         
-        setupCardParts([cardPartTextView, cardPartSliderView])
+        setupCardParts([cardPartTextView, CardPartSpacerView(height: 10), cardPartSliderView])
     }
 }
