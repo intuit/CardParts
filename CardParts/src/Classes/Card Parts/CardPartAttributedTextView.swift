@@ -151,8 +151,6 @@ public class CardPartAttributedTextView: UIView, CardPartView {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textContainer.lineBreakMode = NSLineBreakMode.byWordWrapping
         textView.isScrollEnabled = false
-        textView.text = text
-        textView.font = font
         textView.textColor = textColor
         textView.isEditable = false
         self.textView.isSelectable = textView.isSelectable
@@ -188,19 +186,19 @@ public class CardPartAttributedTextView: UIView, CardPartView {
         switch type {
         case .small:
             font = CardParts.theme.smallTextFont
-            textColor = CardParts.theme.smallTextColor
+            textColor = CardParts.theme.smallAttributedTextColor
         case .normal:
             font = CardParts.theme.normalTextFont
-            textColor = CardParts.theme.normalTextColor
+            textColor = CardParts.theme.normalAttributedTextColor
         case .title:
             font = CardParts.theme.titleTextFont
-            textColor = CardParts.theme.titleTextColor
+            textColor = CardParts.theme.titleAttributedTextColor
         case .header:
             font = CardParts.theme.headerTextFont
-            textColor = CardParts.theme.headerTextColor
+            textColor = CardParts.theme.headerAttributedTextColor
         case .detail:
             font = CardParts.theme.detailTextFont
-            textColor = CardParts.theme.detailTextColor
+            textColor = CardParts.theme.detailAttributedTextColor
         }
     }
     
