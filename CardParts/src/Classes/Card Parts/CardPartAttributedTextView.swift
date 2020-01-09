@@ -80,13 +80,17 @@ public class CardPartAttributedTextView: UIView, CardPartView {
     /// set text font
     public var font: UIFont? {
         didSet {
-            textView.font = font
+            DispatchQueue.main.async {
+                self.textView.font = self.font
+            }
         }
     }
     /// set text color
     public var textColor: UIColor? {
         didSet {
-            textView.textColor = textColor
+            DispatchQueue.main.async {
+                self.textView.textColor = self.textColor
+            }
         }
     }
     /// set whether the text within a text field is editable
