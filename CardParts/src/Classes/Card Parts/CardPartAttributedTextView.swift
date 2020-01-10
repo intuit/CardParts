@@ -86,7 +86,9 @@ public class CardPartAttributedTextView: UIView, CardPartView {
     /// set text color
     public var textColor: UIColor? {
         didSet {
-            textView.textColor = textColor
+            DispatchQueue.main.async {
+                self.textView.textColor = self.textColor
+            }
         }
     }
     /// set whether the text within a text field is editable
@@ -165,6 +167,7 @@ public class CardPartAttributedTextView: UIView, CardPartView {
 
         addSubview(textView)
         setDefaultsForType(type)
+        setNeedsUpdateConstraints()
     }
     
     required public init?(coder: NSCoder) {
@@ -186,20 +189,20 @@ public class CardPartAttributedTextView: UIView, CardPartView {
     func setDefaultsForType(_ type: CardPartAttributedTextType) {
         switch type {
         case .small:
-            font = CardParts.theme.smallTextFont
-            textColor = CardParts.theme.smallTextColor
+            font = CardParts.theme.smallAttributedTextFont
+            textColor = CardParts.theme.smallAttributedTextColor
         case .normal:
-            font = CardParts.theme.normalTextFont
-            textColor = CardParts.theme.normalTextColor
+            font = CardParts.theme.normalAttributedTextFont
+            textColor = CardParts.theme.normalAttributedTextColor
         case .title:
-            font = CardParts.theme.titleTextFont
-            textColor = CardParts.theme.titleTextColor
+            font = CardParts.theme.titleAttributedTextFont
+            textColor = CardParts.theme.titleAttributedTextColor
         case .header:
-            font = CardParts.theme.headerTextFont
-            textColor = CardParts.theme.headerTextColor
+            font = CardParts.theme.headerAttributedTextFont
+            textColor = CardParts.theme.headerAttributedTextColor
         case .detail:
-            font = CardParts.theme.detailTextFont
-            textColor = CardParts.theme.detailTextColor
+            font = CardParts.theme.detailAttributedTextFont
+            textColor = CardParts.theme.detailAttributedTextColor
         }
     }
     

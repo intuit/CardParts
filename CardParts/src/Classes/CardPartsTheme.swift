@@ -37,9 +37,19 @@ public protocol CardPartsTheme {
     var headerTextColor: UIColor { get set }
     var detailTextFont: UIFont { get set }
     var detailTextColor: UIColor { get set }
-    var attributedTextFont: UIFont { get set }
-    var attributedTextColor: UIColor { get set }
+    
+    // CardPartAttributedTextView
     var attributedTextBackgroundColor: UIColor { get set }
+    var smallAttributedTextFont: UIFont { get set }
+    var smallAttributedTextColor: UIColor { get set }
+    var normalAttributedTextFont: UIFont { get set }
+    var normalAttributedTextColor: UIColor { get set }
+    var titleAttributedTextFont: UIFont { get set }
+    var titleAttributedTextColor: UIColor { get set }
+    var headerAttributedTextFont: UIFont { get set }
+    var headerAttributedTextColor: UIColor { get set }
+    var detailAttributedTextFont: UIFont { get set }
+    var detailAttributedTextColor: UIColor { get set }
     
     // CardPartTitleView
     var titleFont: UIFont { get set }
@@ -112,8 +122,18 @@ public class CardPartsSystemTheme: CardPartsTheme {
     public var headerTextColor: UIColor = .Label
     public var detailTextFont: UIFont = .systemFont(ofSize: 12.0)
     public var detailTextColor: UIColor = .TertiaryLabel
-    public var attributedTextFont: UIFont = .systemFont(ofSize: 12.0)
-    public var attributedTextColor: UIColor = .Label
+    
+    // CardPartAttributedTextView
+    public var smallAttributedTextFont: UIFont = .systemFont(ofSize: 10.0)
+    public var smallAttributedTextColor: UIColor = .TertiaryLabel
+    public var normalAttributedTextFont: UIFont = .systemFont(ofSize: 14.0)
+    public var normalAttributedTextColor: UIColor = .Label
+    public var titleAttributedTextFont: UIFont = .systemFont(ofSize: 16, weight: .medium)
+    public var titleAttributedTextColor: UIColor = .Label
+    public var headerAttributedTextFont: UIFont = .systemFont(ofSize: CGFloat(FontSize.header.rawValue), weight: .black)
+    public var headerAttributedTextColor: UIColor = .Label
+    public var detailAttributedTextFont: UIFont = .systemFont(ofSize: 12.0)
+    public var detailAttributedTextColor: UIColor = .TertiaryLabel
     public var attributedTextBackgroundColor: UIColor = .SecondarySystemGroupedBackground
     
     // CardPartTitleView
@@ -184,8 +204,18 @@ public class CardPartsCustomTheme: CardPartsTheme {
     public var headerTextColor: UIColor = .cardPartTitleColor
     public var detailTextFont: UIFont = .cardPartsFont(.small)
     public var detailTextColor: UIColor = .cardPartGrayTextColor
-    public var attributedTextFont: UIFont = .cardPartsFont(.small)
-    public var attributedTextColor: UIColor = .cardPartTitleColor
+    
+    // CardPartAttributedTextView
+    public var smallAttributedTextFont: UIFont = .cardPartsFont(.x_Small)
+    public var smallAttributedTextColor: UIColor = .cardPartTextColor
+    public var normalAttributedTextFont: UIFont = .cardPartsFont(.normal)
+    public var normalAttributedTextColor: UIColor = .cardPartTextColor
+    public var titleAttributedTextFont: UIFont = .cardPartsMediumFont(.medium)
+    public var titleAttributedTextColor: UIColor = .cardPartTitleColor
+    public var headerAttributedTextFont: UIFont = .cardPartsFontBlack(.header)
+    public var headerAttributedTextColor: UIColor = .cardPartTitleColor
+    public var detailAttributedTextFont: UIFont = .cardPartsFont(.small)
+    public var detailAttributedTextColor: UIColor = .cardPartGrayTextColor
     public var attributedTextBackgroundColor: UIColor = UIColor.dynamicColor(light: UIColor.colorFromHex(0xfefffe), dark: UIColor.colorFromHex(0x0A172C))
     
     // CardPartTitleView
