@@ -68,19 +68,25 @@ public class CardPartAttributedTextView: UIView, CardPartView {
     /// use in cases of plain text
     public var text: String? {
         didSet {
-            textView.text = text
+            DispatchQueue.main.async {
+                self.textView.text = self.text
+            }
         }
     }
     /// use in cases of links or other
     public var attributedText: NSMutableAttributedString? {
         didSet {
-            textView.attributedText = attributedText
+            DispatchQueue.main.async {
+                self.textView.attributedText = self.attributedText
+            }
         }
     }
     /// set text font
     public var font: UIFont? {
         didSet {
-            textView.font = font
+            DispatchQueue.main.async {
+                self.textView.font = self.font
+            }
         }
     }
     /// set text color
@@ -94,49 +100,62 @@ public class CardPartAttributedTextView: UIView, CardPartView {
     /// set whether the text within a text field is editable
     public var isEditable: Bool {
         didSet {
-            textView.isEditable = isEditable
+            DispatchQueue.main.async {
+                self.textView.isEditable = self.isEditable
+            }
         }
     }
     /// use to specify data that should automatically be passed toother applications as URLs, e.g. phone numbers
     public var dataDetectorTypes: UIDataDetectorTypes {
         didSet {
-            textView.dataDetectorTypes = dataDetectorTypes
+            DispatchQueue.main.async {
+                self.textView.dataDetectorTypes = self.dataDetectorTypes
+            }
         }
     }
     /// use to specify text alignment wthin the text field
     public var textAlignment: NSTextAlignment {
         didSet {
-            textView.textAlignment = textAlignment
+            DispatchQueue.main.async {
+                self.textView.textAlignment = self.textAlignment
+            }
         }
     }
     /// set attributes of linked text
     public var linkTextAttributes: [NSAttributedString.Key : Any] {
         didSet {
-            textView.linkTextAttributes = linkTextAttributes
+            DispatchQueue.main.async {
+                self.textView.linkTextAttributes = self.linkTextAttributes
+            }
         }
     }
     
     /// allows for exclusion paths to be added for text wrapping
     public var exclusionPath: [UIBezierPath]? {
         didSet {
-            let imageFrame = updateExclusionPath()
-            let exclusionPath = UIBezierPath(rect: imageFrame)
-            self.textView.textContainer.exclusionPaths = [exclusionPath]
+            DispatchQueue.main.async {
+                let imageFrame = self.updateExclusionPath()
+                let exclusionPath = UIBezierPath(rect: imageFrame)
+                self.textView.textContainer.exclusionPaths = [exclusionPath]
+            }
         }
     }
     /// set line spacing
     public var lineSpacing: CGFloat = 1.0 {
         didSet {
-            let style = NSMutableParagraphStyle()
-            style.lineSpacing = lineSpacing
-            
+            DispatchQueue.main.async {
+                let style = NSMutableParagraphStyle()
+                style.lineSpacing = self.lineSpacing
+            }
         }
     }
     /// set line height
     public var lineHeightMultiple: CGFloat = 1.1 {
         didSet {
-            let style = NSMutableParagraphStyle()
-            style.lineHeightMultiple = lineHeightMultiple
+            DispatchQueue.main.async {
+                let style = NSMutableParagraphStyle()
+                style.lineHeightMultiple = self.lineHeightMultiple
+            }
         }
     }
     
