@@ -206,29 +206,29 @@ public class CardPartAttributedTextView: UIView, CardPartView {
     func setDefaultsForType(_ type: CardPartAttributedTextType) {
         switch type {
         case .small:
-            DispatchQueue.main.async {
-                self.font = CardParts.theme.smallAttributedTextFont
-                self.textColor = CardParts.theme.smallAttributedTextColor
+            DispatchQueue.main.async { [weak self] in
+                self?.font = CardParts.theme.smallAttributedTextFont
+                self?.textColor = CardParts.theme.smallAttributedTextColor
             }
         case .normal:
-            DispatchQueue.main.async {
-                self.font = CardParts.theme.normalAttributedTextFont
-                self.textColor = CardParts.theme.normalAttributedTextColor
+            DispatchQueue.main.async { [weak self] in
+                self?.font = CardParts.theme.normalAttributedTextFont
+                self?.textColor = CardParts.theme.normalAttributedTextColor
             }
         case .title:
-            DispatchQueue.main.async {
-                self.font = CardParts.theme.titleAttributedTextFont
-                self.textColor = CardParts.theme.titleAttributedTextColor
+            DispatchQueue.main.async { [weak self] in
+                self?.font = CardParts.theme.titleAttributedTextFont
+                self?.textColor = CardParts.theme.titleAttributedTextColor
             }
         case .header:
-            DispatchQueue.main.async {
-                self.font = CardParts.theme.headerAttributedTextFont
-                self.textColor = CardParts.theme.headerAttributedTextColor
+            DispatchQueue.main.async { [weak self] in
+                self?.font = CardParts.theme.headerAttributedTextFont
+                self?.textColor = CardParts.theme.headerAttributedTextColor
             }
         case .detail:
-            DispatchQueue.main.async {
-                self.font = CardParts.theme.detailAttributedTextFont
-                self.textColor = CardParts.theme.detailAttributedTextColor
+            DispatchQueue.main.async { [weak self] in
+                self?.font = CardParts.theme.detailAttributedTextFont
+                self?.textColor = CardParts.theme.detailAttributedTextColor
             }
         }
     }
