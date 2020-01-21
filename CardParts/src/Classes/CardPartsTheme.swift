@@ -113,7 +113,7 @@ public class CardPartsMintTheme: CardPartsTheme {
     public var smallAttributedTextFont: UIFont = UIFont(name: "HelveticaNeue", size: CGFloat(10))!
     public var smallAttributedTextColor: UIColor = UIColor.color(136, green: 136, blue: 136)
     public var normalAttributedTextFont: UIFont = UIFont(name: "HelveticaNeue", size: CGFloat(12))!
-    public var normalAttributedTextColor: UIColor = UIColor.color(1, green: 1, blue: 255)
+    public var normalAttributedTextColor: UIColor = UIColor.color(136, green: 136, blue: 136)
     public var titleAttributedTextFont: UIFont = UIFont(name: "HelveticaNeue-Medium", size: CGFloat(16))!
     public var titleAttributedTextColor: UIColor = UIColor.color(17, green: 17, blue: 17)
     public var headerAttributedTextFont: UIFont = UIFont.turboGenericFontBlack(.header)
