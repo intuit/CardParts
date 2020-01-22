@@ -71,6 +71,7 @@ CardParts - made with ❤️ by Intuit:
   - [Themes](#themes)
   - [Clickable Cards](#clickable-cards)
   - [Listeners](#listeners)
+- [Dark Mode](#dark-mode)
 - [Apps That Love CardParts](#apps-that-love-cardparts)
 - [Publications](#publications)
 - [License](#license)
@@ -232,7 +233,7 @@ class MyCardsViewController: CardsViewController {
 		super.init(nibName: nil, bundle: nil)
 		self.cardCellMargins = UIEdgeInsets(/* custom card margins */)
 	}
-	
+
 	...
 }
 ```
@@ -387,7 +388,7 @@ Use this protocol to specifiy a custom margin for the card, implement `customMar
 
 ## `CardPartsViewController`
 
-CardPartsViewController implements the CardController protocol and builds its card UI by displaying one or more card part views using an MVVM pattern that includes automatic data binding. Each CardPartsViewController displays a list of CardPartView as its subviews. Each CardPartView renders as a row in the card. The CardParts framework implements several different types of CardPartView that display basic views, such as title, text, image, button, separator, etc. All CardPartView implemented by the framework are already styled to correctly match the applied 
+CardPartsViewController implements the CardController protocol and builds its card UI by displaying one or more card part views using an MVVM pattern that includes automatic data binding. Each CardPartsViewController displays a list of CardPartView as its subviews. Each CardPartView renders as a row in the card. The CardParts framework implements several different types of CardPartView that display basic views, such as title, text, image, button, separator, etc. All CardPartView implemented by the framework are already styled to correctly match the applied
 s UI guidelines.
 
 In addition to the card parts, a CardPartsViewController also uses a view model to expose data properties that are bound to the card parts. The view model should contain all the business logic for the card, thus keeping the role of the CardPartsViewController to just creating its view parts and setting up bindings from the view model to the card parts. A simple implementation of a CardPartsViewController based card might look like the following:
@@ -564,7 +565,7 @@ let centerAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryP
 
 #### `CardPartPillLabel`
 
-CardPartPillLabel provides you the rounded corners, text aligned  being at the center along with vertical and horizontal padding capability.
+CardPartPillLabel provides you the rounded corners, text aligned being at the center along with vertical and horizontal padding capability.
 
 ```swift
 var verticalPadding:CGFloat
@@ -622,6 +623,7 @@ let roundedStackView = CardPartStackView()
 roundedStackView.cornerRadius = 10.0
 roundedStackView.pinBackground(roundedStackView.backgroundView, to: roundedStackView)
 ```
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/roundedStackView.png" width="300" alt="roundedStackView"/>
 </p>
@@ -987,7 +989,7 @@ A `CardPartCenteredView` can take in any card part that conforms to `CardPartVie
 
 #### `CardPartConfettiView`
 
-Provides the capability to add confetti with various types ( diamonds, star, mixed )  and colors, along with different level of intensity
+Provides the capability to add confetti with various types ( diamonds, star, mixed ) and colors, along with different level of intensity
 
 ```swift
     let confettiView = CardPartConfettiView()
@@ -1037,13 +1039,13 @@ Here's a small example of how to reactively set the location from a changing add
 
 ### `CardPartRadioButton`
 
-Provides the capability to add  radio buttons with configurable inner/outer circle line width , colors along with tap etc..
+Provides the capability to add radio buttons with configurable inner/outer circle line width , colors along with tap etc..
 
 ```swift
     let radioButton = CardPartRadioButton()
     radioButton.outerCircleColor = UIColor.orange
     radioButton.outerCircleLineWidth = 2.0
-    
+
     radioButton2.rx.tap.subscribe(onNext: {
         print("Radio Button Tapped")
     }).disposed(by: bag)
@@ -1274,6 +1276,14 @@ extension MYOwnCardPartController: CardPartsLongPressGestureRecognizerDelegate {
 	var minimumPressDuration: CFTimeInterval { return 0.5 }
 }
 ```
+
+# Dark Mode
+
+CardParts now supports iOS 13's Dark Mode!
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/darkmode.png" width="300" alt="darkmode"/>
+</p>
 
 # Apps That Love CardParts
 
