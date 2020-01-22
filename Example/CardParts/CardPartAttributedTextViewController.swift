@@ -31,13 +31,10 @@ class CardPartAttributedTextViewController: CardPartsViewController {
         cardPartImage.contentMode = .center
         cardPartAttributedTextView.addSubview(cardPartImage)
         cardPartAttributedTextView.textViewImage = cardPartImage
-//        cardPartAttributedTextView.textColor = .purple
         
         let exclusionPath = UIBezierPath(rect: cardPartImage.frame)
         cardPartAttributedTextView.exclusionPath?.append(exclusionPath)
         
         setupCardParts([cardPartAttributedTextView])
     }
-    
-    
 }
