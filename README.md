@@ -892,6 +892,12 @@ func didMoveToPage(page: Int)
 
 Which will fire whenever the user swipes to another page
 
+You also have the abililty to automatically move to a specific page by calling the following function on `CardPartPagedView`
+
+```swift
+func moveToPage(_ page: Int)
+```
+
 #### `CardPartSliderView`
 
 You can set min and max value as well as bind to the current set amount:
