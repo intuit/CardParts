@@ -34,6 +34,7 @@ class MainViewController: CardsViewController {
             CardPartBarViewCardController(), // Bar
             CardPartPagedViewCardController(), // Pages
             CardPartSliderViewCardController(), // Slider
+            CardPartMultiSliderViewCardController(), // MultiSlider
             CardPartTextFieldCardController(), // TextField
             CardPartOrientedViewCardController(), // Oriented card part
             CardPartCenteredViewCardController(), // Centered card part
