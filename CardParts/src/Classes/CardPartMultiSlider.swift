@@ -9,7 +9,7 @@
 import UIKit
 
 open class CardPartMultiSlider: UIControl {
-    @objc open var value: [CGFloat] = [] {
+    open var value: [CGFloat] = [] {
         didSet {
             if isSettingValue { return }
             adjustThumbCountToValueCount()
@@ -19,7 +19,7 @@ open class CardPartMultiSlider: UIControl {
         }
     }
 
-    @objc public internal(set) var draggedThumbIndex: Int = -1
+    public internal(set) var draggedThumbIndex: Int = -1
 
     open dynamic var minimumValue: CGFloat = 0 { didSet { adjustValuesToStepAndLimits() } }
     open dynamic var maximumValue: CGFloat = 1 { didSet { adjustValuesToStepAndLimits() } }
@@ -43,7 +43,7 @@ open class CardPartMultiSlider: UIControl {
     }
 
     /// make specific thumbs fixed (and grayed)
-    @objc open var disabledThumbIndices: Set<Int> = [] {
+    open var disabledThumbIndices: Set<Int> = [] {
         didSet {
             for i in 0 ..< thumbCount {
                 thumbViews[i].blur(disabledThumbIndices.contains(i))
@@ -52,7 +52,7 @@ open class CardPartMultiSlider: UIControl {
     }
 
     /// show value labels next to thumbs. (default: show no label)
-    @objc open dynamic var valueLabelPosition: NSLayoutConstraint.Attribute = .notAnAttribute {
+    open dynamic var valueLabelPosition: NSLayoutConstraint.Attribute = .notAnAttribute {
         didSet {
             valueLabels.removeViewsStartingAt(0)
             if valueLabelPosition != .notAnAttribute {
@@ -77,7 +77,7 @@ open class CardPartMultiSlider: UIControl {
         set { orientation = newValue ? .vertical : .horizontal }
     }
 
-    @objc open dynamic var orientation: NSLayoutConstraint.Axis = .vertical {
+    open dynamic var orientation: NSLayoutConstraint.Axis = .vertical {
         didSet {
             let oldConstraintAttribute: NSLayoutConstraint.Attribute = oldValue == .vertical ? .width : .height
             removeFirstConstraint(where: { $0.firstAttribute == oldConstraintAttribute && $0.firstItem === self && $0.secondItem == nil })
@@ -155,7 +155,7 @@ open class CardPartMultiSlider: UIControl {
 
     public dynamic var keepsDistanceBetweenThumbs: Bool = true
 
-    @objc open dynamic var valueLabelFormatter: NumberFormatter = {
+    open dynamic var valueLabelFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 2
         formatter.minimumIntegerDigits = 1
@@ -173,12 +173,12 @@ open class CardPartMultiSlider: UIControl {
 
     // MARK: - Subviews
 
-    @objc open var thumbViews: [UIImageView] = []
-    @objc open var valueLabels: [UITextField] = [] // UILabels are a pain to layout, text fields look nice as-is.
-    @objc open var trackView = UIView()
-    @objc open var outerTrackViews: [UIView] = []
-    @objc open var minimumView = UIImageView()
-    @objc open var maximumView = UIImageView()
+    open var thumbViews: [UIImageView] = []
+    open var valueLabels: [UITextField] = [] // UILabels are a pain to layout, text fields look nice as-is.
+    open var trackView = UIView()
+    open var outerTrackViews: [UIView] = []
+    open var minimumView = UIImageView()
+    open var maximumView = UIImageView()
 
     // MARK: - Internals
 
