@@ -9,6 +9,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-public class CardPartMultiSliderView : MultiSlider, CardPartView {
+public class CardPartMultiSliderView : CardPartMultiSlider, CardPartView {
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
 }

@@ -1,8 +1,8 @@
 //
-//  MultiSliderExtensions.swift
-//  MultiSlider
+//  CardPartMultiSliderExtensions.swift
+//  CardPartMultiSlider
 //
-//  Created by Yonat Sharon on 20.05.2018.
+//  Created by Brian Carreon on 20.05.2018.
 //
 
 import UIKit

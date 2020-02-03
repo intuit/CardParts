@@ -1,13 +1,13 @@
 //
-//  MultiSlider+Drag.swift
-//  MultiSlider
+//  CardPartMultiSlider+Drag.swift
+//  CardPartMultiSlider
 //
-//  Created by Yonat Sharon on 25.10.2018.
+//  Created by Brian Carreon on 25.10.2018.
 //
 
 import UIKit
 
-extension MultiSlider: UIGestureRecognizerDelegate {
+extension CardPartMultiSlider: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }

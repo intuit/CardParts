@@ -1,13 +1,13 @@
 //
-//  MultiSlider+Internal.swift
-//  MultiSlider
+//  CardPartMultiSlider+Internal.swift
+//  CardPartMultiSlider
 //
-//  Created by Yonat Sharon on 21/06/2019.
+//  Created by Brian Carreon on 21/06/2019.
 //
 
 import UIKit
 
-extension MultiSlider {
+extension CardPartMultiSlider {
     func setup() {
         trackView.backgroundColor = actualTintColor
         updateTrackViewCornerRounding()
