@@ -910,6 +910,21 @@ slider.value = sliderViewModel.defaultAmount
 slider.rx.value.asObservable().bind(to: sliderViewModel.amount).disposed(by: bag)
 ```
 
+#### `CardPartMultiSliderView`
+
+You can set min and max value as well as tint color and outer track color:
+
+```swift
+let slider = CardPartMultiSliderView()
+slider.minimumValue = sliderViewModel.min
+slider.maximumValue = sliderViewModel.max
+slider.orientation = .horizontal
+slider.value = [10, 40]
+slider.trackWidth = 8
+slider.tintColor = .purple
+slider.outerTrackColor = .gray
+```
+
 #### `CardPartSpacerView`
 
 Allows you to add a space between card parts in case you need a space larger than the default margin. Initialize it with a specific height:
