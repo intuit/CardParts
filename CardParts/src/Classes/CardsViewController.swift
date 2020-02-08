@@ -126,6 +126,13 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 		collectionView.reloadData()
 		collectionView.collectionViewLayout.invalidateLayout()
 	}
+    
+    public func loadSpecifcCards(cards: [CardController] , indexPaths: [IndexPath]) {
+        setCardControllers(cards: cards)
+        registerCells(cards: cards)
+        collectionView.reloadItems(at: indexPaths)
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
 
 	private func setCardControllers(cards: [CardController]) {
 		var cardInfos: [CardInfo] = []
