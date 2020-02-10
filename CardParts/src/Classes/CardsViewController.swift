@@ -127,6 +127,10 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 		collectionView.collectionViewLayout.invalidateLayout()
 	}
     
+    /// Method provides option to reload cards based on the indexPaths row and sections of collectionView.
+    /// - Parameters:
+    ///   - cards: list of cards all the cards
+    ///   - indexPaths: indexPath for the cards which needs to be reloaded.
     public func loadSpecifcCards(cards: [CardController] , indexPaths: [IndexPath]) {
         setCardControllers(cards: cards)
         registerCells(cards: cards)
