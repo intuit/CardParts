@@ -25,6 +25,7 @@ CardParts - made with ❤️ by Intuit:
 - [Quick Start](#quick-start)
 - [Architecture](#architecture)
   - [CardsViewController](#cardsviewcontroller)
+    - [Load Specific Cards](#load-specific-cards)
     - [Custom Card Margins](#custom-card-margins)
   - [Card Traits](#card-traits)
     - [NoTopBottomMarginsCardTrait](#notopbottommarginscardtrait)
@@ -220,6 +221,10 @@ protocol CardController : NSObjectProtocol {
 
 The viewController() method must return the viewController that will be added as a child controller to the card cell. If the CardController is a UIViewController it can simply return self for this method.
 
+### Load specific cards
+
+While normally you may call `loadCards(cards:)` to load an array of CardControllers, you may want the ability to load reload a specific set of cards. We offer the ability via the `loadSpecificCards(cards: [CardController] , indexPaths: [IndexPath])` API. Simply pass in the full array of new cards as well as the indexPaths that you would like reloaded.
+
 ### Custom Card Margins
 
 By default, the margins of your `CardsViewController` will match the theme's `cardCellMargins` property. You can change the margins for all `CardsViewController`s in your application by applying a new [theme](#themes) or setting `CardParts.theme.cardCellMargins = UIEdgeInsets(...)`. Alternatively, if you want to change the margins for just one `CardsViewController`, you can set the `cardCellMargins` property of that `CardsViewController`. To change the margin for an individual card see [`CustomMarginCardTrait`](#custommargincardtrait). This property will default to use the theme's margins if you do not specify a new value for it. Changing this value should be done in the `init` of your custom `CardsViewController`, but must occur after `super.init` because it is changing a property of the super class. For example:
@@ -232,7 +237,7 @@ class MyCardsViewController: CardsViewController {
 		super.init(nibName: nil, bundle: nil)
 		self.cardCellMargins = UIEdgeInsets(/* custom card margins */)
 	}
-	
+
 	...
 }
 ```
@@ -387,7 +392,7 @@ Use this protocol to specifiy a custom margin for the card, implement `customMar
 
 ## `CardPartsViewController`
 
-CardPartsViewController implements the CardController protocol and builds its card UI by displaying one or more card part views using an MVVM pattern that includes automatic data binding. Each CardPartsViewController displays a list of CardPartView as its subviews. Each CardPartView renders as a row in the card. The CardParts framework implements several different types of CardPartView that display basic views, such as title, text, image, button, separator, etc. All CardPartView implemented by the framework are already styled to correctly match the applied 
+CardPartsViewController implements the CardController protocol and builds its card UI by displaying one or more card part views using an MVVM pattern that includes automatic data binding. Each CardPartsViewController displays a list of CardPartView as its subviews. Each CardPartView renders as a row in the card. The CardParts framework implements several different types of CardPartView that display basic views, such as title, text, image, button, separator, etc. All CardPartView implemented by the framework are already styled to correctly match the applied
 s UI guidelines.
 
 In addition to the card parts, a CardPartsViewController also uses a view model to expose data properties that are bound to the card parts. The view model should contain all the business logic for the card, thus keeping the role of the CardPartsViewController to just creating its view parts and setting up bindings from the view model to the card parts. A simple implementation of a CardPartsViewController based card might look like the following:
@@ -564,7 +569,7 @@ let centerAligned = CardPartTitleDescriptionView(titlePosition: .top, secondaryP
 
 #### `CardPartPillLabel`
 
-CardPartPillLabel provides you the rounded corners, text aligned  being at the center along with vertical and horizontal padding capability.
+CardPartPillLabel provides you the rounded corners, text aligned being at the center along with vertical and horizontal padding capability.
 
 ```swift
 var verticalPadding:CGFloat
@@ -622,6 +627,7 @@ let roundedStackView = CardPartStackView()
 roundedStackView.cornerRadius = 10.0
 roundedStackView.pinBackground(roundedStackView.backgroundView, to: roundedStackView)
 ```
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/roundedStackView.png" width="300" alt="roundedStackView"/>
 </p>
@@ -1008,7 +1014,7 @@ A `CardPartCenteredView` can take in any card part that conforms to `CardPartVie
 
 #### `CardPartConfettiView`
 
-Provides the capability to add confetti with various types ( diamonds, star, mixed )  and colors, along with different level of intensity
+Provides the capability to add confetti with various types ( diamonds, star, mixed ) and colors, along with different level of intensity
 
 ```swift
     let confettiView = CardPartConfettiView()
@@ -1058,13 +1064,13 @@ Here's a small example of how to reactively set the location from a changing add
 
 ### `CardPartRadioButton`
 
-Provides the capability to add  radio buttons with configurable inner/outer circle line width , colors along with tap etc..
+Provides the capability to add radio buttons with configurable inner/outer circle line width , colors along with tap etc..
 
 ```swift
     let radioButton = CardPartRadioButton()
     radioButton.outerCircleColor = UIColor.orange
     radioButton.outerCircleLineWidth = 2.0
-    
+
     radioButton2.rx.tap.subscribe(onNext: {
         print("Radio Button Tapped")
     }).disposed(by: bag)
