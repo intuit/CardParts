@@ -131,7 +131,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
     /// - Parameters:
     ///   - cards: list of cards all the cards
     ///   - indexPaths: indexPath for the cards which needs to be reloaded.
-    public func loadSpecifcCards(cards: [CardController] , indexPaths: [IndexPath]) {
+    public func loadSpecificCards(cards: [CardController] , indexPaths: [IndexPath]) {
         setCardControllers(cards: cards)
         registerCells(cards: cards)
         collectionView.reloadItems(at: indexPaths)
