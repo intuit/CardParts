@@ -30,7 +30,7 @@ public class CardPartPagedView: UIView, CardPartView {
 	
 	public var currentPage: Int {
 		didSet{
-			updatePageControl()
+            moveToPage(currentPage, animated: false)
 		}
 	}
 	
@@ -91,16 +91,21 @@ public class CardPartPagedView: UIView, CardPartView {
 		super.updateConstraints()
 	}
     
-    public func moveToPage(_ page: Int) {
+    public func moveToPage(_ page: Int, animated: Bool = true) {
         guard page <= pageControl.numberOfPages - 1 else { return }
 
-        UIView.animate(withDuration: 1.0) {[weak self] in
-            
-            guard let this = self else { return }
-
-            let currentOffset = this.scrollView.contentOffset
-            this.scrollView.contentOffset = CGPoint(x: this.getPosition(for: page), y: currentOffset.y)
-            this.pageControl.currentPage = page
+        let setPage = { (pagedView: CardPartPagedView?) in
+            guard let pagedView = pagedView else { return }
+            let currentOffset = pagedView.scrollView.contentOffset
+            pagedView.scrollView.contentOffset = CGPoint(x: pagedView.getPosition(for: page), y: currentOffset.y)
+            pagedView.pageControl.currentPage = page
+        }
+        if animated {
+            UIView.animate(withDuration: 1.0) {[weak self] in
+                setPage(self)
+            }
+        } else {
+            setPage(self)
         }
     }
     
