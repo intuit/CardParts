@@ -19,6 +19,7 @@
 		1BC4B4E1236762DD00EE7A31 /* CardPartHistogramCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC4B4E0236762DD00EE7A31 /* CardPartHistogramCardController.swift */; };
 		1BCE6B782360AE26006B7325 /* CardPartRadioButtonCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCE6B772360AE26006B7325 /* CardPartRadioButtonCardController.swift */; };
 		1BD1074022F22823000163D2 /* CardPartBorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD1073F22F22823000163D2 /* CardPartBorderViewController.swift */; };
+		2012C74E23E39ED000F48EFA /* CardPartMultiSliderViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2012C74D23E39ECF00F48EFA /* CardPartMultiSliderViewCardController.swift */; };
 		5570914320D18B07004D8E5A /* CardPartOrientedViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5570914220D18B07004D8E5A /* CardPartOrientedViewCardController.swift */; };
 		55809E2620DABBF3008BE0D2 /* CardPartCenteredViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55809E2520DABBF3008BE0D2 /* CardPartCenteredViewCardController.swift */; };
 		55AB80CF20B61E1700B5994B /* CardUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB80CE20B61E1700B5994B /* CardUtilsTests.swift */; };
@@ -78,6 +79,7 @@
 		1BC4B4E0236762DD00EE7A31 /* CardPartHistogramCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartHistogramCardController.swift; sourceTree = "<group>"; };
 		1BCE6B772360AE26006B7325 /* CardPartRadioButtonCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartRadioButtonCardController.swift; sourceTree = "<group>"; };
 		1BD1073F22F22823000163D2 /* CardPartBorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartBorderViewController.swift; sourceTree = "<group>"; };
+		2012C74D23E39ECF00F48EFA /* CardPartMultiSliderViewCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartMultiSliderViewCardController.swift; sourceTree = "<group>"; };
 		2BA2B86E3C2946F91C18390D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2C0391CB2C9A48987E449BE1 /* Pods-CardParts_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardParts_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardParts_Tests/Pods-CardParts_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		30570F5B2E2268AA7B34EEC0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				1BCE6B772360AE26006B7325 /* CardPartRadioButtonCardController.swift */,
 				1BC4B4E0236762DD00EE7A31 /* CardPartHistogramCardController.swift */,
 				EB16E3892396E8FD003F70A2 /* CardParthCustomMarginsCardController.swift */,
+				2012C74D23E39ECF00F48EFA /* CardPartMultiSliderViewCardController.swift */,
 			);
 			name = "Type of CardParts";
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				70F595DC20B5CAF800B6E688 /* CardPartTableViewCardController.swift in Sources */,
 				7051279F20B5E2ED00B8E635 /* CardPartTextFieldCardController.swift in Sources */,
 				EB16E38A2396E8FD003F70A2 /* CardParthCustomMarginsCardController.swift in Sources */,
+				2012C74E23E39ED000F48EFA /* CardPartMultiSliderViewCardController.swift in Sources */,
 				70BB3BF420FF89A500F55D57 /* CardPartTitleDescriptionViewCardController.swift in Sources */,
 				1B1E204022F4ADE900734EDA /* CardPartRoundedStackViewCardController.swift in Sources */,
 				1B693BA1230DAE2900662382 /* CardPartIconLabelCardController.swift in Sources */,

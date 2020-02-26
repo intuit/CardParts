@@ -13,6 +13,11 @@ public enum HistogramLine {
     case lines(bottom:Bool,middle:Bool,top:Bool)
 }
 
+public enum Distribution {
+    case fill
+    case equalSpacing
+}
+
 public class CardPartHistogramView: UIView, CardPartView {
     
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
@@ -27,16 +32,30 @@ public class CardPartHistogramView: UIView, CardPartView {
     private var animated:Bool = false
     
     /// width of each of the bar item
-    public var width:CGFloat = 20 {
-        didSet {
-            setupChartPresenter()
-        }
-    }
+    public var width:CGFloat = 20
 
     /// spacing between the items
-    public var spacing:CGFloat = 10 {
+    public var spacing:CGFloat = 10
+    
+    /// top space of histogram
+    public var topSpace:CGFloat = 40
+    
+    /// bottom space of histogram
+    public var bottomSpace:CGFloat = 40
+    
+    /// corner radius of each of the bar item
+    public var cornerRadius:CGFloat = 4
+    
+    /// distribution of histogram
+    public var distribution:Distribution = .fill
+    
+    /// should show horizontal lines
+    public var shouldShowHorizontalLines:Bool = false
+    
+    /// is scroll enabled
+    public var isScrollEnabled:Bool = true {
         didSet {
-            setupChartPresenter()
+            scrollView.isScrollEnabled = isScrollEnabled
         }
     }
 
@@ -44,7 +63,7 @@ public class CardPartHistogramView: UIView, CardPartView {
     public var histogramLines:HistogramLine = HistogramLine.lines(bottom: true, middle: true, top: true)
     
     /// Responsible for compute all positions and frames of all elements represent on the bar chart
-    private var presenter:CardPartBarChart = CardPartBarChart(barWidth: 20, space: 10)
+    private var presenter:CardPartBarChart = CardPartBarChart(barWidth: 20, space: 10, topSpace: 40, bottomSpace: 40)
     
     /// height for the histogram to render
     public var intrinsicHeight:CGFloat = 450
@@ -57,7 +76,9 @@ public class CardPartHistogramView: UIView, CardPartView {
             scrollView.contentSize = CGSize(width: presenter.computeContentWidth(), height: self.intrinsicHeight)
             mainLayer.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
             
-            showHorizontalLines()
+            if shouldShowHorizontalLines {
+                showHorizontalLines()
+            }
             
             for (index, entry) in barEntries.enumerated() {
                 showEntry(index: index, entry: entry, animated: animated, oldEntry: oldValue.safeValue(at: index))
@@ -89,17 +110,14 @@ public class CardPartHistogramView: UIView, CardPartView {
         ])
     }
     
-    /// configures width and spacing betweent the bar items
-    private func setupChartPresenter() {
-        self.presenter = CardPartBarChart(barWidth: self.width, space: self.spacing)
-    }
-    
     override public func layoutSubviews() {
         super.layoutSubviews()
         self.updateDataEntries(dataEntries: presenter.dataEntries, animated: false)
     }
     
     public func updateDataEntries(dataEntries: [DataEntry], animated: Bool) {
+        let space = self.distribution == .equalSpacing ? computeSpacing(dataEntries: dataEntries) : self.spacing
+        self.presenter = CardPartBarChart(barWidth: self.width, space: space, topSpace: self.topSpace, bottomSpace: self.bottomSpace)
         self.animated = animated
         self.presenter.dataEntries = dataEntries
         self.barEntries = self.presenter.computeBarEntries(viewHeight: self.frame.height)
@@ -110,7 +128,7 @@ public class CardPartHistogramView: UIView, CardPartView {
         let cgColor = entry.data.color.cgColor
         
         // Show the main bar
-        mainLayer.addRectangleLayer(frame: entry.barFrame, color: cgColor, animated: animated, oldFrame: oldEntry?.barFrame, cornerRadius: 4.0)
+        mainLayer.addRectangleLayer(frame: entry.barFrame, color: cgColor, animated: animated, oldFrame: oldEntry?.barFrame, cornerRadius: self.cornerRadius)
     }
     
     private func showHorizontalLines() {
@@ -139,7 +157,13 @@ public class CardPartHistogramView: UIView, CardPartView {
                 mainLayer.addLineLayer(lineSegment: line.segment, color: UIColor.darkGray.cgColor, width: line.width, isDashed: line.isDashed, animated: false, oldSegment: nil)
             }
         }
-      }
+    }
+    
+    func computeSpacing(dataEntries: [DataEntry]) -> CGFloat {
+        scrollView.layoutIfNeeded()
+        
+        return (scrollView.bounds.width - (CGFloat(dataEntries.count) * width)) / (CGFloat(dataEntries.count) - 1)
+    }
 }
 
 /// configures bar width , spacing , data entries and of each of those.
@@ -151,19 +175,21 @@ public class CardPartBarChart {
     public var space:CGFloat = 10
        
     /// space at the bottom of the bar to show the title
-    private let bottomSpace: CGFloat = 40.0
+    public var bottomSpace: CGFloat = 40.0
        
     /// space at the top of each bar to show the value
-    private let topSpace: CGFloat = 40.0
+    public var topSpace: CGFloat = 40.0
     
     /// Line padding
     private var linePadding:CGFloat = 6.5
     
     var dataEntries: [DataEntry] = []
        
-    init(barWidth:CGFloat, space: CGFloat) {
+    init(barWidth:CGFloat, space: CGFloat, topSpace: CGFloat, bottomSpace: CGFloat) {
         self.barWidth = barWidth
         self.space = space
+        self.topSpace = topSpace
+        self.bottomSpace = bottomSpace
     }
     
     /// width of the entire bars
@@ -175,7 +201,7 @@ public class CardPartBarChart {
         var result:[CardPartBarEntry] = []
         for (index, entry) in dataEntries.enumerated() {
             let entryHeight = CGFloat(entry.height) * (viewHeight - bottomSpace - topSpace)
-            let xPosition:CGFloat  = space + CGFloat(index) * (barWidth + space)
+            let xPosition:CGFloat = CGFloat(index) * (barWidth + space)
             let yPosition:CGFloat = viewHeight - bottomSpace - entryHeight
             let origin = CGPoint(x: xPosition, y: yPosition)
             let barEntry = CardPartBarEntry(origin: origin, barWidth: barWidth, barHeight: entryHeight, space: space, data: entry)
