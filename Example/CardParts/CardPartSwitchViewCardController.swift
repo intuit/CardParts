@@ -15,6 +15,8 @@ class CardPartSwitchViewCardController: CardPartsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cardPartSwitch.onTintColor = .blue
+        
         setupCardParts([cardPartSwitch])
     }
 }

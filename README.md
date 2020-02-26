@@ -58,6 +58,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartBarView](#cardpartbarview)
     - [CardPartPagedView](#cardpartpagedview)
     - [CardPartSliderView](#cardpartsliderview)
+    - [CardPartMultiSliderView](#cardpartmultisliderview)
     - [CardPartSpacerView](#cardpartspacerview)
     - [CardPartTextField](#cardparttextfield)
     - [CardPartCenteredView](#cardpartcenteredview)
@@ -66,6 +67,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartProgressBarView](#cardpartprogressbarview)
     - [CardPartMapView](#cardpartmapview)
     - [CardPartRadioButton](#cardpartradiobutton)
+    - [CardPartSwitchView](#cardpartswitchview)
     - [CardPartHistogramView](#cardparthistogramview)
   - [Card States](#card-states)
   - [Data Binding](#data-binding)
@@ -1074,6 +1076,15 @@ Provides the capability to add radio buttons with configurable inner/outer circl
     radioButton2.rx.tap.subscribe(onNext: {
         print("Radio Button Tapped")
     }).disposed(by: bag)
+```
+
+#### `CardPartSwitchView`
+
+Provides the capability to add a switch with configurable colors.
+
+```swift
+    let switchComponent = CardPartSwitchView()
+    switchComponent.onTintColor = .blue
 ```
 
 <p align="center">
