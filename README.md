@@ -58,6 +58,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartBarView](#cardpartbarview)
     - [CardPartPagedView](#cardpartpagedview)
     - [CardPartSliderView](#cardpartsliderview)
+    - [CardPartMultiSliderView](#cardpartmultisliderview)
     - [CardPartSpacerView](#cardpartspacerview)
     - [CardPartTextField](#cardparttextfield)
     - [CardPartCenteredView](#cardpartcenteredview)
@@ -66,6 +67,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartProgressBarView](#cardpartprogressbarview)
     - [CardPartMapView](#cardpartmapview)
     - [CardPartRadioButton](#cardpartradiobutton)
+    - [CardPartSwitchView](#cardpartswitchview)
     - [CardPartHistogramView](#cardparthistogramview)
   - [Card States](#card-states)
   - [Data Binding](#data-binding)
@@ -1078,6 +1080,19 @@ Provides the capability to add radio buttons with configurable inner/outer circl
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/radioButtons.png" width="300" alt="RadioButton" />
+</p>
+
+#### `CardPartSwitchView`
+
+Provides the capability to add a switch with configurable colors.
+
+```swift
+    let switchComponent = CardPartSwitchView()
+    switchComponent.onTintColor = .blue
+```
+
+<p align="center">
+<img src="https://cdn-images-1.medium.com/max/1600/1*ccfEt-tGF1bDO6sV_yNc8w.gif" width="200" alt="RadioButton" />
 </p>
 
 ### `CardPartHistogramView`
