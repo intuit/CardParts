@@ -1078,6 +1078,10 @@ Provides the capability to add radio buttons with configurable inner/outer circl
     }).disposed(by: bag)
 ```
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/radioButtons.png" width="300" alt="RadioButton" />
+</p>
+
 #### `CardPartSwitchView`
 
 Provides the capability to add a switch with configurable colors.
@@ -1088,7 +1092,7 @@ Provides the capability to add a switch with configurable colors.
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/radioButtons.png" width="300" alt="RadioButton" />
+<img src="https://cdn-images-1.medium.com/max/1600/1*ccfEt-tGF1bDO6sV_yNc8w.gif" width="200" alt="RadioButton" />
 </p>
 
 ### `CardPartHistogramView`
