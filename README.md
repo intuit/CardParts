@@ -1106,6 +1106,9 @@ CardPartsBottomSheetViewController provides the capability to show a highly-cust
     bottomSheetViewController.contentVC = MyViewController()
     bottomSheetViewController.presentBottomSheet()
 ```
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/bottomSheet.gif" width="300" alt="bottom sheet" />
+</p>
 
 `CardPartsBottomSheetViewController` also supports being used as a sticky view at the bottom of the screen, and can be presented on any view (default is `keyWindow`). For example, the following code creates a sticky view that still permits scrolling behind it and can only be dismissed programmatically.
 
@@ -1116,6 +1119,9 @@ CardPartsBottomSheetViewController provides the capability to show a highly-cust
     bottomSheetViewController.addShadow()
     bottomSheetViewController.presentBottomSheet(on: self.view)
 ```
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/bottomSheetSticky.gif" width="300" alt="sticky bottom sheet" />
+</p>
 
 There are also over two dozen other properties that you can set to further customize the bottom sheet for your needs. You can configure the colors, height, gesture recognizers, handle appearance, animation times, and callback functions with the following properties.
 
