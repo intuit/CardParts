@@ -27,4 +27,13 @@ extension UIViewController {
         // Finally, notify the child that it was moved to a parent
         child.didMove(toParent: self)
     }
+    
+    func removeFromParentVC() {
+        // Check that view controller has a parent before removing it
+        guard let _ = parent else { return }
+
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
+    }
 }
