@@ -187,6 +187,7 @@ public class CardPartsBottomSheetViewController: UIViewController {
     /// Dismisses bottom sheet, calling `didDismiss` callback when complete.
     /// - Parameter dismissalType: type of dismissal
     public func dismissBottomSheet(_ dismissalType: BottomSheetDismissalType) {
+        guard isShowingBottomSheet else { return }
         UIView.animate(withDuration: dismissAnimationDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.darkOverlay.alpha = 0
             self.bottomSheetTopConstraint.constant = 0
