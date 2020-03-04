@@ -50,6 +50,7 @@ class MainViewController: CardsViewController {
             CardPartRadioButtonCardController(), // Radio Button
             CardPartHistogramCardController(), // Histogram
             CardPartCustomMarginsCardController(), // Custom margins trait
+            CardPartSwitchViewCardController() // Switch
         ]
         
         loadCards(cards: cards)
