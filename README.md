@@ -1155,6 +1155,7 @@ There are also over two dozen other properties that you can set to further custo
 - `var appearAnimationDuration: TimeInterval`: Animation time for bottom sheet to appear. Default is 0.5.
 - `var dismissAnimationDuration: TimeInterval`: Animation time for bottom sheet to dismiss. Default is 0.5.
 - `var snapBackAnimationDuration: TimeInterval`: Animation time for bottom sheet to snap back to its height. Default is 0.25.
+- `var animationOptions: UIView.AnimationOptions`: Animation options for bottom sheet animations. Default is UIView.AnimationOptions.curveEaseIn.
 - `var changeHeightAnimationDuration: TimeInterval`: Animation time for bottom sheet to adjust to a new height when height is changed. Default is 0.25.
 - `var shouldListenToOverlayTap: Bool`: Whether or not to dismiss if a user taps in the overlay. Default is true.
 - `var shouldListenToHandleDrag: Bool`: Whether or not to respond to dragging on the handle. Default is true.

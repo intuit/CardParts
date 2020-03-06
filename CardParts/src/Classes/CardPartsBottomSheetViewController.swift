@@ -77,6 +77,9 @@ public class CardPartsBottomSheetViewController: UIViewController {
     /// Animation time for bottom sheet to adjust to a new height when height is changed. Default is 0.25.
     public var changeHeightAnimationDuration: TimeInterval = 0.25
     
+    /// Animation options for bottom sheet animations. Default is UIView.AnimationOptions.curveEaseIn.
+    public var animationOptions: UIView.AnimationOptions = .curveEaseIn
+    
     /// Whether or not to dismiss if a user taps in the overlay. Default is true.
     public var shouldListenToOverlayTap: Bool = true
     
@@ -127,11 +130,11 @@ public class CardPartsBottomSheetViewController: UIViewController {
         
         hostView.addSubview(self.view)
         
-        NSLayoutConstraint.activate([
-            self.view.leadingAnchor.constraint(equalTo: hostView.leadingAnchor),
-            self.view.trailingAnchor.constraint(equalTo: hostView.trailingAnchor),
-            self.view.bottomAnchor.constraint(equalTo: hostView.bottomAnchor)
-        ])
+        self.view.layout {
+            $0.leading == hostView.leadingAnchor
+            $0.trailing == hostView.trailingAnchor
+            $0.bottom == hostView.bottomAnchor
+        }
         
         setup()
         
@@ -144,7 +147,7 @@ public class CardPartsBottomSheetViewController: UIViewController {
         self.view.layoutIfNeeded()
         
         // animate appearing on screen
-        UIView.animate(withDuration: appearAnimationDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: appearAnimationDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: animationOptions, animations: {
             self.darkOverlay.alpha = self.overlayMaxAlpha
             self.bottomSheetTopConstraint.constant -= self.bottomSheetHeight
             self.view.layoutIfNeeded()
@@ -172,7 +175,7 @@ public class CardPartsBottomSheetViewController: UIViewController {
             self.dismissBottomSheet(.programmatic(info: ["error": "closing due to nil constraints"]))
             return
         }
-        UIView.animate(withDuration: changeHeightAnimationDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: changeHeightAnimationDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: animationOptions, animations: {
             self.darkOverlay.alpha = self.overlayMaxAlpha
             self.bottomSheetTopConstraint.constant = -self.bottomSheetHeight
             if !self.shouldIncludeOverlay {
@@ -188,7 +191,7 @@ public class CardPartsBottomSheetViewController: UIViewController {
     /// - Parameter dismissalType: type of dismissal
     public func dismissBottomSheet(_ dismissalType: BottomSheetDismissalType) {
         guard isShowingBottomSheet else { return }
-        UIView.animate(withDuration: dismissAnimationDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: dismissAnimationDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: animationOptions, animations: {
             self.darkOverlay.alpha = 0
             self.bottomSheetTopConstraint.constant = 0
             self.view.layoutIfNeeded()
@@ -381,7 +384,7 @@ extension CardPartsBottomSheetViewController: UIGestureRecognizerDelegate {
         case .cancelled, .ended, .failed:
             // if only gone down a little, keep it up; otherwise dismiss
             if -self.bottomSheetTopConstraint.constant > bottomSheetHeight * dragHeightRatioToDismiss && recognizer.velocity(in: self.view).y < dragVelocityToDismiss {
-                UIView.animate(withDuration: snapBackAnimationDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+                UIView.animate(withDuration: snapBackAnimationDuration, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: animationOptions, animations: {
                     self.bottomSheetTopConstraint.constant = -self.bottomSheetHeight
                     self.didChangeHeight?(-self.bottomSheetTopConstraint.constant)
                     self.darkOverlay.alpha = self.overlayMaxAlpha
