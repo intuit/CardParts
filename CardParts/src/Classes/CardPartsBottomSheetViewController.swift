@@ -260,7 +260,7 @@ public class CardPartsBottomSheetViewController: UIViewController {
         
         bottomSheetContainerVC.view.backgroundColor = bottomSheetBackgroundColor
         bottomSheetContainerVC.view.translatesAutoresizingMaskIntoConstraints = false
-        bottomSheetContainerVC.view.roundedTop(radius: bottomSheetCornerRadius)
+        bottomSheetContainerVC.view.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner], radius: bottomSheetCornerRadius)
         
         self.add(bottomSheetContainerVC)
         if handlePosition != BottomSheetHandlePosition.none {
