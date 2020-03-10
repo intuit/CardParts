@@ -14,21 +14,20 @@ class CardPartBottomSheetCardController: CardPartsViewController, CardPartsBotto
     lazy var cardPartButtonView: CardPartButtonView = {
         let button = CardPartButtonView()
         button.setTitle("Tap to show bottom sheet", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
         return button
     }()
     
     lazy var cardPartButtonViewForSticky: CardPartButtonView = {
         let button = CardPartButtonView()
         button.setTitle("Tap to show ~sticky~ bottom sheet", for: .normal)
-        button.setTitleColor(.green, for: .normal)
+        button.setTitleColor(.brown, for: .normal)
         return button
     }()
     
     lazy var cardPartButtonViewForInternalHandle: CardPartButtonView = {
         let button = CardPartButtonView()
         button.setTitle("Tap to show one with internal handle", for: .normal)
-        button.setTitleColor(.red, for: .normal)
+        button.setTitleColor(.purple, for: .normal)
         return button
     }()
     
