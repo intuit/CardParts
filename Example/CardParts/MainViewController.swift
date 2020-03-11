@@ -21,6 +21,7 @@ class MainViewController: CardsViewController {
         
         // Comment out one of the CardPartViewController in the card Array to change cards and/or their order
         let cards: [CardPartsViewController] = [
+            CardPartBottomSheetCardController(), // Bottom sheet examples
             CardPartTextViewCardController(), // Text, built on UILabel
             CardPartAttributedTextViewController(), // Text, built on UITextView
             CardPartTitleDescriptionViewCardController(), // Title/Description

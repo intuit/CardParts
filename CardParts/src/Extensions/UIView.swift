@@ -6,6 +6,30 @@
 //
 
 extension UIView {
+    func roundCorners(_ corners: CACornerMask, radius: CGFloat){
+        if #available(iOS 11.0, *) {
+            self.layer.cornerRadius = radius
+            self.layer.maskedCorners = corners
+        } else {
+            var rectCorners = UIRectCorner()
+            if(corners.contains(.layerMinXMinYCorner)){
+                rectCorners.insert(.topLeft)
+            }
+            if(corners.contains(.layerMaxXMinYCorner)){
+                rectCorners.insert(.topRight)
+            }
+            if(corners.contains(.layerMinXMaxYCorner)){
+                rectCorners.insert(.bottomLeft)
+            }
+            if(corners.contains(.layerMaxXMaxYCorner)){
+                rectCorners.insert(.bottomRight)
+            }
+            let rectShape = CAShapeLayer()
+            rectShape.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: rectCorners, cornerRadii: CGSize(width: radius, height: radius)).cgPath
+            self.layer.mask = rectShape
+        }
+    }
+    
     /// Sweeter: Set constant attribute. Example: `constrain(.width, to: 17)`
     @discardableResult public func constrain(
         _ at: NSLayoutConstraint.Attribute,

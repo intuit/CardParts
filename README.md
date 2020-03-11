@@ -69,6 +69,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartRadioButton](#cardpartradiobutton)
     - [CardPartSwitchView](#cardpartswitchview)
     - [CardPartHistogramView](#cardparthistogramview)
+    - [CardPartsBottomSheetViewController](#cardpartsbottomsheetviewcontroller)
   - [Card States](#card-states)
   - [Data Binding](#data-binding)
   - [Themes](#themes)
@@ -1110,6 +1111,67 @@ Provides the caoability to generate the bar graph based on the data ranges with 
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/histogram.gif" width="334" alt="Histogram" />
 </p>
+
+### `CardPartsBottomSheetViewController`
+
+CardPartsBottomSheetViewController provides the capability to show a highly-customizable modal bottom sheet. At its simplest, all you need to do is set the `contentVC` property to a view controller that you create to control the content of the bottom sheet:
+
+```swift
+    let bottomSheetViewController = CardPartsBottomSheetViewController()
+    bottomSheetViewController.contentVC = MyViewController()
+    bottomSheetViewController.presentBottomSheet()
+```
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/bottomSheet.gif" width="300" alt="bottom sheet" />
+</p>
+
+`CardPartsBottomSheetViewController` also supports being used as a sticky view at the bottom of the screen, and can be presented on any view (default is `keyWindow`). For example, the following code creates a sticky view that still permits scrolling behind it and can only be dismissed programmatically.
+
+```swift
+    let bottomSheetViewController = CardPartsBottomSheetViewController()
+    bottomSheetViewController.contentVC = MyStickyViewController()
+    bottomSheetViewController.configureForStickyMode()
+    bottomSheetViewController.addShadow()
+    bottomSheetViewController.presentBottomSheet(on: self.view)
+```
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/bottomSheetSticky.gif" width="300" alt="sticky bottom sheet" />
+</p>
+
+There are also over two dozen other properties that you can set to further customize the bottom sheet for your needs. You can configure the colors, height, gesture recognizers, handle appearance, animation times, and callback functions with the following properties.
+
+- `var contentVC: UIViewController?`: View controller for the content of the bottom sheet. Should set this parameter before presenting bottom sheet.
+- `var contentHeight: CGFloat?`: Manually set a content height. If not set, height will try to be inferred from `contentVC`.
+- `var bottomSheetBackgroundColor: UIColor`: Background color of bottom sheet. Default is white.
+- `var bottomSheetCornerRadius: CGFloat`: Corner radius of bottom sheet. Default is 16.
+- `var handleVC: CardPartsBottomSheetHandleViewController`: Pill-shaped handle at the top of the bottom sheet. Can configure `handleVC.handleHeight`, `handleVC.handleWidth`, and `handleVC.handleColor`.
+- `var handlePosition: BottomSheetHandlePosition`: Positioning of handle relative to bottom sheet. Options are `.above(bottomPadding)`, `.inside(topPadding)`, `.none`. Default is above with padding 8.
+- `var overlayColor: UIColor`: Color of the background overlay. Default is black.
+- `var shouldIncludeOverlay: Bool`: Whether or not to include a background overlay. Default is true.
+- `var overlayMaxAlpha: CGFloat`: Maximum alpha  value of background overlay. Will fade to 0 proportionally with height as bottom sheet is dragged down. Default is 0.5.
+- `var dragHeightRatioToDismiss: CGFloat`: Ratio of how how far down user must have dragged bottom sheet before releasing it in order to trigger a dismissal. Default is 0.4.
+- `var dragVelocityToDismiss: CGFloat`: Velocity that must be exceeded in order to dismiss bottom sheet if height ratio is greater than `dragHeightRatioToDismiss`. Default is 250.
+- `var pullUpResistance: CGFloat`: Amount that the bottom sheet resists being dragged up. Default 5 means that for every 5 pixels the user drags up, the bottom sheet goes up 1 pixel.
+- `var appearAnimationDuration: TimeInterval`: Animation time for bottom sheet to appear. Default is 0.5.
+- `var dismissAnimationDuration: TimeInterval`: Animation time for bottom sheet to dismiss. Default is 0.5.
+- `var snapBackAnimationDuration: TimeInterval`: Animation time for bottom sheet to snap back to its height. Default is 0.25.
+- `var animationOptions: UIView.AnimationOptions`: Animation options for bottom sheet animations. Default is UIView.AnimationOptions.curveEaseIn.
+- `var changeHeightAnimationDuration: TimeInterval`: Animation time for bottom sheet to adjust to a new height when height is changed. Default is 0.25.
+- `var shouldListenToOverlayTap: Bool`: Whether or not to dismiss if a user taps in the overlay. Default is true.
+- `var shouldListenToHandleDrag: Bool`: Whether or not to respond to dragging on the handle. Default is true.
+- `var shouldListenToContentDrag: Bool`: Whether or not to respond to dragging in the content. Default is true.
+- `var shouldListenToContainerDrag: Bool`: Whether or not to respond to dragging in the container. Default is true.
+- `var shouldRequireVerticalDrag: Bool`: Whether or not to require a drag to start in the vertical direction. Default is true.
+- `var adjustsForSafeAreaBottomInset: Bool`: Boolean value for whether or not bottom sheet should automatically add to its height to account for bottom safe area inset. Default is true.
+- `var didShow: (() -> Void)?`: Callback function to be called when bottom sheet is done preseting.
+- `var didDismiss: ((_ dismissalType: BottomSheetDismissalType) -> Void)?`: Callback function to be called when bottom sheet is done dismissing itself. Parameter `dismissalType`: information about how the bottom sheet was dismissed - `.tapInOverlay`, `.swipeDown`, `.programmatic(info)`.
+- `var didChangeHeight: ((_ newHeight: CGFloat) -> Void)?`: Callback function to be called when bottom sheet height changes from dragging or a call to `updateHeight`.
+- `var preferredGestureRecognizers: [UIGestureRecognizer]?`: Gesture recognizers that should block the vertical dragging of bottom sheet. Will automatically find and use all gesture recognizers if nil, otherwise will use recognizers in the array. Default is empty array.
+
+If you change the `contentVC` or `contentHeight` properties, the bottom sheet will automatically update its height. You can also call `updateHeight()` to trigger an update of the height (this is mainly for if the content of the `contentVC` has changed and you want the bottom sheet to update to match the new content size).
+
+Because it is uncommon to have access to the bottom sheet view controller from the `contentVC`,we define a `CardPartsBottomSheetDelegate` with default implementations for updating to a new `contentVC` or `contentHeight`, updating the height, or dismissing the bottom sheet programmatically. In order to use this delegate and its default function implementations, simply have your class conform to `CardPartsBottomSheetDelegate` and define a `var bottomSheetViewController: CardPartsBottomSheetViewComtroller`. Then, set that class to be a delegate for your content view controller and you can interface with the bottom sheet through the delegate.
+
 
 ## Card States
 
