@@ -34,11 +34,16 @@ public class CardPartPagedView: UIView, CardPartView {
 		}
 	}
 	
+	public var height: CGFloat {
+		didSet{
+			self.updateConstraints()
+		}
+	}
+	
 	public var delegate: CardPartPagedViewDelegate?
 	
 	fileprivate var pageControl: UIPageControl
 	fileprivate var scrollView: UIScrollView
-	fileprivate var height: CGFloat
 	
 	public init(withPages pages: [CardPartStackView], andHeight height: CGFloat) {
 		
