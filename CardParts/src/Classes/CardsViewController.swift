@@ -463,7 +463,7 @@ extension CardsViewController {
     }
     
     // calls for visibility of card when the scroll view scrolls
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
         notifyCardsVisibility()
     }
 }
