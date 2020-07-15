@@ -161,8 +161,8 @@ public class CardPartHistogramView: UIView, CardPartView {
     
     func computeSpacing(dataEntries: [DataEntry]) -> CGFloat {
         scrollView.layoutIfNeeded()
-        
-        return (scrollView.bounds.width - (CGFloat(dataEntries.count) * width)) / (CGFloat(dataEntries.count) - 1)
+        let divideCount = dataEntries.count > 1 ? (CGFloat(dataEntries.count) - 1) : 1
+        return (scrollView.bounds.width - (CGFloat(dataEntries.count) * width) / divideCount)
     }
 }
 
