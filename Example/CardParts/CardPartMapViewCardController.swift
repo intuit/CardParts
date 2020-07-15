@@ -40,7 +40,7 @@ class CardPartMapViewCardController: CardPartsViewController {
     private func setupBindings() {
         cardPartTextField.rx.text
             .distinctUntilChanged()
-            .debounce(1, scheduler: MainScheduler.instance)
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .filter { $0 != nil && !$0!.isEmpty }
             .flatMap { self.viewModel.getLocation(from: $0!)}
             .catchError({ error -> Observable<CLLocation> in

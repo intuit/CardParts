@@ -34,11 +34,16 @@ public class CardPartPagedView: UIView, CardPartView {
 		}
 	}
 	
+	public var height: CGFloat {
+		didSet{
+			self.updateConstraints()
+		}
+	}
+	
 	public var delegate: CardPartPagedViewDelegate?
 	
 	fileprivate var pageControl: UIPageControl
 	fileprivate var scrollView: UIScrollView
-	fileprivate var height: CGFloat
 	
 	public init(withPages pages: [CardPartStackView], andHeight height: CGFloat) {
 		
@@ -90,6 +95,23 @@ public class CardPartPagedView: UIView, CardPartView {
 		
 		super.updateConstraints()
 	}
+    
+    public func moveToPage(_ page: Int) {
+        guard page <= pageControl.numberOfPages - 1 else { return }
+
+        UIView.animate(withDuration: 1.0) {[weak self] in
+            
+            guard let this = self else { return }
+
+            let currentOffset = this.scrollView.contentOffset
+            this.scrollView.contentOffset = CGPoint(x: this.getPosition(for: page), y: currentOffset.y)
+            this.pageControl.currentPage = page
+        }
+    }
+    
+    private func getPosition(for page: Int) -> CGFloat {
+        return self.scrollView.frame.size.width * CGFloat(integerLiteral: page)
+    }
 	
 	fileprivate func updatePageControl() {
 
