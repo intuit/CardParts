@@ -86,6 +86,11 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[collectionView]|", options: [], metrics: nil, views: ["collectionView" : collectionView!]))
         
+        // immediate layout pass to ensure collection view layout reflects the latest frame size
+        cardCellWidth.distinctUntilChanged().asObservable().subscribe(onNext: { [weak self] _ in
+            self?.invalidateLayout()
+        }).disposed(by: bag)
+        
         let newValue = view.bounds.width.rounded() - (cardCellMargins.left + cardCellMargins.right)
         if newValue != cardCellWidth.value {
             cardCellWidth.accept(newValue)
@@ -94,7 +99,6 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         cardCellWidth.accept(size.width.rounded() - (cardCellMargins.left + cardCellMargins.right))
-        invalidateLayout()
     }
     
     // functionality that happens when the view appears
