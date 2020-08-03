@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CardParts'
-  s.version          = '3.1.2'
+  s.version          = '3.1.3'
   s.platform         = :ios
   s.summary          = 'iOS Card UI framework.'
 
@@ -31,6 +31,5 @@ CardParts is an iOS Card UI framework that uses MVVM and automatic data binding 
   s.dependency 'RxSwift', '~> 5.0'
   s.dependency 'RxCocoa', '~> 5.0'
   s.dependency 'RxDataSources', '~> 4.0'
-  s.dependency 'RxGesture', '~> 3.0'
-
+  s.dependency 'RxGesture', '~> 3.0' 
 end
