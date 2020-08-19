@@ -17,13 +17,13 @@ public class CardPartRadioButton: UIButton, CardPartView  {
     var outerCircleLayer = CAShapeLayer()
     var innerCircleLayer = CAShapeLayer()
     
-    public var outerCircleColor:UIColor = .blue {
+    public var outerCircleColor:UIColor = .SystemBlue {
         didSet{
-            outerCircleLayer.strokeColor = outerCircleColor.cgColor
+            outerCircleLayer.strokeColor = outerCircleColor.cgColor(with: traitCollection)
         }
     }
     
-    public var innerCircleColor:UIColor = .blue {
+    public var innerCircleColor:UIColor = .SystemBlue {
         didSet {
             setFillState()
         }
@@ -85,10 +85,15 @@ public class CardPartRadioButton: UIButton, CardPartView  {
         super.layoutSubviews()
         setCircleLayouts()
     }
+    
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        outerCircleLayer.strokeColor = outerCircleColor.cgColor(with: traitCollection)
+        setFillState()
+    }
 
     /// fills the color inside the button based the selected state.
     private func setFillState() {
-        innerCircleLayer.fillColor = self.isSelected ? outerCircleColor.cgColor : UIColor.clear.cgColor
+        innerCircleLayer.fillColor = self.isSelected ? outerCircleColor.cgColor(with: traitCollection) : UIColor.clear.cgColor
     }
     
     /// configures outer/inner circle frame,line widt and path

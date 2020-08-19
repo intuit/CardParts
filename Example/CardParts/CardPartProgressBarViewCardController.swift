@@ -15,11 +15,11 @@ class CardPartProgressBarViewCardController: CardPartsViewController {
     
     var viewModel = ReactiveCardPartProgressBarViewModel()
     
-    let barColors: [UIColor] = [UIColor.red,
-                                UIColor.green,
-                                UIColor.yellow,
-                                UIColor.purple,
-                                UIColor.blue]
+    let barColors: [UIColor] = [UIColor.systemRed,
+                                UIColor.systemGreen,
+                                UIColor.systemYellow,
+                                UIColor.systemPurple,
+                                UIColor.systemBlue]
     
     override func viewDidLoad() {
         let progressBarView = CardPartProgressBarView(barColors: barColors, marker: nil, markerLabelTitle: "", currentValue: 2, showShowBarValues: false)

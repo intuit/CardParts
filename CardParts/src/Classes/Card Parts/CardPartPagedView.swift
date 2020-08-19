@@ -57,8 +57,8 @@ public class CardPartPagedView: UIView, CardPartView {
 		
 		pageControl = UIPageControl(frame: .zero)
 		pageControl.translatesAutoresizingMaskIntoConstraints = false
-		pageControl.pageIndicatorTintColor = UIColor.lightGray
-		pageControl.currentPageIndicatorTintColor = UIColor.darkGray
+		pageControl.pageIndicatorTintColor = UIColor.SystemFill
+		pageControl.currentPageIndicatorTintColor = UIColor.SystemGray
 		
 		currentPage = 0
 		

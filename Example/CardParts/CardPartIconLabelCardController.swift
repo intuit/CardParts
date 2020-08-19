@@ -28,13 +28,25 @@ class CardPartIconLabelCardController: CardPartsViewController {
             let iconLabel = CardPartIconLabel()
             iconLabel.verticalPadding = 10
             iconLabel.horizontalPadding = 10
-            iconLabel.backgroundColor = UIColor(red: 16.0 / 255.0, green: 128.0 / 255.0, blue: 0, alpha: 0.16)
             iconLabel.font = UIFont.systemFont(ofSize: 12)
-            iconLabel.textColor = UIColor.black
+            if #available(iOS 13.0, *) {
+                iconLabel.textColor = UIColor.label
+                iconLabel.tintColor = UIColor.label
+                iconLabel.backgroundColor = UIColor(dynamicProvider: { traitCollection in
+                    if traitCollection.userInterfaceStyle == .dark {
+                        return UIColor(red: 27.0 / 255.0, green: 223.0 / 255.0, blue: 0, alpha: 0.16)
+                    }
+                    return UIColor(red: 16.0 / 255.0, green: 128.0 / 255.0, blue: 0, alpha: 0.16)
+                })
+            } else {
+                iconLabel.textColor = UIColor.black
+                iconLabel.tintColor = UIColor.black
+                iconLabel.backgroundColor = UIColor(red: 16.0 / 255.0, green: 128.0 / 255.0, blue: 0, alpha: 0.16)
+            }
             iconLabel.numberOfLines = 0
             iconLabel.iconPadding = 5
             iconLabel.layer.cornerRadius = 8.0
-            iconLabel.icon = UIImage(named: "themeIcon")
+            iconLabel.icon = UIImage(named: "themeIcon")?.withRenderingMode(.alwaysTemplate)
             
             switch index {
             case 0:

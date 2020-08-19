@@ -75,6 +75,7 @@ CardParts - made with ❤️ by Intuit:
   - [Themes](#themes)
   - [Clickable Cards](#clickable-cards)
   - [Listeners](#listeners)
+- [Dark Mode](#dark-mode)
 - [Apps That Love CardParts](#apps-that-love-cardparts)
 - [Publications](#publications)
 - [License](#license)
@@ -1378,6 +1379,14 @@ extension MYOwnCardPartController: CardPartsLongPressGestureRecognizerDelegate {
 	var minimumPressDuration: CFTimeInterval { return 0.5 }
 }
 ```
+
+# Dark Mode
+
+CardParts now supports iOS 13's Dark Mode!
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/darkmode.png" width="300" alt="darkmode"/>
+</p>
 
 # Apps That Love CardParts
 

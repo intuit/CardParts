@@ -27,7 +27,7 @@ public enum ConfettiType {
 public class CardPartConfettiView: UIView, CardPartView {
     
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
-    public var colors:[UIColor] = [ UIColor.red, UIColor.green, UIColor.blue ]
+    public var colors:[UIColor] = [ UIColor.SystemRed, UIColor.SystemGreen, UIColor.SystemBlue ]
     public var type:ConfettiType = .star
     /// default : 0.5 value ranges from 0 - 1(being very slow)
     public var intensity:Float = 0.5

@@ -172,7 +172,8 @@ public class CardPartAttributedTextView: UIView, CardPartView {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textContainer.lineBreakMode = NSLineBreakMode.byWordWrapping
         textView.isScrollEnabled = false
-        textView.textColor = textColor
+        textView.text = text
+        textView.backgroundColor = CardParts.theme.attributedTextBackgroundColor
         textView.isEditable = false
         self.textView.isSelectable = textView.isSelectable
         self.isEditable = textView.isEditable
@@ -185,6 +186,7 @@ public class CardPartAttributedTextView: UIView, CardPartView {
 
         addSubview(textView)
         setDefaultsForType(type)
+        setNeedsUpdateConstraints()
     }
     
     required public init?(coder: NSCoder) {

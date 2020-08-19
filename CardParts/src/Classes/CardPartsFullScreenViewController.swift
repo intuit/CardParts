@@ -13,7 +13,7 @@ open class CardPartsFullScreenViewController: CardPartsViewController {
 	open override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		view.backgroundColor = UIColor.white
+        view.backgroundColor = CardParts.theme.backgroundColor
 	}
 
 }

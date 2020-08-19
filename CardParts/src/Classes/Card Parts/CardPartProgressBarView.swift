@@ -170,18 +170,16 @@ public class CardPartProgressBarView: UIView, CardPartView {
         }
     }
     
-    public var bgColor: UIColor = UIColor.white {
+    public var bgColor: UIColor = .clear {
         didSet {
             addMarker(marker: customMarker)
             layoutSubviews()
         }
     }
     
-    public var markerColor: UIColor? = UIColor.Black {
+    public var markerColor: UIColor = UIColor.Label {
         didSet {
-            if markerColor != nil {
-                layout()
-            }
+            layout()
         }
     }
     
@@ -315,14 +313,12 @@ public class CardPartProgressBarView: UIView, CardPartView {
     
     
     fileprivate func addMarker(marker: UIView?) {
-        let color: UIColor = UIColor.black
-        
         if let marker = marker {
             self.markerView.addSubview(marker)
         } else {
             let triangleView = CardPartTriangleView(frame: CGRect(x: 0, y: 0, width: markerHeight, height: markerHeight))
-            triangleView.fillColor = color
-            triangleView.backgroundColor = .white
+            triangleView.fillColor = markerColor
+            triangleView.backgroundColor = bgColor
             self.markerView.addSubview(triangleView)
         }
         layoutSubviews()
