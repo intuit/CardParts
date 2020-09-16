@@ -61,6 +61,7 @@ public protocol CardPartsTheme {
     var todayLineColor: UIColor { get set }
     var roundedCorners: Bool { get set }
     var showTodayLine: Bool { get set }
+    var barCornerRadius: CGFloat? { get set }
 
     // CardPartTableView and CardPartCollectionView
     var tableViewMargins: UIEdgeInsets { get set }
@@ -138,7 +139,8 @@ public class CardPartsMintTheme: CardPartsTheme {
     public var barHeight: CGFloat = 13.5
     public var roundedCorners: Bool = false
     public var showTodayLine: Bool = true
-    
+    public var barCornerRadius: CGFloat? = nil
+
     // CardPartTableView
     public var tableViewMargins: UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 14.0, bottom: 0.0, right: 14.0)
     
@@ -213,7 +215,8 @@ public class CardPartsTurboTheme: CardPartsTheme {
     public var barHeight: CGFloat = 20.0
     public var roundedCorners: Bool = true
     public var showTodayLine: Bool = false
-
+    public var barCornerRadius: CGFloat? = nil
+    
     // CardPartTableView
     public var tableViewMargins: UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 28.0, bottom: 0.0, right: 28.0)
 
