@@ -12,6 +12,7 @@ import RxCocoa
 
 public class CardPartBarView: UIView, CardPartView {
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
+    public var cornerRadius: CGFloat? = CardParts.theme.barCornerRadius
     public var backgroundLayer: CALayer!
     public var barLayer: CALayer!
     public var verticalLine: CALayer!
@@ -87,13 +88,21 @@ public class CardPartBarView: UIView, CardPartView {
         barLayer.bounds = bounds
         barLayer.backgroundColor = barColor.cgColor
         if CardParts.theme.roundedCorners {
-            barLayer.cornerRadius = bounds.height / 2
+            if let desiredCornerRadius: CGFloat = cornerRadius {
+                barLayer.cornerRadius = desiredCornerRadius
+            } else {
+                barLayer.cornerRadius = bounds.height / 2
+            }
         }
         
         let backgroundBounds = CGRect(x: 0, y: 0, width: self.bounds.width , height: desiredHeight)
         backgroundLayer.bounds = backgroundBounds
         if CardParts.theme.roundedCorners {
-            backgroundLayer.cornerRadius = bounds.height / 2
+            if let desiredCornerRadius: CGFloat = cornerRadius {
+                barLayer.cornerRadius = desiredCornerRadius
+            } else {
+                barLayer.cornerRadius = bounds.height / 2
+            }
         }
         
         if CardParts.theme.showTodayLine {
