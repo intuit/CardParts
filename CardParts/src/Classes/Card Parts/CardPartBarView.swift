@@ -90,20 +90,15 @@ public class CardPartBarView: UIView, CardPartView {
         if CardParts.theme.roundedCorners {
             if let desiredCornerRadius: CGFloat = cornerRadius {
                 barLayer.cornerRadius = desiredCornerRadius
+                backgroundLayer.cornerRadius = desiredCornerRadius
             } else {
                 barLayer.cornerRadius = bounds.height / 2
+                backgroundLayer.cornerRadius = bounds.height / 2
             }
         }
         
         let backgroundBounds = CGRect(x: 0, y: 0, width: self.bounds.width , height: desiredHeight)
         backgroundLayer.bounds = backgroundBounds
-        if CardParts.theme.roundedCorners {
-            if let desiredCornerRadius: CGFloat = cornerRadius {
-                barLayer.cornerRadius = desiredCornerRadius
-            } else {
-                barLayer.cornerRadius = bounds.height / 2
-            }
-        }
         
         if CardParts.theme.showTodayLine {
             let verticalLineBounds = CGRect(x: 0, y: 0, width: 1.0 , height: self.bounds.height)
