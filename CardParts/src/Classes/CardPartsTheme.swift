@@ -137,7 +137,7 @@ public class CardPartsMintTheme: CardPartsTheme {
     public var barColor: UIColor = UIColor.turboHeaderBlueColor
     public var todayLineColor: UIColor = UIColor.Gray8
     public var barHeight: CGFloat = 13.5
-    public var roundedCorners: Bool = true
+    public var roundedCorners: Bool = false
     public var showTodayLine: Bool = true
     public var barCornerRadius: CGFloat? = nil
 
