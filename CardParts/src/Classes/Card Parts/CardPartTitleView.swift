@@ -47,7 +47,7 @@ public class CardPartTitleView : UIView, CardPartView {
 	public var menuButtonImageName: String = "arrowdown" {
 		didSet {
 			if type == .titleWithMenu || type == .titleWithActionableButton {
-                menuButtonImage = UIImage(named: menuButtonImageName, in: Bundle(for: CardPartTitleView.self), compatibleWith: nil)
+                menuButtonImage = UIImage(named: menuButtonImageName, in: Bundle.title, compatibleWith: nil)
 			}
 		}
 	}
@@ -80,7 +80,7 @@ public class CardPartTitleView : UIView, CardPartView {
                 if let image = menuButtonImage {
                     button.setImage(image, for: .normal)
                 } else {
-                    button.setImage(UIImage(named: menuButtonImageName, in: Bundle(for: CardPartTitleView.self), compatibleWith: nil), for: .normal)
+                    button.setImage(UIImage(named: menuButtonImageName, in: Bundle.title, compatibleWith: nil), for: .normal)
                 }
 				button.addTarget(self, action: #selector(menuButtonTapped), for: UIControl.Event.touchUpInside)
 				addSubview(button)
@@ -92,7 +92,7 @@ public class CardPartTitleView : UIView, CardPartView {
                 if let image = menuButtonImage {
                     button.setImage(image, for: .normal)
                 } else {
-                    button.setImage(UIImage(named: menuButtonImageName, in: Bundle(for: CardPartTitleView.self), compatibleWith: nil), for: .normal)
+                    button.setImage(UIImage(named: menuButtonImageName, in: Bundle.title, compatibleWith: nil), for: .normal)
                 }
 				button.addTarget(self, action: #selector(actionableMenuTapped), for: UIControl.Event.touchUpInside)
 				addSubview(button)
@@ -201,5 +201,15 @@ extension Reactive where Base: CardPartTitleView {
         return Binder(self.base) { (titleView, menuButtonImage) -> () in
             titleView.menuButtonImage = menuButtonImage
         }
+    }
+}
+
+private extension Bundle {
+    static var title: Bundle {
+        #if SWIFT_PACKAGE
+        return Bundle.module
+        #else
+        return Bundle(for: CardPartTitleView.self)
+        #endif
     }
 }

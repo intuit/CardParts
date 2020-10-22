@@ -5,7 +5,11 @@
 //  Created by Roossin, Chase on 3/7/18.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#else
 import Foundation
+#endif
 
 open class CardPartCollectionViewCardPartsCell : UICollectionViewCell {
 

@@ -5,7 +5,11 @@
 //  Created by Venkatnarayansetty, Badarinath on 9/19/19.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#else
 import Foundation
+#endif
 
 class CardPartTriangleView: UIView,CardPartView {
         

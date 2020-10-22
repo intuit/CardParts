@@ -5,7 +5,11 @@
 //  Created by Tumer, Deniz on 5/23/18.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#else
 import Foundation
+#endif
 
 /*
  * Defines utility methods for cards.

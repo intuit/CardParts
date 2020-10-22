@@ -6,6 +6,10 @@
 //  Copyright © 2017 Intuit, Inc. All rights reserved.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#endif
+
 enum FontSize: Int {
     case ultrabig = 48, header = 36, xx_Large = 28, x_Large = 24, large = 17, medium = 16, normal = 14, small = 12, x_Small = 10
 }

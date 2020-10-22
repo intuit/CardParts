@@ -6,6 +6,8 @@
 //  Copyright © 2017 Mint.com. All rights reserved.
 //
 
+@testable import CardParts
+
 import XCTest
 import RxSwift
 import RxCocoa
@@ -23,7 +25,25 @@ class CardPartImageViewTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
+    func testAssetResources() {
+        #if SWIFT_PACKAGE
+        let arrowdown = UIImage(named: "arrowdown", in: Bundle.module, compatibleWith: nil)
+        let budgets = UIImage(named: "budgets_disclosure_icon", in: Bundle.module, compatibleWith: nil)
+        let confetti = UIImage(named: "confetti", in: Bundle.module, compatibleWith: nil)
+        let diamond = UIImage(named: "diamond", in: Bundle.module, compatibleWith: nil)
+        let star = UIImage(named: "star", in: Bundle.module, compatibleWith: nil)
+        let triangle = UIImage(named: "triangle", in: Bundle.module, compatibleWith: nil)
+
+        XCTAssertNotNil(arrowdown)
+        XCTAssertNotNil(budgets)
+        XCTAssertNotNil(confetti)
+        XCTAssertNotNil(diamond)
+        XCTAssertNotNil(star)
+        XCTAssertNotNil(triangle)
+        #endif
+    }
+
 	func testMenuOptionsProperty() {
 		
 		let bag = DisposeBag()

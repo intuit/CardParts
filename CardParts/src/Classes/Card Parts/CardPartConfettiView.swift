@@ -37,7 +37,7 @@ public class CardPartConfettiView: UIView, CardPartView {
         }
     }
     
-    public var confettiImages = [UIImage(named: "confetti", in: Bundle(for: CardPartConfettiView.self),compatibleWith: nil)] as? [UIImage]
+    public var confettiImages = [UIImage(named: "confetti", in: Bundle.confetti,compatibleWith: nil)] as? [UIImage]
     
     //A layer that emits, animates, and renders a particle system.
     var emitter: CAEmitterLayer = CAEmitterLayer()
@@ -127,15 +127,25 @@ public class CardPartConfettiView: UIView, CardPartView {
     private func image(for type: ConfettiType, index: Int = 0) -> UIImage? {
         switch type {
         case .diamond:
-            return UIImage(named: "diamond", in: Bundle(for: CardPartConfettiView.self), compatibleWith: nil)
+            return UIImage(named: "diamond", in: Bundle.confetti, compatibleWith: nil)
         case .star:
-            return UIImage(named: "star", in: Bundle(for: CardPartConfettiView.self), compatibleWith: nil)
+            return UIImage(named: "star", in: Bundle.confetti, compatibleWith: nil)
         case let .image(customImage):
             return customImage
         case .mixed:
             return confettiImages?[index]
         case .confetti:
-             return UIImage(named: "confetti", in: Bundle(for: CardPartConfettiView.self), compatibleWith: nil)
+            return UIImage(named: "confetti", in: Bundle.confetti, compatibleWith: nil)
         }
+    }
+}
+
+private extension Bundle {
+    static var confetti: Bundle {
+        #if SWIFT_PACKAGE
+        return Bundle.module
+        #else
+        return Bundle(for: CardPartConfettiView.self)
+        #endif
     }
 }
