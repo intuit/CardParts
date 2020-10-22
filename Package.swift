@@ -25,6 +25,7 @@ let package = Package(
                 .byName(name: "RxGesture")
             ],
             path: "CardParts",
+            exclude: ["Example"],
             resources: [
                 .process("Assets/icons.xcassets")
             ]

@@ -205,6 +205,8 @@ extension Reactive where Base: CardPartTitleView {
 }
 
 private extension Bundle {
+
+    /// Gets the correct Bundle for the `arrowdown` image based on the environment.
     static var title: Bundle {
         #if SWIFT_PACKAGE
         return Bundle.module

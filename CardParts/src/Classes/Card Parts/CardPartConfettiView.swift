@@ -141,6 +141,8 @@ public class CardPartConfettiView: UIView, CardPartView {
 }
 
 private extension Bundle {
+
+    /// Gets the correct Bundle for cenfetti images based on the environment.
     static var confetti: Bundle {
         #if SWIFT_PACKAGE
         return Bundle.module

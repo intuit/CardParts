@@ -473,6 +473,8 @@ extension CardsViewController {
 }
 
 private extension Bundle {
+
+    /// Gets the correct Bundle for the `budgets_disclosure_icon` image based on the environment.
     static var controller: Bundle {
         #if SWIFT_PACKAGE
         return Bundle.module
