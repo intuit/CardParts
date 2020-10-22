@@ -25,7 +25,6 @@ let package = Package(
                 .byName(name: "RxGesture")
             ],
             path: "CardParts",
-            exclude: ["Example"],
             resources: [
                 .process("Assets/icons.xcassets")
             ]
@@ -33,7 +32,8 @@ let package = Package(
         .testTarget(
             name: "CardPartsTests",
             dependencies: ["CardParts"],
-            path: "Example/Tests"
+            path: "Example/Tests",
+            exclude: ["Info.plist"]
         )
     ]
 )
