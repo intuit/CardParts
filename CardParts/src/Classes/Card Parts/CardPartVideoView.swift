@@ -47,7 +47,6 @@ public class CardPartVideoView: UIView, CardPartView {
         controller.player = player
         controller.view.frame = self.view.frame
         addSubview(controller.view)
-        self.viewController?.addChild(controller)
     }
     
     // update the height constraints for the player
