@@ -21,7 +21,7 @@ public class CardPartVideoView: UIView, CardPartView {
     
     fileprivate let controller = AVPlayerViewController()
     
-    // convinence initilazer for setting up the videp player
+    // convenience initilazer for setting up the videp player
     public init(videoUrl: URL) {
         self.videoUrl = videoUrl
         super.init(frame: .zero)
