@@ -1184,7 +1184,7 @@ cardPartVideoView.configureVideo(for: self)
 ```
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartvideoView.gif" width="334" alt="CardPartVideoView" />
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartVideoView.gif" width="334" alt="CardPartVideoView" />
 </p>
 
 ## Card States
