@@ -66,8 +66,6 @@ public class CardPartVideoView: UIView, CardPartView {
     
     // configures the video for the view controller.
     public func configureVideo(for viewController: UIViewController) {
-        viewController.view.addSubview(controller.view)
         viewController.addChild(controller)
-        self.addSubview(controller.view)
     }
 }
