@@ -47,6 +47,7 @@ public class CardPartVideoView: UIView, CardPartView {
         controller.player = player
         controller.view.frame = self.view.frame
         addSubview(controller.view)
+        self.viewController?.addChild(controller)
     }
     
     // update the height constraints for the player
@@ -62,10 +63,5 @@ public class CardPartVideoView: UIView, CardPartView {
         let heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: playerHeight)
         heightConstraint.identifier = "CPVHeight"
         self.addConstraint(heightConstraint)
-    }
-    
-    // configures the video for the view controller.
-    public func configureVideo(for viewController: UIViewController) {
-        viewController.addChild(controller)
     }
 }

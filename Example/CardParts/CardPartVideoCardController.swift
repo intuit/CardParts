@@ -17,7 +17,6 @@ class CardPartVideoCardController: CardPartsViewController {
         guard let videoUrl = URL(string: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4")  else  { return }
         
         let cardPartVideoView = CardPartVideoView(videoUrl: videoUrl)
-        cardPartVideoView.configureVideo(for: self)
         
         setupCardParts([cardPartVideoView])
     }

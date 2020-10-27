@@ -1175,12 +1175,11 @@ Because it is uncommon to have access to the bottom sheet view controller from t
 
 ### `CardPartVideoView`
 
-Provides the caoability to embed AVPlayer inside a cardpart view.
+Provides the capability to embed AVPlayer inside a cardpart view.
 
 ```swift
 guard let videoUrl = URL(string: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4")  else  { return }
 let cardPartVideoView = CardPartVideoView(videoUrl: videoUrl)
-cardPartVideoView.configureVideo(for: self)
 ```
 
 <p align="center">
