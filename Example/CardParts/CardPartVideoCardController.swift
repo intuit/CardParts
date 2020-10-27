@@ -14,7 +14,7 @@ class CardPartVideoCardController: CardPartsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let videoUrl = URL(string: "https://offcnt.intuit.com/videos/US/Jerry/09.30.20_Outsourced_Animated_1920x1080_30s_FB_V9.mp4")  else  { return }
+        guard let videoUrl = URL(string: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4")  else  { return }
         
         let cardPartVideoView = CardPartVideoView(videoUrl: videoUrl)
         cardPartVideoView.configureVideo(for: self)

@@ -13,24 +13,61 @@ public class CardPartVideoView: UIView, CardPartView {
     
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
+    // url of the video to load on the AVPlayer
+    public var videoUrl:URL
+    
+    // player instance
+    fileprivate var player:AVPlayer!
+    
+    fileprivate let controller = AVPlayerViewController()
+    
+    // convinence initilazer for setting up the videp player
+    public init(videoUrl: URL) {
+        self.videoUrl = videoUrl
+        super.init(frame: .zero)
+        setupVideoPlayer()
+        setupConstraints()
+        setNeedsUpdateConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup() {
-        guard let cdnUrl = URL(string: "https://offcnt.intuit.com/videos/US/Jerry/09.30.20_Anna_Reed_Testimonial_1920x1080.mp4")  else  { return }
+    // The height of the CardPartVideoView. Default is 300 points. Override this to set a custom height.
+    open var playerHeight: CGFloat = 300 {
+        didSet {
+            setNeedsUpdateConstraints()
+        }
+    }
 
-        let player = AVPlayer(url: cdnUrl)
-        let controller = AVPlayerViewController()
+    // sets up player by configuring teh view and adding it to the subview
+    func setupVideoPlayer() {
+        player = AVPlayer(url: videoUrl)
         controller.player = player
-//        controller.view.frame = CGRect(x: 40, y: 200, width: 350, height: 280)
-//        self.view.addSubview(controller.view)
-//        self.addChild(controller)
-//        player.play()
+        controller.view.frame = self.view.frame
+        addSubview(controller.view)
+    }
+    
+    // update the height constraints for the player
+    public override func updateConstraints() {
+        if let heightConstraint = constraints.first(where: { $0.identifier == "CPVHeight" }) {
+            heightConstraint.constant = self.playerHeight
+        }
+        super.updateConstraints()
+    }
+    
+    // Setup the initial constraints
+    private func setupConstraints() {
+        let heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: playerHeight)
+        heightConstraint.identifier = "CPVHeight"
+        self.addConstraint(heightConstraint)
+    }
+    
+    // configures the video for the view controller.
+    public func configureVideo(for viewController: UIViewController) {
+        viewController.view.addSubview(controller.view)
+        viewController.addChild(controller)
+        self.addSubview(controller.view)
     }
 }
