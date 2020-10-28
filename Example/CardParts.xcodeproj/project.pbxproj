@@ -16,6 +16,8 @@
 		1B1F9543231FF58400085906 /* ConfettiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1F9542231FF58300085906 /* ConfettiViewController.swift */; };
 		1B5F65412333DA3D001B473F /* CardPartProgressBarViewCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F65402333DA3D001B473F /* CardPartProgressBarViewCardController.swift */; };
 		1B693BA1230DAE2900662382 /* CardPartIconLabelCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B693BA0230DAE2900662382 /* CardPartIconLabelCardController.swift */; };
+		1BB15A3F2547E2D300C18F69 /* CardPartVideoCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB15A3E2547E2D300C18F69 /* CardPartVideoCardController.swift */; };
+		1BB15A4C2547EF1000C18F69 /* CardPartVideoControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB15A4B2547EF1000C18F69 /* CardPartVideoControllerTests.swift */; };
 		1BC4B4E1236762DD00EE7A31 /* CardPartHistogramCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC4B4E0236762DD00EE7A31 /* CardPartHistogramCardController.swift */; };
 		1BCE6B782360AE26006B7325 /* CardPartRadioButtonCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCE6B772360AE26006B7325 /* CardPartRadioButtonCardController.swift */; };
 		1BD1074022F22823000163D2 /* CardPartBorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD1073F22F22823000163D2 /* CardPartBorderViewController.swift */; };
@@ -79,6 +81,8 @@
 		1B1F9542231FF58300085906 /* ConfettiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiViewController.swift; sourceTree = "<group>"; };
 		1B5F65402333DA3D001B473F /* CardPartProgressBarViewCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartProgressBarViewCardController.swift; sourceTree = "<group>"; };
 		1B693BA0230DAE2900662382 /* CardPartIconLabelCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartIconLabelCardController.swift; sourceTree = "<group>"; };
+		1BB15A3E2547E2D300C18F69 /* CardPartVideoCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartVideoCardController.swift; sourceTree = "<group>"; };
+		1BB15A4B2547EF1000C18F69 /* CardPartVideoControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartVideoControllerTests.swift; sourceTree = "<group>"; };
 		1BC4B4E0236762DD00EE7A31 /* CardPartHistogramCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartHistogramCardController.swift; sourceTree = "<group>"; };
 		1BCE6B772360AE26006B7325 /* CardPartRadioButtonCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartRadioButtonCardController.swift; sourceTree = "<group>"; };
 		1BD1073F22F22823000163D2 /* CardPartBorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPartBorderViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 				61D4706D1FDA709B00F451F0 /* CardPartTextViewTests.swift */,
 				61D4706B1FDA709B00F451F0 /* CardPartTitleViewTests.swift */,
 				61D470841FDB08EE00F451F0 /* CardPartTitleDescriptionViewTests.swift */,
+				1BB15A4B2547EF1000C18F69 /* CardPartVideoControllerTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 				55AB80CE20B61E1700B5994B /* CardUtilsTests.swift */,
 			);
@@ -279,6 +284,7 @@
 				EB16E3892396E8FD003F70A2 /* CardParthCustomMarginsCardController.swift */,
 				2012C74D23E39ECF00F48EFA /* CardPartMultiSliderViewCardController.swift */,
 				20F68E7C2405EFC200395102 /* CardPartSwitchViewCardController.swift */,
+				1BB15A3E2547E2D300C18F69 /* CardPartVideoCardController.swift */,
 			);
 			name = "Type of CardParts";
 			sourceTree = "<group>";
@@ -424,6 +430,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -433,6 +440,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +460,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -461,6 +470,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,6 +531,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* MainViewController.swift in Sources */,
 				0019E5D623A1960300ABB19D /* CardPartAttributedTextViewController.swift in Sources */,
+				1BB15A3F2547E2D300C18F69 /* CardPartVideoCardController.swift in Sources */,
 				20F68E7D2405EFC200395102 /* CardPartSwitchViewCardController.swift in Sources */,
 				70F595D220B5C66100B6E688 /* CardPartImageViewCardController.swift in Sources */,
 				9A9AE5C323FBA72D0006E1EC /* CardPartBottomSheetCardController.swift in Sources */,
@@ -570,6 +581,7 @@
 				61D470731FDA709B00F451F0 /* CardPartSeparatorViewTests.swift in Sources */,
 				61D470741FDA709B00F451F0 /* CardPartTextViewTests.swift in Sources */,
 				61D470711FDA709B00F451F0 /* CardPartImageViewTests.swift in Sources */,
+				1BB15A4C2547EF1000C18F69 /* CardPartVideoControllerTests.swift in Sources */,
 				61D470761FDA709B00F451F0 /* CardPartSpacerViewTests.swift in Sources */,
 				61D470701FDA709B00F451F0 /* CardPartTableViewCellTests.swift in Sources */,
 				61D470851FDB08EE00F451F0 /* CardPartTitleDescriptionViewTests.swift in Sources */,

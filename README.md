@@ -70,6 +70,7 @@ CardParts - made with ❤️ by Intuit:
     - [CardPartSwitchView](#cardpartswitchview)
     - [CardPartHistogramView](#cardparthistogramview)
     - [CardPartsBottomSheetViewController](#cardpartsbottomsheetviewcontroller)
+    - [CardPartVideoView](#cardpartvideoview)
   - [Card States](#card-states)
   - [Data Binding](#data-binding)
   - [Themes](#themes)
@@ -1172,6 +1173,18 @@ If you change the `contentVC` or `contentHeight` properties, the bottom sheet wi
 
 Because it is uncommon to have access to the bottom sheet view controller from the `contentVC`,we define a `CardPartsBottomSheetDelegate` with default implementations for updating to a new `contentVC` or `contentHeight`, updating the height, or dismissing the bottom sheet programmatically. In order to use this delegate and its default function implementations, simply have your class conform to `CardPartsBottomSheetDelegate` and define a `var bottomSheetViewController: CardPartsBottomSheetViewComtroller`. Then, set that class to be a delegate for your content view controller and you can interface with the bottom sheet through the delegate.
 
+### `CardPartVideoView`
+
+Provides the capability to embed AVPlayer inside a cardpart view.
+
+```swift
+guard let videoUrl = URL(string: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4")  else  { return }
+let cardPartVideoView = CardPartVideoView(videoUrl: videoUrl)
+```
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartVideoView.gif" width="334" alt="CardPartVideoView" />
+</p>
 
 ## Card States
 
