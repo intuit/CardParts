@@ -8,6 +8,7 @@
 
 import Foundation
 import CardParts
+import AVKit
 
 class CardPartVideoCardController: CardPartsViewController {
     
@@ -18,7 +19,19 @@ class CardPartVideoCardController: CardPartsViewController {
         
         let cardPartVideoView = CardPartVideoView(videoUrl: videoUrl)
         
+        let controller = cardPartVideoView.viewController as! AVPlayerViewController
+        controller.delegate = self
+        if #available(iOS 11.0, *) {
+            controller.entersFullScreenWhenPlaybackBegins = true
+        }
+        
         setupCardParts([cardPartVideoView])
+    }
+}
+
+extension CardPartVideoCardController: AVPlayerViewControllerDelegate {
+    func playerViewController(_ playerViewController: AVPlayerViewController, willBeginFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        print("video going full screen")
     }
 }
 
