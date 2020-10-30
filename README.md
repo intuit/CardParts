@@ -1182,6 +1182,14 @@ guard let videoUrl = URL(string: "https://www.learningcontainer.com/wp-content/u
 let cardPartVideoView = CardPartVideoView(videoUrl: videoUrl)
 ```
 
+If you need to access the underlying `AVPlayerViewController` to further customize it or set its delegate, you can do so through the `CardPartVideoView`'s `viewController` property. For example:
+
+```swift
+guard let controller = cardPartVideoView.viewController as? AVPlayerViewController else { return }
+controller.delegate = self
+controller.entersFullScreenWhenPlaybackBegins = true
+```
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/Intuit/CardParts/master/images/cardPartVideoView.gif" width="334" alt="CardPartVideoView" />
 </p>

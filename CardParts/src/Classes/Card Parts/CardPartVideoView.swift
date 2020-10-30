@@ -17,9 +17,15 @@ public class CardPartVideoView: UIView, CardPartView {
     public var videoUrl:URL
     
     // player instance
-    fileprivate var player:AVPlayer!
+    fileprivate var player: AVPlayer!
     
     fileprivate let controller = AVPlayerViewController()
+    
+    public var viewController: UIViewController? {
+        get {
+            return controller
+        }
+    }
     
     // convenience initilazer for setting up the videp player
     public init(videoUrl: URL) {
