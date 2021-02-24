@@ -55,6 +55,7 @@ public class CardPartConfettiView: UIView, CardPartView {
         emitter.emitterPosition = CGPoint(x: frame.size.width / 2.0, y: 0)
         emitter.emitterShape = shape
         emitter.emitterSize = CGSize(width: frame.size.width, height: 1)
+        emitter.beginTime = CACurrentMediaTime()
         
         //construct the cells
         var cells = [CAEmitterCell]()
