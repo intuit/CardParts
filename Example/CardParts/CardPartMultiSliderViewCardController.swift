@@ -27,6 +27,12 @@ class CardPartMultiSliderViewCardController: CardPartsViewController {
         cardPartMultiSliderView.outerTrackColor = .gray
         cardPartMultiSliderView.tintColor = .blue
         
+        cardPartMultiSliderView.thumbImage = UIImage(named: "star")
+        cardPartMultiSliderView.thumbShadowColor = .black
+        cardPartMultiSliderView.thumbShadowOpacity = 0.25
+        cardPartMultiSliderView.thumbShadowOffset = CGSize(width: 0, height: 2)
+        cardPartMultiSliderView.thumbShadowRadius = 6
+        
         setupCardParts([cardPartTextView, cardPartMultiSliderView])
     }
 }

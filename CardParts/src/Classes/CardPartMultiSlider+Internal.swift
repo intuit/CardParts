@@ -141,18 +141,17 @@ extension CardPartMultiSlider {
     private func addThumbView() {
         let i = thumbViews.count
         let thumbView = UIImageView(image: thumbImage ?? defaultThumbImage)
-        thumbView.addShadow()
         thumbViews.append(thumbView)
         slideView.addConstrainedSubview(thumbView, constrain: NSLayoutConstraint.Attribute.center(in: orientation).perpendicularCenter)
         positionThumbView(i)
         thumbView.blur(disabledThumbIndices.contains(i))
         addValueLabel(i)
-        updateThumbViewShadowVisibility()
+        updateThumbViewShadow()
     }
 
-    func updateThumbViewShadowVisibility() {
+    func updateThumbViewShadow() {
         thumbViews.forEach {
-            $0.layer.shadowOpacity = showsThumbImageShadow ? 0.25 : 0
+            $0.addShadow(color: thumbShadowColor, opacity: showsThumbImageShadow ? thumbShadowOpacity : 0, offset: thumbShadowOffset, radius: thumbShadowRadius)
         }
     }
 
