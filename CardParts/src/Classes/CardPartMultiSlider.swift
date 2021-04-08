@@ -101,10 +101,30 @@ open class CardPartMultiSlider: UIControl {
             invalidateIntrinsicContentSize()
         }
     }
-
+    
+    public dynamic var thumbShadowColor: UIColor = .gray {
+        didSet {
+            updateThumbViewShadow()
+        }
+    }
+    public dynamic var thumbShadowOpacity: Float = 0.25 {
+        didSet {
+            updateThumbViewShadow()
+        }
+    }
+    public dynamic var thumbShadowOffset: CGSize = CGSize(width: 0, height: 4) {
+        didSet {
+            updateThumbViewShadow()
+        }
+    }
+    public dynamic var thumbShadowRadius: CGFloat = 2 {
+        didSet {
+            updateThumbViewShadow()
+        }
+    }
     public dynamic var showsThumbImageShadow: Bool = true {
         didSet {
-            updateThumbViewShadowVisibility()
+            updateThumbViewShadow()
         }
     }
 
