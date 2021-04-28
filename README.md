@@ -1168,6 +1168,7 @@ There are also over two dozen other properties that you can set to further custo
 - `var didDismiss: ((_ dismissalType: BottomSheetDismissalType) -> Void)?`: Callback function to be called when bottom sheet is done dismissing itself. Parameter `dismissalType`: information about how the bottom sheet was dismissed - `.tapInOverlay`, `.swipeDown`, `.programmatic(info)`.
 - `var didChangeHeight: ((_ newHeight: CGFloat) -> Void)?`: Callback function to be called when bottom sheet height changes from dragging or a call to `updateHeight`.
 - `var preferredGestureRecognizers: [UIGestureRecognizer]?`: Gesture recognizers that should block the vertical dragging of bottom sheet. Will automatically find and use all gesture recognizers if nil, otherwise will use recognizers in the array. Default is empty array.
+-  ` var shouldListenToKeyboardNotifications: Bool`: If there is a text field in the bottom sheet we may want to automatically have the bottom sheet adjust for the keyboard. Default is false.
 
 If you change the `contentVC` or `contentHeight` properties, the bottom sheet will automatically update its height. You can also call `updateHeight()` to trigger an update of the height (this is mainly for if the content of the `contentVC` has changed and you want the bottom sheet to update to match the new content size).
 

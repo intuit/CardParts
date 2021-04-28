@@ -111,6 +111,17 @@ public class CardPartsBottomSheetViewController: UIViewController {
     /// Gesture recognizers that should block the vertical dragging of bottom sheet. Will automatically find and use all gesture recognizers if nil, otherwise will use recognizers in the array. Default is empty array.
     public var preferredGestureRecognizers: [UIGestureRecognizer]? = []
     
+    /// If there is a text field in the bottom sheet we may want to automatically have the bottom sheet adjust for the keyboard. Default is false
+    public var shouldListenToKeyboardNotifications: Bool = false {
+        didSet {
+            if shouldListenToKeyboardNotifications {
+                listenToKeyboardShowHideNotifications()
+            } else {
+                stopListeningToKeyboardShowHideNotifications()
+            }
+        }
+    }
+    
     // MARK: Private variables
     private var bottomSheetContainerVC: UIViewController = UIViewController()
     private var bottomSheetHeight: CGFloat = 0
@@ -119,6 +130,8 @@ public class CardPartsBottomSheetViewController: UIViewController {
     private var bottomSheetTopConstraint: NSLayoutConstraint!
     private var viewTopConstraint: NSLayoutConstraint!
     private var _contentHeight: CGFloat = 0
+    private var keyboardHeight: CGFloat? = nil
+    private var animateKeyboardDismiss: Bool = true // set to false when dismissing the whole bottom sheet otherwise animations conflict
     private var isShowingBottomSheet: Bool = false
     
     // MARK: Public functions
@@ -196,6 +209,7 @@ public class CardPartsBottomSheetViewController: UIViewController {
             self.bottomSheetTopConstraint.constant = 0
             self.view.layoutIfNeeded()
         }, completion: { finished in
+            self.animateKeyboardDismiss = true
             self.teardown()
             self.didDismiss?(dismissalType)
             self.isShowingBottomSheet = false
@@ -235,6 +249,11 @@ public class CardPartsBottomSheetViewController: UIViewController {
         if adjustsForSafeAreaBottomInset, #available(iOS 11.0, *) {
             let window = UIApplication.shared.keyWindow
             bottomSheetHeight += window?.safeAreaInsets.bottom ?? 0
+        }
+        
+        // check for keyboard
+        if self.shouldListenToKeyboardNotifications, let keyboardHeight = self.keyboardHeight {
+            bottomSheetHeight += keyboardHeight
         }
     }
     
@@ -326,6 +345,41 @@ public class CardPartsBottomSheetViewController: UIViewController {
     }
 }
 
+// MARK: keyboard notifications
+extension CardPartsBottomSheetViewController {
+    private func listenToKeyboardShowHideNotifications() {
+        // remove and re-add to avoid setting up duplicate listeners
+        stopListeningToKeyboardShowHideNotifications()
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func stopListeningToKeyboardShowHideNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        guard var keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        keyboardRect = view.convert(keyboardRect, from: nil)
+        keyboardHeight = keyboardRect.height
+        DispatchQueue.main.async { [weak self] in
+            self?.updateHeight()
+        }
+    }
+ 
+    @objc open func keyboardWillHide(notification: Notification) {
+        keyboardHeight = nil
+        guard animateKeyboardDismiss else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.updateHeight()
+        }
+    }
+}
+
 // MARK: Gesture Recognizers
 extension CardPartsBottomSheetViewController: UIGestureRecognizerDelegate {
     /// Sets up gesture recognizers for drags and overlay tap.
@@ -362,6 +416,10 @@ extension CardPartsBottomSheetViewController: UIGestureRecognizerDelegate {
         guard self.bottomSheetTopConstraint != nil else {
             dismissBottomSheet(.programmatic(info: ["error": "closing due to nil constraints"]))
             return
+        }
+        // dismiss keyboard on drag if we're listening to that
+        if shouldListenToKeyboardNotifications {
+            UIResponder.first?.resignFirstResponder()
         }
         let touchHeight = self.view.bounds.height - recognizer.location(in: self.view).y
         let heightPercentage: CGFloat = -self.bottomSheetTopConstraint.constant / self.bottomSheetHeight
@@ -401,6 +459,11 @@ extension CardPartsBottomSheetViewController: UIGestureRecognizerDelegate {
     
     /// Gesture recognizer for a tap in the overlay.
     @objc private func tapInOverlay(recognizer: UITapGestureRecognizer) {
+        // dismiss keyboard if we're listening to that but don't update bottom sheet height to avoid conflicting animations with dismissal
+        if shouldListenToKeyboardNotifications {
+            animateKeyboardDismiss = false
+            UIResponder.first?.resignFirstResponder()
+        }
         dismissBottomSheet(.tapInOverlay)
     }
     
