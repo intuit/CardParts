@@ -122,6 +122,16 @@ public class CardPartsBottomSheetViewController: UIViewController {
         }
     }
     
+    /// Whether or not to treat the bottom sheet as a modal accessibility element, which will block interaction with views underneath. Default is true. It is not recommended that you override this unless you are using the bottom sheet in sticky mode or otherwise without the overlay
+    public var isModalAccessibilityElement: Bool = true {
+        didSet {
+            view.accessibilityViewIsModal = isModalAccessibilityElement
+        }
+    }
+    
+    /// Whether or not users can use the accessibility escape gesture to dismiss the bottom sheet. Default is true. It is not recommended that you override this unless you are using the bottom sheet in sticky mode or otherwise disabling dismissal or providing another way for VoiceOver users to dismiss.
+    public var allowsAccessibilityGestureToDismiss: Bool = true
+    
     // MARK: Private variables
     private var bottomSheetContainerVC: UIViewController = UIViewController()
     private var bottomSheetHeight: CGFloat = 0
@@ -140,6 +150,8 @@ public class CardPartsBottomSheetViewController: UIViewController {
     public func presentBottomSheet(on hostView: UIView? = UIApplication.shared.keyWindow) {
         guard let hostView = hostView, !isShowingBottomSheet else { return }
         self.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.accessibilityViewIsModal = isModalAccessibilityElement
         
         hostView.addSubview(self.view)
         
@@ -167,6 +179,10 @@ public class CardPartsBottomSheetViewController: UIViewController {
         }, completion: { finished in
             self.didShow?()
             self.isShowingBottomSheet = true
+            // move accessibility control to our view
+            if self.isModalAccessibilityElement {
+                UIAccessibility.post(notification: .screenChanged, argument: self.view)
+            }
         })
     }
     
@@ -214,6 +230,13 @@ public class CardPartsBottomSheetViewController: UIViewController {
             self.didDismiss?(dismissalType)
             self.isShowingBottomSheet = false
         })
+    }
+    
+    /// Dismisses the bottom sheet
+    override public func accessibilityPerformEscape() -> Bool {
+        guard allowsAccessibilityGestureToDismiss else { return false }
+        dismissBottomSheet(.programmatic(info: ["accessibilityPerformEscape": true]))
+        return true
     }
     
     // MARK: Private functions
@@ -509,6 +532,8 @@ extension CardPartsBottomSheetViewController {
         self.shouldListenToContentDrag = false
         self.shouldListenToContainerDrag = false
         self.handlePosition = .none
+        self.isModalAccessibilityElement = false
+        self.allowsAccessibilityGestureToDismiss = false
     }
 }
 
