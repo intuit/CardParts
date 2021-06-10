@@ -248,7 +248,7 @@ open class CardsViewController : UIViewController, UICollectionViewDataSource, U
             }.disposed(by: bag)
 			if getEditModeForIndexPath(indexPath: indexPath) {
 				let editButton = UIButton(frame: CGRect(x: view.bounds.size.width - editButtonOffset - editButtonWidth, y: 0, width: editButtonWidth, height: editButtonHeight))
-				editButton.setImage(UIImage(named: editButtonImage, in: Bundle(for: CardsViewController.self), compatibleWith: nil), for: .normal)
+                editButton.setImage(UIImage(named: editButtonImage, in: Bundle.controller, compatibleWith: nil), for: .normal)
 				editButton.addTargetClosure { _ in
 					if let editibalCardTrait = cardController as? EditableCardTrait {
 						editibalCardTrait.onEditButtonTap()
@@ -469,5 +469,17 @@ extension CardsViewController {
     // calls for visibility of card when the scroll view scrolls
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         notifyCardsVisibility()
+    }
+}
+
+private extension Bundle {
+
+    /// Gets the correct Bundle for the `budgets_disclosure_icon` image based on the environment.
+    static var controller: Bundle {
+        #if SWIFT_PACKAGE
+        return Bundle.module
+        #else
+        return Bundle(for: CardsViewController.self)
+        #endif
     }
 }

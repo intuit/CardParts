@@ -6,6 +6,10 @@
 //  Copyright © 2017 Intuit, Inc. All rights reserved.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#endif
+
 extension UIColor {
     
     static var turboGenericGreyTextColor : UIColor {get{return UIColor.color(169, green: 169, blue: 169)}}

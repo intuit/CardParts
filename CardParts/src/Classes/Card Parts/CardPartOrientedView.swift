@@ -5,7 +5,11 @@
 //  Created by Tumer, Deniz on 6/13/18.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#else
 import Foundation
+#endif
 
 public enum Orientation {
     case top

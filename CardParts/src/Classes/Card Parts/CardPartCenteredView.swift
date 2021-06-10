@@ -5,7 +5,11 @@
 //  Created by Tumer, Deniz on 6/20/18.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#else
 import Foundation
+#endif
 
 public class CardPartCenteredView: UIView, CardPartView {
     public var margins: UIEdgeInsets = CardParts.theme.cardPartMargins

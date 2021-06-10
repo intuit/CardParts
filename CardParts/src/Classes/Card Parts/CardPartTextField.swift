@@ -5,8 +5,12 @@
 //  Created by Kier, Tom on 12/14/17.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#else
 import Foundation
-import Foundation
+#endif
+
 import RxSwift
 import RxCocoa
 

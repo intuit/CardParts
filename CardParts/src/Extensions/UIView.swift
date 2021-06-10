@@ -5,6 +5,10 @@
 //  Created by bcarreon1 on 1/30/20.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#endif
+
 extension UIView {
     func roundCorners(_ corners: CACornerMask, radius: CGFloat){
         if #available(iOS 11.0, *) {

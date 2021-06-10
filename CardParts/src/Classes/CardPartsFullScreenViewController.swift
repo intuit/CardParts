@@ -6,7 +6,11 @@
 //  Copyright © 2017 Mint.com. All rights reserved.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#else
 import Foundation
+#endif
 
 open class CardPartsFullScreenViewController: CardPartsViewController {
 	

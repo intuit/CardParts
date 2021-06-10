@@ -6,7 +6,12 @@
 //  Copyright © 2017 Mint.com. All rights reserved.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#else
 import Foundation
+#endif
+
 import RxSwift
 import RxCocoa
 

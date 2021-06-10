@@ -5,7 +5,11 @@
 //  Created by Kier, Tom on 12/7/17.
 //
 
+#if SWIFT_PACKAGE
+import UIKit
+#else
 import Foundation
+#endif
 
 public protocol CardPartsTheme {
     
