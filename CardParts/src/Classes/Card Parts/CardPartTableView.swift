@@ -35,6 +35,7 @@ private class SelfSizingTableView: UITableView {
 
 @objc public protocol CardPartTableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    @objc optional func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
 	@objc optional func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
 }
 
@@ -90,4 +91,8 @@ public class CardPartTableView : UIView, CardPartView, UITableViewDelegate {
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		delegate?.tableView(tableView, didSelectRowAt: indexPath)
 	}
+    
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        delegate?.tableView?(tableView, didDeselectRowAt: indexPath)
+    }
 }
