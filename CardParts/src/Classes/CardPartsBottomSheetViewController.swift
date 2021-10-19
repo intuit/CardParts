@@ -589,7 +589,7 @@ public enum BottomSheetHandlePosition: Equatable {
 
 // MARK: Protocol
 /// Protocol for delegate with function to dismiss bottom sheet.
-public protocol CardPartsBottomSheetDelegate: class {
+public protocol CardPartsBottomSheetDelegate: AnyObject {
     var bottomSheetViewController: CardPartsBottomSheetViewController { get set }
     func dismissBottomSheet(info: [String: Any]?)
     func updateContentHeight(to height: CGFloat?)

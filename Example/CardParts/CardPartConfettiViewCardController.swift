@@ -36,11 +36,11 @@ class CardPartConfettiViewCardController: CardPartsViewController {
                   UIImage(named: "squiggle"),
                   UIImage(named: "star"),
                   UIImage(named: "filledCircle")
-            ] as? [UIImage]
+        ]
         
         let colors: [UIColor] = [ UIColor.flushOrange , UIColor.eggBlue , UIColor.blushPink , UIColor.cerulean , UIColor.limeGreen , UIColor.yellowSea , UIColor.superNova]
         
-        guard let images = listOfImages else { return }
+       let images = listOfImages
         
        let _ =  mixedConfetti.rx.tap.bind { [weak self] in
             guard let self = self else { return }

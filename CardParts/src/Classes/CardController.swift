@@ -101,7 +101,7 @@ extension RoundedCardTrait {
     @objc optional func gradientAngle() -> Float
 }
 
-@objc public protocol CardPartsLongPressGestureRecognizerDelegate: class {
+@objc public protocol CardPartsLongPressGestureRecognizerDelegate: AnyObject {
     @objc func didLongPress(_ gesture: UILongPressGestureRecognizer) -> Void
     var minimumPressDuration: CFTimeInterval { get }
 }

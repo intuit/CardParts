@@ -43,7 +43,7 @@ class CardPartMapViewCardController: CardPartsViewController {
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .filter { $0 != nil && !$0!.isEmpty }
             .flatMap { self.viewModel.getLocation(from: $0!)}
-            .catchError({ error -> Observable<CLLocation> in
+            .catch({ error -> Observable<CLLocation> in
                 print("MapView Error: \(error)")
                 return .just(self.cardPartMapView.location) // Returns previous value
             })
