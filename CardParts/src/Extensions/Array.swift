@@ -9,11 +9,10 @@ import Foundation
 
 extension Array {
     func safeValue(at index: Int) -> Element? {
-        if index < self.count {
-            return self[index]
-        } else {
+        guard index >= 0, index < count else {
             return nil
         }
+        return self[index]
     }
 }
 
