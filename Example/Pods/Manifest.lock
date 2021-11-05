@@ -1,0 +1,44 @@
+PODS:
+  - CardParts (2.20.0):
+    - RxCocoa (~> 4.5)
+    - RxDataSources (~> 3.1)
+    - RxGesture (~> 2.2)
+    - RxSwift (~> 4.5)
+  - Differentiator (3.1.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxGesture (2.2.0):
+    - RxCocoa (~> 4.5)
+    - RxSwift (~> 4.5)
+  - RxSwift (4.5.0)
+
+DEPENDENCIES:
+  - CardParts (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Differentiator
+    - RxCocoa
+    - RxDataSources
+    - RxGesture
+    - RxSwift
+
+EXTERNAL SOURCES:
+  CardParts:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CardParts: 76f7e864e1e0f2eab2c7fb5d7a0a43521f21275e
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxGesture: c1b7bf17166b0ef9d642a9510f8bac5785f18990
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+
+PODFILE CHECKSUM: 74676e2d5bea3356515810e198c6e14ce8817a1e
+
+COCOAPODS: 1.8.4
